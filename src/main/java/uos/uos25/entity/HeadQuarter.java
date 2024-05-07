@@ -1,9 +1,9 @@
 package uos.uos25.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class HeadQuarter {
@@ -17,4 +17,6 @@ public class HeadQuarter {
     @Column(length = 30)
     private String hqEmpHp;
 
+    @OneToMany(mappedBy = "headQuarter")
+    private List<Shop> shops = new ArrayList<>();
 }

@@ -1,10 +1,10 @@
 package uos.uos25.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -25,4 +25,11 @@ public class Employee {
     @Column(length = 18)
     private String account;
     private LocalDateTime firedDate;
+
+    @ManyToOne
+    @JoinColumn(name = "shop_id")
+    private Shop shop;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Receipt> receipts = new ArrayList<>();
 }

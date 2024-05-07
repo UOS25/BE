@@ -1,8 +1,6 @@
 package uos.uos25.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +8,13 @@ import java.time.LocalDateTime;
 public class Disposal {
     @Id
     private Integer disposalId;
-
     private LocalDateTime disposalDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id")
+    private Shop shop;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

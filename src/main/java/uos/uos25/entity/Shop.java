@@ -1,8 +1,9 @@
 package uos.uos25.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Shop {
@@ -15,4 +16,27 @@ public class Shop {
 
     @Column(length = 18)
     private String relationship;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "HQ_Emp_id")
+    private HeadQuarter headQuarter;
+
+    @OneToMany(mappedBy = "shop")
+    private List<Sales> sales = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private List<Employee> employees = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private List<Purchase> purchases = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private List<Disposal> disposals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private List<Returns> returnses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private List<Inventory> inventories = new ArrayList<>();
+
 }

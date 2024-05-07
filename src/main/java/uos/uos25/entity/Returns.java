@@ -5,14 +5,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Inventory {
+public class Returns {
     @Id
-    private Integer inventoryId;
+    private Integer returnsId;
 
+    private LocalDateTime returnsDate;
     private Integer ea;
-    private LocalDateTime warehousingDate;
-    private Integer display;
-    private LocalDateTime expirationDate;
+    @Column(length = 18)
+    private String returnsStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")

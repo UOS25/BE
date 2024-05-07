@@ -14,4 +14,8 @@ public class Sales {
     @Column(length = 18)
     private String salesType;
     private Long amount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id")
+    private Shop shop;
 }
