@@ -1,21 +1,23 @@
-package uos.uos25.entity;
+package uos.uos25.orders.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.product.entity.Product;
+import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Purchase {
+public class Orders {
     @Id
-    private Integer purchaseId;
+    private Integer ordersId;
 
-    private LocalDateTime purchaseDate;
+    private LocalDateTime ordersDate;
     @Column(length = 20)
-    private String purchaseStatus;
+    private String orderStatus;
     private Integer givenEa;
     private Integer orderEa;
     @Column(length = 18)
-    private String purchaseCheck;
+    private String orderCheck;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")

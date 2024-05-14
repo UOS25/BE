@@ -1,6 +1,8 @@
-package uos.uos25.entity;
+package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.entity.Receipt;
+import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
