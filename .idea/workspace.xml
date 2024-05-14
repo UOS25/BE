@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="chore: for pull">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Shop.java" afterDir="false" />
-    </list>
+    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="feat: DDD로 다 나누기" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feat/ddd",
-    "last_opened_file_path": "/Users/hyun/Documents/uos25/src/main/resources",
+    "last_opened_file_path": "/Users/hyun/Documents/uos25/src/main/java/uos/uos25",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,6 +65,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/uos/uos25" />
+      <recent name="$PROJECT_DIR$/src/main/java/uos/uos25/product" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
@@ -116,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715660691261</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: DDD로 다 나누기">
+      <option name="closed" value="true" />
+      <created>1715676154980</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715676154980</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +132,7 @@
     <MESSAGE value="feat: 기본 엔티티 구현(외래키 X)" />
     <MESSAGE value="chore: chore" />
     <MESSAGE value="chore: for pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: for pull" />
+    <MESSAGE value="feat: DDD로 다 나누기" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: DDD로 다 나누기" />
   </component>
 </project>
