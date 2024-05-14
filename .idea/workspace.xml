@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="feat: 기본 엔티티 구현(외래키 X)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Purchase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Disposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Disposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/HeadQuarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/HeadQuarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/ReceiptDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/ReceiptDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Returns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/entity/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/db" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,10 +59,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2g7hSKq8GOCmUJ8Xzz4RgC329wN" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -57,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feat/db",
     "last_opened_file_path": "/Users/hyun/Documents/uos25/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
