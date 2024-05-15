@@ -1,6 +1,8 @@
 package uos.uos25.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.Employee.entity.Employee;
+import uos.uos25.customer.entity.Customer;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

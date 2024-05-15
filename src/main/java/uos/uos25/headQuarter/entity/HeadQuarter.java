@@ -1,6 +1,7 @@
-package uos.uos25.entity;
+package uos.uos25.headQuarter.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.shop.entity.Shop;
 
 import java.util.ArrayList;
 import java.util.List;

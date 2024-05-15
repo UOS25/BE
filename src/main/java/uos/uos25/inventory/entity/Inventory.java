@@ -1,18 +1,20 @@
-package uos.uos25.entity;
+package uos.uos25.inventory.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.product.entity.Product;
+import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Returns {
+public class Inventory {
     @Id
-    private Integer returnsId;
+    private Integer inventoryId;
 
-    private LocalDateTime returnsDate;
     private Integer ea;
-    @Column(length = 18)
-    private String returnsStatus;
+    private LocalDateTime warehousingDate;
+    private Integer display;
+    private LocalDateTime expirationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")

@@ -1,6 +1,7 @@
-package uos.uos25.entity;
+package uos.uos25.sale.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
 
