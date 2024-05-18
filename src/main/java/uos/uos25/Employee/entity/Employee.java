@@ -1,6 +1,8 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import uos.uos25.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter @Setter
 public class Employee {
     @Id
     @Column(length = 30)
