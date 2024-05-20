@@ -1,8 +1,9 @@
-package uos.uos25.entity;
+package uos.uos25.receipt.entity;
 
 import jakarta.persistence.*;
 import uos.uos25.Employee.entity.Employee;
 import uos.uos25.customer.entity.Customer;
+import uos.uos25.entity.ReceiptDetail;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ import java.util.List;
 public class Receipt {
     @Id
     @Column(length = 20)
-    private String receiptId;
+    private Long receiptId;
+
     private LocalDateTime purchaseDate;
     @Column(length = 18)
     private String purchaseStatus;
