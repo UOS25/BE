@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uos.uos25.Employee.DTO.EmployeeDTO;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
@@ -25,7 +24,7 @@ public class Employee {
 
     @Column(length = 20)
     private String employeeName;
-    //private LocalDateTime employmentDate;
+    private LocalDateTime employmentDate;
     @Column(length = 18)
     private String position;
     @Column(length = 30)
@@ -37,13 +36,17 @@ public class Employee {
 
     @Column(length = 18)
     private String account;
-    //private LocalDateTime firedDate;
+    private LocalDateTime firedDate;
 
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
 
     // Cascade 전용 필드.
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Receipt> receipts = new ArrayList<>();
+    // Cascade 전용 필드.
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
+
 }
