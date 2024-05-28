@@ -1,42 +1,99 @@
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-.DS_store
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
+# Eclipse 프로젝트 파일들
 .project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+.classpath
+.settings/
+# IntelliJ IDEA 프로젝트 파일들
+.idea/
 *.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
+# NetBeans 프로젝트 파일들
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+# VS Code 파일들
 .vscode/
 
-# ignore properties file
-application-dev.yml
-application-test.yml
-/lib/javaee.jar
+# 빌드 디렉토리
+target/
+out/
+
+# 빌드 툴 파일들
+mvnw
+mvnw.cmd
+.gradle/
+build/
+
+# Maven 관련 파일들
+log/
+logs/
+*.log
+
+# Gradle 관련 파일들
+.gradle/
+build/
+
+# 기타 IDE 파일들
+*.swp
+*~
+.project
+.idea
+*.tmproj
+*.tmproject
+*.tm_properties
+*.diff
+
+# 임시 파일들
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+*.sublime-*
+*.DS_Store
+
+# 운영체제별 파일들
+.DS_Store
+Thumbs.db
+
+# Java 관련 파일들
+*.class
+*.jar
+*.war
+*.ear
+
+# Lombok config 파일
+lombok.config
+
+# Log, tmp files
+*.log
+*.tmp
+
+# Spring Boot 관련 파일들
+spring.log
+
+# 환경 설정 파일들
+application-*.yml
+application-*.yaml
+application-*.properties
+.env
+.env.*
+
+# 기타
+.idea/
+*.iml
+*.ipr
+*.iws
+target/
+bin/
+*.bak
+*.swp
+*~
+
+# 확장자별 무시
+*.lock
+*.bin
+*.probe
+*.xml

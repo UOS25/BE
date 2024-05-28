@@ -17,12 +17,9 @@ import java.util.List;
 @Entity
 @Getter @Setter
 public class Shop {
-    @Id @GeneratedValue
-    @Column(length = 30)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
-
-    @Column(length = 20) // shopName 조회를 위해 추가. 00점
-    private String shopName;
 
     @Column(length = 30)
     private String address;

@@ -1,22 +1,19 @@
 package uos.uos25.product.service;
 
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uos.uos25.product.entity.Product;
+import uos.uos25.product.exception.ProductNotFoundException;
 import uos.uos25.product.repository.ProductRepository;
+import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.exception.ShopNotFoundException;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-
-    @Autowired
     private ProductRepository productRepository;
 
-    // 상품 등록
-    @Transactional
-    public void saveProduct(Product product) {
-        productRepository.save(product);
+    public Product findProductById(Long productId){
+        return productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
     }
-
-
 }
