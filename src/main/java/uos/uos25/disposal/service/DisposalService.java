@@ -36,7 +36,9 @@ public class DisposalService {
     }
 
     public List<Disposal> findDisposalsWithDate(DisposalListRequestDTO disposalListRequestDTO){
+        List<Disposal> disposalsWithDate = disposalRepository.findByCreatedAtBetween(disposalListRequestDTO.getStartDate(), disposalListRequestDTO.getEndDate());
 
+        return disposalsWithDate;
     }
 
 
