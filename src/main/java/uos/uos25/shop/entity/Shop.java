@@ -15,8 +15,8 @@ import java.util.List;
 @Entity
 public class Shop {
     @Id
-    @Column(length = 30)
-    private String shopId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long shopId;
 
     @Column(length = 30)
     private String address;
