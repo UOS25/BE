@@ -8,8 +8,6 @@ import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.disposal.repository.DisposalRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
-import uos.uos25.returns.dto.request.ReturnsRequestDTO;
-import uos.uos25.returns.service.ReturnsService;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
 
