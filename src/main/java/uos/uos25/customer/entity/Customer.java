@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.entity.Receipt;
+import uos.uos25.receipt.entity.Receipt;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

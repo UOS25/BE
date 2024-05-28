@@ -16,10 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter @Setter
 public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
+
+    @Column(length = 20)
+    private String shopName;
 
     @Column(length = 30)
     private String address;
