@@ -11,25 +11,31 @@ import java.util.List;
 
 @Entity
 public class Receipt {
-    @Id
-    @Column(length = 20)
+    @Id @GeneratedValue
+    @Column(nullable = false)
     private Long receiptId;
 
+    @Column(nullable = false)
     private LocalDateTime purchaseDate;
-    @Column(length = 18)
+
+    @Column(nullable = false)
     private String purchaseStatus;
+
+    @Column(nullable = false)
     private Integer age;
-    @Column(length = 18)
+
+    @Column(nullable = false)
     private String gender;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @OneToMany(mappedBy = "receipt")
     private List<ReceiptDetail> receiptDetails = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 }

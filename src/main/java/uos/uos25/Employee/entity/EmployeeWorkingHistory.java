@@ -12,14 +12,20 @@ import java.time.LocalDateTime;
 public class EmployeeWorkingHistory {
 
     @Id @GeneratedValue
+    @Column(nullable = false)
     private Long employeeWorkingHistoryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @Column(nullable = false)
     private LocalDateTime startDateTime;
+
+    @Column(nullable = false)
     private LocalDateTime endDateTime;
+
+    @Column(nullable = false)
     private Long workingHour;
 
     @Builder

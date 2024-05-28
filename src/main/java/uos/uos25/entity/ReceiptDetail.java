@@ -6,16 +6,19 @@ import uos.uos25.receipt.entity.Receipt;
 
 @Entity
 public class ReceiptDetail {
-    @Id
-    @Column(length = 20)
-    private String receiptDetail;
+
+    @Id @GeneratedValue
+    @Column(nullable = false)
+    private Long receiptDetail;
+
+    @Column(nullable = false)
     private Integer ea;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "receipt_id")
+    @JoinColumn(name = "receipt_id", nullable = false)
     private Receipt receipt;
 }
