@@ -1,9 +1,6 @@
 package uos.uos25.product.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.entity.Event;
 import uos.uos25.entity.ReceiptDetail;
@@ -18,7 +15,7 @@ import java.util.List;
 @Entity
 public class Product {
     @Id
-    @Column(length = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
     @Column(length = 20)
