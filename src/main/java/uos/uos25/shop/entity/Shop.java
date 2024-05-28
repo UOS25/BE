@@ -2,6 +2,7 @@ package uos.uos25.shop.entity;
 
 import jakarta.persistence.*;
 import uos.uos25.Employee.entity.Employee;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.headQuarter.entity.HeadQuarter;
 import uos.uos25.inventory.entity.Inventory;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Shop {
+public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;

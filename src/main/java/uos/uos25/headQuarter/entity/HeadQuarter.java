@@ -1,13 +1,14 @@
 package uos.uos25.headQuarter.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.shop.entity.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class HeadQuarter {
+public class HeadQuarter extends BaseEntity {
     @Id
     @Column(length = 20)
     private String hqEmpId;

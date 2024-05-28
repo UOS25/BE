@@ -1,17 +1,17 @@
 package uos.uos25.returns.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.product.entity.Product;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Returns {
+public class Returns extends BaseEntity {
     @Id
-    private Integer returnsId;
-
-    private LocalDateTime returnsDate;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long returnsId;
     private Integer ea;
     @Column(length = 18)
     private String returnsStatus;

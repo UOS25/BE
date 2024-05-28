@@ -1,6 +1,7 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Employee {
+public class Employee extends BaseEntity {
     @Id
     @Column(length = 30)
     private String employeeId;

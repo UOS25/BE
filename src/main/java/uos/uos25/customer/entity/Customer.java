@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.entity.Receipt;
 
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer {
+public class Customer extends BaseEntity {
     @Id
     @Column(length = 30)
     private String customerId;

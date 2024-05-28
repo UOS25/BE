@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="fix: Product Id Long으로 변경">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="feat: 폐기 생성 기능 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/Employee/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/Employee/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/Uos25Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/Uos25Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/customer/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/customer/entity/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/entity/Disposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/entity/Disposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/service/DisposalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/service/DisposalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/headQuarter/entity/HeadQuarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/headQuarter/entity/HeadQuarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/inventory/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/inventory/entity/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/orders/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/orders/entity/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/product/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/product/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Returns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Returns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/sale/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/sale/entity/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/shop/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/shop/entity/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feat/orders" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,7 +80,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/orders",
+    "git-widget-placeholder": "feat/disposal",
     "last_opened_file_path": "/Users/hyun/Documents/UOS25-BE/src/main/java/uos/uos25/shop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -118,7 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715054522435</updated>
       <workItem from="1715054523610" duration="6894000" />
-      <workItem from="1716863275485" duration="6225000" />
+      <workItem from="1716863275485" duration="7848000" />
     </task>
     <task id="LOCAL-00001" summary="feat: init">
       <option name="closed" value="true" />
@@ -208,7 +206,79 @@
       <option name="project" value="LOCAL" />
       <updated>1716870447484</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: 주문 생성 기능 구현">
+      <option name="closed" value="true" />
+      <created>1716871418786</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871418786</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: 주문 변경 기능 구현">
+      <option name="closed" value="true" />
+      <created>1716871430024</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871430024</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: 주문 상태 변경 기능 구현">
+      <option name="closed" value="true" />
+      <created>1716871440547</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871440547</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: 주문 조회 실패 예외 구현">
+      <option name="closed" value="true" />
+      <created>1716871452461</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871452461</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix: 주문 Id Long으로 변경">
+      <option name="closed" value="true" />
+      <created>1716871478558</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871478558</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix: 주문 Id Long으로 변경">
+      <option name="closed" value="true" />
+      <created>1716871495077</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871495077</updated>
+    </task>
+    <task id="LOCAL-00018" summary="chore: 이상한 파일들">
+      <option name="closed" value="true" />
+      <created>1716871509794</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716871509794</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: Disposal Id Long으로 변경">
+      <option name="closed" value="true" />
+      <created>1716872246441</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716872246441</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: 폐기 생성 기능 구현">
+      <option name="closed" value="true" />
+      <created>1716872319008</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716872319008</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +297,14 @@
     <MESSAGE value="feat: Shop 찾기 실패 예외 추가" />
     <MESSAGE value="fix: 엔티티 id 데이터 타입 Long으로 변경" />
     <MESSAGE value="fix: Product Id Long으로 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Product Id Long으로 변경" />
+    <MESSAGE value="feat: 주문 생성 기능 구현" />
+    <MESSAGE value="feat: 주문 변경 기능 구현" />
+    <MESSAGE value="feat: 주문 상태 변경 기능 구현" />
+    <MESSAGE value="feat: 주문 조회 실패 예외 구현" />
+    <MESSAGE value="fix: 주문 Id Long으로 변경" />
+    <MESSAGE value="chore: 이상한 파일들" />
+    <MESSAGE value="fix: Disposal Id Long으로 변경" />
+    <MESSAGE value="feat: 폐기 생성 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 폐기 생성 기능 구현" />
   </component>
 </project>
