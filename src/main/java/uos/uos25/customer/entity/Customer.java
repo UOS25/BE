@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import uos.uos25.entity.Receipt;
+import uos.uos25.receipt.entity.Receipt;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 public class Customer {
     @Id
     @Column(length = 30)
-    private String customerId;
+    private Long customerId;
 
     @Column(length = 30)
     private String passwd;

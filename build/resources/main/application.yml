@@ -1,21 +1,42 @@
 server:
     port: 8080
 
+#spring:
+#    datasource:
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/uos25
+#        username: uos25
+#        password: Enlwu5413!
+#    jpa:
+#        hibernate:
+#            ddl-auto: create-drop
+#        generate-ddl: true
+#        properties:
+#            hibernate:
+#                default_batch_fetch_size: 1000
+#                show_sql: true
+#                format_sql: true
+
+## H2 Database
 spring:
     datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/uos25
-        username: uos25
-        password: Enlwu5413!
+        url: jdbc:h2:tcp://localhost/~/UOS25-test
+        username: sa
+        password:
+        driver-class-name: org.h2.Driver
+
     jpa:
         hibernate:
             ddl-auto: create-drop
-        generate-ddl: true
         properties:
-            hibernate:
-                default_batch_fetch_size: 1000
-                show_sql: true
-                format_sql: true
+          hibernate:
+              format_sql: true
+              show_sql: true
+
+logging.level:
+    org.hibernate.SQL: debug
+
+
 
 jwt:
     refresh:
