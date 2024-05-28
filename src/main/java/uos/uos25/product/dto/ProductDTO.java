@@ -1,4 +1,4 @@
-package uos.uos25.product.DTO;
+package uos.uos25.product.dto;
 
 
 import lombok.Getter;
