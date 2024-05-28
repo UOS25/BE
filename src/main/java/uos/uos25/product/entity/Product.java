@@ -19,7 +19,7 @@ import java.util.List;
 public class Product {
     @Id
     @Column(length = 20)
-    private String productId;
+    private Long productId;
 
     @Column(length = 20)
     private String enterprise;
