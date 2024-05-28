@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
@@ -12,12 +13,11 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Orders {
+public class Orders extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersId;
 
-    private LocalDateTime ordersDate;
     @Column(length = 20)
     private String ordersStatus;
     private Integer givenEa;

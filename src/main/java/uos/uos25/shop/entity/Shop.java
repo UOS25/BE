@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import uos.uos25.Employee.entity.Employee;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.headQuarter.entity.HeadQuarter;
 import uos.uos25.inventory.entity.Inventory;
@@ -15,8 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
-public class Shop {
+public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;

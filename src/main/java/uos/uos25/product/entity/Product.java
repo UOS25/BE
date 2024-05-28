@@ -1,6 +1,7 @@
 package uos.uos25.product.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.entity.Event;
 import uos.uos25.entity.ReceiptDetail;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Product {
+public class Product extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;

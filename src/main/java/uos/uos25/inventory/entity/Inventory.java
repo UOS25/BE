@@ -1,13 +1,14 @@
 package uos.uos25.inventory.entity;
 
 import jakarta.persistence.*;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Inventory {
+public class Inventory extends BaseEntity {
     @Id
     private Integer inventoryId;
 

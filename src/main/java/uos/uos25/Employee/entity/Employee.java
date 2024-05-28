@@ -1,11 +1,8 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.common.BaseEntity;
+import uos.uos25.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
@@ -13,12 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Employee {
-
-    @Id @GeneratedValue
+public class Employee extends BaseEntity {
+    @Id
     @Column(length = 30)
     private Long employeeId; // Long으로 변경
 
