@@ -14,7 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Orders {
     @Id
-    private Integer ordersId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ordersId;
 
     private LocalDateTime ordersDate;
     @Column(length = 20)
