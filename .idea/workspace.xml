@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="fix: Product Id Long으로 변경">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a94ee089-cba2-4673-b516-a93078bedc5b" name="Changes" comment="feat: EmployeeWorkingHistory 기능 구현, Employee 오류 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/entity/Disposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/disposal/entity/Disposal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/orders/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/orders/entity/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Returns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uos/uos25/returns/entity/Returns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,21 +18,10 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -58,6 +34,21 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MTsauRus&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/UOS25/BE.git&quot;,
+    &quot;accountId&quot;: &quot;1bccea65-9f0b-443f-be08-282803f5c85f&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -73,28 +64,39 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/orders",
-    "last_opened_file_path": "/Users/hyun/Documents/UOS25-BE/src/main/java/uos/uos25/shop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build BE.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Uos25Application.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/employee&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hyun/Documents/uos25/src/main/java/uos/uos25&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;h2&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="uos.uos25.Employee.entity" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/uos/uos25/shop" />
       <recent name="$PROJECT_DIR$/src/main/java/uos/uos25" />
       <recent name="$PROJECT_DIR$/src/main/java/uos/uos25/product" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -109,6 +111,14 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -118,7 +128,10 @@
       <option name="presentableId" value="Default" />
       <updated>1715054522435</updated>
       <workItem from="1715054523610" duration="6894000" />
-      <workItem from="1716863275485" duration="6225000" />
+      <workItem from="1716301315312" duration="3173000" />
+      <workItem from="1716355125892" duration="22090000" />
+      <workItem from="1716391051030" duration="9405000" />
+      <workItem from="1716432454421" duration="18835000" />
     </task>
     <task id="LOCAL-00001" summary="feat: init">
       <option name="closed" value="true" />
@@ -152,63 +165,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715676154980</updated>
     </task>
-    <task id="LOCAL-00005" summary="fix: update .gitignore to exclude unnecessary files">
+    <task id="LOCAL-00005" summary="feat: Employee 도메인 CRUD">
       <option name="closed" value="true" />
-      <created>1716863833314</created>
+      <created>1716229959820</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1716863833314</updated>
+      <updated>1716229959821</updated>
     </task>
-    <task id="LOCAL-00006" summary="feat: Product 조회 기능 추가">
+    <task id="LOCAL-00006" summary="feat: EmployeeWorkingHistory 기능 구현, Employee 오류 수정">
       <option name="closed" value="true" />
-      <created>1716867528985</created>
+      <created>1716452725457</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1716867528986</updated>
+      <updated>1716452725457</updated>
     </task>
-    <task id="LOCAL-00007" summary="feat: Product 찾기 실패 예외 추가">
-      <option name="closed" value="true" />
-      <created>1716867547261</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716867547261</updated>
-    </task>
-    <task id="LOCAL-00008" summary="feat: Shop 찾기 기능 추가">
-      <option name="closed" value="true" />
-      <created>1716867562528</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1716867562528</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat: Shop 찾기 실패 예외 추가">
-      <option name="closed" value="true" />
-      <created>1716867571383</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1716867571383</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix: 엔티티 id 데이터 타입 Long으로 변경">
-      <option name="closed" value="true" />
-      <created>1716867632565</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1716867632565</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fix: Product Id Long으로 변경">
-      <option name="closed" value="true" />
-      <created>1716870447484</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1716870447484</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,13 +193,18 @@
     <MESSAGE value="chore: chore" />
     <MESSAGE value="chore: for pull" />
     <MESSAGE value="feat: DDD로 다 나누기" />
-    <MESSAGE value="fix: update .gitignore to exclude unnecessary files" />
-    <MESSAGE value="feat: Product 조회 기능 추가" />
-    <MESSAGE value="feat: Product 찾기 실패 예외 추가" />
-    <MESSAGE value="feat: Shop 찾기 기능 추가" />
-    <MESSAGE value="feat: Shop 찾기 실패 예외 추가" />
-    <MESSAGE value="fix: 엔티티 id 데이터 타입 Long으로 변경" />
-    <MESSAGE value="fix: Product Id Long으로 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Product Id Long으로 변경" />
+    <MESSAGE value="feat: Employee 도메인 CRUD" />
+    <MESSAGE value="feat: EmployeeWorkingHistory 기능 구현, Employee 오류 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: EmployeeWorkingHistory 기능 구현, Employee 오류 수정" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

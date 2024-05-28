@@ -1,7 +1,11 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
-import uos.uos25.entity.Receipt;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
@@ -9,10 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
-    @Id
+
+    @Id @GeneratedValue
     @Column(length = 30)
-    private String employeeId;
+    private Long employeeId; // Long으로 변경
 
     @Column(length = 20)
     private String employeeName;
@@ -22,8 +30,10 @@ public class Employee {
     @Column(length = 30)
     private String registrationNumber;
     private Long salary;
-    @Column(length = 4)
-    private String parttime;
+
+    @Enumerated(EnumType.STRING)
+    private PartTime partTime;
+
     @Column(length = 18)
     private String account;
     private LocalDateTime firedDate;
@@ -32,6 +42,11 @@ public class Employee {
     @JoinColumn(name = "shop_id")
     private Shop shop;
 
-    @OneToMany(mappedBy = "employee")
+    // Cascade 전용 필드.
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Receipt> receipts = new ArrayList<>();
+    // Cascade 전용 필드.
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
+
 }
