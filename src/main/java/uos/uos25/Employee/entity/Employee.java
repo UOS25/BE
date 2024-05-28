@@ -21,6 +21,7 @@ import java.util.List;
 public class Employee extends BaseEntity {
     @Id
     @Column(length = 30)
+    @GeneratedValue
     private Long employeeId; // Long으로 변경
 
     @Column(length = 20)

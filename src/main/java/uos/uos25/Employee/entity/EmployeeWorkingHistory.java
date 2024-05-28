@@ -1,10 +1,7 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -25,4 +22,10 @@ public class EmployeeWorkingHistory {
     private LocalDateTime endDateTime;
     private Long workingHour;
 
+    @Builder
+    public EmployeeWorkingHistory(LocalDateTime startDateTime, LocalDateTime endDateTime, Long workingHour) {
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.workingHour = workingHour;
+    }
 }
