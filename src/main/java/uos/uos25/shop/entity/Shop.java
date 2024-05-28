@@ -1,6 +1,8 @@
 package uos.uos25.shop.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import uos.uos25.Employee.entity.Employee;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;

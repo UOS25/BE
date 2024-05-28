@@ -20,21 +20,10 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -47,6 +36,21 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MTsauRus&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/UOS25/BE.git&quot;,
+    &quot;accountId&quot;: &quot;1bccea65-9f0b-443f-be08-282803f5c85f&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,10 +84,12 @@
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="uos.uos25.Employee.entity" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/uos/uos25/shop" />
       <recent name="$PROJECT_DIR$/src/main/java/uos/uos25" />
       <recent name="$PROJECT_DIR$/src/main/java/uos/uos25/product" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -97,6 +103,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -141,29 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1715676154980</updated>
     </task>
-    <task id="LOCAL-00005" summary="fix: update .gitignore to exclude unnecessary files">
+    <task id="LOCAL-00005" summary="feat: Employee 도메인 CRUD">
       <option name="closed" value="true" />
-      <created>1716863833314</created>
+      <created>1716229959820</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1716863833314</updated>
+      <updated>1716229959821</updated>
     </task>
-    <task id="LOCAL-00006" summary="feat: Product 조회 기능 추가">
+    <task id="LOCAL-00006" summary="feat: EmployeeWorkingHistory 기능 구현, Employee 오류 수정">
       <option name="closed" value="true" />
-      <created>1716867528985</created>
+      <created>1716452725457</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1716867528986</updated>
-    </task>
-    <task id="LOCAL-00007" summary="feat: Product 찾기 실패 예외 추가">
-      <option name="closed" value="true" />
-      <created>1716867547261</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716867547261</updated>
+      <updated>1716452725457</updated>
     </task>
     <task id="LOCAL-00008" summary="feat: Shop 찾기 기능 추가">
       <option name="closed" value="true" />

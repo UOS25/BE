@@ -15,7 +15,7 @@ import java.util.List;
 public class Customer extends BaseEntity {
     @Id
     @Column(length = 30)
-    private String customerId;
+    private Long customerId;
 
     @Column(length = 30)
     private String passwd;

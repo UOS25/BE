@@ -13,7 +13,7 @@ import java.util.List;
 public class Employee extends BaseEntity {
     @Id
     @Column(length = 30)
-    private String employeeId;
+    private Long employeeId; // Long으로 변경
 
     @Column(length = 20)
     private String employeeName;
@@ -23,8 +23,10 @@ public class Employee extends BaseEntity {
     @Column(length = 30)
     private String registrationNumber;
     private Long salary;
-    @Column(length = 4)
-    private String parttime;
+
+    @Enumerated(EnumType.STRING)
+    private PartTime partTime;
+
     @Column(length = 18)
     private String account;
     private LocalDateTime firedDate;
@@ -33,6 +35,11 @@ public class Employee extends BaseEntity {
     @JoinColumn(name = "shop_id")
     private Shop shop;
 
-    @OneToMany(mappedBy = "employee")
+    // Cascade 전용 필드.
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Receipt> receipts = new ArrayList<>();
+    // Cascade 전용 필드.
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
+
 }

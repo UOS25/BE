@@ -2,6 +2,7 @@ package uos.uos25.entity;
 
 import jakarta.persistence.*;
 import uos.uos25.product.entity.Product;
+import uos.uos25.receipt.entity.Receipt;
 
 @Entity
 public class ReceiptDetail {
