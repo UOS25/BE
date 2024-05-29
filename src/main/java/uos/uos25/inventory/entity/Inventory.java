@@ -9,19 +9,28 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Inventory extends BaseEntity {
-    @Id
-    private Integer inventoryId;
 
+    @Id @GeneratedValue
+    @Column(nullable = false)
+    private Long inventoryId;
+
+    @Column(nullable = false)
     private Integer ea;
+
+    @Column(nullable = false)
     private LocalDateTime warehousingDate;
+
+    @Column(nullable = false)
     private Integer display;
+
+    @Column(nullable = false)
     private LocalDateTime expirationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 }

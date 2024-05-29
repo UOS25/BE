@@ -12,17 +12,20 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 public class Disposal extends BaseEntity {
-    @Id
+
+    @Id @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long disposalId;
+
+    @Column(nullable = false)
     private Integer ea;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Builder

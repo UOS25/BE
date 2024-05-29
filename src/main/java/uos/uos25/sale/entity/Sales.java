@@ -8,16 +8,21 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Sales extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer salesId;
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Long salesId;
+
+    @Column(nullable = false)
     private LocalDateTime salesDate;
-    @Column(length = 18)
+
+    @Column(nullable = false)
     private String salesType;
-    private Long amount;
+
+    @Column(nullable = false)
+    private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 }

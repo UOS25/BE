@@ -17,32 +17,46 @@ import java.util.List;
 @Entity
 @Getter
 public class Product extends BaseEntity {
-    @Id
+    @Id @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    @Column(length = 20)
+    @Column(nullable = false)
     private String enterprise;
-    @Column(length = 20)
+
+    @Column(nullable = false)
     private String productName;
-    @Column(length = 20)
+
+    @Column(nullable = false)
     private String barcode;
+
+    @Column(nullable = false)
     private Integer customerPrice;
+
+    @Column(nullable = false)
     private Integer orderPrice;
-    @Column(length = 30)
+
+    @Column(nullable = false)
     private String category;
-    @Column(length = 50)
+
+    @Column(nullable = false)
     private String description;
-    @Column(length = 20)
+
+    @Column(nullable = false)
     private String feature;
+
+    @Column(nullable = false)
     private LocalDateTime expirationDate;
 
     @OneToMany(mappedBy = "product")
     private List<Orders> orders = new ArrayList<>();
+
     @OneToMany(mappedBy = "product")
     private List<Disposal> disposals = new ArrayList<>();
+
     @OneToMany(mappedBy = "product")
     private List<Returns> returnses = new ArrayList<>();
+
     @OneToMany(mappedBy = "product")
     private List<Inventory> inventories = new ArrayList<>();
 

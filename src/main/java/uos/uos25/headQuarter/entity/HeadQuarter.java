@@ -9,14 +9,14 @@ import java.util.List;
 
 @Entity
 public class HeadQuarter extends BaseEntity {
-    @Id
-    @Column(length = 20)
-    private String hqEmpId;
+    @Id @GeneratedValue
+    @Column(nullable = false)
+    private Long hqEmpId;
 
-    @Column(length = 10)
+    @Column(nullable = false)
     private String hqEmpName;
 
-    @Column(length = 30)
+    @Column(nullable = false)
     private String hqEmpHp;
 
     @OneToMany(mappedBy = "headQuarter")
