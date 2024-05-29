@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public Product findProductById(Long productId){
         return productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
