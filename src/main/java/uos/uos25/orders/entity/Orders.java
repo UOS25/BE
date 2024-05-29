@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
@@ -14,23 +15,30 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class Orders extends BaseEntity{
-    @Id
+
+    @Id @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersId;
 
-    @Column(length = 20)
+    @Column(nullable = false)
     private String ordersStatus;
+
+    @Column(nullable = true)
     private Integer givenEa;
+
+    @Column(nullable = false)
     private Integer ordersEa;
-    @Column(length = 18)
+
+    @Column(nullable = false)
+    @ColumnDefault("0")
     private String ordersCheck;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Builder

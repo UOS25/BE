@@ -18,21 +18,21 @@ import java.util.List;
 @Entity
 @Getter @Setter
 public class Shop extends BaseEntity {
-    @Id
+    @Id @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
 
-    @Column(length = 20)
+    @Column(nullable = false)
     private String shopName;
 
-    @Column(length = 30)
+    @Column(nullable = false)
     private String address;
 
-    @Column(length = 18)
+    @Column(nullable = false)
     private String relationship;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "HQ_Emp_id")
+    @JoinColumn(name = "HQ_Emp_id", nullable = false)
     private HeadQuarter headQuarter;
 
     @OneToMany(mappedBy = "shop")

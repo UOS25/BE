@@ -60,7 +60,6 @@ Thumbs.db
 
 # Java 관련 파일들
 *.class
-*.jar
 *.war
 *.ear
 

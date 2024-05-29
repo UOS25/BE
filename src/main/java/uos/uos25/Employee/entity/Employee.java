@@ -19,33 +19,44 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee extends BaseEntity {
-    @Id
-    @Column(length = 30)
+
+    @Id @GeneratedValue
+    @Column(nullable = false)
     private Long employeeId; // Long으로 변경
 
-    @Column(length = 20)
+    @Column(nullable = false)
     private String employeeName;
+
+    @Column(nullable = false)
     private LocalDateTime employmentDate;
-    @Column(length = 18)
+
+    @Column(nullable = false)
     private String position;
-    @Column(length = 30)
+
+    @Column(nullable = false)
     private String registrationNumber;
-    private Long salary;
+
+    @Column(nullable = false)
+    private Integer salary;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private PartTime partTime;
 
-    @Column(length = 18)
+    @Column(nullable = false)
     private String account;
+
+    @Column(nullable = true)
     private LocalDateTime firedDate;
 
     @ManyToOne
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     // Cascade 전용 필드.
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Receipt> receipts = new ArrayList<>();
+
     // Cascade 전용 필드.
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
