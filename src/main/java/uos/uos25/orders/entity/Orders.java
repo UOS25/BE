@@ -30,7 +30,6 @@ public class Orders extends BaseEntity{
     private Integer ordersEa;
 
     @Column(nullable = false)
-    @ColumnDefault("0")
     private String ordersCheck;
 
     @ManyToOne(fetch = FetchType.LAZY)
