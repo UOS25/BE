@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.product.entity.Product;
@@ -21,7 +22,6 @@ public class Returns extends BaseEntity {
     private Integer ea;
 
     @Column(nullable = false)
-    @ColumnDefault("0")
     private String returnsStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

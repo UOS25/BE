@@ -1,7 +1,9 @@
 package uos.uos25.shop.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uos.uos25.Employee.entity.Employee;
 import uos.uos25.common.BaseEntity;
@@ -16,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor
 public class Shop extends BaseEntity {
     @Id @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,4 +56,11 @@ public class Shop extends BaseEntity {
     @OneToMany(mappedBy = "shop")
     private List<Inventory> inventories = new ArrayList<>();
 
+    @Builder
+    public Shop(String shopName, String address, String relationship, HeadQuarter headQuarter) {
+        this.shopName = shopName;
+        this.address = address;
+        this.relationship = relationship;
+        this.headQuarter = headQuarter;
+    }
 }

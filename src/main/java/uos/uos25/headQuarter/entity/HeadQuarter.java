@@ -1,6 +1,9 @@
 package uos.uos25.headQuarter.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.shop.entity.Shop;
 
@@ -8,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class HeadQuarter extends BaseEntity {
+@Getter
+@NoArgsConstructor
+public class HeadQuarter {
     @Id @GeneratedValue
     @Column(nullable = false)
     private Long hqEmpId;
@@ -21,4 +26,10 @@ public class HeadQuarter extends BaseEntity {
 
     @OneToMany(mappedBy = "headQuarter")
     private List<Shop> shops = new ArrayList<>();
+
+    @Builder
+    public HeadQuarter(String hqEmpName, String hqEmpHp) {
+        this.hqEmpName = hqEmpName;
+        this.hqEmpHp = hqEmpHp;
+    }
 }

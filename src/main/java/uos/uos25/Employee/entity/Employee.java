@@ -1,10 +1,7 @@
 package uos.uos25.Employee.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
@@ -18,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee extends BaseEntity {
+public class Employee {
 
     @Id @GeneratedValue
     @Column(nullable = false)
@@ -61,4 +58,16 @@ public class Employee extends BaseEntity {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
 
+    @Builder
+
+    public Employee(String employeeName, LocalDateTime employmentDate, String position, String registrationNumber, Integer salary, PartTime partTime, String account, Shop shop) {
+        this.employeeName = employeeName;
+        this.employmentDate = employmentDate;
+        this.position = position;
+        this.registrationNumber = registrationNumber;
+        this.salary = salary;
+        this.partTime = partTime;
+        this.account = account;
+        this.shop = shop;
+    }
 }

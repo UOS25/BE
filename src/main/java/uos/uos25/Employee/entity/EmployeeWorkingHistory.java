@@ -29,7 +29,8 @@ public class EmployeeWorkingHistory {
     private Long workingHour;
 
     @Builder
-    public EmployeeWorkingHistory(LocalDateTime startDateTime, LocalDateTime endDateTime, Long workingHour) {
+    public EmployeeWorkingHistory(Employee employee, LocalDateTime startDateTime, LocalDateTime endDateTime, Long workingHour) {
+        this.employee = employee;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.workingHour = workingHour;
