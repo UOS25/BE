@@ -17,11 +17,12 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer {
 
-    @Id @GeneratedValue
-    @Column(nullable = false)
-    private Long customerId;
+//    @Id @GeneratedValue
+//    @Column(nullable = false)
+//    private Long customerId;
 
-    @Column(nullable = false)
+    // PK: customerHP
+    @Id @Column(nullable = false)
     private String customerHP;
 
     @Column(nullable = false)
