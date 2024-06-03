@@ -61,6 +61,19 @@ public class DataInitializer {
                 .build();
         Product savedProduct = productRepository.save(product);
 
+        Product product2 = Product.builder()
+                .enterprise("enterprise")
+                .productName("name2")
+                .barcode("barcode2")
+                .customerPrice(3000)
+                .orderPrice(4000)
+                .category("category")
+                .description("description2")
+                .feature("feature")
+                .expirationDate(LocalDateTime.now())
+                .build();
+        Product savedProduct2 = productRepository.save(product2);
+
         // HQ dummy
         HeadQuarter headQuarter = HeadQuarter.builder()
                 .hqEmpName("김본사")
