@@ -1,5 +1,6 @@
 package uos.uos25.headQuarter.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class HeadQuarter {
     @Column(nullable = false)
     private String hqEmpHp;
 
-    @OneToMany(mappedBy = "headQuarter")
+    @OneToMany(mappedBy = "headQuarter", fetch = FetchType.LAZY)
     private List<Shop> shops = new ArrayList<>();
 
     @Builder

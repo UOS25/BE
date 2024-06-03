@@ -35,7 +35,7 @@ public class Receipt {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "receipt")
+    @OneToMany(mappedBy = "receipt", fetch = FetchType.LAZY)
     private List<ReceiptDetail> receiptDetails = new ArrayList<>();
 
 }

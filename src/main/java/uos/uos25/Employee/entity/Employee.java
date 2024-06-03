@@ -46,16 +46,16 @@ public class Employee {
     @Column(nullable = true)
     private LocalDateTime firedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     // Cascade 전용 필드.
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Receipt> receipts = new ArrayList<>();
 
     // Cascade 전용 필드.
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
 
     @Builder

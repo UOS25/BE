@@ -33,7 +33,7 @@ public class Customer {
     @Column(nullable = false)
     private Integer mileage;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Receipt> receipts = new ArrayList<>();
 
     @Builder

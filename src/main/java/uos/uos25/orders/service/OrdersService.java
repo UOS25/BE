@@ -3,6 +3,7 @@ package uos.uos25.orders.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
 import uos.uos25.orders.dto.request.OrdersRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
@@ -19,9 +20,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrdersService {
-    private OrdersRepository ordersRepository;
-    private ShopService shopService;
-    private ProductService productService;
+    private final OrdersRepository ordersRepository;
+    private final ShopService shopService;
+    private final ProductService productService;
+    private final InventoryService inventoryService;
 
     public Orders save(OrdersRequestDTO ordersRequestDTO){
         Shop shop = shopService.findShopById(ordersRequestDTO.getShopId());
@@ -36,6 +38,10 @@ public class OrdersService {
                 .product(product)
                 .build();
 
+        // 재고 생성
+        inventoryService.save(ordersRequestDTO.getShopId(), ordersRequestDTO.getProductId(), ordersRequestDTO.getEa());
+
+        // 주문 생성
         return ordersRepository.save(orders);
     }
 

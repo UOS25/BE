@@ -38,22 +38,22 @@ public class Shop extends BaseEntity {
     @JoinColumn(name = "HQ_Emp_id", nullable = false)
     private HeadQuarter headQuarter;
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Sales> sales = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Disposal> disposals = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Returns> returnses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Inventory> inventories = new ArrayList<>();
 
     @Builder

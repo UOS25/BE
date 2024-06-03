@@ -16,6 +16,8 @@ import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.disposal.repository.DisposalRepository;
 import uos.uos25.headQuarter.entity.HeadQuarter;
 import uos.uos25.headQuarter.repository.HeadQuarterRepository;
+import uos.uos25.inventory.entity.Inventory;
+import uos.uos25.inventory.repository.InventoryRepository;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.repository.OrdersRepository;
 import uos.uos25.product.entity.Product;
@@ -41,6 +43,7 @@ public class DataInitializer {
     private final EmployeeWorkingHistoryRepository employeeWorkingHistoryRepository;
     private final DisposalRepository disposalRepository;
     private final CustomerRepository customerRepository;
+    private final InventoryRepository inventoryRepository;
 
     @PostConstruct
     public void init(){
@@ -130,5 +133,16 @@ public class DataInitializer {
                 .nickname("김고객")
                 .build();
         Customer savedCustomer = customerRepository.save(customer);
+
+        // Inventory dummy
+        Inventory inventory = Inventory.builder()
+                .product(product)
+                .shop(shop)
+                .ea(10)
+                .display(0)
+                .warehousingDate(LocalDateTime.now())
+                .expirationDate(LocalDateTime.now().plusDays(7L))
+                .build();
+        Inventory savedInventory = inventoryRepository.save(inventory);
     }
 }
