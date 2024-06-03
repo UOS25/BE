@@ -38,10 +38,10 @@ public class CustomerService {
 
     // read
     // 고객 아이디로 해당 고객의 정보를 불러옵니다.
-    public CustomerResponseDTO findCustomerById(Long customerId) {
+    public Customer findCustomerById(Long customerId) {
         Customer findCustomer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("해당 아이디의 고객이 존재하지 않습니다."));
-        return CustomerResponseDTO.fromEntity(findCustomer);
+        return findCustomer;
     }
 
     // update

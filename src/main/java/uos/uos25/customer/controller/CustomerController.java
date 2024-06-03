@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uos.uos25.customer.DTO.request.CustomerRequestDTO;
 import uos.uos25.customer.DTO.response.CustomerResponseDTO;
+import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 
 import java.util.List;
@@ -36,7 +37,9 @@ public class CustomerController {
     // readById
     @GetMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDTO> findCustomerById(@PathVariable Long customerId) {
-        return ResponseEntity.ok(customerService.findCustomerById(customerId));
+        Customer customer = customerService.findCustomerById(customerId);
+
+        return ResponseEntity.ok(CustomerResponseDTO.fromEntity(customer));
     }
 
     // update
