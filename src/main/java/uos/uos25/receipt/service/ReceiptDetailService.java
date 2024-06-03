@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
+import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.exception.ReceiptDetailNotFound;
@@ -15,12 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReceiptDetailService {
     private final ProductService productService;
-    private final ReceiptService receiptService;
     private final ReceiptDetailRepository receiptDetailRepository;
 
-    public ReceiptDetail create(Long productId, Long receiptId, Integer ea){
+    public ReceiptDetail create(Receipt receipt, Long productId, Integer ea){
         Product product = productService.findProductById(productId);
-        Receipt receipt = receiptService.findById(receiptId);
 
         ReceiptDetail receiptDetail = ReceiptDetail.builder()
                 .product(product)
@@ -38,6 +37,4 @@ public class ReceiptDetailService {
     public List<ReceiptDetail> findAllByReciptId(Long receiptId){
         return receiptDetailRepository.findAllByReceiptReceiptId(receiptId);
     }
-
-
 }

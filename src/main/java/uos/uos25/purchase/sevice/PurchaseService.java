@@ -24,7 +24,7 @@ public class PurchaseService {
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findProductByBarcode(itemInfo.getBarcode());
 
-            receiptDetailService.create(product.getProductId(), receipt.getReceiptId(), itemInfo.getEa());
+            receiptDetailService.create(receipt, product.getProductId(), itemInfo.getEa());
         }
     }
 }

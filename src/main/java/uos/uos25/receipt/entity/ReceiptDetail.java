@@ -2,11 +2,13 @@ package uos.uos25.receipt.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.product.entity.Product;
-import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.purchase.dto.ItemInfo;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class ReceiptDetail {
 
