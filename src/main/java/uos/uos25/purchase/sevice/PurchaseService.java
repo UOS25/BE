@@ -24,8 +24,8 @@ public class PurchaseService {
     private final ReceiptDetailService receiptDetailService;
     private final ReceiptService receiptService;
 
-    public void purchase(Long shopId, Long employeeId, Long customerId, Integer age, String gender, List<ItemInfo> itemInfos) {
-        Receipt receipt = receiptService.create(employeeId, customerId, age, gender);
+    public void purchase(Long shopId, Long employeeId, String customerHP, Integer age, String gender, List<ItemInfo> itemInfos) {
+        Receipt receipt = receiptService.create(employeeId, customerHP, age, gender);
 
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findProductByBarcode(itemInfo.getBarcode());
