@@ -6,20 +6,35 @@ import lombok.Data;
 import uos.uos25.entity.Event;
 import uos.uos25.product.entity.Product;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 public class ProductInfoResponseDTO {
     private final Long productId;
     private final String productName;
-    private final Integer price;
+    private final String enterprise;
+    private final Integer customerPrice;
+    private final Integer orderPrice;
+    private final String category;
+    private final String feature;
+    private final String barcode;
+    private final String description;
+    private final LocalDateTime expirationDate;
     private final List<Event> events;
 
     @Builder
-    public ProductInfoResponseDTO(Long productId, String productName, Integer price, List<Event> events) {
+    public ProductInfoResponseDTO(Long productId, String productName, String enterprise, String description, Integer customerPrice, Integer orderPrice, String category, String feature, LocalDateTime expirationDate, String barcode, List<Event> events) {
         this.productId = productId;
         this.productName = productName;
-        this.price = price;
+        this.enterprise = enterprise;
+        this.description = description;
+        this.customerPrice = customerPrice;
+        this.orderPrice = orderPrice;
+        this.category = category;
+        this.feature = feature;
+        this.expirationDate = expirationDate;
+        this.barcode = barcode;
         this.events = events;
     }
 
@@ -27,7 +42,14 @@ public class ProductInfoResponseDTO {
         ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())
-                .price(product.getCustomerPrice())
+                .enterprise(product.getEnterprise())
+                .description(product.getDescription())
+                .customerPrice(product.getCustomerPrice())
+                .orderPrice(product.getOrderPrice())
+                .category(product.getCategory())
+                .feature(product.getFeature())
+                .expirationDate(product.getExpirationDate())
+                .barcode(product.getBarcode())
                 .events(product.getEvents())
                 .build();
 
