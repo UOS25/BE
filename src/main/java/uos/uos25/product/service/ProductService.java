@@ -24,9 +24,7 @@ public class ProductService {
                 .toList();
     }
 
-    public ProductInfoResponseDTO findProductByBarcode(String barcode){
-        Product product = productRepository.findByBarcode(barcode).orElseThrow(() -> new ProductNotFoundException());
-        ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.fromProduct(product);
-        return productInfoResponseDTO;
+    public Product findProductByBarcode(String barcode){
+        return productRepository.findByBarcode(barcode).orElseThrow(() -> new ProductNotFoundException());
     }
 }

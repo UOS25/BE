@@ -1,13 +1,17 @@
-package uos.uos25.entity;
+package uos.uos25.receipt.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import uos.uos25.product.entity.Product;
 import uos.uos25.receipt.entity.Receipt;
 
 @Entity
+@NoArgsConstructor
 public class ReceiptDetail {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long receiptDetail;
 
@@ -21,4 +25,12 @@ public class ReceiptDetail {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receipt_id", nullable = false)
     private Receipt receipt;
+
+    @Builder
+    public ReceiptDetail(Long receiptDetail, Integer ea, Product product, Receipt receipt) {
+        this.receiptDetail = receiptDetail;
+        this.ea = ea;
+        this.product = product;
+        this.receipt = receipt;
+    }
 }

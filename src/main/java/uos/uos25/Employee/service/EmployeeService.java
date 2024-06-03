@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import uos.uos25.Employee.DTO.EmployeeDTO;
 import uos.uos25.Employee.entity.Employee;
 import uos.uos25.Employee.entity.PartTime;
+import uos.uos25.Employee.exception.EmployeeNotFound;
 import uos.uos25.Employee.repository.EmployeeRepository;
 import uos.uos25.shop.repository.ShopRepository;
 
@@ -26,6 +27,10 @@ public class EmployeeService {
         return employees.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public Employee findById(Long employeeId){
+        return employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFound());
     }
 
     @Transactional
