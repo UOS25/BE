@@ -9,7 +9,7 @@ import uos.uos25.shop.repository.ShopRepository;
 @Service
 @RequiredArgsConstructor
 public class ShopService {
-    private ShopRepository shopRepository;
+    private final ShopRepository shopRepository;
 
     public Shop findShopById(Long shopId){
         return shopRepository.findById(shopId).orElseThrow(() -> new ShopNotFoundException());
