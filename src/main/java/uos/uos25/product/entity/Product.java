@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.entity.Event;
-import uos.uos25.entity.ReceiptDetail;
+import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.orders.entity.Orders;

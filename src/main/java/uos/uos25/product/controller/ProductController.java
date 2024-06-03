@@ -17,7 +17,10 @@ public class ProductController {
 
     @GetMapping("/barcode/{barcode}")
     public ResponseEntity<ProductInfoResponseDTO> getProductByBarcode(@PathVariable String barcode){
-        return ResponseEntity.ok(productService.findProductByBarcode(barcode));
+        Product product = productService.findProductByBarcode(barcode);
+        ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.fromProduct(product);
+
+        return ResponseEntity.ok(productInfoResponseDTO);
     }
 
     @GetMapping("/{productId}")
