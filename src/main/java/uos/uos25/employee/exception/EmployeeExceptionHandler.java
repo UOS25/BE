@@ -1,4 +1,4 @@
-package uos.uos25.Employee.exception;
+package uos.uos25.employee.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

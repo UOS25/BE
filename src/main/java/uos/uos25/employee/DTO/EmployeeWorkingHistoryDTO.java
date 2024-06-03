@@ -1,4 +1,4 @@
-package uos.uos25.Employee.DTO;
+package uos.uos25.employee.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

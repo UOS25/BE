@@ -2,8 +2,8 @@ package uos.uos25.receipt.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uos.uos25.Employee.entity.Employee;
-import uos.uos25.Employee.service.EmployeeService;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 import uos.uos25.receipt.entity.ReceiptDetail;

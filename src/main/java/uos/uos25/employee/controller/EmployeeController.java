@@ -1,12 +1,12 @@
-package uos.uos25.Employee.controller;
+package uos.uos25.employee.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uos.uos25.Employee.DTO.EmployeeDTO;
-import uos.uos25.Employee.service.EmployeeService;
+import uos.uos25.employee.DTO.EmployeeDTO;
+import uos.uos25.employee.service.EmployeeService;
 
 import java.util.List;
 
