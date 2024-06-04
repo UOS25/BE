@@ -44,4 +44,9 @@ public class EventService {
 
         return savedEvents;
     }
+
+    public List<Event> findAll(){
+        List<Event> events = eventRepository.findAll();
+        return events;
+    }
 }

@@ -2,12 +2,10 @@ package uos.uos25.event.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uos.uos25.event.dto.request.EventCreateRequestDTO;
 import uos.uos25.event.dto.response.EventCreateResponseDTO;
+import uos.uos25.event.dto.response.EventGetResponseDTO;
 import uos.uos25.event.entity.Event;
 import uos.uos25.event.service.EventService;
 
@@ -25,5 +23,13 @@ public class EventController {
         List<EventCreateResponseDTO> eventCreateResponseDTOS = events.stream().map(event -> EventCreateResponseDTO.fromEntity(event)).toList();
 
         return ResponseEntity.ok(eventCreateResponseDTOS);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EventGetResponseDTO>> getAll(){
+        List<Event> events = eventService.findAll();
+        List<EventGetResponseDTO> eventGetResponseDTOS = events.stream().map(event -> EventGetResponseDTO.fromEntity(event)).toList();
+
+        return ResponseEntity.ok(eventGetResponseDTOS);
     }
 }
