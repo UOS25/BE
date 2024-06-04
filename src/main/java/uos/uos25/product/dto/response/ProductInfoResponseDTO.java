@@ -1,9 +1,8 @@
 package uos.uos25.product.dto.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.entity.Event;
+import uos.uos25.event.entity.Event;
 import uos.uos25.product.entity.Product;
 
 import java.time.LocalDateTime;

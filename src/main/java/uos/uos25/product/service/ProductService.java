@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public Product findProductById(String barcode){
+    public Product findById(String barcode){
         return productRepository.findById(barcode).orElseThrow(() -> new ProductNotFoundException());
     }
 
