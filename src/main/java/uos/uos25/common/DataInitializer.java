@@ -142,10 +142,16 @@ public class DataInitializer {
 
         // Customer dummy
         Customer customer = Customer.builder()
-                .customerHP("01012341234")
+                .phoneNumber("01012341234")
                 .nickname("김고객")
                 .build();
         Customer savedCustomer = customerRepository.save(customer);
+
+        Customer customer2 = Customer.builder()
+                .phoneNumber("01047324348")
+                .nickname("유현승")
+                .build();
+        Customer savedCustomer2 = customerRepository.save(customer2);
 
         // Inventory dummy
         Inventory inventory = Inventory.builder()

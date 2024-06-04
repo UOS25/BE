@@ -24,7 +24,7 @@ public class PurchaseService {
     private final ReceiptDetailService receiptDetailService;
     private final ReceiptService receiptService;
 
-    public void purchase(Long shopId, Long employeeId, Long customerId, Integer age, String gender, List<ItemInfo> itemInfos) {
+    public void purchase(Long shopId, Long employeeId, String customerId, Integer age, String gender, List<ItemInfo> itemInfos) {
         Receipt receipt = receiptService.create(employeeId, customerId, age, gender);
 
         for (ItemInfo itemInfo : itemInfos) {
