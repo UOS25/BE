@@ -1,15 +1,19 @@
 package uos.uos25.receipt.entity;
 
 import jakarta.persistence.*;
-import uos.uos25.Employee.entity.Employee;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import uos.uos25.employee.entity.Employee;
 import uos.uos25.customer.entity.Customer;
-import uos.uos25.entity.ReceiptDetail;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@NoArgsConstructor
 public class Receipt {
     @Id @GeneratedValue
     @Column(nullable = false)
@@ -32,10 +36,21 @@ public class Receipt {
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_phoneNumber", nullable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "receipt", fetch = FetchType.LAZY)
     private List<ReceiptDetail> receiptDetails = new ArrayList<>();
 
+    @Builder
+    public Receipt(Long receiptId, LocalDateTime purchaseDate, String purchaseStatus, Integer age, String gender, Employee employee, Customer customer, List<ReceiptDetail> receiptDetails) {
+        this.receiptId = receiptId;
+        this.purchaseDate = purchaseDate;
+        this.purchaseStatus = purchaseStatus;
+        this.age = age;
+        this.gender = gender;
+        this.employee = employee;
+        this.customer = customer;
+        this.receiptDetails = receiptDetails;
+    }
 }

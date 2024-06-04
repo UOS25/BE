@@ -16,13 +16,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Customer {
-
-    @Id @GeneratedValue
-    @Column(nullable = false)
-    private Long customerId;
-
-    @Column(nullable = false)
-    private String customerHP;
+    // PK: customerHP
+    @Id @Column(nullable = false)
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String nickname;
@@ -37,16 +33,16 @@ public class Customer {
     private List<Receipt> receipts = new ArrayList<>();
 
     @Builder
-    public Customer(String customerHP, String nickname) {
-        this.customerHP = customerHP;
+    public Customer(String phoneNumber, String nickname) {
+        this.phoneNumber = phoneNumber;
         this.nickname = nickname;
         this.joinDate = LocalDateTime.now().withNano(0);
         this.mileage = 0;
     }
 
     // 고객 정보를 수정하는 메서드
-    public void changeCustomerInfo(String customerHP, String nickname) {
-        this.customerHP = customerHP;
+    public void changeCustomerInfo(String phoneNumber, String nickname) {
+        this.phoneNumber = phoneNumber;
         this.nickname = nickname;
     }
 

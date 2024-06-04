@@ -2,14 +2,12 @@ package uos.uos25.common;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.cache.internal.DisabledCaching;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import uos.uos25.Employee.entity.Employee;
-import uos.uos25.Employee.entity.EmployeeWorkingHistory;
-import uos.uos25.Employee.entity.PartTime;
-import uos.uos25.Employee.repository.EmployeeRepository;
-import uos.uos25.Employee.repository.EmployeeWorkingHistoryRepository;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.EmployeeWorkingHistory;
+import uos.uos25.employee.entity.PartTime;
+import uos.uos25.employee.repository.EmployeeRepository;
+import uos.uos25.employee.repository.EmployeeWorkingHistoryRepository;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.repository.CustomerRepository;
 import uos.uos25.disposal.entity.Disposal;
@@ -22,7 +20,6 @@ import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.repository.OrdersRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.repository.ProductRepository;
-import uos.uos25.product.service.ProductService;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
@@ -60,6 +57,19 @@ public class DataInitializer {
                 .expirationDate(LocalDateTime.now())
                 .build();
         Product savedProduct = productRepository.save(product);
+
+        Product product2 = Product.builder()
+                .enterprise("enterprise")
+                .productName("name2")
+                .barcode("barcode2")
+                .customerPrice(3000)
+                .orderPrice(4000)
+                .category("category")
+                .description("description2")
+                .feature("feature")
+                .expirationDate(LocalDateTime.now())
+                .build();
+        Product savedProduct2 = productRepository.save(product2);
 
         // HQ dummy
         HeadQuarter headQuarter = HeadQuarter.builder()
@@ -129,10 +139,16 @@ public class DataInitializer {
 
         // Customer dummy
         Customer customer = Customer.builder()
-                .customerHP("01012341234")
+                .phoneNumber("01012341234")
                 .nickname("김고객")
                 .build();
         Customer savedCustomer = customerRepository.save(customer);
+
+        Customer customer2 = Customer.builder()
+                .phoneNumber("01047324348")
+                .nickname("유현승")
+                .build();
+        Customer savedCustomer2 = customerRepository.save(customer2);
 
         // Inventory dummy
         Inventory inventory = Inventory.builder()
