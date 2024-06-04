@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.Employee.entity.Employee;
+import uos.uos25.employee.entity.Employee;
 import uos.uos25.customer.entity.Customer;
 
 import java.time.LocalDateTime;

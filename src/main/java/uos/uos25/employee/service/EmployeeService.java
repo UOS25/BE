@@ -1,13 +1,13 @@
-package uos.uos25.Employee.service;
+package uos.uos25.employee.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uos.uos25.Employee.DTO.EmployeeDTO;
-import uos.uos25.Employee.entity.Employee;
-import uos.uos25.Employee.entity.PartTime;
-import uos.uos25.Employee.exception.EmployeeNotFound;
-import uos.uos25.Employee.repository.EmployeeRepository;
+import uos.uos25.employee.DTO.EmployeeDTO;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.PartTime;
+import uos.uos25.employee.exception.EmployeeNotFound;
+import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.shop.repository.ShopRepository;
 
 import java.time.LocalDateTime;

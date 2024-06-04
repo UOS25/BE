@@ -1,13 +1,13 @@
-package uos.uos25.Employee.service;
+package uos.uos25.employee.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uos.uos25.Employee.DTO.EmployeeWorkingHistoryDTO;
-import uos.uos25.Employee.entity.Employee;
-import uos.uos25.Employee.entity.EmployeeWorkingHistory;
-import uos.uos25.Employee.repository.EmployeeRepository;
-import uos.uos25.Employee.repository.EmployeeWorkingHistoryRepository;
+import uos.uos25.employee.DTO.EmployeeWorkingHistoryDTO;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.EmployeeWorkingHistory;
+import uos.uos25.employee.repository.EmployeeRepository;
+import uos.uos25.employee.repository.EmployeeWorkingHistoryRepository;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

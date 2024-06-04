@@ -1,8 +1,7 @@
-package uos.uos25.Employee.entity;
+package uos.uos25.employee.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import uos.uos25.common.BaseEntity;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
