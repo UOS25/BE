@@ -22,7 +22,7 @@ public class DisposalService {
 
     public Disposal createDisposal(DisposalReqeustDTO disposalReqeustDTO){
         Shop shop = shopService.findShopById(disposalReqeustDTO.getShopId());
-        Product product = productService.findProductById(disposalReqeustDTO.getProductId());
+        Product product = productService.findProductById(disposalReqeustDTO.getBarcode());
 
         Disposal disposal = Disposal.builder()
                 .shop(shop)

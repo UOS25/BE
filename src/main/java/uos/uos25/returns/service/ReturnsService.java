@@ -22,7 +22,7 @@ public class ReturnsService {
 
     public Long createReturns(ReturnsRequestDTO returnsRequestDTO){
         Shop shop = shopService.findShopById(returnsRequestDTO.getShopId());
-        Product product = productService.findProductById(returnsRequestDTO.getProductId());
+        Product product = productService.findProductById(returnsRequestDTO.getBarcode());
 
         Returns returns = Returns.builder()
                 .shop(shop)

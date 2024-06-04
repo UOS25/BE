@@ -19,10 +19,10 @@ public class InventoryController {
     @PatchMapping
     public ResponseEntity<Void> changeProductToDisplay(@RequestBody InventoryChangeDisplayRequestDTO displayRequestDTO){
         Long shopId = displayRequestDTO.getShopId();
-        Long productId = displayRequestDTO.getProductId();
+        String barcode = displayRequestDTO.getBarcode();
         Integer ea = displayRequestDTO.getEa();
 
-        inventoryService.displayInventory(shopId, productId, ea);
+        inventoryService.displayInventory(shopId, barcode, ea);
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
@@ -35,10 +35,10 @@ public class InventoryController {
     @GetMapping("/{shopId}/{productId}")
     public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndProductId(
             @PathVariable Long shopId,
-            @PathVariable Long productId
+            @PathVariable String barcode
     ) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(inventoryService.getInventoryByShopIdAndProductId(shopId, productId));
+                .body(inventoryService.getInventoryByShopIdAndProductId(shopId, barcode));
     }
 }

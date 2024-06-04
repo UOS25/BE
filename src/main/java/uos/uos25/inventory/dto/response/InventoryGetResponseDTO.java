@@ -9,15 +9,15 @@ import uos.uos25.inventory.entity.Inventory;
 @NoArgsConstructor
 public class InventoryGetResponseDTO {
     private Long shopId;
-    private Long productId;
+    private String barcode;
     private String productName;
     private Integer ea;
     private Integer displayEa;
 
     @Builder
-    public InventoryGetResponseDTO(Long shopId, Long productId, String productName, Integer ea, Integer displayEa) {
+    public InventoryGetResponseDTO(Long shopId, String barcode, String productName, Integer ea, Integer displayEa) {
         this.shopId = shopId;
-        this.productId = productId;
+        this.barcode = barcode;
         this.productName = productName;
         this.ea = ea;
         this.displayEa = displayEa;
