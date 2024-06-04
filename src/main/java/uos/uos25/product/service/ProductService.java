@@ -14,19 +14,13 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public Product findProductById(Long productId){
-        return productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
+    public Product findProductById(String barcode){
+        return productRepository.findById(barcode).orElseThrow(() -> new ProductNotFoundException());
     }
 
     public List<ProductInfoResponseDTO> findAllProducts(){
         return productRepository.findAll().stream()
                 .map(product -> ProductInfoResponseDTO.fromProduct(product))
                 .toList();
-    }
-
-    public ProductInfoResponseDTO findProductByBarcode(String barcode){
-        Product product = productRepository.findByBarcode(barcode).orElseThrow(() -> new ProductNotFoundException());
-        ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.fromProduct(product);
-        return productInfoResponseDTO;
     }
 }

@@ -7,7 +7,7 @@ import uos.uos25.product.entity.Product;
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, String> {
 
-    Optional<Product> findByBarcode(String barcode);
+    Optional<Product> findById(String barcode);
 }

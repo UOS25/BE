@@ -11,21 +11,20 @@ import java.util.List;
 
 @Data
 public class ProductInfoResponseDTO {
-    private final Long productId;
+    private final String barcode;
     private final String productName;
     private final String enterprise;
     private final Integer customerPrice;
     private final Integer orderPrice;
     private final String category;
     private final String feature;
-    private final String barcode;
     private final String description;
     private final LocalDateTime expirationDate;
     private final List<Event> events;
 
     @Builder
-    public ProductInfoResponseDTO(Long productId, String productName, String enterprise, String description, Integer customerPrice, Integer orderPrice, String category, String feature, LocalDateTime expirationDate, String barcode, List<Event> events) {
-        this.productId = productId;
+    public ProductInfoResponseDTO(String barcode, String productName, String enterprise, String description, Integer customerPrice, Integer orderPrice, String category, String feature, LocalDateTime expirationDate, List<Event> events) {
+        this.barcode = barcode;
         this.productName = productName;
         this.enterprise = enterprise;
         this.description = description;
@@ -34,13 +33,12 @@ public class ProductInfoResponseDTO {
         this.category = category;
         this.feature = feature;
         this.expirationDate = expirationDate;
-        this.barcode = barcode;
         this.events = events;
     }
 
     public static ProductInfoResponseDTO fromProduct(Product product){
         ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.builder()
-                .productId(product.getProductId())
+                .barcode(product.getBarcode())
                 .productName(product.getProductName())
                 .enterprise(product.getEnterprise())
                 .description(product.getDescription())

@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ReturnsRequestDTO {
     private final Long shopId;
-    private final Long productId;
+    private final String barcode;
     private final Integer ea;
 }

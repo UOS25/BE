@@ -15,14 +15,9 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/barcode/{barcode}")
+    @GetMapping("/{barcode}")
     public ResponseEntity<ProductInfoResponseDTO> getProductByBarcode(@PathVariable String barcode){
-        return ResponseEntity.ok(productService.findProductByBarcode(barcode));
-    }
-
-    @GetMapping("/{productId}")
-    public ResponseEntity<ProductInfoResponseDTO> getProductByBarcode(@PathVariable Long productId){
-        Product product = productService.findProductById(productId);
+        Product product = productService.findProductById(barcode);
         ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.fromProduct(product);
 
         return ResponseEntity.ok(productInfoResponseDTO);

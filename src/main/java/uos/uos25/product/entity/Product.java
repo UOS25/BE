@@ -20,18 +20,15 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Product extends BaseEntity {
-    @Id @Column(nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    @Id
+    @Column(nullable = false)
+    private String barcode;
 
     @Column(nullable = false)
     private String enterprise;
 
     @Column(nullable = false)
     private String productName;
-
-    @Column(nullable = false)
-    private String barcode;
 
     @Column(nullable = false)
     private Integer customerPrice;
@@ -70,11 +67,10 @@ public class Product extends BaseEntity {
     private List<Event> events = new ArrayList<>();
 
     @Builder
-    public Product(Long productId, String enterprise, String productName, String barcode, Integer customerPrice, Integer orderPrice, String category, String description, String feature, LocalDateTime expirationDate) {
-        this.productId = productId;
+    public Product(String enterprise, String productName, String barcode, Integer customerPrice, Integer orderPrice, String category, String description, String feature, LocalDateTime expirationDate) {
+        this.barcode = barcode;
         this.enterprise = enterprise;
         this.productName = productName;
-        this.barcode = barcode;
         this.customerPrice = customerPrice;
         this.orderPrice = orderPrice;
         this.category = category;

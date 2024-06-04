@@ -27,7 +27,7 @@ public class OrdersService {
 
     public Orders save(OrdersRequestDTO ordersRequestDTO){
         Shop shop = shopService.findShopById(ordersRequestDTO.getShopId());
-        Product product = productService.findProductById(ordersRequestDTO.getProductId());
+        Product product = productService.findProductById(ordersRequestDTO.getBarcode());
 
         Orders orders = Orders.builder()
                 .ordersStatus("뭘로 할까")
@@ -39,7 +39,7 @@ public class OrdersService {
                 .build();
 
         // 재고 생성
-        inventoryService.save(ordersRequestDTO.getShopId(), ordersRequestDTO.getProductId(), ordersRequestDTO.getEa());
+        inventoryService.save(ordersRequestDTO.getShopId(), ordersRequestDTO.getBarcode(), ordersRequestDTO.getEa());
 
         // 주문 생성
         return ordersRepository.save(orders);

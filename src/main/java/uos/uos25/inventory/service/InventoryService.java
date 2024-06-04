@@ -23,11 +23,11 @@ public class InventoryService {
     private final ProductService productService;
 
     @Transactional
-    public Inventory save(Long shopId, Long productId, Integer ea){
+    public Inventory save(Long shopId, String barcode, Integer ea){
         Shop shop = shopService.findShopById(shopId);
-        Product product = productService.findProductById(productId);
+        Product product = productService.findProductById(barcode);
 
-        Inventory inventory = inventoryRepository.findByShopShopIdAndProductProductId(shopId, productId)
+        Inventory inventory = inventoryRepository.findByShopShopIdAndProductBarcode(shopId, barcode)
                 .orElseGet(() -> {
                     return Inventory.builder()
                             .shop(shop)
@@ -56,11 +56,11 @@ public class InventoryService {
         return inventoryGetResponseDTOS;
     }
 
-    public InventoryGetResponseDTO getInventoryByShopIdAndProductId(Long shopId, Long productId){
+    public InventoryGetResponseDTO getInventoryByShopIdAndProductId(Long shopId, String barcode){
         Shop shop = shopService.findShopById(shopId);
-        Product product = productService.findProductById(productId);
+        Product product = productService.findProductById(barcode);
 
-        Inventory inventory = inventoryRepository.findByShopShopIdAndProductProductId(shopId, productId)
+        Inventory inventory = inventoryRepository.findByShopShopIdAndProductBarcode(shopId, barcode)
                 .orElseThrow(() -> {
                     throw new InventoryNotFoundException();
                 });
@@ -70,10 +70,10 @@ public class InventoryService {
     }
 
     @Transactional
-    public void displayInventory(Long shopId, Long productId, Integer ea){
+    public void displayInventory(Long shopId, String barcode, Integer ea){
         Shop shop = shopService.findShopById(shopId);
-        Product product = productService.findProductById(productId);
-        Inventory inventory = inventoryRepository.findByShopShopIdAndProductProductId(shopId, productId)
+        Product product = productService.findProductById(barcode);
+        Inventory inventory = inventoryRepository.findByShopShopIdAndProductBarcode(shopId, barcode)
                 .orElseThrow(() -> {throw new InventoryNotFoundException();});
 
         inventory.changeDisplay(ea);
@@ -82,7 +82,7 @@ public class InventoryService {
     private InventoryGetResponseDTO fromEntity(Inventory inventory){
         InventoryGetResponseDTO inventoryGetResponseDTO = InventoryGetResponseDTO.builder()
                 .shopId(inventory.getShop().getShopId())
-                .productId(inventory.getProduct().getProductId())
+                .barcode(inventory.getProduct().getBarcode())
                 .productName(inventory.getProduct().getProductName())
                 .ea(inventory.getEa())
                 .displayEa(inventory.getDisplay())

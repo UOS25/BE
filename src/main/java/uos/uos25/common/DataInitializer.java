@@ -49,9 +49,9 @@ public class DataInitializer {
     public void init(){
         // product dummy
         Product product = Product.builder()
+                .barcode("barcode")
                 .enterprise("enterprise")
                 .productName("name")
-                .barcode("barcode")
                 .customerPrice(1000)
                 .orderPrice(2000)
                 .category("category")
