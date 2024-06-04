@@ -18,7 +18,7 @@ import java.util.List;
 public class Customer {
     // PK: customerHP
     @Id @Column(nullable = false)
-    private String customerHP;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String nickname;
@@ -33,16 +33,16 @@ public class Customer {
     private List<Receipt> receipts = new ArrayList<>();
 
     @Builder
-    public Customer(String customerHP, String nickname) {
-        this.customerHP = customerHP;
+    public Customer(String phoneNumber, String nickname) {
+        this.phoneNumber = phoneNumber;
         this.nickname = nickname;
         this.joinDate = LocalDateTime.now().withNano(0);
         this.mileage = 0;
     }
 
     // 고객 정보를 수정하는 메서드
-    public void changeCustomerInfo(String customerHP, String nickname) {
-        this.customerHP = customerHP;
+    public void changeCustomerInfo(String phoneNumber, String nickname) {
+        this.phoneNumber = phoneNumber;
         this.nickname = nickname;
     }
 

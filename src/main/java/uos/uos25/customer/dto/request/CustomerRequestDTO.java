@@ -11,7 +11,7 @@ import lombok.Getter;
 public class CustomerRequestDTO {
 
     @NotBlank(message = "전화번호를 입력하세요.")
-    private final String customerHP;
+    private final String phoneNumber;
     @NotBlank(message = "이름을 입력하세요.")
     private final String nickname;
 

@@ -5,9 +5,5 @@ import uos.uos25.customer.entity.Customer;
 
 import java.util.Optional;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    Optional<Customer> findByCustomerHP(String customerHP);
-
-    void deleteByCustomerHP(String customerHP);
-
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 }

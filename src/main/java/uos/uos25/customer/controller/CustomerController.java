@@ -36,9 +36,9 @@ public class CustomerController {
     }
 
     // readByCustomerHP
-    @GetMapping("/{customerHP}")
-    public ResponseEntity<CustomerResponseDTO> findCustomerById(@PathVariable String customerHP) {
-        Customer customer = customerService.findCustomerByHP(customerHP);
+    @GetMapping("/{phoneNumber}")
+    public ResponseEntity<CustomerResponseDTO> findCustomerById(@PathVariable String phoneNumber) {
+        Customer customer = customerService.findById(phoneNumber);
 
         return ResponseEntity.ok(CustomerResponseDTO.fromEntity(customer));
     }
@@ -62,9 +62,9 @@ public class CustomerController {
     }
 
     // delete
-    @DeleteMapping("/delete/{customerHP}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable String customerHP) {
-        customerService.deleteCustomer(customerHP);
+    @DeleteMapping("/delete/{phoneNumber}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable String phoneNumber) {
+        customerService.deleteCustomer(phoneNumber);
 
         String msg = "고객 삭제가 완료되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
