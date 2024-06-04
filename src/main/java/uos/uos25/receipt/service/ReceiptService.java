@@ -19,9 +19,9 @@ public class ReceiptService {
     private final EmployeeService employeeService;
     private final CustomerService customerService;
 
-    public Receipt create(Long employeeId, String customerHP, Integer age, String gender){
+    public Receipt create(Long employeeId, String phoneNumber, Integer age, String gender){
         Employee employee = employeeService.findById(employeeId);
-        Customer customer = customerService.findCustomerByHP(customerHP);
+        Customer customer = customerService.findById(phoneNumber);
 
         Receipt receipt = Receipt.builder()
                 .employee(employee)
