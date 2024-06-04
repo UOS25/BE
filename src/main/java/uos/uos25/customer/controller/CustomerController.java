@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uos.uos25.customer.dto.request.CustomerRequestDTO;
-import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
+import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
@@ -44,7 +44,7 @@ public class CustomerController {
     }
 
     // update
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<?> updateCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
         customerService.updateCustomer(customerRequestDTO);
 
@@ -53,9 +53,9 @@ public class CustomerController {
     }
 
     // 마일리지 적립
-    @PostMapping("/mileage/{customerHP}")
-    public ResponseEntity<?> earnMileage(@PathVariable String customerHP, @RequestBody Integer mileage) {
-        customerService.earnMileage(mileage, customerHP);
+    @PatchMapping("/mileage")
+    public ResponseEntity<?> earnMileage(@RequestBody CustomerMileageUpdateRequestDTO customerMileageUpdateRequestDTO) {
+        customerService.earnMileage(customerMileageUpdateRequestDTO.getMileage(), customerMileageUpdateRequestDTO.getPhoneNumber());
 
         String msg = "마일리지 적립이 완료되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
