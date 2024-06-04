@@ -1,4 +1,4 @@
-package uos.uos25.customer.DTO.request;
+package uos.uos25.customer.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

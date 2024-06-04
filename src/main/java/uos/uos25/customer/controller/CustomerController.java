@@ -5,8 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uos.uos25.customer.DTO.request.CustomerRequestDTO;
-import uos.uos25.customer.DTO.response.CustomerResponseDTO;
+import uos.uos25.customer.dto.request.CustomerRequestDTO;
+import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
+import uos.uos25.customer.dto.response.CustomerResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 
