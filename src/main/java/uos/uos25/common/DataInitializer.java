@@ -147,6 +147,12 @@ public class DataInitializer {
                 .build();
         Customer savedCustomer = customerRepository.save(customer);
 
+        Customer customer2 = Customer.builder()
+                .customerHP("01047324348")
+                .nickname("유현승")
+                .build();
+        Customer savedCustomer2 = customerRepository.save(customer2);
+
         // Inventory dummy
         Inventory inventory = Inventory.builder()
                 .product(product)
