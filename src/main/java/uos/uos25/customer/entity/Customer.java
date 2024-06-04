@@ -16,11 +16,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Customer {
-
-//    @Id @GeneratedValue
-//    @Column(nullable = false)
-//    private Long customerId;
-
     // PK: customerHP
     @Id @Column(nullable = false)
     private String customerHP;
