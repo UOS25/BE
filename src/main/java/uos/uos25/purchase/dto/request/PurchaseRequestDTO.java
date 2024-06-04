@@ -10,13 +10,13 @@ import java.util.List;
 public class PurchaseRequestDTO {
     private final Long shopId;
     private final Long employeeId;
-    private final Long customerId;
+    private final String customerId;
     private final Integer age;
     private final String gender;
     private final List<ItemInfo> itemInfos;
 
     @Builder
-    public PurchaseRequestDTO(Long shopId, Long employeeId, Long customerId, Integer age, String gender, List<ItemInfo> itemInfos) {
+    public PurchaseRequestDTO(Long shopId, Long employeeId, String customerId, Integer age, String gender, List<ItemInfo> itemInfos) {
         this.shopId = shopId;
         this.employeeId = employeeId;
         this.customerId = customerId;

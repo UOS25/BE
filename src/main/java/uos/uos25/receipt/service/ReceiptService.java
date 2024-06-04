@@ -6,8 +6,6 @@ import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
-import uos.uos25.purchase.dto.ItemInfo;
-import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.exception.ReceiptNotFound;
@@ -15,7 +13,6 @@ import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,9 +22,9 @@ public class ReceiptService {
     private final CustomerService customerService;
     private final ReceiptDetailService receiptDetailService;
 
-    public Receipt create(Long employeeId, Long customerId, Integer age, String gender){
+    public Receipt create(Long employeeId, String phoneNumber, Integer age, String gender){
         Employee employee = employeeService.findById(employeeId);
-        Customer customer = customerService.findCustomerById(customerId);
+        Customer customer = customerService.findById(phoneNumber);
 
         Receipt receipt = Receipt.builder()
                 .employee(employee)

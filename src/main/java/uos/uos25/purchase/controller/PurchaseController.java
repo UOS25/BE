@@ -21,7 +21,7 @@ public class PurchaseController {
     public void purchase(@RequestBody PurchaseRequestDTO purchaseRequestDTO){
         Long shopId = purchaseRequestDTO.getShopId();
         Long employeeId = purchaseRequestDTO.getEmployeeId();
-        Long customerId = purchaseRequestDTO.getCustomerId();
+        String customerId = purchaseRequestDTO.getCustomerId();
         Integer age = purchaseRequestDTO.getAge();
         String gender = purchaseRequestDTO.getGender();
         List<ItemInfo> itemInfos = purchaseRequestDTO.getItemInfos();
