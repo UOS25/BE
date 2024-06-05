@@ -8,14 +8,14 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
-public class CustomerResponseDTO {
+public class CustomerCreateResponseDTO {
     private final String phoneNumber;
     private final String nickname;
     private final LocalDateTime joinDate;
     private final Integer mileage;
 
-    public static CustomerResponseDTO fromEntity(Customer customer) {
-        return new CustomerResponseDTO(
+    public static CustomerCreateResponseDTO fromEntity(Customer customer) {
+        return new CustomerCreateResponseDTO(
                 customer.getPhoneNumber(),
                 customer.getNickname(),
                 customer.getJoinDate(),

@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uos.uos25.customer.dto.request.CustomerRequestDTO;
+import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
-import uos.uos25.customer.dto.response.CustomerResponseDTO;
+import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 
@@ -19,41 +19,35 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
 
-    // create
-    @PostMapping("/join")
-    public ResponseEntity<?> joinCustomer(@Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
-        customerService.createCustomer(customerRequestDTO);
+    @PostMapping
+    public ResponseEntity<CustomerCreateResponseDTO> joinCustomer(@Valid @RequestBody CustomerCreateRequestDTO customerCreateRequestDTO) {
+        Customer customer = customerService.createCustomer(customerCreateRequestDTO);
+        CustomerCreateResponseDTO customerCreateResponseDTO = CustomerCreateResponseDTO.fromEntity(customer);
 
-        String msg = "고객 등록이 완료되었습니다.";
-
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        return ResponseEntity.ok(customerCreateResponseDTO);
     }
 
-    // readAll
     @GetMapping
-    public ResponseEntity<List<CustomerResponseDTO>> findAllCustomers() {
+    public ResponseEntity<List<CustomerCreateResponseDTO>> findAllCustomers() {
         return ResponseEntity.ok(customerService.findAllCustomers());
     }
 
-    // readByCustomerHP
     @GetMapping("/{phoneNumber}")
-    public ResponseEntity<CustomerResponseDTO> findCustomerById(@PathVariable String phoneNumber) {
+    public ResponseEntity<CustomerCreateResponseDTO> findCustomerById(@PathVariable String phoneNumber) {
         Customer customer = customerService.findById(phoneNumber);
 
-        return ResponseEntity.ok(CustomerResponseDTO.fromEntity(customer));
+        return ResponseEntity.ok(CustomerCreateResponseDTO.fromEntity(customer));
     }
 
-    // update
     @PutMapping
-    public ResponseEntity<?> updateCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
-        customerService.updateCustomer(customerRequestDTO);
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerCreateRequestDTO customerCreateRequestDTO) {
+        customerService.updateCustomer(customerCreateRequestDTO);
 
         String msg = "고객 수정이 완료되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
 
-    // 마일리지 적립
-    @PatchMapping("/mileage")
+    @GetMapping("/mileage/{phoneNumber}")
     public ResponseEntity<?> earnMileage(@RequestBody CustomerMileageUpdateRequestDTO customerMileageUpdateRequestDTO) {
         customerService.earnMileage(customerMileageUpdateRequestDTO.getMileage(), customerMileageUpdateRequestDTO.getPhoneNumber());
 
@@ -61,7 +55,6 @@ public class CustomerController {
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
 
-    // delete
     @DeleteMapping("/delete/{phoneNumber}")
     public ResponseEntity<?> deleteCustomer(@PathVariable String phoneNumber) {
         customerService.deleteCustomer(phoneNumber);
