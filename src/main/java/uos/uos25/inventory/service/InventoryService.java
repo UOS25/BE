@@ -42,21 +42,17 @@ public class InventoryService {
         return inventoryRepository.save(inventory);
     }
 
-    public List<InventoryGetResponseDTO> getInventoriesByShopId(Long shopId){
+    public List<Inventory> findInventoriesByShopId(Long shopId){
         Shop shop = shopService.findShopById(shopId);
 
         List<Inventory> inventories = inventoryRepository.findAllByShopShopId(shopId).orElseThrow(() -> {
             throw new InventoryNotFoundException();
         });
 
-        List<InventoryGetResponseDTO> inventoryGetResponseDTOS = inventories.stream()
-                .map(this::fromEntity)
-                .toList();
-
-        return inventoryGetResponseDTOS;
+        return inventories;
     }
 
-    public InventoryGetResponseDTO getInventoryByShopIdAndProductId(Long shopId, String barcode){
+    public Inventory findInventoryByShopIdAndProductId(Long shopId, String barcode){
         Shop shop = shopService.findShopById(shopId);
         Product product = productService.findById(barcode);
 
@@ -65,8 +61,7 @@ public class InventoryService {
                     throw new InventoryNotFoundException();
                 });
 
-        InventoryGetResponseDTO inventoryGetResponseDTO = fromEntity(inventory);
-        return inventoryGetResponseDTO;
+        return inventory;
     }
 
     @Transactional
@@ -79,15 +74,5 @@ public class InventoryService {
         inventory.changeDisplay(ea);
     }
 
-    private InventoryGetResponseDTO fromEntity(Inventory inventory){
-        InventoryGetResponseDTO inventoryGetResponseDTO = InventoryGetResponseDTO.builder()
-                .shopId(inventory.getShop().getShopId())
-                .barcode(inventory.getProduct().getBarcode())
-                .productName(inventory.getProduct().getProductName())
-                .ea(inventory.getEa())
-                .displayEa(inventory.getDisplay())
-                .build();
 
-        return inventoryGetResponseDTO;
-    }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uos.uos25.inventory.dto.request.InventoryChangeDisplayRequestDTO;
 import uos.uos25.inventory.dto.response.InventoryGetResponseDTO;
+import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.inventory.service.InventoryService;
 
 import java.util.List;
@@ -31,7 +32,10 @@ public class InventoryController {
 
     @GetMapping("/{shopId}")
     public ResponseEntity<List<InventoryGetResponseDTO>> getInventoryByShopId(@PathVariable Long shopId){
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryService.getInventoriesByShopId(shopId));
+        List<Inventory> inventoriesByShopId = inventoryService.findInventoriesByShopId(shopId);
+        List<InventoryGetResponseDTO> inventoryGetResponseDTOS = inventoriesByShopId.stream().map(inventory -> InventoryGetResponseDTO.fromEntity(inventory)).toList();
+
+        return ResponseEntity.ok(inventoryGetResponseDTOS);
     }
 
     @GetMapping("/{shopId}/{productId}")
@@ -39,8 +43,8 @@ public class InventoryController {
             @PathVariable Long shopId,
             @PathVariable String barcode
     ) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(inventoryService.getInventoryByShopIdAndProductId(shopId, barcode));
+        Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shopId, barcode);
+
+        return ResponseEntity.ok(InventoryGetResponseDTO.fromEntity(inventory));
     }
 }

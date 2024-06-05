@@ -53,4 +53,8 @@ public class Receipt {
         this.customer = customer;
         this.receiptDetails = receiptDetails;
     }
+
+    public void cancelReceipt(){
+        this.purchaseStatus = "구매포기";
+    }
 }

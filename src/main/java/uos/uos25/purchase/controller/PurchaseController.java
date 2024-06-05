@@ -2,10 +2,7 @@ package uos.uos25.purchase.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.purchase.dto.request.PurchaseRequestDTO;
 import uos.uos25.purchase.sevice.PurchaseService;
@@ -29,6 +26,11 @@ public class PurchaseController {
         List<ItemInfo> itemInfos = purchaseRequestDTO.getItemInfos();
 
         purchaseService.purchase(shopId, employeeId, phoneNumber, age, gender, itemInfos);
+    }
+
+    @DeleteMapping("/{receiptId}")
+    public void cancelPurchase(@PathVariable("receiptId") Long receiptId){
+        purchaseService.cancel(receiptId);
     }
 
 }

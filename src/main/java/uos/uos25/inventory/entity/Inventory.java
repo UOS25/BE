@@ -60,4 +60,8 @@ public class Inventory extends BaseEntity {
 
         this.display += ea;
     }
+
+    public void plusEa(Integer ea){
+        this.ea += ea;
+    }
 }

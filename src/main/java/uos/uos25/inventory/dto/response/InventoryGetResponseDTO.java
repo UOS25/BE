@@ -22,4 +22,16 @@ public class InventoryGetResponseDTO {
         this.ea = ea;
         this.displayEa = displayEa;
     }
+
+    public static InventoryGetResponseDTO fromEntity(Inventory inventory){
+        InventoryGetResponseDTO inventoryGetResponseDTO = InventoryGetResponseDTO.builder()
+                .shopId(inventory.getShop().getShopId())
+                .barcode(inventory.getProduct().getBarcode())
+                .productName(inventory.getProduct().getProductName())
+                .ea(inventory.getEa())
+                .displayEa(inventory.getDisplay())
+                .build();
+
+        return inventoryGetResponseDTO;
+    }
 }
