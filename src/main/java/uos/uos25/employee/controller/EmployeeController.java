@@ -52,9 +52,8 @@ public class EmployeeController {
         return ResponseEntity.ok(EmployeeGetResponseDTO.fromEntity(employee));
     }
 
-    // 직원 수정
-    @PutMapping
-    public ResponseEntity<?> updateEmployee(
+    @PatchMapping
+    public ResponseEntity<Void> updateEmployee(
             @Valid @RequestBody EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
         employeeService.updateEmployee(employeeUpdateReqeustDTO);
 
@@ -69,9 +68,9 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    // 직원 기록 말소
+    @Operation(summary = "직원 말소")
     @DeleteMapping("/{employeeId}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable Long employeeId) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Long employeeId) {
         employeeService.deleteEmployee(employeeId);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
