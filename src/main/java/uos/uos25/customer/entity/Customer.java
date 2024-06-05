@@ -41,8 +41,7 @@ public class Customer {
     }
 
     // 고객 정보를 수정하는 메서드
-    public void changeCustomerInfo(String phoneNumber, String nickname) {
-        this.phoneNumber = phoneNumber;
+    public void changeCustomerInfo(String nickname) {
         this.nickname = nickname;
     }
 
