@@ -29,7 +29,7 @@ public class OrdersController {
         return new ResponseEntity<>(savedOrders, HttpStatus.CREATED);
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public ResponseEntity<List<OrdersGetResponseDTO>> getList() {
         List<Orders> orders = ordersService.findOrders();
         List<OrdersGetResponseDTO> ordersGetResponseDTOS =
