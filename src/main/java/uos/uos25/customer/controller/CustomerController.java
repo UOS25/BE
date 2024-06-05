@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
-import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
 import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
