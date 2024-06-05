@@ -66,6 +66,7 @@ public class DataInitializer {
         Event event = createEvent(product);
         Receipt receipt = createReceiptDummy(employee, customer);
         ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
+        ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
     }
 
     private Product createProductDummy(){
