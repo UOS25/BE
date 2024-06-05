@@ -23,7 +23,7 @@ public class ReturnsController {
         return ResponseEntity.ok(returnsService.createReturns(returnsRequestDTO));
     }
 
-    @GetMapping("/list/{shopId}")
+    @GetMapping("/{shopId}")
     public ResponseEntity<List<ReturnsResponseDTO>> getAllReturnsByShopId(
             @PathVariable Long shopId) {
         return ResponseEntity.ok(returnsService.findAllByShopId(shopId));
