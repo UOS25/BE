@@ -7,8 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
+import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
 import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
+import uos.uos25.customer.dto.response.CustomerUpdateResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 
@@ -37,18 +39,18 @@ public class CustomerController {
     }
 
     @GetMapping("/{phoneNumber}")
-    public ResponseEntity<CustomerCreateResponseDTO> findCustomerById(@PathVariable String phoneNumber) {
+    public ResponseEntity<CustomerGetResponseDTO> findCustomerById(@PathVariable String phoneNumber) {
         Customer customer = customerService.findById(phoneNumber);
 
-        return ResponseEntity.ok(CustomerCreateResponseDTO.fromEntity(customer));
+        return ResponseEntity.ok(CustomerGetResponseDTO.fromEntity(customer));
     }
 
     @PutMapping
-    public ResponseEntity<?> updateCustomer(@RequestBody CustomerCreateRequestDTO customerCreateRequestDTO) {
-        customerService.updateCustomer(customerCreateRequestDTO);
+    public ResponseEntity<CustomerUpdateResponseDTO> updateCustomer(@RequestBody CustomerUpdateRequestDTO customerUpdateRequestDTO) {
+        Customer customer = customerService.updateCustomer(customerUpdateRequestDTO);
+        CustomerUpdateResponseDTO customerUpdateResponseDTO = CustomerUpdateResponseDTO.fromEntity(customer);
 
-        String msg = "고객 수정이 완료되었습니다.";
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        return ResponseEntity.ok(customerUpdateResponseDTO);
     }
 
     @GetMapping("/mileage/{phoneNumber}")

@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
+import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
 import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
 import uos.uos25.customer.entity.Customer;
@@ -44,11 +45,13 @@ public class CustomerService {
 
     // update
     // 고객 정보를 업데이트합니다.
-    public void updateCustomer(CustomerCreateRequestDTO customerCreateRequestDTO) {
-        Customer findCustomer = customerRepository.findById(customerCreateRequestDTO.getPhoneNumber())
+    public Customer updateCustomer(CustomerUpdateRequestDTO customerUpdateRequestDTO) {
+        Customer findCustomer = customerRepository.findById(customerUpdateRequestDTO.getPhoneNumber())
                 .orElseThrow(() -> new CustomerNotFoundException("해당 아이디의 고객이 존재하지 않습니다."));
         // 정보 수정
-        findCustomer.changeCustomerInfo(customerCreateRequestDTO.getPhoneNumber(), customerCreateRequestDTO.getNickname());
+        findCustomer.changeCustomerInfo(customerUpdateRequestDTO.getPhoneNumber(), customerUpdateRequestDTO.getNickname());
+
+        return findCustomer;
     }
 
     // update
