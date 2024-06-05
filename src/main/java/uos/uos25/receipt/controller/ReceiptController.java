@@ -1,5 +1,7 @@
 package uos.uos25.receipt.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +30,12 @@ public class ReceiptController {
     }
 
     @GetMapping("/phoneNumber/{phoneNumber}")
-    public ResponseEntity<ReceiptGetResponseDTO> getReceiptByPhoneNumber(
+    public ResponseEntity<List<ReceiptGetResponseDTO>> getReceiptByPhoneNumber(
             @PathVariable String phoneNumber) {
-        Receipt receipt = receiptService.findByCustomerPhoneNumber(phoneNumber);
+        List<Receipt> receipts = receiptService.findByCustomerPhoneNumber(phoneNumber);
+        List<ReceiptGetResponseDTO> receiptGetResponseDTOS =
+                receipts.stream().map(receipt -> receiptService.entityToDTO(receipt)).toList();
 
-        return ResponseEntity.status(HttpStatus.OK).body(receiptService.entityToDTO(receipt));
+        return ResponseEntity.status(HttpStatus.OK).body(receiptGetResponseDTOS);
     }
 }
