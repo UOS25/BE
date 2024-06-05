@@ -34,7 +34,7 @@ public class ReceiptService {
                 .customer(customer)
                 .age(age)
                 .gender(gender)
-                .purchaseStatus("결제 예정")
+                .purchaseStatus("구매완료")
                 .purchaseDate(LocalDateTime.now())
                 .build();
         return receiptRepository.save(receipt);

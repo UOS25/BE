@@ -15,7 +15,7 @@ public class ReceiptDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long receiptDetail;
+    private Long receiptDetailId;
 
     @Column(nullable = false)
     private Integer ea;
@@ -29,8 +29,8 @@ public class ReceiptDetail {
     private Receipt receipt;
 
     @Builder
-    public ReceiptDetail(Long receiptDetail, Integer ea, Product product, Receipt receipt) {
-        this.receiptDetail = receiptDetail;
+    public ReceiptDetail(Long receiptDetailId, Integer ea, Product product, Receipt receipt) {
+        this.receiptDetailId = receiptDetailId;
         this.ea = ea;
         this.product = product;
         this.receipt = receipt;
