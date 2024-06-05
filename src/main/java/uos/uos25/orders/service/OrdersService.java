@@ -27,7 +27,7 @@ public class OrdersService {
 
     public Orders save(OrdersRequestDTO ordersRequestDTO){
         Shop shop = shopService.findShopById(ordersRequestDTO.getShopId());
-        Product product = productService.findProductById(ordersRequestDTO.getBarcode());
+        Product product = productService.findById(ordersRequestDTO.getBarcode());
 
         Orders orders = Orders.builder()
                 .ordersStatus("뭘로 할까")

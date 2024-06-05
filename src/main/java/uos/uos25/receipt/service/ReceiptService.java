@@ -6,6 +6,8 @@ import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
+import uos.uos25.purchase.dto.ItemInfo;
+import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.exception.ReceiptNotFound;
@@ -13,6 +15,7 @@ import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.shop.entity.Shop;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

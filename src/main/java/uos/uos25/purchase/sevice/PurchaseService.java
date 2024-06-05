@@ -22,9 +22,9 @@ public class PurchaseService {
         Receipt receipt = receiptService.create(employeeId, customerId, age, gender);
 
         for (ItemInfo itemInfo : itemInfos) {
-            Product product = productService.findProductByBarcode(itemInfo.getBarcode());
+            Product product = productService.findById(itemInfo.getBarcode());
 
-            receiptDetailService.create(receipt, product.getProductId(), itemInfo.getEa());
+            receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
     }
 }
