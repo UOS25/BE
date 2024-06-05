@@ -64,13 +64,15 @@ public class OrdersController {
     public ResponseEntity<Void> startOrdersDelivery(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PatchMapping("/check")
     public ResponseEntity<Void> checkOrdersArrived(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
