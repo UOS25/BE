@@ -2,13 +2,13 @@ package uos.uos25.employee.controller;
 
 import java.util.List;
 
-import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
@@ -55,7 +55,6 @@ public class EmployeeController {
     // 직원 수정
     @PutMapping
     public ResponseEntity<?> updateEmployee(
-            @PathVariable Long employeeId,
             @Valid @RequestBody EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
         employeeService.updateEmployee(employeeUpdateReqeustDTO);
 

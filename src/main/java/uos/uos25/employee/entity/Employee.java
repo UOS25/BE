@@ -106,12 +106,12 @@ public class Employee {
             String partTime,
             String account,
             Shop shop) {
-        this.employeeName = employeeName;
-        this.position = position;
-        this.registrationNumber = registrationNumber;
-        this.salary = salary;
-        this.partTime = PartTime.valueOf(partTime);
-        this.account = account;
-        this.shop = shop;
+        if (employeeName != null) this.employeeName = employeeName;
+        if (position != null) this.position = position;
+        if (registrationNumber != null) this.registrationNumber = registrationNumber;
+        if (salary != null) this.salary = salary;
+        if (partTime != null) this.partTime = PartTime.valueOf(partTime);
+        if (account != null) this.account = account;
+        if (shop != null) this.shop = shop;
     }
 }

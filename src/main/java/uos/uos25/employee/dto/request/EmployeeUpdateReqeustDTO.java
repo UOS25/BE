@@ -1,33 +1,31 @@
 package uos.uos25.employee.dto.request;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
 public class EmployeeUpdateReqeustDTO {
-    @NotBlank(message = "직원 id를 입력하세요.")
+    @Schema(example = "1")
     private Long employeeId;
 
-    @NotBlank(message = "직원 이름을 입력하세요.")
-    private String employeeName;
+    @Schema(example = "김민서")
+    private String employeeName = null;
 
-    @NotBlank(message = "직급을 입력하세요.")
-    private String position;
+    @Schema(example = "점장")
+    private String position = null;
 
-    @NotBlank(message = "주민번호를 입력하세요.")
-    private String registrationNumber;
+    @Schema(example = "990222-7654321")
+    private String registrationNumber = null;
 
-    @Min(value = -1, message = "0 이상의 값을 입력하세요.")
-    private Integer salary;
+    @Schema(example = "10000")
+    private Integer salary = null;
 
-    @NotBlank(message = "업무 시간을 입력하세요.")
-    private String partTime;
+    @Schema(example = "NIGHT")
+    private String partTime = null;
 
-    @NotBlank(message = "계좌번호를 입력하세요.")
-    private String account;
+    @Schema(example = "110-485-122345")
+    private String account = null;
 
-    @NotBlank(message = "지점이름을 입력하세요.")
-    private Long shopId;
+    @Schema(example = "1")
+    private Long shopId = null;
 }
