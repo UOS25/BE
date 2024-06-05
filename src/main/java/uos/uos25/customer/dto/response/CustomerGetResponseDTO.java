@@ -14,8 +14,8 @@ public class CustomerGetResponseDTO {
     private final LocalDateTime joinDate;
     private final Integer mileage;
 
-    public static CustomerCreateResponseDTO fromEntity(Customer customer) {
-        return new CustomerCreateResponseDTO(
+    public static CustomerGetResponseDTO fromEntity(Customer customer) {
+        return new CustomerGetResponseDTO(
                 customer.getPhoneNumber(),
                 customer.getNickname(),
                 customer.getJoinDate(),

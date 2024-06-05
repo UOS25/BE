@@ -29,11 +29,11 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CustomerCreateResponseDTO>> findAllCustomers() {
+    public ResponseEntity<List<CustomerGetResponseDTO>> findAllCustomers() {
         List<Customer> customers = customerService.findAllCustomers();
-        List<CustomerCreateResponseDTO> customerCreateResponseDTOS = customers.stream().map(customer -> CustomerGetResponseDTO.fromEntity(customer)).toList();
+        List<CustomerGetResponseDTO> customerGetResponseDTOS = customers.stream().map(customer -> CustomerGetResponseDTO.fromEntity(customer)).toList();
 
-        return ResponseEntity.ok(customerCreateResponseDTOS);
+        return ResponseEntity.ok(customerGetResponseDTOS);
     }
 
     @GetMapping("/{phoneNumber}")
