@@ -19,7 +19,7 @@ public class ProductInfoResponseDTO {
     private final String feature;
     private final String description;
     private final LocalDateTime expirationDate;
-    private final List<Event> events;
+    private final List<String> eventNames;
 
     @Builder
     public ProductInfoResponseDTO(
@@ -32,7 +32,7 @@ public class ProductInfoResponseDTO {
             String category,
             String feature,
             LocalDateTime expirationDate,
-            List<Event> events) {
+            List<String> eventNames) {
         this.barcode = barcode;
         this.productName = productName;
         this.enterprise = enterprise;
@@ -42,7 +42,7 @@ public class ProductInfoResponseDTO {
         this.category = category;
         this.feature = feature;
         this.expirationDate = expirationDate;
-        this.events = events;
+        this.eventNames = eventNames;
     }
 
     public static ProductInfoResponseDTO fromProduct(Product product) {
@@ -58,7 +58,7 @@ public class ProductInfoResponseDTO {
                         .feature(product.getFeature())
                         .expirationDate(product.getExpirationDate())
                         .barcode(product.getBarcode())
-                        .events(product.getEvents())
+                        .eventNames(product.getEvents().stream().map(Event::getEventName).toList())
                         .build();
 
         return productInfoResponseDTO;
