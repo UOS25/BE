@@ -46,10 +46,8 @@ public class ReceiptService {
         return receiptRepository.findById(receiptId).orElseThrow(() -> new ReceiptNotFound());
     }
 
-    public Receipt findByCustomerPhoneNumber(String phoneNumber) {
-        return receiptRepository
-                .findByCustomerPhoneNumber(phoneNumber)
-                .orElseThrow(() -> new ReceiptNotFound());
+    public List<Receipt> findByCustomerPhoneNumber(String phoneNumber) {
+        return receiptRepository.findAllByCustomerPhoneNumber(phoneNumber);
     }
 
     public ReceiptGetResponseDTO entityToDTO(Receipt receipt) {
