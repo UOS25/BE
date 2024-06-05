@@ -10,6 +10,7 @@ import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
 import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
+import uos.uos25.customer.dto.response.CustomerMileageGetResponseDTO;
 import uos.uos25.customer.dto.response.CustomerUpdateResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
@@ -54,11 +55,11 @@ public class CustomerController {
     }
 
     @GetMapping("/mileage/{phoneNumber}")
-    public ResponseEntity<?> earnMileage(@RequestBody CustomerMileageUpdateRequestDTO customerMileageUpdateRequestDTO) {
-        customerService.earnMileage(customerMileageUpdateRequestDTO.getMileage(), customerMileageUpdateRequestDTO.getPhoneNumber());
+    public ResponseEntity<CustomerMileageGetResponseDTO> getMileage(@PathVariable String phoneNumber) {
+        Customer customer = customerService.findById(phoneNumber);
+        CustomerMileageGetResponseDTO customerMileageGetResponseDTO = CustomerMileageGetResponseDTO.fromEntity(customer);
 
-        String msg = "마일리지 적립이 완료되었습니다.";
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        return ResponseEntity.ok(customerMileageGetResponseDTO);
     }
 
     @DeleteMapping("/delete/{phoneNumber}")
