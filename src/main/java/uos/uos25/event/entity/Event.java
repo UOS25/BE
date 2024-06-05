@@ -1,19 +1,21 @@
 package uos.uos25.event.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.product.entity.Product;
-
-import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter
 public class Event {
 
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long eventId;
 
@@ -34,7 +36,12 @@ public class Event {
     private Product product;
 
     @Builder
-    public Event(LocalDateTime startDate, LocalDateTime endDate, String eventName, String eventCategory, Product product) {
+    public Event(
+            LocalDateTime startDate,
+            LocalDateTime endDate,
+            String eventName,
+            String eventCategory,
+            Product product) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.eventName = eventName;

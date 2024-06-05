@@ -1,9 +1,10 @@
 package uos.uos25.shop.controller;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import uos.uos25.shop.service.ShopService;
 
 @Controller
@@ -13,6 +14,4 @@ import uos.uos25.shop.service.ShopService;
 public class ShopController {
 
     private final ShopService shopService;
-
-
 }

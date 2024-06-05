@@ -1,23 +1,23 @@
 package uos.uos25.customer.entity;
 
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import uos.uos25.common.BaseEntity;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.util.MileageUtil;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.*;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.util.MileageUtil;
 
 @Entity
 @Getter
 @NoArgsConstructor
 public class Customer {
-    @Id @Column(nullable = false)
+    @Id
+    @Column(nullable = false)
     private String phoneNumber;
 
     @Column(nullable = false)
@@ -51,5 +51,4 @@ public class Customer {
         Integer mileage = MileageUtil.getMileage(price);
         this.mileage += mileage;
     }
-
 }

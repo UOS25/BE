@@ -1,20 +1,21 @@
 package uos.uos25.returns.entity;
 
 import jakarta.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.shop.entity.Shop;
 import uos.uos25.product.entity.Product;
+import uos.uos25.shop.entity.Shop;
 
 @Entity
 @Getter
 @NoArgsConstructor
 public class Returns extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long returnsId;
 

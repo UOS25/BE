@@ -1,21 +1,21 @@
 package uos.uos25.headQuarter.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.common.BaseEntity;
 import uos.uos25.shop.entity.Shop;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
 public class HeadQuarter {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(nullable = false)
     private Long hqEmpId;
 

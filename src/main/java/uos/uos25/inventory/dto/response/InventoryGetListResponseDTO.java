@@ -1,8 +1,8 @@
 package uos.uos25.inventory.dto.response;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class InventoryGetListResponseDTO {

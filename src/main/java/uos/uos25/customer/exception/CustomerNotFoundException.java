@@ -3,7 +3,7 @@ package uos.uos25.customer.exception;
 import lombok.Getter;
 
 @Getter
-public class CustomerNotFoundException extends RuntimeException{
+public class CustomerNotFoundException extends RuntimeException {
 
     private final String msg;
 

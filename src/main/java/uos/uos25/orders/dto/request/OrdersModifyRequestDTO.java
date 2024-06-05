@@ -6,5 +6,4 @@ import lombok.Data;
 public class OrdersModifyRequestDTO {
     private Long ordersId;
     private Integer ea;
-
 }

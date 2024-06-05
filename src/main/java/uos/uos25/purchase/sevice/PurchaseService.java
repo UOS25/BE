@@ -1,11 +1,13 @@
 package uos.uos25.purchase.sevice;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
-import uos.uos25.inventory.dto.response.InventoryGetResponseDTO;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.product.entity.Product;
@@ -16,9 +18,6 @@ import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.service.ReceiptDetailService;
 import uos.uos25.receipt.service.ReceiptService;
 import uos.uos25.shop.entity.Shop;
-import uos.uos25.util.MileageUtil;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +29,13 @@ public class PurchaseService {
     private final InventoryService inventoryService;
 
     @Transactional
-    public void purchase(Long shopId, Long employeeId, String phoneNumber, Integer age, String gender, List<ItemInfo> itemInfos) {
+    public void purchase(
+            Long employeeId,
+            String phoneNumber,
+            Integer age,
+            String gender,
+            Integer mileage,
+            List<ItemInfo> itemInfos) {
         Receipt receipt = receiptService.create(employeeId, phoneNumber, age, gender);
         Customer customer = customerService.findById(phoneNumber);
 
@@ -38,10 +43,11 @@ public class PurchaseService {
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findById(itemInfo.getBarcode());
             Integer ea = itemInfo.getEa();
-            totalPrice+= product.getCustomerPrice() * ea;
+            totalPrice += product.getCustomerPrice() * ea;
 
             receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
+        totalPrice -= mileage;
         customer.earnMileage(totalPrice);
     }
 
@@ -58,7 +64,9 @@ public class PurchaseService {
             Product product = receiptDetail.getProduct();
             Integer ea = receiptDetail.getEa();
 
-            Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shop.getShopId(), product.getBarcode());
+            Inventory inventory =
+                    inventoryService.findInventoryByShopIdAndProductId(
+                            shop.getShopId(), product.getBarcode());
             inventory.plusEa(ea);
         }
     }

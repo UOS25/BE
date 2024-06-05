@@ -1,18 +1,20 @@
 package uos.uos25.employee.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.DTO.EmployeeDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.shop.repository.ShopRepository;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,12 +26,10 @@ public class EmployeeService {
     // 모든 직원 리스트를 가져온 후, DTO 리스트로 반환합니다.
     public List<EmployeeDTO> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
-        return employees.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+        return employees.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public Employee findById(Long employeeId){
+    public Employee findById(Long employeeId) {
         return employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFound());
     }
 
@@ -42,8 +42,13 @@ public class EmployeeService {
     @Transactional
     // 직원 수정
     public void updateEmployee(Long employeeId, EmployeeDTO employeeDTO) {
-        Employee findEmployee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new IllegalArgumentException("다음의 Id를 가진 employee가 없습니다: " + employeeId));
+        Employee findEmployee =
+                employeeRepository
+                        .findById(employeeId)
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "다음의 Id를 가진 employee가 없습니다: " + employeeId));
 
         convertToEmployee(employeeDTO, findEmployee);
     }
@@ -51,8 +56,13 @@ public class EmployeeService {
     @Transactional
     // 직원 퇴사
     public void retirementEmployee(Long employeeId) {
-        Employee findEmployee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new IllegalArgumentException("다음의 Id를 가진 employee가 없습니다: " + employeeId));
+        Employee findEmployee =
+                employeeRepository
+                        .findById(employeeId)
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "다음의 Id를 가진 employee가 없습니다: " + employeeId));
 
         // NONE은 근무하는 시간이 지정되지 않았음을 의미합니다. 해고, 퇴사 등이 이에 해당됩니다.
         findEmployee.setPartTime(PartTime.NONE);
@@ -65,8 +75,13 @@ public class EmployeeService {
     @Transactional
     // 직원 삭제: 해당 직원의 기록을 말소합니다. 연관되어 있는 receipt 정보까지 모두 소멸됩니다.
     public void deleteEmployee(Long employeeId) {
-        Employee findEmployee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new IllegalArgumentException("다음의 Id를 가진 employee가 없습니다: " + employeeId));
+        Employee findEmployee =
+                employeeRepository
+                        .findById(employeeId)
+                        .orElseThrow(
+                                () ->
+                                        new IllegalArgumentException(
+                                                "다음의 Id를 가진 employee가 없습니다: " + employeeId));
 
         employeeRepository.delete(findEmployee);
     }
@@ -105,5 +120,4 @@ public class EmployeeService {
         employeeDTO.setShopName(employee.getShop().getShopName());
         return employeeDTO;
     }
-
 }

@@ -1,11 +1,15 @@
 package uos.uos25.receipt.service;
 
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.service.EmployeeService;
+
+import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
 import uos.uos25.receipt.entity.Receipt;
@@ -13,9 +17,6 @@ import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.exception.ReceiptNotFound;
 import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.shop.entity.Shop;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,34 +26,40 @@ public class ReceiptService {
     private final CustomerService customerService;
     private final ReceiptDetailService receiptDetailService;
 
-    public Receipt create(Long employeeId, String phoneNumber, Integer age, String gender){
+    public Receipt create(Long employeeId, String phoneNumber, Integer age, String gender) {
         Employee employee = employeeService.findById(employeeId);
         Customer customer = customerService.findById(phoneNumber);
 
-        Receipt receipt = Receipt.builder()
-                .employee(employee)
-                .customer(customer)
-                .age(age)
-                .gender(gender)
-                .purchaseStatus("구매완료")
-                .purchaseDate(LocalDateTime.now())
-                .build();
+        Receipt receipt =
+                Receipt.builder()
+                        .employee(employee)
+                        .customer(customer)
+                        .age(age)
+                        .gender(gender)
+                        .purchaseStatus("구매완료")
+                        .purchaseDate(LocalDateTime.now())
+                        .build();
         return receiptRepository.save(receipt);
     }
 
-    public Receipt findById(Long receiptId){
+    public Receipt findById(Long receiptId) {
         return receiptRepository.findById(receiptId).orElseThrow(() -> new ReceiptNotFound());
     }
 
     public Receipt findByCustomerPhoneNumber(String phoneNumber) {
-        return receiptRepository.findByCustomerPhoneNumber(phoneNumber).orElseThrow(() -> new ReceiptNotFound());
+        return receiptRepository
+                .findByCustomerPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new ReceiptNotFound());
     }
 
-    public ReceiptGetResponseDTO entityToDTO(Receipt receipt){
+    public ReceiptGetResponseDTO entityToDTO(Receipt receipt) {
         Employee employee = receipt.getEmployee();
         Shop shop = employee.getShop();
         List<ReceiptDetail> receiptDetails = receipt.getReceiptDetails();
-        List<ItemInfo> itemInfos = receiptDetails.stream().map(receiptDetail -> ItemInfo.fromReceiptDetail(receiptDetail)).toList();
+        List<ItemInfo> itemInfos =
+                receiptDetails.stream()
+                        .map(receiptDetail -> ItemInfo.fromReceiptDetail(receiptDetail))
+                        .toList();
 
         return ReceiptGetResponseDTO.builder()
                 .receiptId(receipt.getReceiptId())

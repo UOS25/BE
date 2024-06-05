@@ -1,21 +1,23 @@
 package uos.uos25.receipt.entity;
 
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.customer.entity.Customer;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.*;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import uos.uos25.customer.entity.Customer;
+import uos.uos25.employee.entity.Employee;
 
 @Entity
 @Getter
 @NoArgsConstructor
 public class Receipt {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(nullable = false)
     private Long receiptId;
 
@@ -43,7 +45,15 @@ public class Receipt {
     private List<ReceiptDetail> receiptDetails = new ArrayList<>();
 
     @Builder
-    public Receipt(Long receiptId, LocalDateTime purchaseDate, String purchaseStatus, Integer age, String gender, Employee employee, Customer customer, List<ReceiptDetail> receiptDetails) {
+    public Receipt(
+            Long receiptId,
+            LocalDateTime purchaseDate,
+            String purchaseStatus,
+            Integer age,
+            String gender,
+            Employee employee,
+            Customer customer,
+            List<ReceiptDetail> receiptDetails) {
         this.receiptId = receiptId;
         this.purchaseDate = purchaseDate;
         this.purchaseStatus = purchaseStatus;
@@ -54,7 +64,7 @@ public class Receipt {
         this.receiptDetails = receiptDetails;
     }
 
-    public void cancelReceipt(){
+    public void cancelReceipt() {
         this.purchaseStatus = "구매포기";
     }
 }

@@ -1,15 +1,17 @@
 package uos.uos25.employee.controller;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
+
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.DTO.EmployeeDTO;
 import uos.uos25.employee.service.EmployeeService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
@@ -25,6 +27,7 @@ public class EmployeeController {
         List<EmployeeDTO> employeeDTOS = employeeService.getAllEmployees();
         return ResponseEntity.ok(employeeDTOS);
     }
+
     // 직원 저장
     @PostMapping("/join")
     public ResponseEntity<?> join(@Valid @RequestBody EmployeeDTO employeeDTO) {
@@ -37,8 +40,7 @@ public class EmployeeController {
     // 직원 수정
     @PutMapping("/update/{employeeId}")
     public ResponseEntity<?> updateEmployee(
-            @PathVariable Long employeeId,
-            @Valid @RequestBody EmployeeDTO employeeDTO) {
+            @PathVariable Long employeeId, @Valid @RequestBody EmployeeDTO employeeDTO) {
         employeeService.updateEmployee(employeeId, employeeDTO);
         String msg = "수정되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
@@ -46,8 +48,7 @@ public class EmployeeController {
 
     // 직원 퇴사
     @PutMapping("/retirement/{employeeId}")
-    public ResponseEntity<?> retirementEmployee(
-            @PathVariable Long employeeId) {
+    public ResponseEntity<?> retirementEmployee(@PathVariable Long employeeId) {
         employeeService.retirementEmployee(employeeId);
         String msg = "퇴사처리가 완료되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
@@ -60,5 +61,4 @@ public class EmployeeController {
         String msg = "삭제되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-
 }

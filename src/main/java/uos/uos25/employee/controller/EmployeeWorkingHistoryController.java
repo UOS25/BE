@@ -1,16 +1,18 @@
 package uos.uos25.employee.controller;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
+
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.DTO.EmployeeWorkingHistoryDTO;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.employee.service.EmployeeWorkingHistoryService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employee/work")
@@ -23,8 +25,10 @@ public class EmployeeWorkingHistoryController {
 
     // 직원의 출퇴근 목록 불러오기
     @GetMapping("/{employeeId}")
-    public ResponseEntity<List<EmployeeWorkingHistoryDTO>> findAllHistories(@PathVariable long employeeId) {
-        List<EmployeeWorkingHistoryDTO> allEmployeeWorkingHistories = employeeWorkingHistoryService.findAllEmployeeWorkingHistories(employeeId);
+    public ResponseEntity<List<EmployeeWorkingHistoryDTO>> findAllHistories(
+            @PathVariable long employeeId) {
+        List<EmployeeWorkingHistoryDTO> allEmployeeWorkingHistories =
+                employeeWorkingHistoryService.findAllEmployeeWorkingHistories(employeeId);
         return ResponseEntity.ok(allEmployeeWorkingHistories);
     }
 
@@ -59,7 +63,8 @@ public class EmployeeWorkingHistoryController {
 
     // 임의로 직원의 출퇴근 기록을 추가
     @PostMapping("/addHistory")
-    public ResponseEntity<?> addWorkingHistory(@Valid @RequestBody EmployeeWorkingHistoryDTO employeeWorkingHistoryDTO) {
+    public ResponseEntity<?> addWorkingHistory(
+            @Valid @RequestBody EmployeeWorkingHistoryDTO employeeWorkingHistoryDTO) {
 
         // service에서 addWorkingHistory를 호출합니다.
         employeeWorkingHistoryService.addWorkingHistory(employeeWorkingHistoryDTO);
