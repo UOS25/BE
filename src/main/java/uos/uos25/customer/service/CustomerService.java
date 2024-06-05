@@ -3,8 +3,10 @@ package uos.uos25.customer.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uos.uos25.customer.dto.request.CustomerRequestDTO;
-import uos.uos25.customer.dto.response.CustomerResponseDTO;
+import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
+import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
+import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
+import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.exception.CustomerNotFoundException;
 import uos.uos25.customer.repository.CustomerRepository;
@@ -19,21 +21,19 @@ public class CustomerService {
 
     // create
     // 고객 정보를 생성합니다.
-    public void createCustomer(CustomerRequestDTO customerRequestDTO) {
+    public Customer createCustomer(CustomerCreateRequestDTO customerCreateRequestDTO) {
         Customer customer = Customer.builder()
-                .phoneNumber(customerRequestDTO.getPhoneNumber())
-                .nickname(customerRequestDTO.getNickname())
+                .phoneNumber(customerCreateRequestDTO.getPhoneNumber())
+                .nickname(customerCreateRequestDTO.getNickname())
                 .build();
 
-        customerRepository.save(customer);
+        return customerRepository.save(customer);
     }
 
     // read
     // 조회 가능한 모든 고객 정보를 불러옵니다.
-    public List<CustomerResponseDTO> findAllCustomers() {
-        List<Customer> allCustomers =  customerRepository.findAll();
-
-        return allCustomers.stream().map(CustomerResponseDTO::fromEntity).toList();
+    public List<Customer> findAllCustomers() {
+        return customerRepository.findAll();
     }
 
     // read
@@ -45,11 +45,13 @@ public class CustomerService {
 
     // update
     // 고객 정보를 업데이트합니다.
-    public void updateCustomer(CustomerRequestDTO customerRequestDTO) {
-        Customer findCustomer = customerRepository.findById(customerRequestDTO.getPhoneNumber())
+    public Customer updateCustomer(CustomerUpdateRequestDTO customerUpdateRequestDTO) {
+        Customer findCustomer = customerRepository.findById(customerUpdateRequestDTO.getPhoneNumber())
                 .orElseThrow(() -> new CustomerNotFoundException("해당 아이디의 고객이 존재하지 않습니다."));
         // 정보 수정
-        findCustomer.changeCustomerInfo(customerRequestDTO.getPhoneNumber(), customerRequestDTO.getNickname());
+        findCustomer.changeCustomerInfo(customerUpdateRequestDTO.getPhoneNumber(), customerUpdateRequestDTO.getNickname());
+
+        return findCustomer;
     }
 
     // update

@@ -8,7 +8,7 @@ import lombok.Getter;
 @Data
 @AllArgsConstructor
 @Getter
-public class CustomerRequestDTO {
+public class CustomerUpdateRequestDTO {
 
     @NotBlank(message = "전화번호를 입력하세요.")
     private final String phoneNumber;

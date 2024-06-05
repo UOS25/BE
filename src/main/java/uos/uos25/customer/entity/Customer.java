@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.util.MileageUtil;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,7 +47,8 @@ public class Customer {
     }
 
     // 고객 마일리지를 적립하는 메서드
-    public void earnMileage(Integer mileage) {
+    public void earnMileage(Integer price) {
+        Integer mileage = MileageUtil.getMileage(price);
         this.mileage += mileage;
     }
 
