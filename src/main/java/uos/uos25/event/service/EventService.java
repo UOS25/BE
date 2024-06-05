@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uos.uos25.event.dto.request.EventCreateRequestDTO;
 import uos.uos25.event.entity.Event;
+import uos.uos25.event.exception.EventNotFound;
 import uos.uos25.event.repository.EventRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
@@ -48,5 +49,11 @@ public class EventService {
     public List<Event> findAll(){
         List<Event> events = eventRepository.findAll();
         return events;
+    }
+
+    public Event getById(Long eventId) {
+        Event event = eventRepository.findById(eventId).orElseThrow(() -> new EventNotFound());
+
+        return  event;
     }
 }
