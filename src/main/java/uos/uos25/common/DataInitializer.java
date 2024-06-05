@@ -151,6 +151,7 @@ public class DataInitializer {
                         .salary(10000)
                         .partTime(PartTime.DAY)
                         .account("1231234123412")
+                        .bank("농협은행")
                         .shop(shop)
                         .build();
         return employeeRepository.save(employee);

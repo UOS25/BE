@@ -26,6 +26,9 @@ public class EmployeeUpdateReqeustDTO {
     @Schema(example = "110-485-122345")
     private String account = null;
 
+    @Schema(example = "신한은행")
+    private String bank = null;
+
     @Schema(example = "1")
     private Long shopId = null;
 }

@@ -43,6 +43,9 @@ public class Employee {
     @Column(nullable = false)
     private String account;
 
+    @Column(nullable = false)
+    private String bank;
+
     @Column(nullable = true)
     private LocalDateTime firedDate;
 
@@ -75,6 +78,7 @@ public class Employee {
             Integer salary,
             PartTime partTime,
             String account,
+            String bank,
             Shop shop) {
         this.employeeName = employeeName;
         this.employmentDate = employmentDate;
@@ -83,6 +87,7 @@ public class Employee {
         this.salary = salary;
         this.partTime = partTime;
         this.account = account;
+        this.bank = bank;
         this.shop = shop;
     }
 
@@ -105,6 +110,7 @@ public class Employee {
             Integer salary,
             String partTime,
             String account,
+            String bank,
             Shop shop) {
         if (employeeName != null) this.employeeName = employeeName;
         if (position != null) this.position = position;
@@ -112,6 +118,7 @@ public class Employee {
         if (salary != null) this.salary = salary;
         if (partTime != null) this.partTime = PartTime.valueOf(partTime);
         if (account != null) this.account = account;
+        if (bank != null) this.bank = bank;
         if (shop != null) this.shop = shop;
     }
 }

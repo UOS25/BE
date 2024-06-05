@@ -32,6 +32,10 @@ public class EmployeeCreateReqeustDTO {
     @Schema(example = "110-485-577342")
     private String account;
 
+    @NotBlank(message = "은행명을 입력하세요.")
+    @Schema(example = "농협은행")
+    private String bank;
+
     @Schema(example = "1")
     private Long shopId;
 }
