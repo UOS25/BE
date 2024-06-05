@@ -23,4 +23,11 @@ public class ReceiptController {
 
         return ResponseEntity.status(HttpStatus.OK).body(receiptService.entityToDTO(receipt));
     }
+
+    @GetMapping("/phoneNumber/{phoneNumber}")
+    public ResponseEntity<ReceiptGetResponseDTO> getReceiptByPhoneNumber(@PathVariable String phoneNumber){
+        Receipt receipt = receiptService.findByCustomerPhoneNumber(phoneNumber);
+
+        return ResponseEntity.status(HttpStatus.OK).body(receiptService.entityToDTO(receipt));
+    }
 }

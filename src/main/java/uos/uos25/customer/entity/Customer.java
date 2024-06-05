@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Customer {
-    // PK: customerHP
     @Id @Column(nullable = false)
     private String phoneNumber;
 

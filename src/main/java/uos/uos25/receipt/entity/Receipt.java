@@ -36,7 +36,7 @@ public class Receipt {
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_phoneNumber", nullable = false)
+    @JoinColumn(name = "phoneNumber", nullable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "receipt", fetch = FetchType.LAZY)
