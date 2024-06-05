@@ -1,12 +1,12 @@
 package uos.uos25.product.dto.response;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.event.entity.Event;
 import uos.uos25.product.entity.Product;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 public class ProductInfoResponseDTO {
@@ -22,7 +22,17 @@ public class ProductInfoResponseDTO {
     private final List<Event> events;
 
     @Builder
-    public ProductInfoResponseDTO(String barcode, String productName, String enterprise, String description, Integer customerPrice, Integer orderPrice, String category, String feature, LocalDateTime expirationDate, List<Event> events) {
+    public ProductInfoResponseDTO(
+            String barcode,
+            String productName,
+            String enterprise,
+            String description,
+            Integer customerPrice,
+            Integer orderPrice,
+            String category,
+            String feature,
+            LocalDateTime expirationDate,
+            List<Event> events) {
         this.barcode = barcode;
         this.productName = productName;
         this.enterprise = enterprise;
@@ -35,20 +45,21 @@ public class ProductInfoResponseDTO {
         this.events = events;
     }
 
-    public static ProductInfoResponseDTO fromProduct(Product product){
-        ProductInfoResponseDTO productInfoResponseDTO = ProductInfoResponseDTO.builder()
-                .barcode(product.getBarcode())
-                .productName(product.getProductName())
-                .enterprise(product.getEnterprise())
-                .description(product.getDescription())
-                .customerPrice(product.getCustomerPrice())
-                .orderPrice(product.getOrderPrice())
-                .category(product.getCategory())
-                .feature(product.getFeature())
-                .expirationDate(product.getExpirationDate())
-                .barcode(product.getBarcode())
-                .events(product.getEvents())
-                .build();
+    public static ProductInfoResponseDTO fromProduct(Product product) {
+        ProductInfoResponseDTO productInfoResponseDTO =
+                ProductInfoResponseDTO.builder()
+                        .barcode(product.getBarcode())
+                        .productName(product.getProductName())
+                        .enterprise(product.getEnterprise())
+                        .description(product.getDescription())
+                        .customerPrice(product.getCustomerPrice())
+                        .orderPrice(product.getOrderPrice())
+                        .category(product.getCategory())
+                        .feature(product.getFeature())
+                        .expirationDate(product.getExpirationDate())
+                        .barcode(product.getBarcode())
+                        .events(product.getEvents())
+                        .build();
 
         return productInfoResponseDTO;
     }

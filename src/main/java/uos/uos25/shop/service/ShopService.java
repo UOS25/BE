@@ -1,7 +1,8 @@
 package uos.uos25.shop.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.exception.ShopNotFoundException;
 import uos.uos25.shop.repository.ShopRepository;
@@ -11,7 +12,7 @@ import uos.uos25.shop.repository.ShopRepository;
 public class ShopService {
     private final ShopRepository shopRepository;
 
-    public Shop findShopById(Long shopId){
+    public Shop findShopById(Long shopId) {
         return shopRepository.findById(shopId).orElseThrow(() -> new ShopNotFoundException());
     }
 }

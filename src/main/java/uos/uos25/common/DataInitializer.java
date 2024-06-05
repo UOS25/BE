@@ -1,17 +1,21 @@
 package uos.uos25.common;
 
+import java.time.LocalDateTime;
+
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
+
+import lombok.RequiredArgsConstructor;
+import uos.uos25.customer.entity.Customer;
+import uos.uos25.customer.repository.CustomerRepository;
+import uos.uos25.disposal.entity.Disposal;
+import uos.uos25.disposal.repository.DisposalRepository;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.EmployeeWorkingHistory;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.employee.repository.EmployeeWorkingHistoryRepository;
-import uos.uos25.customer.entity.Customer;
-import uos.uos25.customer.repository.CustomerRepository;
-import uos.uos25.disposal.entity.Disposal;
-import uos.uos25.disposal.repository.DisposalRepository;
 import uos.uos25.event.entity.Event;
 import uos.uos25.event.repository.EventRepository;
 import uos.uos25.headQuarter.entity.HeadQuarter;
@@ -30,8 +34,6 @@ import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.repository.ShopRepository;
-
-import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -52,7 +54,7 @@ public class DataInitializer {
     private final ReceiptDetailRepository receiptDetailRepository;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         Product product = createProductDummy();
         HeadQuarter headQuarter = createHeadQuarter();
         Shop shop = createShop(headQuarter);
@@ -69,164 +71,157 @@ public class DataInitializer {
         ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
     }
 
-    private Product createProductDummy(){
+    private Product createProductDummy() {
         // product dummy
-        Product product = Product.builder()
-                .barcode("barcode")
-                .enterprise("enterprise")
-                .productName("name")
-                .customerPrice(1000)
-                .orderPrice(2000)
-                .category("category")
-                .description("description")
-                .feature("feature")
-                .expirationDate(LocalDateTime.now())
-                .build();
+        Product product =
+                Product.builder()
+                        .barcode("barcode")
+                        .enterprise("enterprise")
+                        .productName("name")
+                        .customerPrice(1000)
+                        .orderPrice(2000)
+                        .category("category")
+                        .description("description")
+                        .feature("feature")
+                        .expirationDate(LocalDateTime.now())
+                        .build();
         return productRepository.save(product);
-//        Product product2 = Product.builder()
-//                .enterprise("enterprise")
-//                .productName("name2")
-//                .barcode("barcode2")
-//                .customerPrice(3000)
-//                .orderPrice(4000)
-//                .category("category")
-//                .description("description2")
-//                .feature("feature")
-//                .expirationDate(LocalDateTime.now())
-//                .build();
-//        Product savedProduct2 = productRepository.save(product2);
+        //        Product product2 = Product.builder()
+        //                .enterprise("enterprise")
+        //                .productName("name2")
+        //                .barcode("barcode2")
+        //                .customerPrice(3000)
+        //                .orderPrice(4000)
+        //                .category("category")
+        //                .description("description2")
+        //                .feature("feature")
+        //                .expirationDate(LocalDateTime.now())
+        //                .build();
+        //        Product savedProduct2 = productRepository.save(product2);
     }
 
-    private HeadQuarter createHeadQuarter(){
+    private HeadQuarter createHeadQuarter() {
         // HQ dummy
-        HeadQuarter headQuarter = HeadQuarter.builder()
-                .hqEmpName("김본사")
-                .hqEmpHp("01012341234")
-                .build();
+        HeadQuarter headQuarter =
+                HeadQuarter.builder().hqEmpName("김본사").hqEmpHp("01012341234").build();
         return headQuarterRepository.save(headQuarter);
     }
 
-    private Shop createShop(HeadQuarter headQuarter){
+    private Shop createShop(HeadQuarter headQuarter) {
         // Shop dummy
-        Shop shop = Shop.builder()
-                .shopName("시립점")
-                .address("서울특별시 시립로 22")
-                .relationship("직영점")
-                .headQuarter(headQuarter)
-                .build();
+        Shop shop =
+                Shop.builder()
+                        .shopName("시립점")
+                        .address("서울특별시 시립로 22")
+                        .relationship("직영점")
+                        .headQuarter(headQuarter)
+                        .build();
         return shopRepository.save(shop);
     }
 
-    private Orders createOrders(Shop shop, Product product){
+    private Orders createOrders(Shop shop, Product product) {
         // Orders dummy
-        Orders orders = Orders.builder()
-                .ordersStatus("주문 완료")
-                .givenEa(10)
-                .ordersEa(10)
-                .ordersCheck("검품 이전")
-                .shop(shop)
-                .product(product)
-                .build();
+        Orders orders =
+                Orders.builder()
+                        .ordersStatus("주문 완료")
+                        .givenEa(10)
+                        .ordersEa(10)
+                        .ordersCheck("검품 이전")
+                        .shop(shop)
+                        .product(product)
+                        .build();
         return ordersRepository.save(orders);
     }
 
-    private Returns createReturnsDummy(Shop shop, Product product){
+    private Returns createReturnsDummy(Shop shop, Product product) {
         // Returns dummy
-        Returns returns = Returns.builder()
-                .ea(10)
-                .returnsStatus("반품 시작")
-                .shop(shop)
-                .product(product)
-                .build();
+        Returns returns =
+                Returns.builder().ea(10).returnsStatus("반품 시작").shop(shop).product(product).build();
         return returnsRepository.save(returns);
     }
 
-    private Employee createEmployeeDummy(Shop shop){
+    private Employee createEmployeeDummy(Shop shop) {
         // Employee dummy
-        Employee employee = Employee.builder()
-                .employeeName("박직원")
-                .employmentDate(LocalDateTime.now().withNano(0))
-                .position("점원")
-                .registrationNumber("123123-1231231")
-                .salary(10000)
-                .partTime(PartTime.DAY)
-                .account("1231234123412")
-                .shop(shop)
-                .build();
+        Employee employee =
+                Employee.builder()
+                        .employeeName("박직원")
+                        .employmentDate(LocalDateTime.now().withNano(0))
+                        .position("점원")
+                        .registrationNumber("123123-1231231")
+                        .salary(10000)
+                        .partTime(PartTime.DAY)
+                        .account("1231234123412")
+                        .shop(shop)
+                        .build();
         return employeeRepository.save(employee);
     }
 
-    private EmployeeWorkingHistory createEmployeeWorkingHistoryDummy(Employee employee){
+    private EmployeeWorkingHistory createEmployeeWorkingHistoryDummy(Employee employee) {
         // EmployeeWorkingHistory dummy
-        EmployeeWorkingHistory empWorkingHistory = EmployeeWorkingHistory.builder()
-                .employee(employee)
-                .startDateTime(LocalDateTime.now().withNano(0))
-                .endDateTime(LocalDateTime.now().plusHours(8L).withNano(0))
-                .workingHour(8L)
-                .build();
+        EmployeeWorkingHistory empWorkingHistory =
+                EmployeeWorkingHistory.builder()
+                        .employee(employee)
+                        .startDateTime(LocalDateTime.now().withNano(0))
+                        .endDateTime(LocalDateTime.now().plusHours(8L).withNano(0))
+                        .workingHour(8L)
+                        .build();
         return employeeWorkingHistoryRepository.save(empWorkingHistory);
     }
 
-    private Disposal createDisposalDummy(Shop shop, Product product){
+    private Disposal createDisposalDummy(Shop shop, Product product) {
         // Disposal dummy
-        Disposal disposal = Disposal.builder()
-                .shop(shop)
-                .product(product)
-                .ea(10)
-                .build();
+        Disposal disposal = Disposal.builder().shop(shop).product(product).ea(10).build();
         return disposalRepository.save(disposal);
     }
 
-    private Customer createCustomerDummy(){
+    private Customer createCustomerDummy() {
         // Customer dummy
-        Customer customer = Customer.builder()
-                .phoneNumber("01012341234")
-                .nickname("김고객")
-                .build();
+        Customer customer = Customer.builder().phoneNumber("01012341234").nickname("김고객").build();
         return customerRepository.save(customer);
     }
 
-    private Inventory createInventoryDummy(Product product, Shop shop){
+    private Inventory createInventoryDummy(Product product, Shop shop) {
         // Inventory dummy
-        Inventory inventory = Inventory.builder()
-                .product(product)
-                .shop(shop)
-                .ea(10)
-                .display(0)
-                .warehousingDate(LocalDateTime.now())
-                .expirationDate(LocalDateTime.now().plusDays(7L))
-                .build();
+        Inventory inventory =
+                Inventory.builder()
+                        .product(product)
+                        .shop(shop)
+                        .ea(10)
+                        .display(0)
+                        .warehousingDate(LocalDateTime.now())
+                        .expirationDate(LocalDateTime.now().plusDays(7L))
+                        .build();
         return inventoryRepository.save(inventory);
     }
-    private Event createEvent(Product product){
-        Event event = Event.builder()
-                .product(product)
-                .eventName("이벤트")
-                .eventCategory("카테고리")
-                .startDate(LocalDateTime.now())
-                .endDate(LocalDateTime.now().plusDays(7L))
-                .build();
+
+    private Event createEvent(Product product) {
+        Event event =
+                Event.builder()
+                        .product(product)
+                        .eventName("이벤트")
+                        .eventCategory("카테고리")
+                        .startDate(LocalDateTime.now())
+                        .endDate(LocalDateTime.now().plusDays(7L))
+                        .build();
         return eventRepository.save(event);
     }
 
-    private Receipt createReceiptDummy(Employee employee, Customer customer){
-        Receipt receipt = Receipt.builder()
-                .employee(employee)
-                .customer(customer)
-                .age(20)
-                .gender("FEMALE")
-                .purchaseStatus("구매완료")
-                .purchaseDate(LocalDateTime.now())
-                .build();
+    private Receipt createReceiptDummy(Employee employee, Customer customer) {
+        Receipt receipt =
+                Receipt.builder()
+                        .employee(employee)
+                        .customer(customer)
+                        .age(20)
+                        .gender("FEMALE")
+                        .purchaseStatus("구매완료")
+                        .purchaseDate(LocalDateTime.now())
+                        .build();
         return receiptRepository.save(receipt);
     }
 
-    private ReceiptDetail createReceiptDetailDummy(Receipt receipt, Product product){
-        ReceiptDetail receiptDetail = ReceiptDetail.builder()
-                .product(product)
-                .receipt(receipt)
-                .ea(10)
-                .build();
+    private ReceiptDetail createReceiptDetailDummy(Receipt receipt, Product product) {
+        ReceiptDetail receiptDetail =
+                ReceiptDetail.builder().product(product).receipt(receipt).ea(10).build();
         return receiptDetailRepository.save(receiptDetail);
     }
 }

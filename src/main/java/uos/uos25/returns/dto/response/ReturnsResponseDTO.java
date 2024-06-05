@@ -11,10 +11,11 @@ public class ReturnsResponseDTO {
     private final Integer ea;
     private final String returnsStatus;
 
-    public static ReturnsResponseDTO fromEntity(Returns returns){
-        ReturnsResponseDTO returnsResponseDTO = new ReturnsResponseDTO(returns.getReturnsId(), returns.getEa(), returns.getReturnsStatus());
+    public static ReturnsResponseDTO fromEntity(Returns returns) {
+        ReturnsResponseDTO returnsResponseDTO =
+                new ReturnsResponseDTO(
+                        returns.getReturnsId(), returns.getEa(), returns.getReturnsStatus());
 
         return returnsResponseDTO;
     }
-
 }

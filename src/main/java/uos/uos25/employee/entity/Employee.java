@@ -1,13 +1,14 @@
 package uos.uos25.employee.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.shop.entity.Shop;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.*;
+
+import lombok.*;
+import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.shop.entity.Shop;
 
 @Entity
 @Getter
@@ -16,7 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 public class Employee {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(nullable = false)
     private Long employeeId; // Long으로 변경
 
@@ -50,16 +52,31 @@ public class Employee {
     private Shop shop;
 
     // Cascade 전용 필드.
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "employee",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private List<Receipt> receipts = new ArrayList<>();
 
     // Cascade 전용 필드.
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "employee",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private List<EmployeeWorkingHistory> workingHistories = new ArrayList<>();
 
     @Builder
-
-    public Employee(String employeeName, LocalDateTime employmentDate, String position, String registrationNumber, Integer salary, PartTime partTime, String account, Shop shop) {
+    public Employee(
+            String employeeName,
+            LocalDateTime employmentDate,
+            String position,
+            String registrationNumber,
+            Integer salary,
+            PartTime partTime,
+            String account,
+            Shop shop) {
         this.employeeName = employeeName;
         this.employmentDate = employmentDate;
         this.position = position;

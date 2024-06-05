@@ -1,26 +1,28 @@
 package uos.uos25.shop.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.employee.entity.Employee;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.entity.Disposal;
+import uos.uos25.employee.entity.Employee;
 import uos.uos25.headQuarter.entity.HeadQuarter;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.sale.entity.Sales;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @NoArgsConstructor
 public class Shop extends BaseEntity {
-    @Id @Column(nullable = false)
+    @Id
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
 

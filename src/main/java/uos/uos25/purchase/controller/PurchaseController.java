@@ -1,16 +1,14 @@
 package uos.uos25.purchase.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.*;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.purchase.dto.request.PurchaseRequestDTO;
 import uos.uos25.purchase.sevice.PurchaseService;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,15 +18,19 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     @PostMapping
-    public void purchase(@RequestBody PurchaseRequestDTO purchaseRequestDTO){
-        Long shopId = purchaseRequestDTO.getShopId();
+    public void purchase(@RequestBody PurchaseRequestDTO purchaseRequestDTO) {
         Long employeeId = purchaseRequestDTO.getEmployeeId();
         String phoneNumber = purchaseRequestDTO.getPhoneNumber();
         Integer age = purchaseRequestDTO.getAge();
         String gender = purchaseRequestDTO.getGender();
+        Integer mileage = purchaseRequestDTO.getMileage();
         List<ItemInfo> itemInfos = purchaseRequestDTO.getItemInfos();
 
-        purchaseService.purchase(shopId, employeeId, phoneNumber, age, gender, itemInfos);
+        purchaseService.purchase(employeeId, phoneNumber, age, gender, mileage, itemInfos);
     }
 
+    @DeleteMapping("/{receiptId}")
+    public void cancelPurchase(@PathVariable("receiptId") Long receiptId) {
+        purchaseService.cancel(receiptId);
+    }
 }

@@ -1,22 +1,21 @@
 package uos.uos25.orders.entity;
 
 import jakarta.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @NoArgsConstructor
-public class Orders extends BaseEntity{
+public class Orders extends BaseEntity {
 
-    @Id @Column(nullable = false)
+    @Id
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersId;
 
@@ -41,7 +40,13 @@ public class Orders extends BaseEntity{
     private Product product;
 
     @Builder
-    public Orders(String ordersStatus, Integer givenEa, Integer ordersEa, String ordersCheck, Shop shop, Product product){
+    public Orders(
+            String ordersStatus,
+            Integer givenEa,
+            Integer ordersEa,
+            String ordersCheck,
+            Shop shop,
+            Product product) {
         this.ordersStatus = ordersStatus;
         this.givenEa = givenEa;
         this.ordersEa = ordersEa;
@@ -50,7 +55,7 @@ public class Orders extends BaseEntity{
         this.product = product;
     }
 
-    public void setOrdersEa(Integer ea){
+    public void setOrdersEa(Integer ea) {
         this.ordersEa = ea;
     }
 

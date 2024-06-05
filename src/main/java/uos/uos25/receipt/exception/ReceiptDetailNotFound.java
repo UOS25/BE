@@ -1,4 +1,3 @@
 package uos.uos25.receipt.exception;
 
-public class ReceiptDetailNotFound extends RuntimeException {
-}
+public class ReceiptDetailNotFound extends RuntimeException {}

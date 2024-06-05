@@ -15,11 +15,25 @@ public class InventoryGetResponseDTO {
     private Integer displayEa;
 
     @Builder
-    public InventoryGetResponseDTO(Long shopId, String barcode, String productName, Integer ea, Integer displayEa) {
+    public InventoryGetResponseDTO(
+            Long shopId, String barcode, String productName, Integer ea, Integer displayEa) {
         this.shopId = shopId;
         this.barcode = barcode;
         this.productName = productName;
         this.ea = ea;
         this.displayEa = displayEa;
+    }
+
+    public static InventoryGetResponseDTO fromEntity(Inventory inventory) {
+        InventoryGetResponseDTO inventoryGetResponseDTO =
+                InventoryGetResponseDTO.builder()
+                        .shopId(inventory.getShop().getShopId())
+                        .barcode(inventory.getProduct().getBarcode())
+                        .productName(inventory.getProduct().getProductName())
+                        .ea(inventory.getEa())
+                        .displayEa(inventory.getDisplay())
+                        .build();
+
+        return inventoryGetResponseDTO;
     }
 }

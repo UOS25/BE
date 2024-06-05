@@ -1,11 +1,9 @@
 package uos.uos25.customer.dto.response;
 
+import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import uos.uos25.customer.entity.Customer;
-
-import java.time.LocalDateTime;
 
 @Data
 public class CustomerGetResponseDTO {

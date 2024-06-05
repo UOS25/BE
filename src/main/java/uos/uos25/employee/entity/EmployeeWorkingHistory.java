@@ -1,17 +1,20 @@
 package uos.uos25.employee.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 
+import jakarta.persistence.*;
+
+import lombok.*;
+
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeWorkingHistory {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(nullable = false)
     private Long employeeWorkingHistoryId;
 
@@ -29,7 +32,11 @@ public class EmployeeWorkingHistory {
     private Long workingHour;
 
     @Builder
-    public EmployeeWorkingHistory(Employee employee, LocalDateTime startDateTime, LocalDateTime endDateTime, Long workingHour) {
+    public EmployeeWorkingHistory(
+            Employee employee,
+            LocalDateTime startDateTime,
+            LocalDateTime endDateTime,
+            Long workingHour) {
         this.employee = employee;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;

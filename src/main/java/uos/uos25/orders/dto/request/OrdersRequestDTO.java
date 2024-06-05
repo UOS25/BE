@@ -10,7 +10,8 @@ public class OrdersRequestDTO {
     private Integer ea;
     private Integer totalPrice;
 
-    public OrdersRequestDTO(Long shopId, String barcode,String productName, Integer ea, Integer totalPrice) {
+    public OrdersRequestDTO(
+            Long shopId, String barcode, String productName, Integer ea, Integer totalPrice) {
         this.shopId = shopId;
         this.barcode = barcode;
         this.productName = productName;

@@ -1,9 +1,9 @@
 package uos.uos25.event.dto.request;
 
-import lombok.Data;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class EventCreateRequestDTO {
