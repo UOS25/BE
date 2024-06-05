@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
-import uos.uos25.orders.dto.request.OrdersRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
+import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.service.OrdersService;
 
@@ -19,17 +20,22 @@ import uos.uos25.orders.service.OrdersService;
 @RequiredArgsConstructor
 @Tag(name = "주문", description = "본사로의")
 public class OrdersController {
-    private OrdersService ordersService;
+    private final OrdersService ordersService;
 
     @PostMapping
-    public ResponseEntity<Orders> order(@RequestBody OrdersRequestDTO ordersRequestDTO) {
-        Orders savedOrders = ordersService.save(ordersRequestDTO);
+    public ResponseEntity<Orders> order(
+            @RequestBody OrdersCreateRequestDTO ordersCreateRequestDTO) {
+        Orders savedOrders = ordersService.save(ordersCreateRequestDTO);
         return new ResponseEntity<>(savedOrders, HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Orders>> getList() {
-        return new ResponseEntity<>(ordersService.findOrders(), HttpStatus.OK);
+    public ResponseEntity<List<OrdersGetResponseDTO>> getList() {
+        List<Orders> orders = ordersService.findOrders();
+        List<OrdersGetResponseDTO> ordersGetResponseDTOS =
+                orders.stream().map(order -> OrdersGetResponseDTO.fromEntity(order)).toList();
+
+        return ResponseEntity.ok(ordersGetResponseDTOS);
     }
 
     @PatchMapping("/modify")
