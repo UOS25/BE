@@ -1,5 +1,6 @@
 package uos.uos25.returns.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/returns")
+@Tag(name = "반품", description = "본사로의")
 public class ReturnsController {
     private final ReturnsService returnsService;
 

@@ -1,5 +1,6 @@
 package uos.uos25.disposal.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/disposal")
 @RequiredArgsConstructor
+@Tag(name = "폐기")
 public class DisposalController {
     private final DisposalService disposalService;
 

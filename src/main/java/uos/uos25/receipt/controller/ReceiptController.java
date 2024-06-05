@@ -1,5 +1,6 @@
 package uos.uos25.receipt.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import uos.uos25.receipt.service.ReceiptService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/receipt")
+@Tag(name = "영수증")
 public class ReceiptController {
     private final ReceiptService receiptService;
 
