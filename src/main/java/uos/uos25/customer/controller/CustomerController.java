@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,9 +76,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{phoneNumber}")
-    public ResponseEntity<Boolean> deleteCustomer(@PathVariable String phoneNumber) {
+    public ResponseEntity<Void> deleteCustomer(@PathVariable String phoneNumber) {
         customerService.deleteCustomer(phoneNumber);
 
-        return ResponseEntity.ok(true);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
