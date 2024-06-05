@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.DTO.EmployeeDTO;
+import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
+import uos.uos25.employee.dto.request.EmployeeCreateResponseDTO;
+import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 
 @RestController
@@ -23,25 +25,24 @@ public class EmployeeController {
 
     // 모든 직원 가져오기
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> findAll() {
-        List<EmployeeDTO> employeeDTOS = employeeService.getAllEmployees();
-        return ResponseEntity.ok(employeeDTOS);
+    public ResponseEntity<List<EmployeeCreateReqeustDTO>> findAll() {
+        List<EmployeeCreateReqeustDTO> employeeCreateReqeustDTOS = employeeService.getAllEmployees();
+        return ResponseEntity.ok(employeeCreateReqeustDTOS);
     }
 
     // 직원 저장
-    @PostMapping("/join")
-    public ResponseEntity<?> join(@Valid @RequestBody EmployeeDTO employeeDTO) {
+    @PostMapping
+    public ResponseEntity<EmployeeCreateResponseDTO> join(@Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+        Employee employee = employeeService.saveEmployee(employeeCreateReqeustDTO);
 
-        employeeService.saveEmployee(employeeDTO);
-        String msg = "저장되었습니다.";
-        return new ResponseEntity<>(msg, HttpStatus.CREATED);
+        return ResponseEntity.ok(EmployeeCreateResponseDTO.fromEntity(employee));
     }
 
     // 직원 수정
     @PutMapping("/update/{employeeId}")
     public ResponseEntity<?> updateEmployee(
-            @PathVariable Long employeeId, @Valid @RequestBody EmployeeDTO employeeDTO) {
-        employeeService.updateEmployee(employeeId, employeeDTO);
+            @PathVariable Long employeeId, @Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+        employeeService.updateEmployee(employeeId, employeeCreateReqeustDTO);
         String msg = "수정되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }

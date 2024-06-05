@@ -1,4 +1,4 @@
-package uos.uos25.employee.DTO;
+package uos.uos25.employee.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EmployeeDTO {
+public class EmployeeCreateReqeustDTO {
 
     @NotBlank(message = "직원 이름을 입력하세요.")
     private String employeeName;

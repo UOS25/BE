@@ -12,7 +12,6 @@ import uos.uos25.shop.entity.Shop;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
@@ -85,5 +84,13 @@ public class Employee {
         this.partTime = partTime;
         this.account = account;
         this.shop = shop;
+    }
+
+    public void setPartTime(PartTime partTime) {
+        this.partTime = partTime;
+    }
+
+    public void setFiredDate(LocalDateTime firedDate) {
+        this.firedDate = firedDate;
     }
 }

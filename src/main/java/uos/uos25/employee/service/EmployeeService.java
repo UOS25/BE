@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.DTO.EmployeeDTO;
+import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
@@ -24,7 +24,7 @@ public class EmployeeService {
 
     @Transactional
     // 모든 직원 리스트를 가져온 후, DTO 리스트로 반환합니다.
-    public List<EmployeeDTO> getAllEmployees() {
+    public List<EmployeeCreateReqeustDTO> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         return employees.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
@@ -35,13 +35,13 @@ public class EmployeeService {
 
     @Transactional
     // 직원 생성
-    public void saveEmployee(EmployeeDTO employeeDTO) {
-        employeeRepository.save(makeNewEmployee(employeeDTO));
+    public Employee saveEmployee(EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+        return employeeRepository.save(makeNewEmployee(employeeCreateReqeustDTO));
     }
 
     @Transactional
     // 직원 수정
-    public void updateEmployee(Long employeeId, EmployeeDTO employeeDTO) {
+    public void updateEmployee(Long employeeId, EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
         Employee findEmployee =
                 employeeRepository
                         .findById(employeeId)
@@ -50,7 +50,7 @@ public class EmployeeService {
                                         new IllegalArgumentException(
                                                 "다음의 Id를 가진 employee가 없습니다: " + employeeId));
 
-        convertToEmployee(employeeDTO, findEmployee);
+        convertToEmployee(employeeCreateReqeustDTO, findEmployee);
     }
 
     @Transactional
@@ -88,36 +88,36 @@ public class EmployeeService {
 
     // 리팩터링 메소드
     // 새로운 employee 객체를 만들어 반환합니다. saveEmployee()에 사용됩니다.
-    private Employee makeNewEmployee(EmployeeDTO employeeDTO) {
+    private Employee makeNewEmployee(EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
         Employee employee = new Employee();
         // DTO에서 Employee로 변환합니다.
-        convertToEmployee(employeeDTO, employee);
+        convertToEmployee(employeeCreateReqeustDTO, employee);
         // 현재 시간을 세팅합니다.
         employee.setEmploymentDate(LocalDateTime.now().withNano(0));
         return employee;
     }
 
     // EmployeeDTO를 Employee로 변환합니다. updateEmployee()에 사용됩니다.
-    private void convertToEmployee(EmployeeDTO employeeDTO, Employee employee) {
-        employee.setEmployeeName(employeeDTO.getEmployeeName());
-        employee.setPosition(employeeDTO.getPosition());
-        employee.setRegistrationNumber(employeeDTO.getRegistrationNumber());
-        employee.setSalary(employeeDTO.getSalary());
-        employee.setPartTime(PartTime.valueOf(employeeDTO.getPartTime()));
-        employee.setAccount(employeeDTO.getAccount());
-        employee.setShop(shopRepository.findByShopName(employeeDTO.getShopName()));
+    private void convertToEmployee(EmployeeCreateReqeustDTO employeeCreateReqeustDTO, Employee employee) {
+        employee.setEmployeeName(employeeCreateReqeustDTO.getEmployeeName());
+        employee.setPosition(employeeCreateReqeustDTO.getPosition());
+        employee.setRegistrationNumber(employeeCreateReqeustDTO.getRegistrationNumber());
+        employee.setSalary(employeeCreateReqeustDTO.getSalary());
+        employee.setPartTime(PartTime.valueOf(employeeCreateReqeustDTO.getPartTime()));
+        employee.setAccount(employeeCreateReqeustDTO.getAccount());
+        employee.setShop(shopRepository.findByShopName(employeeCreateReqeustDTO.getShopName()));
     }
 
     // Employee를 DTO로 변환합니다.
-    private EmployeeDTO convertToDTO(Employee employee) {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setEmployeeName(employee.getEmployeeName());
-        employeeDTO.setPosition(employee.getPosition());
-        employeeDTO.setRegistrationNumber(employee.getRegistrationNumber());
-        employeeDTO.setSalary(employee.getSalary());
-        employeeDTO.setPartTime(employee.getPartTime().toString());
-        employeeDTO.setAccount(employee.getAccount());
-        employeeDTO.setShopName(employee.getShop().getShopName());
-        return employeeDTO;
+    private EmployeeCreateReqeustDTO convertToDTO(Employee employee) {
+        EmployeeCreateReqeustDTO employeeCreateReqeustDTO = new EmployeeCreateReqeustDTO();
+        employeeCreateReqeustDTO.setEmployeeName(employee.getEmployeeName());
+        employeeCreateReqeustDTO.setPosition(employee.getPosition());
+        employeeCreateReqeustDTO.setRegistrationNumber(employee.getRegistrationNumber());
+        employeeCreateReqeustDTO.setSalary(employee.getSalary());
+        employeeCreateReqeustDTO.setPartTime(employee.getPartTime().toString());
+        employeeCreateReqeustDTO.setAccount(employee.getAccount());
+        employeeCreateReqeustDTO.setShopName(employee.getShop().getShopName());
+        return employeeCreateReqeustDTO;
     }
 }

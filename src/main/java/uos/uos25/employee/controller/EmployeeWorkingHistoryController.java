@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.DTO.EmployeeWorkingHistoryDTO;
+import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.employee.service.EmployeeWorkingHistoryService;
 
