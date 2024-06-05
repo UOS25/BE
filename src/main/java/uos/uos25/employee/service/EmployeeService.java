@@ -2,7 +2,6 @@ package uos.uos25.employee.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import jakarta.transaction.Transactional;
 
@@ -51,9 +50,18 @@ public class EmployeeService {
                         .orElseThrow(
                                 () ->
                                         new IllegalArgumentException(
-                                                "다음의 Id를 가진 employee가 없습니다: " + employeeUpdateReqeustDTO.getEmployeeId()));
+                                                "다음의 Id를 가진 employee가 없습니다: "
+                                                        + employeeUpdateReqeustDTO
+                                                                .getEmployeeId()));
 
-        findEmployee.update(employeeUpdateReqeustDTO.getEmployeeName(), employeeUpdateReqeustDTO.getPosition(), employeeUpdateReqeustDTO.getRegistrationNumber(), employeeUpdateReqeustDTO.getSalary(), employeeUpdateReqeustDTO.getPartTime(), employeeUpdateReqeustDTO.getAccount(), shop);
+        findEmployee.update(
+                employeeUpdateReqeustDTO.getEmployeeName(),
+                employeeUpdateReqeustDTO.getPosition(),
+                employeeUpdateReqeustDTO.getRegistrationNumber(),
+                employeeUpdateReqeustDTO.getSalary(),
+                employeeUpdateReqeustDTO.getPartTime(),
+                employeeUpdateReqeustDTO.getAccount(),
+                shop);
     }
 
     @Transactional

@@ -4,12 +4,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.PartTime;
-
-import java.time.LocalDateTime;
 
 @Data
 public class EmployeeCreateReqeustDTO {

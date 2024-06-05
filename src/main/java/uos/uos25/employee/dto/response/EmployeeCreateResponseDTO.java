@@ -2,10 +2,10 @@ package uos.uos25.employee.dto.response;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.employee.entity.Employee;
-
 
 @Data
 public class EmployeeCreateResponseDTO {
@@ -32,7 +32,14 @@ public class EmployeeCreateResponseDTO {
     private Long shopId;
 
     @Builder
-    public EmployeeCreateResponseDTO(String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, Long shopId) {
+    public EmployeeCreateResponseDTO(
+            String employeeName,
+            String position,
+            String registrationNumber,
+            Integer salary,
+            String partTime,
+            String account,
+            Long shopId) {
         this.employeeName = employeeName;
         this.position = position;
         this.registrationNumber = registrationNumber;
@@ -42,7 +49,7 @@ public class EmployeeCreateResponseDTO {
         this.shopId = shopId;
     }
 
-    public static EmployeeCreateResponseDTO fromEntity(Employee employee){
+    public static EmployeeCreateResponseDTO fromEntity(Employee employee) {
         return EmployeeCreateResponseDTO.builder()
                 .employeeName(employee.getEmployeeName())
                 .position(employee.getPosition())

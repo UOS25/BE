@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
-import uos.uos25.employee.dto.response.EmployeeCreateResponseDTO;
 import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
+import uos.uos25.employee.dto.response.EmployeeCreateResponseDTO;
 import uos.uos25.employee.dto.response.EmployeeGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
@@ -26,7 +26,8 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeCreateResponseDTO> join(@Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+    public ResponseEntity<EmployeeCreateResponseDTO> join(
+            @Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
         Employee employee = employeeService.saveEmployee(employeeCreateReqeustDTO);
 
         return ResponseEntity.ok(EmployeeCreateResponseDTO.fromEntity(employee));
@@ -35,7 +36,10 @@ public class EmployeeController {
     @GetMapping
     public ResponseEntity<List<EmployeeGetResponseDTO>> findAll() {
         List<Employee> employees = employeeService.findAllEmployees();
-        List<EmployeeGetResponseDTO> employeeGetResponseDTOS = employees.stream().map(employee -> EmployeeGetResponseDTO.fromEntity(employee)).toList();
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
 
         return ResponseEntity.ok(employeeGetResponseDTOS);
     }
@@ -50,7 +54,8 @@ public class EmployeeController {
     // 직원 수정
     @PutMapping
     public ResponseEntity<?> updateEmployee(
-            @PathVariable Long employeeId, @Valid @RequestBody EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
+            @PathVariable Long employeeId,
+            @Valid @RequestBody EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
         employeeService.updateEmployee(employeeUpdateReqeustDTO);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

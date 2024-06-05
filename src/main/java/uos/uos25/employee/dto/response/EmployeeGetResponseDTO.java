@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 import uos.uos25.employee.entity.Employee;
 
-
 @Data
 public class EmployeeGetResponseDTO {
     private Long employeeId;
@@ -17,7 +16,15 @@ public class EmployeeGetResponseDTO {
     private Long shopId;
 
     @Builder
-    public EmployeeGetResponseDTO(Long employeeId, String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, Long shopId) {
+    public EmployeeGetResponseDTO(
+            Long employeeId,
+            String employeeName,
+            String position,
+            String registrationNumber,
+            Integer salary,
+            String partTime,
+            String account,
+            Long shopId) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.position = position;
@@ -28,7 +35,7 @@ public class EmployeeGetResponseDTO {
         this.shopId = shopId;
     }
 
-    public static EmployeeGetResponseDTO fromEntity(Employee employee){
+    public static EmployeeGetResponseDTO fromEntity(Employee employee) {
         return EmployeeGetResponseDTO.builder()
                 .employeeId(employee.getEmployeeId())
                 .employeeName(employee.getEmployeeName())
