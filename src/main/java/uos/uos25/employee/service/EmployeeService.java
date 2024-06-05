@@ -61,6 +61,7 @@ public class EmployeeService {
                 employeeUpdateReqeustDTO.getSalary(),
                 employeeUpdateReqeustDTO.getPartTime(),
                 employeeUpdateReqeustDTO.getAccount(),
+                employeeUpdateReqeustDTO.getBank(),
                 shop);
     }
 
@@ -107,6 +108,7 @@ public class EmployeeService {
                 .salary(employeeCreateReqeustDTO.getSalary())
                 .partTime(PartTime.valueOf(employeeCreateReqeustDTO.getPartTime()))
                 .account(employeeCreateReqeustDTO.getAccount())
+                .bank(employeeCreateReqeustDTO.getBank())
                 .employmentDate(LocalDateTime.now())
                 .shop(shop)
                 .build();

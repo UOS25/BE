@@ -13,6 +13,7 @@ public class EmployeeCreateResponseDTO {
     private Integer salary;
     private String partTime;
     private String account;
+    private String bank;
     private Long shopId;
 
     @Builder
@@ -24,6 +25,7 @@ public class EmployeeCreateResponseDTO {
             Integer salary,
             String partTime,
             String account,
+            String bank,
             Long shopId) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
@@ -32,6 +34,7 @@ public class EmployeeCreateResponseDTO {
         this.salary = salary;
         this.partTime = partTime;
         this.account = account;
+        this.bank = bank;
         this.shopId = shopId;
     }
 
@@ -44,6 +47,7 @@ public class EmployeeCreateResponseDTO {
                 .salary(employee.getSalary())
                 .partTime(employee.getPartTime().name())
                 .account(employee.getAccount())
+                .bank(employee.getBank())
                 .shopId(employee.getShop().getShopId())
                 .build();
     }
