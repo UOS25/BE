@@ -38,7 +38,7 @@ public class OrdersController {
         return ResponseEntity.ok(ordersGetResponseDTOS);
     }
 
-    @PatchMapping("/modify")
+    @PatchMapping
     public ResponseEntity<Long> modifyOrders(
             @RequestBody OrdersModifyRequestDTO ordersModifyRequestDTO) {
         Long modifiedOrdersId = ordersService.updateOrders(ordersModifyRequestDTO);
