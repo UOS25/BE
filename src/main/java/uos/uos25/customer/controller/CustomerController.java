@@ -63,10 +63,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{phoneNumber}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable String phoneNumber) {
+    public ResponseEntity<Boolean> deleteCustomer(@PathVariable String phoneNumber) {
         customerService.deleteCustomer(phoneNumber);
 
-        String msg = "고객 삭제가 완료되었습니다.";
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        return ResponseEntity.ok(true);
     }
 }
