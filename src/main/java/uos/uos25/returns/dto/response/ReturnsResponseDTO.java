@@ -1,21 +1,47 @@
 package uos.uos25.returns.dto.response;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.returns.entity.Returns;
+import uos.uos25.shop.dto.ShopInfo;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class ReturnsResponseDTO {
-    private final Long returnsId;
-    private final Integer ea;
-    private final String returnsStatus;
+    private Long returnsId;
+    private Integer ea;
+    private String returnsStatus;
+    private ShopInfo shopInfo;
+    private ProductInfo productInfo;
+
+    @Builder
+    public ReturnsResponseDTO(
+            Long returnsId,
+            Integer ea,
+            String returnsStatus,
+            ShopInfo shopInfo,
+            ProductInfo productInfo) {
+        this.returnsId = returnsId;
+        this.ea = ea;
+        this.returnsStatus = returnsStatus;
+        this.shopInfo = shopInfo;
+        this.productInfo = productInfo;
+    }
 
     public static ReturnsResponseDTO fromEntity(Returns returns) {
-        ReturnsResponseDTO returnsResponseDTO =
-                new ReturnsResponseDTO(
-                        returns.getReturnsId(), returns.getEa(), returns.getReturnsStatus());
-
-        return returnsResponseDTO;
+        return ReturnsResponseDTO.builder()
+                .returnsId(returns.getReturnsId())
+                .ea(returns.getEa())
+                .returnsStatus(builder().returnsStatus)
+                .shopInfo(
+                        new ShopInfo(
+                                returns.getShop().getShopId(), returns.getShop().getShopName()))
+                .productInfo(
+                        new ProductInfo(
+                                returns.getProduct().getBarcode(),
+                                returns.getProduct().getProductName()))
+                .build();
     }
 }

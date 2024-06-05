@@ -3,6 +3,8 @@ package uos.uos25.orders.dto.response;
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.orders.entity.Orders;
+import uos.uos25.product.dto.ProductInfo;
+import uos.uos25.shop.dto.ShopInfo;
 
 @Data
 public class OrdersGetResponseDTO {
@@ -13,28 +15,6 @@ public class OrdersGetResponseDTO {
     private Integer ordersEa;
     private ShopInfo shopInfo;
     private ProductInfo productInfo;
-
-    @Data
-    class ShopInfo {
-        private final Long shopId;
-        private final String shopName;
-
-        public ShopInfo(Long shopId, String shopName) {
-            this.shopId = shopId;
-            this.shopName = shopName;
-        }
-    }
-
-    @Data
-    class ProductInfo {
-        private final String barcode;
-        private final String productName;
-
-        public ProductInfo(String barcode, String productName) {
-            this.barcode = barcode;
-            this.productName = productName;
-        }
-    }
 
     @Builder
     public OrdersGetResponseDTO(

@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.returns.dto.request.ReturnsRequestDTO;
 import uos.uos25.returns.dto.response.ReturnsResponseDTO;
+import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.service.ReturnsService;
 
 @RestController
@@ -26,6 +27,10 @@ public class ReturnsController {
     @GetMapping("/{shopId}")
     public ResponseEntity<List<ReturnsResponseDTO>> getAllReturnsByShopId(
             @PathVariable Long shopId) {
-        return ResponseEntity.ok(returnsService.findAllByShopId(shopId));
+        List<Returns> returnses = returnsService.findAllByShopId(shopId);
+        List<ReturnsResponseDTO> returnsResponseDTOS =
+                returnses.stream().map(returns -> ReturnsResponseDTO.fromEntity(returns)).toList();
+
+        return ResponseEntity.ok(returnsResponseDTOS);
     }
 }

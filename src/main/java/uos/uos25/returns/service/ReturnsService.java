@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
 import uos.uos25.returns.dto.request.ReturnsRequestDTO;
-import uos.uos25.returns.dto.response.ReturnsResponseDTO;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
@@ -37,12 +36,8 @@ public class ReturnsService {
         return saved.getReturnsId();
     }
 
-    public List<ReturnsResponseDTO> findAllByShopId(Long shopId) {
+    public List<Returns> findAllByShopId(Long shopId) {
         Shop shop = shopService.findShopById(shopId);
-        List<Returns> allReturnsByShopId = returnsRepository.findAllByShop_ShopId(shopId);
-
-        return allReturnsByShopId.stream()
-                .map(returns -> ReturnsResponseDTO.fromEntity(returns))
-                .toList();
+        return returnsRepository.findAllByShop_ShopId(shopId);
     }
 }
