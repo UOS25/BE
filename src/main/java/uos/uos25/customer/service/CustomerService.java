@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
+import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.exception.CustomerNotFoundException;
 import uos.uos25.customer.repository.CustomerRepository;
@@ -30,10 +31,8 @@ public class CustomerService {
 
     // read
     // 조회 가능한 모든 고객 정보를 불러옵니다.
-    public List<CustomerCreateResponseDTO> findAllCustomers() {
-        List<Customer> allCustomers =  customerRepository.findAll();
-
-        return allCustomers.stream().map(CustomerCreateResponseDTO::fromEntity).toList();
+    public List<Customer> findAllCustomers() {
+        return customerRepository.findAll();
     }
 
     // read

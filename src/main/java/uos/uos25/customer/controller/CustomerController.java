@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerMileageUpdateRequestDTO;
 import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
+import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 
@@ -29,7 +30,10 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<List<CustomerCreateResponseDTO>> findAllCustomers() {
-        return ResponseEntity.ok(customerService.findAllCustomers());
+        List<Customer> customers = customerService.findAllCustomers();
+        List<CustomerCreateResponseDTO> customerCreateResponseDTOS = customers.stream().map(customer -> CustomerGetResponseDTO.fromEntity(customer)).toList();
+
+        return ResponseEntity.ok(customerCreateResponseDTOS);
     }
 
     @GetMapping("/{phoneNumber}")
