@@ -1,5 +1,6 @@
 package uos.uos25.employee.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 @RequiredArgsConstructor
-
+@Tag(name = "직원")
 public class EmployeeController {
 
     private final EmployeeService employeeService;

@@ -1,5 +1,6 @@
 package uos.uos25.purchase.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/purchase")
+@Tag(name = "구매", description = "고객이 행하는")
 public class PurchaseController {
     private final PurchaseService purchaseService;
 
