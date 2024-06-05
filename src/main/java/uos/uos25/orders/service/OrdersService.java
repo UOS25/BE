@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
-import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
+import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.exception.OrdersNotFoundException;
@@ -59,14 +59,12 @@ public class OrdersService {
     }
 
     @Transactional
-    public Long updateOrders(OrdersModifyRequestDTO ordersModifyRequestDTO) {
+    public void updateOrders(OrdersUpdateRequestDTO ordersUpdateRequestDTO) {
         Orders orders =
                 ordersRepository
-                        .findById(ordersModifyRequestDTO.getOrdersId())
+                        .findById(ordersUpdateRequestDTO.getOrdersId())
                         .orElseThrow(() -> new OrdersNotFoundException());
-        orders.setOrdersEa(ordersModifyRequestDTO.getEa());
-
-        return orders.getOrdersId();
+        orders.setOrdersEa(ordersUpdateRequestDTO.getEa());
     }
 
     @Transactional

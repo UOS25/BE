@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
-import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
+import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
 import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
 import uos.uos25.orders.entity.Orders;
@@ -47,10 +47,11 @@ public class OrdersController {
     }
 
     @PatchMapping
-    public ResponseEntity<Long> modifyOrders(
-            @RequestBody OrdersModifyRequestDTO ordersModifyRequestDTO) {
-        Long modifiedOrdersId = ordersService.updateOrders(ordersModifyRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+    public ResponseEntity<Void> modifyOrders(
+            @RequestBody OrdersUpdateRequestDTO ordersUpdateRequestDTO) {
+        ordersService.updateOrders(ordersUpdateRequestDTO);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping("/{ordersId}")
