@@ -2,14 +2,12 @@ package uos.uos25.returns.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.shop.dto.ShopInfo;
 
 @Data
-@NoArgsConstructor
-public class ReturnsResponseDTO {
+public class ReturnsCreateResponseDTO {
     private Long returnsId;
     private Integer ea;
     private String returnsStatus;
@@ -17,7 +15,7 @@ public class ReturnsResponseDTO {
     private ProductInfo productInfo;
 
     @Builder
-    public ReturnsResponseDTO(
+    public ReturnsCreateResponseDTO(
             Long returnsId,
             Integer ea,
             String returnsStatus,
@@ -30,11 +28,11 @@ public class ReturnsResponseDTO {
         this.productInfo = productInfo;
     }
 
-    public static ReturnsResponseDTO fromEntity(Returns returns) {
-        return ReturnsResponseDTO.builder()
+    public static ReturnsCreateResponseDTO fromEntity(Returns returns) {
+        return ReturnsCreateResponseDTO.builder()
                 .returnsId(returns.getReturnsId())
                 .ea(returns.getEa())
-                .returnsStatus(builder().returnsStatus)
+                .returnsStatus(returns.getReturnsStatus())
                 .shopInfo(
                         new ShopInfo(
                                 returns.getShop().getShopId(), returns.getShop().getShopName()))

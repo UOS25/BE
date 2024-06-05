@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.returns.dto.request.ReturnsRequestDTO;
-import uos.uos25.returns.dto.response.ReturnsResponseDTO;
+import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
+import uos.uos25.returns.dto.response.ReturnsCreateResponseDTO;
+import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.service.ReturnsService;
 
@@ -20,17 +21,24 @@ public class ReturnsController {
     private final ReturnsService returnsService;
 
     @PostMapping
-    public ResponseEntity<Long> createReturns(@RequestBody ReturnsRequestDTO returnsRequestDTO) {
-        return ResponseEntity.ok(returnsService.createReturns(returnsRequestDTO));
+    public ResponseEntity<ReturnsCreateResponseDTO> createReturns(
+            @RequestBody ReturnsCreateRequestDTO returnsCreateRequestDTO) {
+        Returns returns = returnsService.createReturns(returnsCreateRequestDTO);
+        ReturnsCreateResponseDTO returnsCreateResponseDTO =
+                ReturnsCreateResponseDTO.fromEntity(returns);
+
+        return ResponseEntity.ok(returnsCreateResponseDTO);
     }
 
     @GetMapping("/{shopId}")
-    public ResponseEntity<List<ReturnsResponseDTO>> getAllReturnsByShopId(
+    public ResponseEntity<List<ReturnsGetResponseDTO>> getAllReturnsByShopId(
             @PathVariable Long shopId) {
         List<Returns> returnses = returnsService.findAllByShopId(shopId);
-        List<ReturnsResponseDTO> returnsResponseDTOS =
-                returnses.stream().map(returns -> ReturnsResponseDTO.fromEntity(returns)).toList();
+        List<ReturnsGetResponseDTO> returnsGetResponseDTOS =
+                returnses.stream()
+                        .map(returns -> ReturnsGetResponseDTO.fromEntity(returns))
+                        .toList();
 
-        return ResponseEntity.ok(returnsResponseDTOS);
+        return ResponseEntity.ok(returnsGetResponseDTOS);
     }
 }
