@@ -93,4 +93,8 @@ public class Employee {
     public void setFiredDate(LocalDateTime firedDate) {
         this.firedDate = firedDate;
     }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
 }

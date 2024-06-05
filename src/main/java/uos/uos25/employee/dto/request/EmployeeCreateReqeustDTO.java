@@ -3,11 +3,15 @@ package uos.uos25.employee.dto.request;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.PartTime;
 
-@Getter
-@Setter
+import java.time.LocalDateTime;
+
+@Data
 public class EmployeeCreateReqeustDTO {
 
     @NotBlank(message = "직원 이름을 입력하세요.")
@@ -29,5 +33,5 @@ public class EmployeeCreateReqeustDTO {
     private String account;
 
     @NotBlank(message = "지점이름을 입력하세요.")
-    private String shopName; // 지점 이름 -> 지점 아이디 변환 필요
+    private Long shopId;
 }

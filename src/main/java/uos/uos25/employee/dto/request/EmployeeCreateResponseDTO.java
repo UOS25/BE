@@ -31,17 +31,17 @@ public class EmployeeCreateResponseDTO {
     private String account;
 
     @NotBlank(message = "지점이름을 입력하세요.")
-    private String shopName; // 지점 이름 -> 지점 아이디 변환 필요
+    private Long shopId; // 지점 이름 -> 지점 아이디 변환 필요
 
     @Builder
-    public EmployeeCreateResponseDTO(String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, String shopName) {
+    public EmployeeCreateResponseDTO(String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, Long shopId) {
         this.employeeName = employeeName;
         this.position = position;
         this.registrationNumber = registrationNumber;
         this.salary = salary;
         this.partTime = partTime;
         this.account = account;
-        this.shopName = shopName;
+        this.shopId = shopId;
     }
 
     public static EmployeeCreateResponseDTO fromEntity(Employee employee){
@@ -52,9 +52,7 @@ public class EmployeeCreateResponseDTO {
                 .salary(employee.getSalary())
                 .partTime(employee.getPartTime().name())
                 .account(employee.getAccount())
-                .shopName(employee.getShop().getShopName())
+                .shopId(employee.getShop().getShopId())
                 .build();
     }
-
-
 }

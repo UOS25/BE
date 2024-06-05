@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.dto.request.EmployeeCreateResponseDTO;
+import uos.uos25.employee.dto.response.EmployeeGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 
@@ -23,19 +24,28 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    // 모든 직원 가져오기
-    @GetMapping
-    public ResponseEntity<List<EmployeeCreateReqeustDTO>> findAll() {
-        List<EmployeeCreateReqeustDTO> employeeCreateReqeustDTOS = employeeService.getAllEmployees();
-        return ResponseEntity.ok(employeeCreateReqeustDTOS);
-    }
 
-    // 직원 저장
+
     @PostMapping
     public ResponseEntity<EmployeeCreateResponseDTO> join(@Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
         Employee employee = employeeService.saveEmployee(employeeCreateReqeustDTO);
 
         return ResponseEntity.ok(EmployeeCreateResponseDTO.fromEntity(employee));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findAll() {
+        List<Employee> employees = employeeService.findAllEmployees();
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS = employees.stream().map(employee -> EmployeeGetResponseDTO.fromEntity(employee)).toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
+    @GetMapping("/{employeeId}")
+    public ResponseEntity<EmployeeGetResponseDTO> findById(@PathVariable Long employeeId) {
+        Employee employee = employeeService.findById(employeeId);
+
+        return ResponseEntity.ok(EmployeeGetResponseDTO.fromEntity(employee));
     }
 
     // 직원 수정
