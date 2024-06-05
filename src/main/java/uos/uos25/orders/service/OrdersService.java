@@ -50,8 +50,12 @@ public class OrdersService {
         return ordersRepository.save(orders);
     }
 
-    public List<Orders> findOrders() {
+    public List<Orders> findAllOrders() {
         return ordersRepository.findAll();
+    }
+
+    public Orders findOrdersById(Long ordersId) {
+        return ordersRepository.findById(ordersId).orElseThrow(() -> new OrdersNotFoundException());
     }
 
     @Transactional

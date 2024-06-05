@@ -31,11 +31,19 @@ public class OrdersController {
 
     @GetMapping
     public ResponseEntity<List<OrdersGetResponseDTO>> getList() {
-        List<Orders> orders = ordersService.findOrders();
+        List<Orders> orders = ordersService.findAllOrders();
         List<OrdersGetResponseDTO> ordersGetResponseDTOS =
                 orders.stream().map(order -> OrdersGetResponseDTO.fromEntity(order)).toList();
 
         return ResponseEntity.ok(ordersGetResponseDTOS);
+    }
+
+    @GetMapping("/{ordersId}")
+    public ResponseEntity<OrdersGetResponseDTO> getOrdersById(@PathVariable Long ordersId) {
+        Orders orders = ordersService.findOrdersById(ordersId);
+        OrdersGetResponseDTO ordersGetResponseDTO = OrdersGetResponseDTO.fromEntity(orders);
+
+        return ResponseEntity.ok(ordersGetResponseDTO);
     }
 
     @PatchMapping
