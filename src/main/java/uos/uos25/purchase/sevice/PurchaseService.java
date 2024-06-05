@@ -8,11 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
+립import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
 import uos.uos25.purchase.dto.ItemInfo;
+import uos.uos25.purchase.dto.TotalPrice;
 import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.service.ReceiptDetailService;
@@ -26,6 +29,7 @@ public class PurchaseService {
     private final ReceiptDetailService receiptDetailService;
     private final ReceiptService receiptService;
     private final CustomerService customerService;
+    private final EmployeeService employeeService;
     private final InventoryService inventoryService;
 
     @Transactional
@@ -38,12 +42,21 @@ public class PurchaseService {
             List<ItemInfo> itemInfos) {
         Receipt receipt = receiptService.create(employeeId, phoneNumber, age, gender);
         Customer customer = customerService.findById(phoneNumber);
+        Employee employee = employeeService.findById(employeeId);
+        Shop shop = employee.getShop();
 
-        Integer totalPrice = 0;
+        TotalPrice totalPrice = new TotalPrice();
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findById(itemInfo.getBarcode());
             Integer ea = itemInfo.getEa();
-            totalPrice += product.getCustomerPrice() * ea;
+
+            // 재고 수량 차감
+            Inventory inventory =
+                    inventoryService.findInventoryByShopIdAndProductId(
+                            shop.getShopId(), product.getBarcode());
+            inventory.minusEa(ea);
+
+            totalPrice.plus(product.getCustomerPrice() * ea);
 
             receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
