@@ -41,8 +41,9 @@ public class Customer {
     }
 
     // 고객 정보를 수정하는 메서드
-    public void changeCustomerInfo(String nickname) {
-        if (nickname != null) this.nickname = nickname;
+    public void changeCustomerInfo(String phoneNumber, String nickname) {
+        this.phoneNumber = phoneNumber;
+        this.nickname = nickname;
     }
 
     // 고객 마일리지를 적립하는 메서드
