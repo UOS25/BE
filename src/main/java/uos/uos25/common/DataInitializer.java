@@ -22,6 +22,10 @@ import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.repository.OrdersRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.repository.ProductRepository;
+import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.receipt.entity.ReceiptDetail;
+import uos.uos25.receipt.repository.ReceiptDetailRepository;
+import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
@@ -44,6 +48,8 @@ public class DataInitializer {
     private final CustomerRepository customerRepository;
     private final InventoryRepository inventoryRepository;
     private final EventRepository eventRepository;
+    private final ReceiptRepository receiptRepository;
+    private final ReceiptDetailRepository receiptDetailRepository;
 
     @PostConstruct
     public void init(){
@@ -58,6 +64,8 @@ public class DataInitializer {
         Customer customer = createCustomerDummy();
         Inventory inventory = createInventoryDummy(product, shop);
         Event event = createEvent(product);
+        Receipt receipt = createReceiptDummy(employee, customer);
+        ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
     }
 
     private Product createProductDummy(){
@@ -198,5 +206,26 @@ public class DataInitializer {
                 .endDate(LocalDateTime.now().plusDays(7L))
                 .build();
         return eventRepository.save(event);
+    }
+
+    private Receipt createReceiptDummy(Employee employee, Customer customer){
+        Receipt receipt = Receipt.builder()
+                .employee(employee)
+                .customer(customer)
+                .age(20)
+                .gender("FEMALE")
+                .purchaseStatus("구매완료")
+                .purchaseDate(LocalDateTime.now())
+                .build();
+        return receiptRepository.save(receipt);
+    }
+
+    private ReceiptDetail createReceiptDetailDummy(Receipt receipt, Product product){
+        ReceiptDetail receiptDetail = ReceiptDetail.builder()
+                .product(product)
+                .receipt(receipt)
+                .ea(10)
+                .build();
+        return receiptDetailRepository.save(receiptDetail);
     }
 }
