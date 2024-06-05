@@ -53,8 +53,7 @@ public class CustomerService {
                         .findById(customerUpdateRequestDTO.getPhoneNumber())
                         .orElseThrow(() -> new CustomerNotFoundException("해당 아이디의 고객이 존재하지 않습니다."));
         // 정보 수정
-        findCustomer.changeCustomerInfo(
-                customerUpdateRequestDTO.getPhoneNumber(), customerUpdateRequestDTO.getNickname());
+        findCustomer.changeCustomerInfo(customerUpdateRequestDTO.getNickname());
 
         return findCustomer;
     }
