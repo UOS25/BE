@@ -2,6 +2,7 @@ package uos.uos25.employee.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -61,7 +62,7 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    // 직원 퇴사
+    @Operation(summary = "직원 퇴사")
     @PatchMapping("/{employeeId}")
     public ResponseEntity<Void> retirementEmployee(@PathVariable Long employeeId) {
         employeeService.retirementEmployee(employeeId);
