@@ -61,16 +61,16 @@ public class OrdersController {
     }
 
     @PatchMapping("/delivery")
-    public ResponseEntity<Long> startOrdersDelivery(
+    public ResponseEntity<Void> startOrdersDelivery(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT);
     }
 
     @PatchMapping("/check")
-    public ResponseEntity<Long> checkOrdersArrived(
+    public ResponseEntity<Void> checkOrdersArrived(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT);
     }
 }
