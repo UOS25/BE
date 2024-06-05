@@ -21,12 +21,12 @@ public class PurchaseController {
     public void purchase(@RequestBody PurchaseRequestDTO purchaseRequestDTO){
         Long shopId = purchaseRequestDTO.getShopId();
         Long employeeId = purchaseRequestDTO.getEmployeeId();
-        String customerId = purchaseRequestDTO.getCustomerId();
+        String phoneNumber = purchaseRequestDTO.getPhoneNumber();
         Integer age = purchaseRequestDTO.getAge();
         String gender = purchaseRequestDTO.getGender();
         List<ItemInfo> itemInfos = purchaseRequestDTO.getItemInfos();
 
-        purchaseService.purchase(shopId, employeeId, customerId, age, gender, itemInfos);
+        purchaseService.purchase(shopId, employeeId, phoneNumber, age, gender, itemInfos);
     }
 
 }
