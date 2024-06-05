@@ -20,10 +20,13 @@ public class DisposalController {
     private final DisposalService disposalService;
 
     @PostMapping
-    public ResponseEntity<Disposal> dispose(@RequestBody DisposalReqeustDTO disposalReqeustDTO) {
-        Disposal disposal = disposalService.createDisposal(disposalReqeustDTO);
+    public ResponseEntity<DisposalCreateResponseDTO> dispose(
+            @RequestBody DisposalCreateReqeustDTO disposalCreateReqeustDTO) {
+        Disposal disposal = disposalService.createDisposal(disposalCreateReqeustDTO);
+        DisposalCreateResponseDTO disposalCreateResponseDTO =
+                DisposalCreateResponseDTO.fromEntity(disposal);
 
-        return ResponseEntity.ok(disposal);
+        return ResponseEntity.ok(disposalCreateResponseDTO);
     }
 
     @GetMapping
