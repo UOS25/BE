@@ -4,9 +4,9 @@ server:
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/uos25
-        username: uos25
-        password: Enlwu5413!
+        url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DATABASE}
+        username: ${DATABASE_USERNAME}
+        password: ${DATABASE_PASSWORD}
     jpa:
         hibernate:
             ddl-auto: create-drop
