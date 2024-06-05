@@ -188,7 +188,7 @@ public class DataInitializer {
                         .product(product)
                         .shop(shop)
                         .ea(10)
-                        .display(0)
+                        .display(5)
                         .warehousingDate(LocalDateTime.now())
                         .expirationDate(LocalDateTime.now().plusDays(7L))
                         .build();

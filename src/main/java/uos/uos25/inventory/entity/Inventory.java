@@ -74,7 +74,9 @@ public class Inventory extends BaseEntity {
     }
 
     public void minusEa(Integer ea) {
-        if (this.ea - ea < 0) throw new TooManyProductPurchaseException();
+        if (this.ea < ea) throw new TooManyProductPurchaseException();
+        if (this.display < ea) throw new TooManyProductPurchaseException();
         this.ea -= ea;
+        this.display -= ea;
     }
 }
