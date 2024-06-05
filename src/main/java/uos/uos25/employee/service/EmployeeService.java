@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
+import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
@@ -42,16 +43,17 @@ public class EmployeeService {
 
     @Transactional
     // 직원 수정
-    public void updateEmployee(Long employeeId, EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+    public void updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
+        Shop shop = shopService.findShopById(employeeUpdateReqeustDTO.getShopId());
         Employee findEmployee =
                 employeeRepository
-                        .findById(employeeId)
+                        .findById(employeeUpdateReqeustDTO.getEmployeeId())
                         .orElseThrow(
                                 () ->
                                         new IllegalArgumentException(
-                                                "다음의 Id를 가진 employee가 없습니다: " + employeeId));
+                                                "다음의 Id를 가진 employee가 없습니다: " + employeeUpdateReqeustDTO.getEmployeeId()));
 
-        convertToEmployee(employeeCreateReqeustDTO, findEmployee);
+        findEmployee.update(employeeUpdateReqeustDTO.getEmployeeName(), employeeUpdateReqeustDTO.getPosition(), employeeUpdateReqeustDTO.getRegistrationNumber(), employeeUpdateReqeustDTO.getSalary(), employeeUpdateReqeustDTO.getPartTime(), employeeUpdateReqeustDTO.getAccount(), shop);
     }
 
     @Transactional
@@ -101,17 +103,4 @@ public class EmployeeService {
                 .shop(shop)
                 .build();
     }
-
-    // Employee를 DTO로 변환합니다.
-//    private EmployeeCreateReqeustDTO convertToDTO(Employee employee) {
-//        EmployeeCreateReqeustDTO employeeCreateReqeustDTO = new EmployeeCreateReqeustDTO();
-//        employeeCreateReqeustDTO.setEmployeeName(employee.getEmployeeName());
-//        employeeCreateReqeustDTO.setPosition(employee.getPosition());
-//        employeeCreateReqeustDTO.setRegistrationNumber(employee.getRegistrationNumber());
-//        employeeCreateReqeustDTO.setSalary(employee.getSalary());
-//        employeeCreateReqeustDTO.setPartTime(employee.getPartTime().toString());
-//        employeeCreateReqeustDTO.setAccount(employee.getAccount());
-//        employeeCreateReqeustDTO.setShopName(employee.getShop().getShopName());
-//        return employeeCreateReqeustDTO;
-//    }
 }

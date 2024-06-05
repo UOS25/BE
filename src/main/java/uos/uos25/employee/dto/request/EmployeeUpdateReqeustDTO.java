@@ -2,17 +2,13 @@ package uos.uos25.employee.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.PartTime;
-
-import java.time.LocalDateTime;
 
 @Data
-public class EmployeeCreateReqeustDTO {
+public class EmployeeUpdateReqeustDTO {
+    @NotBlank(message = "직원 id를 입력하세요.")
+    private Long employeeId;
+
     @NotBlank(message = "직원 이름을 입력하세요.")
     private String employeeName;
 

@@ -97,4 +97,14 @@ public class Employee {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+
+    public void update(String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, Shop shop){
+        this.employeeName = employeeName;
+        this.position = position;
+        this.registrationNumber = registrationNumber;
+        this.salary =salary;
+        this.partTime = PartTime.valueOf(partTime);
+        this.account = account;
+        this.shop = shop;
+    }
 }

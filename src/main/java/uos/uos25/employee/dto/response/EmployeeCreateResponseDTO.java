@@ -1,11 +1,9 @@
-package uos.uos25.employee.dto.request;
+package uos.uos25.employee.dto.response;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import uos.uos25.employee.entity.Employee;
 
 
@@ -31,7 +29,7 @@ public class EmployeeCreateResponseDTO {
     private String account;
 
     @NotBlank(message = "지점이름을 입력하세요.")
-    private Long shopId; // 지점 이름 -> 지점 아이디 변환 필요
+    private Long shopId;
 
     @Builder
     public EmployeeCreateResponseDTO(String employeeName, String position, String registrationNumber, Integer salary, String partTime, String account, Long shopId) {
