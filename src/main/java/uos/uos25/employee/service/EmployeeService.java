@@ -2,31 +2,31 @@ package uos.uos25.employee.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.DTO.EmployeeDTO;
+import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
+import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
 import uos.uos25.employee.repository.EmployeeRepository;
-import uos.uos25.shop.repository.ShopRepository;
+import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.service.ShopService;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final ShopRepository shopRepository;
+    private final ShopService shopService;
 
     @Transactional
     // 모든 직원 리스트를 가져온 후, DTO 리스트로 반환합니다.
-    public List<EmployeeDTO> getAllEmployees() {
-        List<Employee> employees = employeeRepository.findAll();
-        return employees.stream().map(this::convertToDTO).collect(Collectors.toList());
+    public List<Employee> findAllEmployees() {
+        return employeeRepository.findAll();
     }
 
     public Employee findById(Long employeeId) {
@@ -34,23 +34,34 @@ public class EmployeeService {
     }
 
     @Transactional
-    // 직원 생성
-    public void saveEmployee(EmployeeDTO employeeDTO) {
-        employeeRepository.save(makeNewEmployee(employeeDTO));
+    public Employee saveEmployee(EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+        Employee employee = convertToEntity(employeeCreateReqeustDTO);
+
+        return employeeRepository.save(employee);
     }
 
     @Transactional
     // 직원 수정
-    public void updateEmployee(Long employeeId, EmployeeDTO employeeDTO) {
+    public void updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
+        Shop shop = shopService.findShopById(employeeUpdateReqeustDTO.getShopId());
         Employee findEmployee =
                 employeeRepository
-                        .findById(employeeId)
+                        .findById(employeeUpdateReqeustDTO.getEmployeeId())
                         .orElseThrow(
                                 () ->
                                         new IllegalArgumentException(
-                                                "다음의 Id를 가진 employee가 없습니다: " + employeeId));
+                                                "다음의 Id를 가진 employee가 없습니다: "
+                                                        + employeeUpdateReqeustDTO
+                                                                .getEmployeeId()));
 
-        convertToEmployee(employeeDTO, findEmployee);
+        findEmployee.update(
+                employeeUpdateReqeustDTO.getEmployeeName(),
+                employeeUpdateReqeustDTO.getPosition(),
+                employeeUpdateReqeustDTO.getRegistrationNumber(),
+                employeeUpdateReqeustDTO.getSalary(),
+                employeeUpdateReqeustDTO.getPartTime(),
+                employeeUpdateReqeustDTO.getAccount(),
+                shop);
     }
 
     @Transactional
@@ -86,38 +97,18 @@ public class EmployeeService {
         employeeRepository.delete(findEmployee);
     }
 
-    // 리팩터링 메소드
-    // 새로운 employee 객체를 만들어 반환합니다. saveEmployee()에 사용됩니다.
-    private Employee makeNewEmployee(EmployeeDTO employeeDTO) {
-        Employee employee = new Employee();
-        // DTO에서 Employee로 변환합니다.
-        convertToEmployee(employeeDTO, employee);
-        // 현재 시간을 세팅합니다.
-        employee.setEmploymentDate(LocalDateTime.now().withNano(0));
-        return employee;
-    }
+    private Employee convertToEntity(EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
+        Shop shop = shopService.findShopById(employeeCreateReqeustDTO.getShopId());
 
-    // EmployeeDTO를 Employee로 변환합니다. updateEmployee()에 사용됩니다.
-    private void convertToEmployee(EmployeeDTO employeeDTO, Employee employee) {
-        employee.setEmployeeName(employeeDTO.getEmployeeName());
-        employee.setPosition(employeeDTO.getPosition());
-        employee.setRegistrationNumber(employeeDTO.getRegistrationNumber());
-        employee.setSalary(employeeDTO.getSalary());
-        employee.setPartTime(PartTime.valueOf(employeeDTO.getPartTime()));
-        employee.setAccount(employeeDTO.getAccount());
-        employee.setShop(shopRepository.findByShopName(employeeDTO.getShopName()));
-    }
-
-    // Employee를 DTO로 변환합니다.
-    private EmployeeDTO convertToDTO(Employee employee) {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setEmployeeName(employee.getEmployeeName());
-        employeeDTO.setPosition(employee.getPosition());
-        employeeDTO.setRegistrationNumber(employee.getRegistrationNumber());
-        employeeDTO.setSalary(employee.getSalary());
-        employeeDTO.setPartTime(employee.getPartTime().toString());
-        employeeDTO.setAccount(employee.getAccount());
-        employeeDTO.setShopName(employee.getShop().getShopName());
-        return employeeDTO;
+        return Employee.builder()
+                .employeeName(employeeCreateReqeustDTO.getEmployeeName())
+                .position(employeeCreateReqeustDTO.getPosition())
+                .registrationNumber(employeeCreateReqeustDTO.getRegistrationNumber())
+                .salary(employeeCreateReqeustDTO.getSalary())
+                .partTime(PartTime.valueOf(employeeCreateReqeustDTO.getPartTime()))
+                .account(employeeCreateReqeustDTO.getAccount())
+                .employmentDate(LocalDateTime.now())
+                .shop(shop)
+                .build();
     }
 }

@@ -12,7 +12,6 @@ import uos.uos25.shop.entity.Shop;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
@@ -85,5 +84,34 @@ public class Employee {
         this.partTime = partTime;
         this.account = account;
         this.shop = shop;
+    }
+
+    public void setPartTime(PartTime partTime) {
+        this.partTime = partTime;
+    }
+
+    public void setFiredDate(LocalDateTime firedDate) {
+        this.firedDate = firedDate;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public void update(
+            String employeeName,
+            String position,
+            String registrationNumber,
+            Integer salary,
+            String partTime,
+            String account,
+            Shop shop) {
+        if (employeeName != null) this.employeeName = employeeName;
+        if (position != null) this.position = position;
+        if (registrationNumber != null) this.registrationNumber = registrationNumber;
+        if (salary != null) this.salary = salary;
+        if (partTime != null) this.partTime = PartTime.valueOf(partTime);
+        if (account != null) this.account = account;
+        if (shop != null) this.shop = shop;
     }
 }

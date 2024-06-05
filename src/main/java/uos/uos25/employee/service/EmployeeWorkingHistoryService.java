@@ -11,7 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.DTO.EmployeeWorkingHistoryDTO;
+import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.EmployeeWorkingHistory;
 import uos.uos25.employee.repository.EmployeeRepository;
