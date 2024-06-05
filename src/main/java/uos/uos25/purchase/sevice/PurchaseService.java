@@ -60,8 +60,9 @@ public class PurchaseService {
 
             receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
-        totalPrice -= mileage;
-        customer.earnMileage(totalPrice);
+
+        totalPrice.discountMileage(mileage);
+        customer.earnMileage(totalPrice.get());
     }
 
     @Transactional
