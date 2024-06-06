@@ -13,10 +13,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
+import uos.uos25.employee.dto.request.SalaryCalculationRequestDTO;
 import uos.uos25.employee.dto.response.EmployeeCreateResponseDTO;
 import uos.uos25.employee.dto.response.EmployeeGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
+import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
+import uos.uos25.shop.entity.Disbursement;
 
 @RestController
 @RequestMapping("/employee")
@@ -75,5 +78,16 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Operation(summary = "급여 정산", description = "급여 정산되지 않은 달만 사용 가능")
+    @PostMapping("/salary-calculation")
+    public ResponseEntity<DisbursementGetResponseDTO> calculateSalary(
+            @RequestBody SalaryCalculationRequestDTO salaryCalculationRequestDTO) {
+        Disbursement disbursement = employeeService.calculateSalary(salaryCalculationRequestDTO);
+        DisbursementGetResponseDTO disbursementGetResponseDTO =
+                DisbursementGetResponseDTO.fromEntity(disbursement);
+
+        return ResponseEntity.ok(disbursementGetResponseDTO);
     }
 }

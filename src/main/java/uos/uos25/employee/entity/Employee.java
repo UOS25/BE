@@ -121,4 +121,8 @@ public class Employee {
         if (bank != null) this.bank = bank;
         if (shop != null) this.shop = shop;
     }
+
+    public Long calculateSalary(Long totalWorkingHour) {
+        return totalWorkingHour * salary;
+    }
 }
