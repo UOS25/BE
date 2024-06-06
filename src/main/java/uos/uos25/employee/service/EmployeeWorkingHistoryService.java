@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.entity.EmployeeWorkingHistory;
+import uos.uos25.employee.exception.DuplicatedHistoryException;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.employee.repository.EmployeeWorkingHistoryRepository;
 
@@ -35,7 +36,6 @@ public class EmployeeWorkingHistoryService {
                                         new IllegalArgumentException(
                                                 (("다음의 Id를 가진 employee가 없습니다: " + employeeId))));
 
-        // employeeId 안넘어감
         return histories.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -60,7 +60,7 @@ public class EmployeeWorkingHistoryService {
         if (employeeWorkingHistoryRepository
                 .findTodayWorkingHistory(employeeId, startOfDay, endOfDay)
                 .isPresent()) {
-            throw new IllegalArgumentException("이미 오늘 출근하셨습니다.");
+            throw new DuplicatedHistoryException("이미 오늘 출근하셨습니다.");
         }
 
         EmployeeWorkingHistory employeeWorkingHistory = new EmployeeWorkingHistory();

@@ -10,8 +10,16 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice(basePackages = "uos.uos25.Employee")
+@RestControllerAdvice(basePackages = "uos.uos25.employee")
 public class EmployeeExceptionHandler {
+
+    // DuplicatedHistoryException 예외 처리
+    // 출근 메시지를 띄운 후 HttpStatus.OK를 반환합니다.
+    @ExceptionHandler(DuplicatedHistoryException.class)
+    public ResponseEntity<String> handleDuplicatedHistoryException(DuplicatedHistoryException ex) {
+        System.out.println("DuplicatedHistoryException 처리됨: " + ex.getMsg());
+        return new ResponseEntity<>(ex.getMsg(), HttpStatus.OK);
+    }
 
     // MethodArgumentNotValidException 예외 처리
     // @Valid에서 발생한 익셉션 캐치
