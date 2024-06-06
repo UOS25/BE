@@ -20,7 +20,8 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     @PostMapping
-    public ResponseEntity<Void> purchase(@RequestBody PurchaseCreateRequestDTO purchaseCreateRequestDTO) {
+    public ResponseEntity<Void> purchase(
+            @RequestBody PurchaseCreateRequestDTO purchaseCreateRequestDTO) {
         Long employeeId = purchaseCreateRequestDTO.getEmployeeId();
         String phoneNumber = purchaseCreateRequestDTO.getPhoneNumber();
         Integer age = purchaseCreateRequestDTO.getAge();
