@@ -17,7 +17,7 @@ import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.service.DisbursementService;
 
 @Controller
-@RequestMapping("/disbursement")
+@RequestMapping("/disburse")
 @RequiredArgsConstructor
 @Tag(name = "자금출납")
 public class DisbursementController {
@@ -37,10 +37,23 @@ public class DisbursementController {
     }
 
     @Operation(summary = "지점별 조회")
-    @GetMapping("/{shopId}")
+    @GetMapping("/shop/{shopId}")
     public ResponseEntity<List<DisbursementGetResponseDTO>> getByShopId(
             @Parameter(example = "1") @PathVariable Long shopId) {
         List<Disbursement> disbursements = disbursementService.findAllByShopId(shopId);
+        List<DisbursementGetResponseDTO> disbursementGetResponseDTOS =
+                disbursements.stream()
+                        .map(disbursement -> DisbursementGetResponseDTO.fromEntity(disbursement))
+                        .toList();
+
+        return ResponseEntity.ok(disbursementGetResponseDTOS);
+    }
+
+    @Operation(summary = "직원별 조회")
+    @GetMapping("/employee/{employeeId}")
+    public ResponseEntity<List<DisbursementGetResponseDTO>> getByEmployeeId(
+            @Parameter(example = "1") @PathVariable Long employeeId) {
+        List<Disbursement> disbursements = disbursementService.findAllByEmployeeId(employeeId);
         List<DisbursementGetResponseDTO> disbursementGetResponseDTOS =
                 disbursements.stream()
                         .map(disbursement -> DisbursementGetResponseDTO.fromEntity(disbursement))
