@@ -1,15 +1,15 @@
 package uos.uos25.orders.dto.response;
 
-import java.time.LocalDateTime;
-
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.shop.dto.ShopInfo;
 
+import java.time.LocalDateTime;
+
 @Data
-public class OrdersGetResponseDTO {
+public class OrdersCreateResponseDTO {
     private Long ordersId;
     private String ordersStatus;
     private String ordersCheck;
@@ -20,7 +20,7 @@ public class OrdersGetResponseDTO {
     private ProductInfo productInfo;
 
     @Builder
-    public OrdersGetResponseDTO(
+    public OrdersCreateResponseDTO(
             Long ordersId,
             String ordersStatus,
             Integer givenEa,
@@ -41,8 +41,8 @@ public class OrdersGetResponseDTO {
         this.productInfo = new ProductInfo(barcode, productName);
     }
 
-    public static OrdersGetResponseDTO fromEntity(Orders orders) {
-        return OrdersGetResponseDTO.builder()
+    public static OrdersCreateResponseDTO fromEntity(Orders orders) {
+        return OrdersCreateResponseDTO.builder()
                 .ordersId(orders.getOrdersId())
                 .ordersStatus(orders.getOrdersStatus())
                 .ordersCheck(orders.getOrdersCheck())
