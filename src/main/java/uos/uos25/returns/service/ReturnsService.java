@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
-import uos.uos25.returns.dto.request.ReturnsRequestDTO;
-import uos.uos25.returns.dto.response.ReturnsResponseDTO;
+import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
@@ -21,28 +20,23 @@ public class ReturnsService {
     private final ShopService shopService;
     private final ProductService productService;
 
-    public Long createReturns(ReturnsRequestDTO returnsRequestDTO) {
-        Shop shop = shopService.findShopById(returnsRequestDTO.getShopId());
-        Product product = productService.findById(returnsRequestDTO.getBarcode());
+    public Returns createReturns(ReturnsCreateRequestDTO returnsCreateRequestDTO) {
+        Shop shop = shopService.findShopById(returnsCreateRequestDTO.getShopId());
+        Product product = productService.findById(returnsCreateRequestDTO.getBarcode());
 
         Returns returns =
                 Returns.builder()
                         .shop(shop)
                         .product(product)
-                        .ea(returnsRequestDTO.getEa())
-                        .returnsStatus("상태 뭘로 할까?")
+                        .ea(returnsCreateRequestDTO.getEa())
+                        .returnsStatus("반품요청")
                         .build();
 
-        Returns saved = returnsRepository.save(returns);
-        return saved.getReturnsId();
+        return returnsRepository.save(returns);
     }
 
-    public List<ReturnsResponseDTO> findAllByShopId(Long shopId) {
+    public List<Returns> findAllByShopId(Long shopId) {
         Shop shop = shopService.findShopById(shopId);
-        List<Returns> allReturnsByShopId = returnsRepository.findAllByShop_ShopId(shopId);
-
-        return allReturnsByShopId.stream()
-                .map(returns -> ReturnsResponseDTO.fromEntity(returns))
-                .toList();
+        return returnsRepository.findAllByShop_ShopId(shopId);
     }
 }

@@ -26,10 +26,10 @@ public class Product extends BaseEntity {
     private String barcode;
 
     @Column(nullable = false)
-    private String enterprise;
+    private String productName;
 
     @Column(nullable = false)
-    private String productName;
+    private String enterprise;
 
     @Column(nullable = false)
     private Integer customerPrice;
@@ -69,9 +69,9 @@ public class Product extends BaseEntity {
 
     @Builder
     public Product(
-            String enterprise,
-            String productName,
             String barcode,
+            String productName,
+            String enterprise,
             Integer customerPrice,
             Integer orderPrice,
             String category,

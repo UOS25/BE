@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class DisposalListRequestDTO {
+public class DisposalListGetRequestDTO {
+    private final Long shopId;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
 }

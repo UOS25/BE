@@ -8,7 +8,7 @@ import lombok.Data;
 import uos.uos25.purchase.dto.ItemInfo;
 
 @Data
-public class PurchaseRequestDTO {
+public class PurchaseCreateRequestDTO {
     @Schema(example = "1")
     private final Long employeeId;
 
@@ -37,7 +37,7 @@ public class PurchaseRequestDTO {
     private final List<ItemInfo> itemInfos;
 
     @Builder
-    public PurchaseRequestDTO(
+    public PurchaseCreateRequestDTO(
             Long employeeId,
             String phoneNumber,
             Integer age,

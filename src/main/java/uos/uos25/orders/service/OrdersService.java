@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import uos.uos25.inventory.service.InventoryService;
-import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
-import uos.uos25.orders.dto.request.OrdersRequestDTO;
+import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
+import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.exception.OrdersNotFoundException;
 import uos.uos25.orders.repository.OrdersRepository;
@@ -26,15 +26,15 @@ public class OrdersService {
     private final ProductService productService;
     private final InventoryService inventoryService;
 
-    public Orders save(OrdersRequestDTO ordersRequestDTO) {
-        Shop shop = shopService.findShopById(ordersRequestDTO.getShopId());
-        Product product = productService.findById(ordersRequestDTO.getBarcode());
+    public Orders save(OrdersCreateRequestDTO ordersCreateRequestDTO) {
+        Shop shop = shopService.findShopById(ordersCreateRequestDTO.getShopId());
+        Product product = productService.findById(ordersCreateRequestDTO.getBarcode());
 
         Orders orders =
                 Orders.builder()
                         .ordersStatus("뭘로 할까")
                         .givenEa(0)
-                        .ordersEa(ordersRequestDTO.getEa())
+                        .ordersEa(ordersCreateRequestDTO.getEa())
                         .ordersCheck("뭘로 하지")
                         .shop(shop)
                         .product(product)
@@ -42,27 +42,29 @@ public class OrdersService {
 
         // 재고 생성
         inventoryService.save(
-                ordersRequestDTO.getShopId(),
-                ordersRequestDTO.getBarcode(),
-                ordersRequestDTO.getEa());
+                ordersCreateRequestDTO.getShopId(),
+                ordersCreateRequestDTO.getBarcode(),
+                ordersCreateRequestDTO.getEa());
 
         // 주문 생성
         return ordersRepository.save(orders);
     }
 
-    public List<Orders> findOrders() {
+    public List<Orders> findAllOrders() {
         return ordersRepository.findAll();
     }
 
+    public Orders findOrdersById(Long ordersId) {
+        return ordersRepository.findById(ordersId).orElseThrow(() -> new OrdersNotFoundException());
+    }
+
     @Transactional
-    public Long updateOrders(OrdersModifyRequestDTO ordersModifyRequestDTO) {
+    public void updateOrders(OrdersUpdateRequestDTO ordersUpdateRequestDTO) {
         Orders orders =
                 ordersRepository
-                        .findById(ordersModifyRequestDTO.getOrdersId())
+                        .findById(ordersUpdateRequestDTO.getOrdersId())
                         .orElseThrow(() -> new OrdersNotFoundException());
-        orders.setOrdersEa(ordersModifyRequestDTO.getEa());
-
-        return orders.getOrdersId();
+        orders.setOrdersEa(ordersUpdateRequestDTO.getEa());
     }
 
     @Transactional

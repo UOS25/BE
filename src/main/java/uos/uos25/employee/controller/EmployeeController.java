@@ -52,6 +52,7 @@ public class EmployeeController {
         return ResponseEntity.ok(EmployeeGetResponseDTO.fromEntity(employee));
     }
 
+    @Operation(summary = "직원 정보 수정")
     @PatchMapping
     public ResponseEntity<Void> updateEmployee(
             @Valid @RequestBody EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {

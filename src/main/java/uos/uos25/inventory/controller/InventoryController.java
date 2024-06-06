@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.inventory.dto.request.InventoryChangeDisplayRequestDTO;
@@ -20,6 +21,7 @@ import uos.uos25.inventory.service.InventoryService;
 public class InventoryController {
     private final InventoryService inventoryService;
 
+    @Operation(summary = "물품 진열")
     @PatchMapping
     public ResponseEntity<Void> changeProductToDisplay(
             @RequestBody InventoryChangeDisplayRequestDTO displayRequestDTO) {
@@ -44,7 +46,7 @@ public class InventoryController {
         return ResponseEntity.ok(inventoryGetResponseDTOS);
     }
 
-    @GetMapping("/{shopId}/{productId}")
+    @GetMapping("/{shopId}/{barcode}")
     public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndProductId(
             @PathVariable Long shopId, @PathVariable String barcode) {
         Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shopId, barcode);

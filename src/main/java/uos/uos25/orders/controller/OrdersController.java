@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.orders.dto.request.OrdersModifyRequestDTO;
-import uos.uos25.orders.dto.request.OrdersRequestDTO;
+import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
+import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
+import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.service.OrdersService;
 
@@ -19,24 +20,38 @@ import uos.uos25.orders.service.OrdersService;
 @RequiredArgsConstructor
 @Tag(name = "주문", description = "본사로의")
 public class OrdersController {
-    private OrdersService ordersService;
+    private final OrdersService ordersService;
 
     @PostMapping
-    public ResponseEntity<Orders> order(@RequestBody OrdersRequestDTO ordersRequestDTO) {
-        Orders savedOrders = ordersService.save(ordersRequestDTO);
+    public ResponseEntity<Orders> order(
+            @RequestBody OrdersCreateRequestDTO ordersCreateRequestDTO) {
+        Orders savedOrders = ordersService.save(ordersCreateRequestDTO);
         return new ResponseEntity<>(savedOrders, HttpStatus.CREATED);
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Orders>> getList() {
-        return new ResponseEntity<>(ordersService.findOrders(), HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<OrdersGetResponseDTO>> getList() {
+        List<Orders> orders = ordersService.findAllOrders();
+        List<OrdersGetResponseDTO> ordersGetResponseDTOS =
+                orders.stream().map(order -> OrdersGetResponseDTO.fromEntity(order)).toList();
+
+        return ResponseEntity.ok(ordersGetResponseDTOS);
     }
 
-    @PatchMapping("/modify")
-    public ResponseEntity<Long> modifyOrders(
-            @RequestBody OrdersModifyRequestDTO ordersModifyRequestDTO) {
-        Long modifiedOrdersId = ordersService.updateOrders(ordersModifyRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+    @GetMapping("/{ordersId}")
+    public ResponseEntity<OrdersGetResponseDTO> getOrdersById(@PathVariable Long ordersId) {
+        Orders orders = ordersService.findOrdersById(ordersId);
+        OrdersGetResponseDTO ordersGetResponseDTO = OrdersGetResponseDTO.fromEntity(orders);
+
+        return ResponseEntity.ok(ordersGetResponseDTO);
+    }
+
+    @PatchMapping
+    public ResponseEntity<Void> modifyOrders(
+            @RequestBody OrdersUpdateRequestDTO ordersUpdateRequestDTO) {
+        ordersService.updateOrders(ordersUpdateRequestDTO);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping("/{ordersId}")
@@ -46,16 +61,18 @@ public class OrdersController {
     }
 
     @PatchMapping("/delivery")
-    public ResponseEntity<Long> startOrdersDelivery(
+    public ResponseEntity<Void> startOrdersDelivery(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PatchMapping("/check")
-    public ResponseEntity<Long> checkOrdersArrived(
+    public ResponseEntity<Void> checkOrdersArrived(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
         Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
-        return ResponseEntity.ok(modifiedOrdersId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
