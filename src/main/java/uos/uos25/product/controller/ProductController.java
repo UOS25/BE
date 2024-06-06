@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import uos.uos25.product.dto.request.ProductCreateRequestDTO;
+import uos.uos25.product.dto.response.ProductCreateResponseDTO;
 import uos.uos25.product.dto.response.ProductGetResponseDTO;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
@@ -17,6 +19,16 @@ import uos.uos25.product.service.ProductService;
 @Tag(name = "상품")
 public class ProductController {
     private final ProductService productService;
+
+    @PostMapping
+    public ResponseEntity<ProductCreateResponseDTO> createProduct(
+            @RequestBody ProductCreateRequestDTO productCreateRequestDTO) {
+        Product product = productService.create(productCreateRequestDTO);
+        ProductCreateResponseDTO productCreateResponseDTO =
+                ProductCreateResponseDTO.fromEntity(product);
+
+        return ResponseEntity.ok(productCreateResponseDTO);
+    }
 
     @GetMapping("/{barcode}")
     public ResponseEntity<ProductGetResponseDTO> getProductByBarcode(@PathVariable String barcode) {
