@@ -1,3 +1,10 @@
 package uos.uos25.employee.exception;
 
-public class EmployeeNotFound extends RuntimeException {}
+import uos.uos25.common.error.BusinessException;
+import uos.uos25.common.error.ErrorCode;
+
+public class EmployeeNotFound extends BusinessException {
+    public EmployeeNotFound() {
+        super(ErrorCode.EMPLOYEE_NOT_FOUND);
+    }
+}

@@ -1,3 +1,10 @@
 package uos.uos25.event.exception;
 
-public class EventNotFound extends RuntimeException {}
+import uos.uos25.common.error.BusinessException;
+import uos.uos25.common.error.ErrorCode;
+
+public class EventNotFound extends BusinessException {
+    public EventNotFound() {
+        super(ErrorCode.EVENT_NOT_FOUND);
+    }
+}

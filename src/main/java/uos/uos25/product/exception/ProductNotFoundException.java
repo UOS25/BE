@@ -1,3 +1,10 @@
 package uos.uos25.product.exception;
 
-public class ProductNotFoundException extends RuntimeException {}
+import uos.uos25.common.error.BusinessException;
+import uos.uos25.common.error.ErrorCode;
+
+public class ProductNotFoundException extends BusinessException {
+    public ProductNotFoundException() {
+        super(ErrorCode.PRODUCT_NOT_FOUND);
+    }
+}

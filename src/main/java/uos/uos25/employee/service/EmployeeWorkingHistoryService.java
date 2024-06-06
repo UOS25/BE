@@ -55,7 +55,7 @@ public class EmployeeWorkingHistoryService {
         if (employeeWorkingHistoryRepository
                 .findTodayWorkingHistory(employeeId, startOfDay, endOfDay)
                 .isPresent()) {
-            throw new DuplicatedHistoryException("이미 오늘 출근하셨습니다.");
+            throw new DuplicatedHistoryException();
         }
 
         EmployeeWorkingHistory employeeWorkingHistory = new EmployeeWorkingHistory();
