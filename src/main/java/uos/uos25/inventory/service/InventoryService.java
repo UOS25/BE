@@ -60,9 +60,6 @@ public class InventoryService {
     }
 
     public Inventory findInventoryByShopIdAndProductId(Long shopId, String barcode) {
-        Shop shop = shopService.findShopById(shopId);
-        Product product = productService.findById(barcode);
-
         Inventory inventory =
                 inventoryRepository
                         .findByShopShopIdAndProductBarcode(shopId, barcode)

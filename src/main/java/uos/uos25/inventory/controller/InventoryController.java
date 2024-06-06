@@ -44,7 +44,7 @@ public class InventoryController {
         return ResponseEntity.ok(inventoryGetResponseDTOS);
     }
 
-    @GetMapping("/{shopId}/{productId}")
+    @GetMapping("/{shopId}/{barcode}")
     public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndProductId(
             @PathVariable Long shopId, @PathVariable String barcode) {
         Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shopId, barcode);
