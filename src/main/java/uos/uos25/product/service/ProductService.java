@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.product.dto.response.ProductInfoResponseDTO;
+import uos.uos25.product.dto.response.ProductGetResponseDTO;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.exception.ProductNotFoundException;
 import uos.uos25.product.repository.ProductRepository;
@@ -21,9 +21,9 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException());
     }
 
-    public List<ProductInfoResponseDTO> findAllProducts() {
+    public List<ProductGetResponseDTO> findAllProducts() {
         return productRepository.findAll().stream()
-                .map(product -> ProductInfoResponseDTO.fromProduct(product))
+                .map(product -> ProductGetResponseDTO.fromProduct(product))
                 .toList();
     }
 }

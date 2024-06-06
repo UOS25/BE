@@ -9,7 +9,7 @@ import uos.uos25.event.entity.Event;
 import uos.uos25.product.entity.Product;
 
 @Data
-public class ProductInfoResponseDTO {
+public class ProductGetResponseDTO {
     private final String barcode;
     private final String productName;
     private final String enterprise;
@@ -22,7 +22,7 @@ public class ProductInfoResponseDTO {
     private final List<String> eventNames;
 
     @Builder
-    public ProductInfoResponseDTO(
+    public ProductGetResponseDTO(
             String barcode,
             String productName,
             String enterprise,
@@ -45,9 +45,9 @@ public class ProductInfoResponseDTO {
         this.eventNames = eventNames;
     }
 
-    public static ProductInfoResponseDTO fromProduct(Product product) {
-        ProductInfoResponseDTO productInfoResponseDTO =
-                ProductInfoResponseDTO.builder()
+    public static ProductGetResponseDTO fromProduct(Product product) {
+        ProductGetResponseDTO productGetResponseDTO =
+                ProductGetResponseDTO.builder()
                         .barcode(product.getBarcode())
                         .productName(product.getProductName())
                         .enterprise(product.getEnterprise())
@@ -61,6 +61,6 @@ public class ProductInfoResponseDTO {
                         .eventNames(product.getEvents().stream().map(Event::getEventName).toList())
                         .build();
 
-        return productInfoResponseDTO;
+        return productGetResponseDTO;
     }
 }
