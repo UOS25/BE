@@ -20,4 +20,8 @@ public class DisbursementService {
     public List<Disbursement> findAllByShopId(Long shopId) {
         return disbursementRepository.findAllByShopShopId(shopId);
     }
+
+    public List<Disbursement> findAllByEmployeeId(Long employeeId) {
+        return disbursementRepository.findAllByEmployeeId(employeeId);
+    }
 }
