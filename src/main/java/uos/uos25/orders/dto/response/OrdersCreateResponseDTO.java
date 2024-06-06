@@ -1,12 +1,12 @@
 package uos.uos25.orders.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.shop.dto.ShopInfo;
-
-import java.time.LocalDateTime;
 
 @Data
 public class OrdersCreateResponseDTO {
@@ -56,12 +56,3 @@ public class OrdersCreateResponseDTO {
                 .build();
     }
 }
-
-// {
-//		orderNo: int,
-//		productId: int,
-//		productName: str,
-//		price: int,
-//		ea: int,
-//		description: str
-//	},

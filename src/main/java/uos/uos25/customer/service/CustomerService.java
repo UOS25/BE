@@ -42,7 +42,7 @@ public class CustomerService {
     public Customer findById(String phoneNumber) {
         return customerRepository
                 .findById(phoneNumber)
-                .orElseThrow(() -> new CustomerNotFoundException("해당 전화번호를 가진 고객이 존재하지 않습니다."));
+                .orElseThrow(() -> new CustomerNotFoundException());
     }
 
     // update
@@ -51,7 +51,7 @@ public class CustomerService {
         Customer findCustomer =
                 customerRepository
                         .findById(customerUpdateRequestDTO.getPhoneNumber())
-                        .orElseThrow(() -> new CustomerNotFoundException("해당 아이디의 고객이 존재하지 않습니다."));
+                        .orElseThrow(() -> new CustomerNotFoundException());
         // 정보 수정
         findCustomer.changeCustomerInfo(customerUpdateRequestDTO.getNickname());
 
@@ -64,8 +64,7 @@ public class CustomerService {
         Customer findCustomer =
                 customerRepository
                         .findById(phoneNumber)
-                        .orElseThrow(
-                                () -> new CustomerNotFoundException("해당 전화번호를 가진 고객이 존재하지 않습니다."));
+                        .orElseThrow(() -> new CustomerNotFoundException());
 
         // 마일리지를 적립합니다.
         findCustomer.earnMileage(mileage);
