@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.inventory.dto.request.InventoryChangeDisplayRequestDTO;
@@ -36,7 +37,7 @@ public class InventoryController {
 
     @GetMapping("/{shopId}")
     public ResponseEntity<List<InventoryGetResponseDTO>> getInventoryByShopId(
-            @PathVariable Long shopId) {
+            @Parameter(example = "1") @PathVariable Long shopId) {
         List<Inventory> inventoriesByShopId = inventoryService.findInventoriesByShopId(shopId);
         List<InventoryGetResponseDTO> inventoryGetResponseDTOS =
                 inventoriesByShopId.stream()
@@ -48,7 +49,8 @@ public class InventoryController {
 
     @GetMapping("/{shopId}/{barcode}")
     public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndProductId(
-            @PathVariable Long shopId, @PathVariable String barcode) {
+            @Parameter(example = "1") @PathVariable Long shopId,
+            @Parameter(example = "barcode") @PathVariable String barcode) {
         Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shopId, barcode);
 
         return ResponseEntity.ok(InventoryGetResponseDTO.fromEntity(inventory));
