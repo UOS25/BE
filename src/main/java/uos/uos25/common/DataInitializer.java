@@ -73,6 +73,91 @@ public class DataInitializer {
         ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
         ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
         Disbursement disbursement = createDisbursementDummy(shop);
+
+        // 생활 서비스 데이터 추가
+        createLivingServiceDummy();
+    }
+
+    private void createLivingServiceDummy() {
+        Product lottery =
+                Product.builder()
+                        .barcode("Lottery")
+                        .enterprise("Corp. Lottery")
+                        .productName("로또")
+                        .customerPrice(1000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("로또이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+        Product delivery =
+                Product.builder()
+                        .barcode("Delivery")
+                        .enterprise("Corp. Delivery")
+                        .productName("택배")
+                        .customerPrice(5000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("택배 서비스이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+        Product atm =
+                Product.builder()
+                        .barcode("ATM")
+                        .enterprise("Corp. ATM")
+                        .productName("ATM")
+                        .customerPrice(1000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("ATM 서비스이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+        Product electricityBill =
+                Product.builder()
+                        .barcode("ElectricityBill")
+                        .enterprise("Corp. UtilityBill")
+                        .productName("전기요금")
+                        .customerPrice(200000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("전기요금 수납이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+        Product waterBill =
+                Product.builder()
+                        .barcode("WaterBill")
+                        .enterprise("Corp. UtilityBill")
+                        .productName("수도요금")
+                        .customerPrice(10000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("수도요금 수납이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+        Product gasBill =
+                Product.builder()
+                        .barcode("GasBill")
+                        .enterprise("Corp. UtilityBill")
+                        .productName("가스요금")
+                        .customerPrice(30000)
+                        .orderPrice(0)
+                        .category("생활서비스")
+                        .description("가스요금 수납이다.")
+                        .feature("생활서비스")
+                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .build();
+
+        productRepository.save(lottery);
+        productRepository.save(delivery);
+        productRepository.save(atm);
+        productRepository.save(electricityBill);
+        productRepository.save(waterBill);
+        productRepository.save(gasBill);
     }
 
     private Product createProductDummy() {
@@ -90,18 +175,6 @@ public class DataInitializer {
                         .expirationDate(LocalDateTime.now())
                         .build();
         return productRepository.save(product);
-        //        Product product2 = Product.builder()
-        //                .enterprise("enterprise")
-        //                .productName("name2")
-        //                .barcode("barcode2")
-        //                .customerPrice(3000)
-        //                .orderPrice(4000)
-        //                .category("category")
-        //                .description("description2")
-        //                .feature("feature")
-        //                .expirationDate(LocalDateTime.now())
-        //                .build();
-        //        Product savedProduct2 = productRepository.save(product2);
     }
 
     private HeadQuarter createHeadQuarter() {

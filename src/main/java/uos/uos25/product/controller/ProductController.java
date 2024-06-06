@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.product.dto.request.ProductCreateRequestDTO;
@@ -41,5 +42,17 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductGetResponseDTO>> getAllProductsList() {
         return ResponseEntity.ok(productService.findAllProducts());
+    }
+
+    @Operation(summary = "생활 서비스 조회")
+    @GetMapping("/utility-service")
+    public ResponseEntity<List<ProductGetResponseDTO>> getUtilityServices() {
+        List<Product> utilityServices = productService.findUtilityServices();
+        List<ProductGetResponseDTO> productGetResponseDTOS =
+                utilityServices.stream()
+                        .map(product -> ProductGetResponseDTO.fromProduct(product))
+                        .toList();
+
+        return ResponseEntity.ok(productGetResponseDTOS);
     }
 }
