@@ -80,7 +80,7 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @Operation(summary = "급여 정산")
+    @Operation(summary = "급여 정산", description = "급여 정산되지 않은 달만 사용 가능")
     @PostMapping("/salary-calculation")
     public ResponseEntity<DisbursementGetResponseDTO> calculateSalary(
             @RequestBody SalaryCalculationRequestDTO salaryCalculationRequestDTO) {
