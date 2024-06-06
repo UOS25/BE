@@ -32,7 +32,9 @@ import uos.uos25.receipt.repository.ReceiptDetailRepository;
 import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.repository.ReturnsRepository;
+import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.repository.DisbursementRepository;
 import uos.uos25.shop.repository.ShopRepository;
 
 @Component
@@ -52,6 +54,7 @@ public class DataInitializer {
     private final EventRepository eventRepository;
     private final ReceiptRepository receiptRepository;
     private final ReceiptDetailRepository receiptDetailRepository;
+    private final DisbursementRepository disbursementRepository;
 
     @PostConstruct
     public void init() {
@@ -69,6 +72,7 @@ public class DataInitializer {
         Receipt receipt = createReceiptDummy(employee, customer);
         ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
         ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
+        Disbursement disbursement = createDisbursementDummy(shop);
     }
 
     private Product createProductDummy() {
@@ -224,5 +228,16 @@ public class DataInitializer {
         ReceiptDetail receiptDetail =
                 ReceiptDetail.builder().product(product).receipt(receipt).ea(10).build();
         return receiptDetailRepository.save(receiptDetail);
+    }
+
+    private Disbursement createDisbursementDummy(Shop shop) {
+        Disbursement disbursement =
+                Disbursement.builder()
+                        .disburseId(1L)
+                        .disburseAmount(10000L)
+                        .disburseDate(LocalDateTime.now())
+                        .shop(shop)
+                        .build();
+        return disbursementRepository.save(disbursement);
     }
 }
