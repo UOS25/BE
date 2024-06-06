@@ -26,7 +26,7 @@ public class ReceiptController {
     public ResponseEntity<ReceiptGetResponseDTO> getReceipt(@PathVariable Long receiptId) {
         Receipt receipt = receiptService.findById(receiptId);
 
-        return ResponseEntity.status(HttpStatus.OK).body(receiptService.entityToDTO(receipt));
+        return ResponseEntity.status(HttpStatus.OK).body(ReceiptGetResponseDTO.fromEntity(receipt));
     }
 
     @GetMapping("/phoneNumber/{phoneNumber}")
@@ -34,7 +34,9 @@ public class ReceiptController {
             @PathVariable String phoneNumber) {
         List<Receipt> receipts = receiptService.findByCustomerPhoneNumber(phoneNumber);
         List<ReceiptGetResponseDTO> receiptGetResponseDTOS =
-                receipts.stream().map(receipt -> receiptService.entityToDTO(receipt)).toList();
+                receipts.stream()
+                        .map(receipt -> ReceiptGetResponseDTO.fromEntity(receipt))
+                        .toList();
 
         return ResponseEntity.status(HttpStatus.OK).body(receiptGetResponseDTOS);
     }
