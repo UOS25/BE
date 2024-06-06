@@ -57,6 +57,9 @@ public class Shop extends BaseEntity {
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Inventory> inventories = new ArrayList<>();
 
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
+    private List<Disbursement> disbursements = new ArrayList<>();
+
     @Builder
     public Shop(String shopName, String address, String relationship, HeadQuarter headQuarter) {
         this.shopName = shopName;
