@@ -28,12 +28,7 @@ public class EmployeeWorkingHistoryService {
     @Transactional
     public List<EmployeeWorkingHistoryDTO> findAllEmployeeWorkingHistories(Long employeeId) {
         List<EmployeeWorkingHistory> histories =
-                employeeWorkingHistoryRepository
-                        .findAllByEmployeeEmployeeId(employeeId)
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                (("다음의 Id를 가진 employee가 없습니다: " + employeeId))));
+                employeeWorkingHistoryRepository.findAllByEmployeeEmployeeId(employeeId);
 
         // employeeId 안넘어감
         return histories.stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -177,5 +172,11 @@ public class EmployeeWorkingHistoryService {
 
     public List<EmployeeWorkingHistory> findByShopId(Long shopId) {
         return employeeWorkingHistoryRepository.findAllByEmployee_ShopShopId(shopId);
+    }
+
+    public List<EmployeeWorkingHistory> findWorkingHistoriesInMonth(
+            Long employeeId, LocalDateTime date) {
+        return employeeWorkingHistoryRepository.findAllByEmployeeEmployeeIdANDYearAndMonth(
+                employeeId, date.getYear(), date.getMonthValue());
     }
 }

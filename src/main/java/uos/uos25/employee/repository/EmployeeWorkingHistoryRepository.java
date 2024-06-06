@@ -20,7 +20,7 @@ public interface EmployeeWorkingHistoryRepository
             @Param("employeeId") Long employeeId);
 
     // 직원 아이디로 출퇴근 히스토리를 가져오는 메소드
-    Optional<List<EmployeeWorkingHistory>> findAllByEmployeeEmployeeId(Long employeeId);
+    List<EmployeeWorkingHistory> findAllByEmployeeEmployeeId(Long employeeId);
 
     // 해당 직원이 오늘 출근 기록이 있는지 체크하는 메소드
     @Query(
@@ -31,4 +31,11 @@ public interface EmployeeWorkingHistoryRepository
             @Param("endOfDay") LocalDateTime endOfDay);
 
     List<EmployeeWorkingHistory> findAllByEmployee_ShopShopId(Long shopId);
+
+    @Query(
+            "SELECT e FROM EmployeeWorkingHistory e WHERE e.employee.employeeId = :employeeId AND YEAR(e.startDateTime) = :year AND MONTH(e.startDateTime) = :month")
+    List<EmployeeWorkingHistory> findAllByEmployeeEmployeeIdANDYearAndMonth(
+            @Param("employeeId") Long employeeId,
+            @Param("year") int year,
+            @Param("month") int month);
 }
