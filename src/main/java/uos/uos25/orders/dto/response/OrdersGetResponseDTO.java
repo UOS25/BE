@@ -1,5 +1,7 @@
 package uos.uos25.orders.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.orders.entity.Orders;
@@ -13,6 +15,7 @@ public class OrdersGetResponseDTO {
     private String ordersCheck;
     private Integer givenEa;
     private Integer ordersEa;
+    private LocalDateTime createAt;
     private ShopInfo shopInfo;
     private ProductInfo productInfo;
 
@@ -23,6 +26,7 @@ public class OrdersGetResponseDTO {
             Integer givenEa,
             Integer ordersEa,
             String ordersCheck,
+            LocalDateTime createAt,
             Long shopId,
             String shopName,
             String barcode,
@@ -32,6 +36,7 @@ public class OrdersGetResponseDTO {
         this.givenEa = givenEa;
         this.ordersEa = ordersEa;
         this.ordersCheck = ordersCheck;
+        this.createAt = createAt;
         this.shopInfo = new ShopInfo(shopId, shopName);
         this.productInfo = new ProductInfo(barcode, productName);
     }
@@ -43,6 +48,7 @@ public class OrdersGetResponseDTO {
                 .ordersCheck(orders.getOrdersCheck())
                 .givenEa(orders.getGivenEa())
                 .ordersEa(orders.getOrdersEa())
+                .createAt(orders.getCreatedAt())
                 .shopId(orders.getShop().getShopId())
                 .shopName(orders.getShop().getShopName())
                 .barcode(orders.getProduct().getBarcode())
