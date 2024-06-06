@@ -6,6 +6,8 @@ import uos.uos25.orders.entity.Orders;
 import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.shop.dto.ShopInfo;
 
+import java.time.LocalDateTime;
+
 @Data
 public class OrdersCreateResponseDTO {
     private Long ordersId;
@@ -13,6 +15,7 @@ public class OrdersCreateResponseDTO {
     private String ordersCheck;
     private Integer givenEa;
     private Integer ordersEa;
+    private LocalDateTime createAt;
     private ShopInfo shopInfo;
     private ProductInfo productInfo;
 
@@ -23,6 +26,7 @@ public class OrdersCreateResponseDTO {
             Integer givenEa,
             Integer ordersEa,
             String ordersCheck,
+            LocalDateTime createAt,
             Long shopId,
             String shopName,
             String barcode,
@@ -32,6 +36,7 @@ public class OrdersCreateResponseDTO {
         this.givenEa = givenEa;
         this.ordersEa = ordersEa;
         this.ordersCheck = ordersCheck;
+        this.createAt = createAt;
         this.shopInfo = new ShopInfo(shopId, shopName);
         this.productInfo = new ProductInfo(barcode, productName);
     }
@@ -43,6 +48,7 @@ public class OrdersCreateResponseDTO {
                 .ordersCheck(orders.getOrdersCheck())
                 .givenEa(orders.getGivenEa())
                 .ordersEa(orders.getOrdersEa())
+                .createAt(orders.getCreatedAt())
                 .shopId(orders.getShop().getShopId())
                 .shopName(orders.getShop().getShopName())
                 .barcode(orders.getProduct().getBarcode())
