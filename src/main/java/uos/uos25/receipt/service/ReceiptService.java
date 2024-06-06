@@ -10,13 +10,9 @@ import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.service.CustomerService;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
-import uos.uos25.purchase.dto.ItemInfo;
-import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
 import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.exception.ReceiptNotFound;
 import uos.uos25.receipt.repository.ReceiptRepository;
-import uos.uos25.shop.entity.Shop;
 
 @Service
 @RequiredArgsConstructor
@@ -48,22 +44,5 @@ public class ReceiptService {
 
     public List<Receipt> findByCustomerPhoneNumber(String phoneNumber) {
         return receiptRepository.findAllByCustomerPhoneNumber(phoneNumber);
-    }
-
-    public ReceiptGetResponseDTO entityToDTO(Receipt receipt) {
-        Employee employee = receipt.getEmployee();
-        Shop shop = employee.getShop();
-        List<ReceiptDetail> receiptDetails = receipt.getReceiptDetails();
-        List<ItemInfo> itemInfos =
-                receiptDetails.stream()
-                        .map(receiptDetail -> ItemInfo.fromReceiptDetail(receiptDetail))
-                        .toList();
-
-        return ReceiptGetResponseDTO.builder()
-                .receiptId(receipt.getReceiptId())
-                .shopName(shop.getShopName())
-                .itemInfos(itemInfos)
-                .purchaseDate(receipt.getPurchaseDate())
-                .build();
     }
 }
