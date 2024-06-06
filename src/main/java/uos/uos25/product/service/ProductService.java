@@ -16,6 +16,7 @@ import uos.uos25.product.repository.ProductRepository;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private static final String UTILITY_SERVICE_CATEGORY = "생활서비스";
 
     @Transactional
     public Product create(ProductCreateRequestDTO productCreateRequestDTO) {
@@ -45,5 +46,9 @@ public class ProductService {
         return productRepository.findAll().stream()
                 .map(product -> ProductGetResponseDTO.fromProduct(product))
                 .toList();
+    }
+
+    public List<Product> findUtilityServices() {
+        return productRepository.findAllByCategory(UTILITY_SERVICE_CATEGORY);
     }
 }
