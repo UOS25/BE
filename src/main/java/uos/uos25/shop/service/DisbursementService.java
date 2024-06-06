@@ -16,4 +16,8 @@ public class DisbursementService {
     public List<Disbursement> findAll() {
         return disbursementRepository.findAll();
     }
+
+    public List<Disbursement> findAllByShopId(Long shopId) {
+        return disbursementRepository.findAllByShopShopId(shopId);
+    }
 }
