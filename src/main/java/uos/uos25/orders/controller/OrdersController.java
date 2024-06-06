@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
 import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
+import uos.uos25.orders.dto.response.OrdersCreateResponseDTO;
 import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.service.OrdersService;
@@ -23,10 +24,12 @@ public class OrdersController {
     private final OrdersService ordersService;
 
     @PostMapping
-    public ResponseEntity<Orders> order(
+    public ResponseEntity<OrdersCreateResponseDTO> order(
             @RequestBody OrdersCreateRequestDTO ordersCreateRequestDTO) {
         Orders savedOrders = ordersService.save(ordersCreateRequestDTO);
-        return new ResponseEntity<>(savedOrders, HttpStatus.CREATED);
+        OrdersCreateResponseDTO ordersCreateResponseDTO = OrdersCreateResponseDTO.fromEntity(savedOrders);
+
+        return ResponseEntity.ok(ordersCreateResponseDTO);
     }
 
     @GetMapping
