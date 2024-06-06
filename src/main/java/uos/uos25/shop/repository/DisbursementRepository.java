@@ -3,9 +3,7 @@ package uos.uos25.shop.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.entity.Disbursement;
 
 @Repository
-public interface ShopRepository extends JpaRepository<Shop, Long> {
-    Shop findByShopName(String shopName);
-}
+public interface DisbursementRepository extends JpaRepository<Disbursement, Long> {}

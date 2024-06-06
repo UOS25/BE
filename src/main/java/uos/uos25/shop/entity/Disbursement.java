@@ -3,9 +3,12 @@ package uos.uos25.shop.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+
 import lombok.Builder;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Disbursement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +22,8 @@ public class Disbursement {
     private Shop shop;
 
     @Builder
-    public Disbursement(Long disburseId, LocalDateTime disburseDate, Long disburseAmount, Shop shop) {
+    public Disbursement(
+            Long disburseId, LocalDateTime disburseDate, Long disburseAmount, Shop shop) {
         this.disburseId = disburseId;
         this.disburseDate = disburseDate;
         this.disburseAmount = disburseAmount;
