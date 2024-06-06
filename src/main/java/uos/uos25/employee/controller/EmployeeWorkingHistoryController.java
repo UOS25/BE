@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
+import uos.uos25.employee.dto.response.EmployeeWorkingHistoryGetResponseDTO;
+import uos.uos25.employee.entity.EmployeeWorkingHistory;
 import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.employee.service.EmployeeWorkingHistoryService;
 
@@ -80,5 +82,21 @@ public class EmployeeWorkingHistoryController {
         employeeWorkingHistoryService.deleteEmployeeWorkingHistory(employeeWorkingHistoryId);
         String msg = "삭제되었습니다.";
         return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+
+    @GetMapping("/shop/{shopId}")
+    public ResponseEntity<List<EmployeeWorkingHistoryGetResponseDTO>> getByShopId(
+            @PathVariable Long shopId) {
+        List<EmployeeWorkingHistory> employeeWorkingHistories =
+                employeeWorkingHistoryService.findByShopId(shopId);
+        List<EmployeeWorkingHistoryGetResponseDTO> employeeWorkingHistoryGetResponseDTOS =
+                employeeWorkingHistories.stream()
+                        .map(
+                                employeeWorkingHistory ->
+                                        EmployeeWorkingHistoryGetResponseDTO.fromEntity(
+                                                employeeWorkingHistory))
+                        .toList();
+
+        return ResponseEntity.ok(employeeWorkingHistoryGetResponseDTOS);
     }
 }

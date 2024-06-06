@@ -174,4 +174,8 @@ public class EmployeeWorkingHistoryService {
 
         employeeWorkingHistoryRepository.delete(findEmployeeWorkingHistory);
     }
+
+    public List<EmployeeWorkingHistory> findByShopId(Long shopId) {
+        return employeeWorkingHistoryRepository.findAllByEmployee_ShopShopId(shopId);
+    }
 }

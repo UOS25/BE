@@ -29,4 +29,6 @@ public interface EmployeeWorkingHistoryRepository
             @Param("employeeId") Long employeeId,
             @Param("startOfDay") LocalDateTime startOfDay,
             @Param("endOfDay") LocalDateTime endOfDay);
+
+    List<EmployeeWorkingHistory> findAllByEmployee_ShopShopId(Long shopId);
 }
