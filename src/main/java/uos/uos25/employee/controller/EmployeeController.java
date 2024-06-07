@@ -29,6 +29,34 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    // 지점 아이디로 검색
+    @GetMapping("/search-shop/{shopId}")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByShopId(
+            @PathVariable Long shopId) {
+        List<Employee> employees = employeeService.findEmployeeByShopId(shopId);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
+    // 직원 이름으로 검색
+    @GetMapping(
+            value = "/search-emp-name/{employeeName}",
+            produces = "application/json; charset=utf8")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByEmployeeName(
+            @PathVariable String employeeName) {
+        List<Employee> employees = employeeService.findEmployeeByEmployeeName(employeeName);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
     @PostMapping
     public ResponseEntity<EmployeeCreateResponseDTO> join(
             @Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
