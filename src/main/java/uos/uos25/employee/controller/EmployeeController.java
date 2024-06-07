@@ -29,6 +29,20 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    // 직원 이름 + 지점 아이디로 검색
+    @GetMapping("/search/{shopId}/{employeeName}")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByShopIdAndEmployeeName(
+            @PathVariable Long shopId, @PathVariable String employeeName) {
+        List<Employee> employees =
+                employeeService.findEmployeeByShopIdAndEmployeeName(shopId, employeeName);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
     // 지점 아이디로 검색
     @GetMapping("/search-shop/{shopId}")
     public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByShopId(
@@ -43,9 +57,7 @@ public class EmployeeController {
     }
 
     // 직원 이름으로 검색
-    @GetMapping(
-            value = "/search-emp-name/{employeeName}",
-            produces = "application/json; charset=utf8")
+    @GetMapping("/search-emp-name/{employeeName}")
     public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByEmployeeName(
             @PathVariable String employeeName) {
         List<Employee> employees = employeeService.findEmployeeByEmployeeName(employeeName);

@@ -30,6 +30,12 @@ public class EmployeeService {
     private final DisbursementService disbursementService;
 
     @Transactional
+    // 직원 이름, 지점 아이디로 직원 검색
+    public List<Employee> findEmployeeByShopIdAndEmployeeName(Long shopId, String employeeName) {
+        return employeeRepository.findByShopShopIdAndEmployeeNameContaining(shopId, employeeName);
+    }
+
+    @Transactional
     // 지점 아이디로 직원 검색
     public List<Employee> findEmployeeByShopId(Long shopId) {
         return employeeRepository.findAllByShopShopId(shopId);
