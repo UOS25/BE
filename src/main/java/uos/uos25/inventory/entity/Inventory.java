@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.inventory.exception.InventoryEaNotEnoughException;
 import uos.uos25.inventory.exception.InventoryTooManyDisplayException;
 import uos.uos25.inventory.exception.TooManyProductPurchaseException;
 import uos.uos25.product.entity.Product;
@@ -62,18 +61,17 @@ public class Inventory extends BaseEntity {
         this.product = product;
     }
 
-    public void changeDisplay(Integer ea) {
-        if (this.ea < ea) throw new InventoryEaNotEnoughException();
-        if (this.ea < display) throw new InventoryTooManyDisplayException();
+    public void display(Integer ea) {
+        if (this.ea < this.display + ea) throw new InventoryTooManyDisplayException();
 
         this.display += ea;
     }
 
-    public void plusEa(Integer ea) {
+    public void addEa(Integer ea) {
         this.ea += ea;
     }
 
-    public void minusEa(Integer ea) {
+    public void sell(Integer ea) {
         if (this.ea < ea) throw new TooManyProductPurchaseException();
         if (this.display < ea) throw new TooManyProductPurchaseException();
         this.ea -= ea;
