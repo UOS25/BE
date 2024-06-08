@@ -10,7 +10,10 @@ import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
 import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
 import uos.uos25.orders.entity.Orders;
+import uos.uos25.orders.entity.OrdersStatus;
+import uos.uos25.orders.exception.OrdersNotDelivering;
 import uos.uos25.orders.exception.OrdersNotFoundException;
+import uos.uos25.orders.exception.OrdersNotRequested;
 import uos.uos25.orders.repository.OrdersRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
@@ -92,7 +95,11 @@ public class OrdersService {
                 ordersRepository
                         .findById(ordersId)
                         .orElseThrow(() -> new OrdersNotFoundException());
-        orders.setOrdersStatus("입고완료");
+
+        if (!orders.getOrdersStatus().equals(OrdersStatus.DELIVERED.getStatus()))
+            throw new OrdersNotDelivering();
+
+        orders.setOrdersStatus(OrdersStatus.STORED.getStatus());
         orders.setGivenEa(orders.getOrdersEa());
 
         // 재고에 ordersEa 추가
@@ -101,5 +108,9 @@ public class OrdersService {
         inventoryService.addInventory(shopId, barcode, orders.getOrdersEa());
 
         return orders.getOrdersId();
+    }
+
+    public List<Orders> findAllOrdersByShopId(Long shopId) {
+        return ordersRepository.findAllByShopShopId(shopId);
     }
 }
