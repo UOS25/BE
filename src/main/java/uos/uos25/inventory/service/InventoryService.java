@@ -81,7 +81,7 @@ public class InventoryService {
                                     throw new InventoryNotFoundException();
                                 });
 
-        inventory.changeDisplay(ea);
+        inventory.display(ea);
     }
 
     public Inventory findInventoryByShopIdAndProductName(Long shopId, String productName) {

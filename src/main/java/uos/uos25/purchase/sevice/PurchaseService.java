@@ -54,7 +54,7 @@ public class PurchaseService {
             Inventory inventory =
                     inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
-            inventory.minusEa(ea);
+            inventory.sell(ea);
 
             totalPrice.plus(product.getCustomerPrice() * ea);
 
@@ -81,7 +81,7 @@ public class PurchaseService {
             Inventory inventory =
                     inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
-            inventory.plusEa(ea);
+            inventory.addEa(ea);
         }
     }
 }
