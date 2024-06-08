@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
@@ -43,8 +44,19 @@ public class OrdersController {
         return ResponseEntity.ok(ordersGetResponseDTOS);
     }
 
+    @GetMapping("/shop/{shopId}")
+    public ResponseEntity<List<OrdersGetResponseDTO>> getListByShopId(
+            @Parameter(example = "1") @PathVariable Long shopId) {
+        List<Orders> orders = ordersService.findAllOrdersByShopId(shopId);
+        List<OrdersGetResponseDTO> ordersGetResponseDTOS =
+                orders.stream().map(order -> OrdersGetResponseDTO.fromEntity(order)).toList();
+
+        return ResponseEntity.ok(ordersGetResponseDTOS);
+    }
+
     @GetMapping("/{ordersId}")
-    public ResponseEntity<OrdersGetResponseDTO> getOrdersById(@PathVariable Long ordersId) {
+    public ResponseEntity<OrdersGetResponseDTO> getOrdersById(
+            @Parameter(example = "1") @PathVariable Long ordersId) {
         Orders orders = ordersService.findOrdersById(ordersId);
         OrdersGetResponseDTO ordersGetResponseDTO = OrdersGetResponseDTO.fromEntity(orders);
 

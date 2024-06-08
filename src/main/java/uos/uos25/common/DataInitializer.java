@@ -23,6 +23,7 @@ import uos.uos25.headQuarter.repository.HeadQuarterRepository;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.inventory.repository.InventoryRepository;
 import uos.uos25.orders.entity.Orders;
+import uos.uos25.orders.entity.OrdersStatus;
 import uos.uos25.orders.repository.OrdersRepository;
 import uos.uos25.product.entity.Product;
 import uos.uos25.product.repository.ProductRepository;
@@ -200,10 +201,10 @@ public class DataInitializer {
         // Orders dummy
         Orders orders =
                 Orders.builder()
-                        .ordersStatus("주문 완료")
+                        .ordersStatus(OrdersStatus.REQUEST.getStatus())
                         .givenEa(10)
                         .ordersEa(10)
-                        .ordersCheck("검품 이전")
+                        .ordersCheck("검품이전")
                         .shop(shop)
                         .product(product)
                         .build();
