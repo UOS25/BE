@@ -9,6 +9,7 @@ import uos.uos25.product.entity.Product;
 import uos.uos25.product.service.ProductService;
 import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
 import uos.uos25.returns.entity.Returns;
+import uos.uos25.returns.exception.ReturnsNotFoundException;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
@@ -38,5 +39,11 @@ public class ReturnsService {
     public List<Returns> findAllByShopId(Long shopId) {
         Shop shop = shopService.findShopById(shopId);
         return returnsRepository.findAllByShop_ShopId(shopId);
+    }
+
+    public Returns findById(Long returnsId) {
+        return returnsRepository
+                .findById(returnsId)
+                .orElseThrow(() -> new ReturnsNotFoundException());
     }
 }
