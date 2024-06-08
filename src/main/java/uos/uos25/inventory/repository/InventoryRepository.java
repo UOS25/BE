@@ -11,7 +11,9 @@ import uos.uos25.inventory.entity.Inventory;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
-    public Optional<Inventory> findByShopShopIdAndProductBarcode(Long shopId, String barcode);
+    Optional<Inventory> findByShopShopIdAndProductBarcode(Long shopId, String barcode);
 
-    public Optional<List<Inventory>> findAllByShopShopId(Long shopId);
+    Optional<List<Inventory>> findAllByShopShopId(Long shopId);
+
+    Optional<Inventory> findByShopShopIdAndProductProductName(Long shopId, String productName);
 }
