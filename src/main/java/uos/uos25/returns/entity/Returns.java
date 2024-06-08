@@ -40,4 +40,8 @@ public class Returns extends BaseEntity {
         this.shop = shop;
         this.product = product;
     }
+
+    public Integer getPrice() {
+        return product.getOrderPrice() * ea;
+    }
 }

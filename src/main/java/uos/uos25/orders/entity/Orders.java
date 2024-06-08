@@ -62,4 +62,8 @@ public class Orders extends BaseEntity {
     public void setOrdersStatus(String ordersStatus) {
         this.ordersStatus = ordersStatus;
     }
+
+    public Integer getPrice() {
+        return ordersEa * product.getOrderPrice();
+    }
 }

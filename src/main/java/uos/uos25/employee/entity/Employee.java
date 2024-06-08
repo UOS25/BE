@@ -122,7 +122,7 @@ public class Employee {
         if (shop != null) this.shop = shop;
     }
 
-    public Long calculateSalary(Long totalWorkingHour) {
-        return totalWorkingHour * salary;
+    public Integer calculateSalary(Long totalWorkingHour) {
+        return totalWorkingHour.intValue() * salary;
     }
 }

@@ -1,6 +1,5 @@
 package uos.uos25.receipt.entity;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,20 +8,18 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import uos.uos25.common.BaseEntity;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.employee.entity.Employee;
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class Receipt {
+public class Receipt extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Long receiptId;
-
-    @Column(nullable = false)
-    private LocalDateTime purchaseDate;
 
     @Column(nullable = false)
     private String purchaseStatus;
@@ -47,7 +44,6 @@ public class Receipt {
     @Builder
     public Receipt(
             Long receiptId,
-            LocalDateTime purchaseDate,
             String purchaseStatus,
             Integer age,
             String gender,
@@ -55,7 +51,6 @@ public class Receipt {
             Customer customer,
             List<ReceiptDetail> receiptDetails) {
         this.receiptId = receiptId;
-        this.purchaseDate = purchaseDate;
         this.purchaseStatus = purchaseStatus;
         this.age = age;
         this.gender = gender;
@@ -66,5 +61,15 @@ public class Receipt {
 
     public void cancelReceipt() {
         this.purchaseStatus = "구매포기";
+    }
+
+    public Integer getPrice() {
+        return receiptDetails.stream()
+                .map(
+                        receiptDetail ->
+                                receiptDetail.getEa()
+                                        * receiptDetail.getProduct().getCustomerPrice())
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }

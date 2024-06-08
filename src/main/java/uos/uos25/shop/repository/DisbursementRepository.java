@@ -18,7 +18,7 @@ public interface DisbursementRepository extends JpaRepository<Disbursement, Long
     List<Disbursement> findAllByEmployeeId(Long employeeId);
 
     @Query(
-            "SELECT COUNT(d) > 0 FROM Disbursement d JOIN Shop s ON d.shop.shopId = s.shopId JOIN Employee e ON d.shop.shopId = e.shop.shopId WHERE e.employeeId = :employeeId AND YEAR(d.disburseDate) = :year AND MONTH(d.disburseDate) = :month")
+            "SELECT COUNT(d) > 0 FROM Disbursement d JOIN Shop s ON d.shop.shopId = s.shopId JOIN Employee e ON d.shop.shopId = e.shop.shopId WHERE e.employeeId = :employeeId AND YEAR(d.createdAt) = :year AND MONTH(d.createdAt) = :month")
     Boolean existsByEmployeeAndYearAndMonth(
             @Param("employeeId") Long employeeId,
             @Param("year") int year,
