@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.inventory.service.InventoryService;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
-import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
 import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.orders.exception.OrdersNotFoundException;
@@ -73,12 +72,29 @@ public class OrdersService {
     }
 
     @Transactional
-    public Long modifyOrdersStatus(OrdersStatusRequestDTO ordersStatusRequestDTO) {
+    public Long deliveryOrders(Long ordersId) {
         Orders orders =
                 ordersRepository
-                        .findById(ordersStatusRequestDTO.getOrdersId())
+                        .findById(ordersId)
                         .orElseThrow(() -> new OrdersNotFoundException());
-        orders.setOrdersStatus(ordersStatusRequestDTO.getStatus());
+        orders.setOrdersStatus("배송시작");
+
+        return orders.getOrdersId();
+    }
+
+    @Transactional
+    public Long checkOrders(Long ordersId) {
+        Orders orders =
+                ordersRepository
+                        .findById(ordersId)
+                        .orElseThrow(() -> new OrdersNotFoundException());
+        orders.setOrdersStatus("입고완료");
+        orders.setGivenEa(orders.getOrdersEa());
+
+        // 재고에 ordersEa 추가
+        Long shopId = orders.getShop().getShopId();
+        String barcode = orders.getProduct().getBarcode();
+        inventoryService.addInventory(shopId, barcode, orders.getOrdersEa());
 
         return orders.getOrdersId();
     }

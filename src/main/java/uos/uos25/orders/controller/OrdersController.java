@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
@@ -64,18 +65,20 @@ public class OrdersController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "배송 시작")
     @PatchMapping("/delivery")
     public ResponseEntity<Void> startOrdersDelivery(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
-        Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
+        ordersService.deliveryOrders(ordersStatusRequestDTO.getOrdersId());
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @Operation(summary = "입고 완료")
     @PatchMapping("/check")
     public ResponseEntity<Void> checkOrdersArrived(
             @RequestBody OrdersStatusRequestDTO ordersStatusRequestDTO) {
-        Long modifiedOrdersId = ordersService.modifyOrdersStatus(ordersStatusRequestDTO);
+        ordersService.checkOrders(ordersStatusRequestDTO.getOrdersId());
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
