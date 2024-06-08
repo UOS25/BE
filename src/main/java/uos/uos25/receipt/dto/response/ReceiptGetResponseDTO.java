@@ -41,7 +41,6 @@ public class ReceiptGetResponseDTO {
                 .shopName(receipt.getEmployee().getShop().getShopName())
                 .purchaseStatus(receipt.getPurchaseStatus())
                 .itemInfos(itemInfos)
-                .purchaseDate(receipt.getPurchaseDate())
                 .build();
     }
 }

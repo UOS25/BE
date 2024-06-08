@@ -36,4 +36,8 @@ public class Disposal extends BaseEntity {
         this.product = product;
         this.ea = ea;
     }
+
+    public Integer getPrice() {
+        return ea * product.getOrderPrice();
+    }
 }

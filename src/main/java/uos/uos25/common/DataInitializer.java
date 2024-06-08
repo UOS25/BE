@@ -292,7 +292,6 @@ public class DataInitializer {
                         .age(20)
                         .gender("FEMALE")
                         .purchaseStatus("구매완료")
-                        .purchaseDate(LocalDateTime.now())
                         .build();
         return receiptRepository.save(receipt);
     }
@@ -305,12 +304,7 @@ public class DataInitializer {
 
     private Disbursement createDisbursementDummy(Shop shop) {
         Disbursement disbursement =
-                Disbursement.builder()
-                        .disburseId(1L)
-                        .disburseAmount(10000L)
-                        .disburseDate(LocalDateTime.now())
-                        .shop(shop)
-                        .build();
+                Disbursement.builder().disburseId(1L).disburseAmount(10000).shop(shop).build();
         return disbursementRepository.save(disbursement);
     }
 }

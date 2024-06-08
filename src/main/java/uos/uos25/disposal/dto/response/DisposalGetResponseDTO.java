@@ -7,14 +7,14 @@ import uos.uos25.product.dto.ProductInfo;
 import uos.uos25.shop.dto.ShopInfo;
 
 @Data
-public class DisposalListGetResponseDTO {
+public class DisposalGetResponseDTO {
     private final Long disposalId;
     private final Integer ea;
     private final ShopInfo shopInfo;
     private final ProductInfo productInfo;
 
     @Builder
-    public DisposalListGetResponseDTO(
+    public DisposalGetResponseDTO(
             Long disposalId, Integer ea, ShopInfo shopInfo, ProductInfo productInfo) {
         this.disposalId = disposalId;
         this.ea = ea;
@@ -22,8 +22,8 @@ public class DisposalListGetResponseDTO {
         this.productInfo = productInfo;
     }
 
-    public static DisposalListGetResponseDTO fromEntity(Disposal disposal) {
-        return DisposalListGetResponseDTO.builder()
+    public static DisposalGetResponseDTO fromEntity(Disposal disposal) {
+        return DisposalGetResponseDTO.builder()
                 .disposalId(disposal.getDisposalId())
                 .ea(disposal.getEa())
                 .shopInfo(

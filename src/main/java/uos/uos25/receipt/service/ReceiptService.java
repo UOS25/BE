@@ -1,6 +1,5 @@
 package uos.uos25.receipt.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -33,7 +32,6 @@ public class ReceiptService {
                         .age(age)
                         .gender(gender)
                         .purchaseStatus("구매완료")
-                        .purchaseDate(LocalDateTime.now())
                         .build();
         return receiptRepository.save(receipt);
     }

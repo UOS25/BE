@@ -32,7 +32,8 @@ public class DisbursementService {
     }
 
     @Transactional
-    public Disbursement create(Employee employee, Long disburseAmount, LocalDateTime disburseDate) {
+    public Disbursement create(
+            Employee employee, Integer disburseAmount, LocalDateTime disburseDate) {
         if (disbursementRepository.existsByEmployeeAndYearAndMonth(
                 employee.getEmployeeId(), disburseDate.getYear(), disburseDate.getMonthValue()))
             throw new DisbursementAlreadyExistsException();
@@ -40,11 +41,7 @@ public class DisbursementService {
         Shop shop = employee.getShop();
 
         Disbursement disbursement =
-                Disbursement.builder()
-                        .shop(shop)
-                        .disburseAmount(disburseAmount)
-                        .disburseDate(disburseDate)
-                        .build();
+                Disbursement.builder().shop(shop).disburseAmount(disburseAmount).build();
         return disbursementRepository.save(disbursement);
     }
 }

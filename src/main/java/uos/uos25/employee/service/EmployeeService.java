@@ -156,7 +156,7 @@ public class EmployeeService {
                         .mapToLong(
                                 employeeWorkingHistory -> employeeWorkingHistory.getWorkingHour())
                         .sum();
-        Long salary = employee.calculateSalary(totalWorkingHour);
+        Integer salary = employee.calculateSalary(totalWorkingHour);
 
         Disbursement disbursement =
                 disbursementService.create(employee, salary, salaryCalculationRequestDTO.getDate());
