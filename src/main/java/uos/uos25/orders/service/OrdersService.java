@@ -31,7 +31,7 @@ public class OrdersService {
 
         Orders orders =
                 Orders.builder()
-                        .ordersStatus("뭘로 할까")
+                        .ordersStatus(OrdersStatus.REQUEST.getStatus())
                         .givenEa(0)
                         .ordersEa(ordersCreateRequestDTO.getEa())
                         .ordersCheck("뭘로 하지")
@@ -77,7 +77,11 @@ public class OrdersService {
                 ordersRepository
                         .findById(ordersId)
                         .orElseThrow(() -> new OrdersNotFoundException());
-        orders.setOrdersStatus("배송시작");
+
+        if (!orders.getOrdersStatus().equals(OrdersStatus.REQUEST.getStatus()))
+            throw new OrdersNotRequested();
+
+        orders.setOrdersStatus(OrdersStatus.DELIVERED.getStatus());
 
         return orders.getOrdersId();
     }
