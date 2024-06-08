@@ -48,10 +48,20 @@ public class InventoryController {
     }
 
     @GetMapping("/{shopId}/{barcode}")
-    public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndProductId(
+    public ResponseEntity<InventoryGetResponseDTO> getInventoryByShopIdAndBarcode(
             @Parameter(example = "1") @PathVariable Long shopId,
             @Parameter(example = "barcode") @PathVariable String barcode) {
-        Inventory inventory = inventoryService.findInventoryByShopIdAndProductId(shopId, barcode);
+        Inventory inventory = inventoryService.findInventoryByShopIdAndBarcode(shopId, barcode);
+
+        return ResponseEntity.ok(InventoryGetResponseDTO.fromEntity(inventory));
+    }
+
+    @GetMapping("/{shopId}/productName/{productName}")
+    public ResponseEntity<InventoryGetResponseDTO> getByShopIdAndProductName(
+            @Parameter(example = "1") @PathVariable Long shopId,
+            @Parameter(example = "name") @PathVariable String productName) {
+        Inventory inventory =
+                inventoryService.findInventoryByShopIdAndProductName(shopId, productName);
 
         return ResponseEntity.ok(InventoryGetResponseDTO.fromEntity(inventory));
     }

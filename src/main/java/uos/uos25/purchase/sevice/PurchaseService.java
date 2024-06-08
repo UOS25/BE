@@ -52,7 +52,7 @@ public class PurchaseService {
 
             // 재고 수량 차감
             Inventory inventory =
-                    inventoryService.findInventoryByShopIdAndProductId(
+                    inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
             inventory.minusEa(ea);
 
@@ -79,7 +79,7 @@ public class PurchaseService {
             Integer ea = receiptDetail.getEa();
 
             Inventory inventory =
-                    inventoryService.findInventoryByShopIdAndProductId(
+                    inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
             inventory.plusEa(ea);
         }

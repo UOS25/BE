@@ -59,7 +59,7 @@ public class InventoryService {
         return inventories;
     }
 
-    public Inventory findInventoryByShopIdAndProductId(Long shopId, String barcode) {
+    public Inventory findInventoryByShopIdAndBarcode(Long shopId, String barcode) {
         Inventory inventory =
                 inventoryRepository
                         .findByShopShopIdAndProductBarcode(shopId, barcode)
@@ -82,5 +82,11 @@ public class InventoryService {
                                 });
 
         inventory.changeDisplay(ea);
+    }
+
+    public Inventory findInventoryByShopIdAndProductName(Long shopId, String productName) {
+        return inventoryRepository
+                .findByShopShopIdAndProductProductName(shopId, productName)
+                .orElseThrow(() -> new InventoryNotFoundException());
     }
 }
