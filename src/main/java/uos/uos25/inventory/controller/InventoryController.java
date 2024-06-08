@@ -23,7 +23,7 @@ public class InventoryController {
     private final InventoryService inventoryService;
 
     @Operation(summary = "물품 진열")
-    @PatchMapping
+    @PostMapping
     public ResponseEntity<Void> changeProductToDisplay(
             @RequestBody InventoryChangeDisplayRequestDTO displayRequestDTO) {
         Long shopId = displayRequestDTO.getShopId();
