@@ -38,7 +38,9 @@ public class EmployeeService {
     @Transactional
     // 지점 아이디로 직원 검색
     public List<Employee> findEmployeeByShopId(Long shopId) {
-        return employeeRepository.findAllByShopShopId(shopId);
+        return employeeRepository.findAllByShopShopId(shopId).stream()
+                .filter(employee -> employee.getFiredDate() == null)
+                .toList();
     }
 
     @Transactional
