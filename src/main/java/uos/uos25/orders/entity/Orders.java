@@ -63,6 +63,10 @@ public class Orders extends BaseEntity {
         this.ordersStatus = ordersStatus;
     }
 
+    public void setGivenEa(Integer givenEa) {
+        this.givenEa = givenEa;
+    }
+
     public Integer getPrice() {
         return ordersEa * product.getOrderPrice();
     }

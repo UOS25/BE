@@ -89,4 +89,29 @@ public class InventoryService {
                 .findByShopShopIdAndProductProductName(shopId, productName)
                 .orElseThrow(() -> new InventoryNotFoundException());
     }
+
+    @Transactional
+    public void addInventory(Long shopId, String barcode, Integer ea) {
+        Shop shop = shopService.findShopById(shopId);
+        Product product = productService.findById(barcode);
+
+        Inventory inventory =
+                inventoryRepository
+                        .findByShopShopIdAndProductBarcode(shopId, barcode)
+                        .orElseGet(
+                                () -> {
+                                    Inventory newInventory =
+                                            Inventory.builder()
+                                                    .shop(shop)
+                                                    .product(product)
+                                                    .ea(ea)
+                                                    .display(0)
+                                                    .warehousingDate(LocalDateTime.now())
+                                                    .expirationDate(
+                                                            LocalDateTime.now().plusDays(10L))
+                                                    .build();
+                                    return inventoryRepository.save(newInventory);
+                                });
+        inventory.addEa(ea);
+    }
 }
