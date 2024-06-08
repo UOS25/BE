@@ -44,6 +44,7 @@ public class ProductService {
 
     public List<ProductGetResponseDTO> findAllProducts() {
         return productRepository.findAll().stream()
+                .filter(product -> !product.getCategory().equals(UTILITY_SERVICE_CATEGORY))
                 .map(product -> ProductGetResponseDTO.fromProduct(product))
                 .toList();
     }
