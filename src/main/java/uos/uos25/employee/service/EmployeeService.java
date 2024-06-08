@@ -30,6 +30,24 @@ public class EmployeeService {
     private final DisbursementService disbursementService;
 
     @Transactional
+    // 직원 이름, 지점 아이디로 직원 검색
+    public List<Employee> findEmployeeByShopIdAndEmployeeName(Long shopId, String employeeName) {
+        return employeeRepository.findByShopShopIdAndEmployeeNameContaining(shopId, employeeName);
+    }
+
+    @Transactional
+    // 지점 아이디로 직원 검색
+    public List<Employee> findEmployeeByShopId(Long shopId) {
+        return employeeRepository.findAllByShopShopId(shopId);
+    }
+
+    @Transactional
+    // 직원 이름으로 직원 검색
+    public List<Employee> findEmployeeByEmployeeName(String employeeName) {
+        return employeeRepository.findAllByEmployeeName(employeeName);
+    }
+
+    @Transactional
     // 모든 직원 리스트를 가져온 후, DTO 리스트로 반환합니다.
     public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();

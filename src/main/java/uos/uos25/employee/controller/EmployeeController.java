@@ -29,6 +29,46 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    // 직원 이름 + 지점 아이디로 검색
+    @GetMapping("/search/{shopId}/{employeeName}")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByShopIdAndEmployeeName(
+            @PathVariable Long shopId, @PathVariable String employeeName) {
+        List<Employee> employees =
+                employeeService.findEmployeeByShopIdAndEmployeeName(shopId, employeeName);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
+    // 지점 아이디로 검색
+    @GetMapping("/search-shop/{shopId}")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByShopId(
+            @PathVariable Long shopId) {
+        List<Employee> employees = employeeService.findEmployeeByShopId(shopId);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
+    // 직원 이름으로 검색
+    @GetMapping("/search-emp-name/{employeeName}")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> findEmployeeByEmployeeName(
+            @PathVariable String employeeName) {
+        List<Employee> employees = employeeService.findEmployeeByEmployeeName(employeeName);
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
     @PostMapping
     public ResponseEntity<EmployeeCreateResponseDTO> join(
             @Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {
