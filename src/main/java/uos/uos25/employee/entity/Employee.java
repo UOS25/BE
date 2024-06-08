@@ -19,7 +19,7 @@ public class Employee {
     @Id
     @GeneratedValue
     @Column(nullable = false)
-    private Long employeeId; // Long으로 변경
+    private Long employeeId;
 
     @Column(nullable = false)
     private String employeeName;

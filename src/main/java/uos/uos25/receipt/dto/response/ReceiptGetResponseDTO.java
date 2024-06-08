@@ -1,12 +1,13 @@
 package uos.uos25.receipt.dto.response;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
+import uos.uos25.employee.dto.EmployeeInfo;
 import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.shop.dto.ShopInfo;
 
 @Data
 public class ReceiptGetResponseDTO {
@@ -14,7 +15,8 @@ public class ReceiptGetResponseDTO {
     private final String shopName;
     private final String purchaseStatus;
     private final List<ItemInfo> itemInfos;
-    private final LocalDateTime purchaseDate;
+    private final EmployeeInfo employeeInfo;
+    private final ShopInfo shopInfo;
 
     @Builder
     public ReceiptGetResponseDTO(
@@ -22,12 +24,14 @@ public class ReceiptGetResponseDTO {
             String shopName,
             String purchaseStatus,
             List<ItemInfo> itemInfos,
-            LocalDateTime purchaseDate) {
+            EmployeeInfo employeeInfo,
+            ShopInfo shopInfo) {
         this.receiptId = receiptId;
         this.shopName = shopName;
         this.purchaseStatus = purchaseStatus;
         this.itemInfos = itemInfos;
-        this.purchaseDate = purchaseDate;
+        this.employeeInfo = employeeInfo;
+        this.shopInfo = shopInfo;
     }
 
     public static ReceiptGetResponseDTO fromEntity(Receipt receipt) {
@@ -41,6 +45,14 @@ public class ReceiptGetResponseDTO {
                 .shopName(receipt.getEmployee().getShop().getShopName())
                 .purchaseStatus(receipt.getPurchaseStatus())
                 .itemInfos(itemInfos)
+                .employeeInfo(
+                        new EmployeeInfo(
+                                receipt.getEmployee().getEmployeeId(),
+                                receipt.getEmployee().getEmployeeName()))
+                .shopInfo(
+                        new ShopInfo(
+                                receipt.getEmployee().getShop().getShopId(),
+                                receipt.getEmployee().getShop().getShopName()))
                 .build();
     }
 }
