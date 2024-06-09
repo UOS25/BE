@@ -1,7 +1,5 @@
 package uos.uos25.shop.dto.response;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 
 import lombok.Builder;
@@ -16,10 +14,7 @@ public class DisbursementGetResponseDTO {
     private final ShopInfo shopInfo;
 
     @Builder
-    public DisbursementGetResponseDTO(
-            Long disburseId,
-            Integer disburseAmount,
-            ShopInfo shopInfo) {
+    public DisbursementGetResponseDTO(Long disburseId, Integer disburseAmount, ShopInfo shopInfo) {
         this.disburseId = disburseId;
         this.disburseAmount = disburseAmount;
         this.shopInfo = shopInfo;
