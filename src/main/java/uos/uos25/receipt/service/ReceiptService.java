@@ -10,6 +10,7 @@ import uos.uos25.customer.service.CustomerService;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.receipt.entity.ReceiptStatus;
 import uos.uos25.receipt.exception.ReceiptNotFound;
 import uos.uos25.receipt.repository.ReceiptRepository;
 
@@ -31,7 +32,7 @@ public class ReceiptService {
                         .customer(customer)
                         .age(age)
                         .gender(gender)
-                        .purchaseStatus("구매완료")
+                        .purchaseStatus(ReceiptStatus.COMPLETED.getStatus())
                         .build();
         return receiptRepository.save(receipt);
     }

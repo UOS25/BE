@@ -12,6 +12,7 @@ public class EventGetResponseDTO {
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
     private final String eventName;
+    private final Integer eventPrice;
     private final String eventCategory;
     private final String barcode;
 
@@ -21,12 +22,14 @@ public class EventGetResponseDTO {
             LocalDateTime startDate,
             LocalDateTime endDate,
             String eventName,
+            Integer eventPrice,
             String eventCategory,
             String barcode) {
         this.eventId = eventId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.eventName = eventName;
+        this.eventPrice = eventPrice;
         this.eventCategory = eventCategory;
         this.barcode = barcode;
     }
@@ -35,6 +38,7 @@ public class EventGetResponseDTO {
         return EventGetResponseDTO.builder()
                 .eventId(event.getEventId())
                 .eventName(event.getEventName())
+                .eventPrice(event.getEventPrice())
                 .eventCategory(event.getEventCategory())
                 .barcode(event.getProduct().getBarcode())
                 .startDate(event.getStartDate())

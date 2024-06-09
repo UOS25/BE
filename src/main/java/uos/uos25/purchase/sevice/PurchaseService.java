@@ -47,15 +47,15 @@ public class PurchaseService {
         TotalPrice totalPrice = new TotalPrice();
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findById(itemInfo.getBarcode());
-            Integer ea = itemInfo.getEa();
 
+            Integer ea = itemInfo.getEa();
             // 재고 수량 차감
             Inventory inventory =
                     inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
             inventory.sold(ea);
 
-            totalPrice.plus(product.getCustomerPrice() * ea);
+            totalPrice.plus(product.getPrice() * ea);
 
             receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
@@ -69,10 +69,14 @@ public class PurchaseService {
     }
 
     @Transactional
-    public void cancel(Long receiptId) {
+    public Integer cancel(Long receiptId) {
         // 영수증 status 변경
         Receipt receipt = receiptService.findById(receiptId);
+        receipt.validateCanBeCanceled();
         receipt.cancelReceipt();
+
+        // 환불할 금액
+        Integer canceledPrice = 0;
 
         // 재고에 환불한 상품 개수 업데이트
         Shop shop = receipt.getEmployee().getShop();
@@ -80,11 +84,14 @@ public class PurchaseService {
         for (ReceiptDetail receiptDetail : receiptDetails) {
             Product product = receiptDetail.getProduct();
             Integer ea = receiptDetail.getEa();
+            canceledPrice += product.getCustomerPrice() * ea;
 
             Inventory inventory =
                     inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
             inventory.addEa(ea);
         }
+
+        return canceledPrice;
     }
 }

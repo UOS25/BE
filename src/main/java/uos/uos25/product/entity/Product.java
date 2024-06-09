@@ -88,4 +88,10 @@ public class Product extends BaseEntity {
         this.feature = feature;
         this.expirationDate = expirationDate;
     }
+
+    public Integer getPrice() {
+        int sumOfEventPrice = events.stream().mapToInt(Event::getEventPrice).sum();
+
+        return customerPrice - sumOfEventPrice;
+    }
 }
