@@ -12,6 +12,7 @@ import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.customer.exception.CustomerNotFoundException;
 import uos.uos25.customer.repository.CustomerRepository;
+import uos.uos25.receipt.entity.Receipt;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +20,6 @@ import uos.uos25.customer.repository.CustomerRepository;
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
-    // create
-    // 고객 정보를 생성합니다.
     public Customer createCustomer(CustomerCreateRequestDTO customerCreateRequestDTO) {
         Customer customer =
                 Customer.builder()
@@ -31,22 +30,16 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    // read
-    // 조회 가능한 모든 고객 정보를 불러옵니다.
     public List<Customer> findAllCustomers() {
         return customerRepository.findAll();
     }
 
-    // read
-    // 고객 전화번호로 해당 고객의 정보를 불러옵니다.
     public Customer findById(String phoneNumber) {
         return customerRepository
                 .findById(phoneNumber)
                 .orElseThrow(() -> new CustomerNotFoundException());
     }
 
-    // update
-    // 고객 정보를 업데이트합니다.
     public Customer updateCustomer(CustomerUpdateRequestDTO customerUpdateRequestDTO) {
         Customer findCustomer =
                 customerRepository
@@ -58,8 +51,6 @@ public class CustomerService {
         return findCustomer;
     }
 
-    // update
-    // 마일리지를 적립합니다. 적립되는 마일리지 양은 이벤트 등을 고려하여, 판매 과정에서 계산됩니다.
     public void earnMileage(Integer mileage, String phoneNumber) {
         Customer findCustomer =
                 customerRepository
@@ -70,9 +61,17 @@ public class CustomerService {
         findCustomer.earnMileage(mileage);
     }
 
-    // delete
-    // 고객 정보를 삭제합니다.
+    /**
+     * 영수증에 해당 고객 null로 변경 후 유저 삭제
+     *
+     * @param phoneNumber 고객 PK
+     */
     public void deleteCustomer(String phoneNumber) {
+        // 영수증 안에 고객 null로 변경
+        List<Receipt> receipts = findById(phoneNumber).getReceipts();
+        receipts.stream().forEach(receipt -> receipt.removeCustomer());
+
+        // 고객 삭제
         customerRepository.deleteById(phoneNumber);
     }
 }

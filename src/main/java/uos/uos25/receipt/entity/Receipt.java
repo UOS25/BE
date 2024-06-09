@@ -72,4 +72,8 @@ public class Receipt extends BaseEntity {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    public void removeCustomer() {
+        this.customer = null;
+    }
 }
