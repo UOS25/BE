@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
 import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.EmployeePosition;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
 import uos.uos25.employee.repository.EmployeeRepository;
@@ -45,8 +46,9 @@ public class EmployeeService {
 
     @Transactional
     // 모든 직원 리스트를 가져온 후, DTO 리스트로 반환합니다.
+    // 본사 직원 제외
     public List<Employee> findAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAllNotHeadquarter();
     }
 
     public Employee findById(Long employeeId) {
@@ -132,5 +134,14 @@ public class EmployeeService {
                 .employmentDate(LocalDateTime.now())
                 .shop(shop)
                 .build();
+    }
+
+    public List<Employee> findHeadquarterStaffs() {
+        return employeeRepository.findAllByPosition(
+                EmployeePosition.HEADQUARTER_STAFF.getPosition());
+    }
+
+    public List<Employee> findAllHeadquarters() {
+        return employeeRepository.findAllHeadquarter();
     }
 }

@@ -50,7 +50,7 @@ public class Employee {
     private LocalDateTime firedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id", nullable = false)
+    @JoinColumn(name = "shop_id", nullable = true)
     private Shop shop;
 
     // Cascade 전용 필드.

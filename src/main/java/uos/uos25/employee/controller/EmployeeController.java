@@ -15,6 +15,7 @@ import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
 import uos.uos25.employee.dto.response.EmployeeCreateResponseDTO;
 import uos.uos25.employee.dto.response.EmployeeGetResponseDTO;
+import uos.uos25.employee.dto.response.EmployeeHeadquarterGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.employee.service.EmployeeService;
 
@@ -66,6 +67,17 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeGetResponseDTOS);
     }
 
+    @Operation(summary = "본사 직원 조회")
+    public ResponseEntity<List<EmployeeGetResponseDTO>> getHeadquarterStaff() {
+        List<Employee> employees = employeeService.findHeadquarterStaffs();
+        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+                employees.stream()
+                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .toList();
+
+        return ResponseEntity.ok(employeeGetResponseDTOS);
+    }
+
     @Operation(summary = "직원 등록")
     @PostMapping
     public ResponseEntity<EmployeeCreateResponseDTO> join(
@@ -75,15 +87,16 @@ public class EmployeeController {
         return ResponseEntity.ok(EmployeeCreateResponseDTO.fromEntity(employee));
     }
 
-    @GetMapping
-    public ResponseEntity<List<EmployeeGetResponseDTO>> findAll() {
-        List<Employee> employees = employeeService.findAllEmployees();
-        List<EmployeeGetResponseDTO> employeeGetResponseDTOS =
+    @Operation(summary = "본사 직원")
+    @GetMapping("/headquarter")
+    public ResponseEntity<List<EmployeeHeadquarterGetResponseDTO>> findAll() {
+        List<Employee> employees = employeeService.findAllHeadquarters();
+        List<EmployeeHeadquarterGetResponseDTO> employeeHeadquarterGetResponseDTOS =
                 employees.stream()
-                        .map(employee -> EmployeeGetResponseDTO.fromEntity(employee))
+                        .map(employee -> EmployeeHeadquarterGetResponseDTO.fromEntity(employee))
                         .toList();
 
-        return ResponseEntity.ok(employeeGetResponseDTOS);
+        return ResponseEntity.ok(employeeHeadquarterGetResponseDTOS);
     }
 
     @GetMapping("/{employeeId}")

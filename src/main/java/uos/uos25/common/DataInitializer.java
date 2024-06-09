@@ -12,6 +12,7 @@ import uos.uos25.customer.repository.CustomerRepository;
 import uos.uos25.disposal.entity.Disposal;
 import uos.uos25.disposal.repository.DisposalRepository;
 import uos.uos25.employee.entity.Employee;
+import uos.uos25.employee.entity.EmployeePosition;
 import uos.uos25.employee.entity.EmployeeWorkingHistory;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.repository.EmployeeRepository;
@@ -66,6 +67,8 @@ public class DataInitializer {
         Orders orders = createOrders(shop, product);
         Returns returns = createReturnsDummy(shop, product);
         Employee employee = createEmployeeDummy(shop);
+        createEmployeeHeadquarterDummy();
+        createEmployeeBossDummy(shop);
         EmployeeWorkingHistory employeeWorkingHistory = createEmployeeWorkingHistoryDummy(employee);
         Disposal disposal = createDisposalDummy(shop, product);
         Customer customer = createCustomerDummy();
@@ -229,8 +232,41 @@ public class DataInitializer {
                 Employee.builder()
                         .employeeName("박직원")
                         .employmentDate(LocalDateTime.now().withNano(0))
-                        .position("점원")
+                        .position(EmployeePosition.EMPLOYEE.getPosition())
                         .registrationNumber("123123-1231231")
+                        .salary(10000)
+                        .partTime(PartTime.DAY)
+                        .account("1231234123412")
+                        .bank("농협은행")
+                        .shop(shop)
+                        .build();
+        return employeeRepository.save(employee);
+    }
+
+    private Employee createEmployeeHeadquarterDummy() {
+        // Employee dummy
+        Employee employee =
+                Employee.builder()
+                        .employeeName("본사유현승")
+                        .employmentDate(LocalDateTime.now().withNano(0))
+                        .position(EmployeePosition.HEADQUARTER_STAFF.getPosition())
+                        .registrationNumber("2223123-1231231")
+                        .salary(10000)
+                        .partTime(PartTime.DAY)
+                        .account("1231234123412")
+                        .bank("농협은행")
+                        .build();
+        return employeeRepository.save(employee);
+    }
+
+    private Employee createEmployeeBossDummy(Shop shop) {
+        // Employee dummy
+        Employee employee =
+                Employee.builder()
+                        .employeeName("시립대사장")
+                        .employmentDate(LocalDateTime.now().withNano(0))
+                        .position(EmployeePosition.BOSS.getPosition())
+                        .registrationNumber("123223-1231231")
                         .salary(10000)
                         .partTime(PartTime.DAY)
                         .account("1231234123412")
