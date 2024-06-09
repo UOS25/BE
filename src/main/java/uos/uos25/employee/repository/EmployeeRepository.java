@@ -19,4 +19,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query("SELECT e FROM Employee e where e.position != '본사'")
     List<Employee> findAllNotHeadquarter();
+
+    @Query("SELECT e FROM Employee e where e.position = '본사'")
+    List<Employee> findAllHeadquarter();
 }

@@ -140,4 +140,8 @@ public class EmployeeService {
         return employeeRepository.findAllByPosition(
                 EmployeePosition.HEADQUARTER_STAFF.getPosition());
     }
+
+    public List<Employee> findAllHeadquarters() {
+        return employeeRepository.findAllHeadquarter();
+    }
 }
