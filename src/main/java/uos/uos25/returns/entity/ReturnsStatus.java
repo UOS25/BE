@@ -1,14 +1,11 @@
-package uos.uos25.orders.entity;
+package uos.uos25.returns.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum OrdersStatus {
-    REQUEST("주문요청"),
-    DELIVERED("배송중"),
-    STORED("입고"),
+public enum ReturnsStatus {
     REFUNDED("반품");
 
     private String status;

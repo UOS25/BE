@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.event.dto.request.EventCreateRequestDTO;
@@ -20,6 +21,7 @@ import uos.uos25.event.service.EventService;
 public class EventController {
     private final EventService eventService;
 
+    @Operation(summary = "이벤트 추가")
     @PostMapping
     public ResponseEntity<List<EventCreateResponseDTO>> create(
             @RequestBody EventCreateRequestDTO eventCreateRequestDTO) {

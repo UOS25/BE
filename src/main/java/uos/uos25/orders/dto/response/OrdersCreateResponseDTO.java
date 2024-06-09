@@ -12,7 +12,6 @@ import uos.uos25.shop.dto.ShopInfo;
 public class OrdersCreateResponseDTO {
     private Long ordersId;
     private String ordersStatus;
-    private String ordersCheck;
     private Integer givenEa;
     private Integer ordersEa;
     private LocalDateTime createAt;
@@ -25,7 +24,6 @@ public class OrdersCreateResponseDTO {
             String ordersStatus,
             Integer givenEa,
             Integer ordersEa,
-            String ordersCheck,
             LocalDateTime createAt,
             Long shopId,
             String shopName,
@@ -35,7 +33,6 @@ public class OrdersCreateResponseDTO {
         this.ordersStatus = ordersStatus;
         this.givenEa = givenEa;
         this.ordersEa = ordersEa;
-        this.ordersCheck = ordersCheck;
         this.createAt = createAt;
         this.shopInfo = new ShopInfo(shopId, shopName);
         this.productInfo = new ProductInfo(barcode, productName);
@@ -45,7 +42,6 @@ public class OrdersCreateResponseDTO {
         return OrdersCreateResponseDTO.builder()
                 .ordersId(orders.getOrdersId())
                 .ordersStatus(orders.getOrdersStatus())
-                .ordersCheck(orders.getOrdersCheck())
                 .givenEa(orders.getGivenEa())
                 .ordersEa(orders.getOrdersEa())
                 .createAt(orders.getCreatedAt())

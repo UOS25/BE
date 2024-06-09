@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import uos.uos25.disposal.service.DisposalService;
 public class DisposalController {
     private final DisposalService disposalService;
 
+    @Operation(summary = "재고 폐기")
     @PostMapping
     public ResponseEntity<DisposalCreateResponseDTO> dispose(
             @RequestBody DisposalCreateReqeustDTO disposalCreateReqeustDTO) {

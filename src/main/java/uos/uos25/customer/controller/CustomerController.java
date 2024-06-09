@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
@@ -26,6 +27,7 @@ import uos.uos25.customer.service.CustomerService;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @Operation(summary = "고객 등록")
     @PostMapping
     public ResponseEntity<CustomerCreateResponseDTO> joinCustomer(
             @Valid @RequestBody CustomerCreateRequestDTO customerCreateRequestDTO) {
@@ -55,6 +57,7 @@ public class CustomerController {
         return ResponseEntity.ok(CustomerGetResponseDTO.fromEntity(customer));
     }
 
+    @Operation(summary = "고객 정보 수정")
     @PatchMapping
     public ResponseEntity<CustomerUpdateResponseDTO> updateCustomer(
             @RequestBody CustomerUpdateRequestDTO customerUpdateRequestDTO) {

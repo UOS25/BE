@@ -28,7 +28,7 @@ public class OrdersService {
     private final ProductService productService;
     private final InventoryService inventoryService;
 
-    public Orders save(OrdersCreateRequestDTO ordersCreateRequestDTO) {
+    public Orders order(OrdersCreateRequestDTO ordersCreateRequestDTO) {
         Shop shop = shopService.findShopById(ordersCreateRequestDTO.getShopId());
         Product product = productService.findById(ordersCreateRequestDTO.getBarcode());
 
@@ -37,7 +37,6 @@ public class OrdersService {
                         .ordersStatus(OrdersStatus.REQUEST.getStatus())
                         .givenEa(0)
                         .ordersEa(ordersCreateRequestDTO.getEa())
-                        .ordersCheck("뭘로 하지")
                         .shop(shop)
                         .product(product)
                         .build();
@@ -67,11 +66,6 @@ public class OrdersService {
                         .findById(ordersUpdateRequestDTO.getOrdersId())
                         .orElseThrow(() -> new OrdersNotFoundException());
         orders.setOrdersEa(ordersUpdateRequestDTO.getEa());
-    }
-
-    @Transactional
-    public void deleteOrdersById(Long ordersId) {
-        ordersRepository.deleteById(ordersId);
     }
 
     @Transactional

@@ -69,6 +69,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeGetResponseDTOS);
     }
 
+    @Operation(summary = "직원 등록")
     @PostMapping
     public ResponseEntity<EmployeeCreateResponseDTO> join(
             @Valid @RequestBody EmployeeCreateReqeustDTO employeeCreateReqeustDTO) {

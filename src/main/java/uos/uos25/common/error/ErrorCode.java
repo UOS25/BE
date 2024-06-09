@@ -36,6 +36,7 @@ public enum ErrorCode {
     ORDERS_NOT_FOUND(HttpStatus.NO_CONTENT.value(), "Orders is not found."),
     ORDERS_NOT_REQUESTED(HttpStatus.BAD_REQUEST.value(), "Orders is not requested."),
     ORDERS_NOT_DELIVERING(HttpStatus.BAD_REQUEST.value(), "Orders is not being delivered."),
+    ORDERS_CANNOT_BE_CANCELED(HttpStatus.BAD_REQUEST.value(), "Orders cannot be canceled."),
 
     // Product
     PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Prodcut is not found."),
