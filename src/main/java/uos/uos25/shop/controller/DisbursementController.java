@@ -10,7 +10,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.dto.request.SalaryCalculationRequestDTO;
+import uos.uos25.shop.dto.request.DisbursementCreateRequestDTO;
+import uos.uos25.shop.dto.request.SalaryCalculationRequestDTO;
 import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
 import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.service.DisbursementService;
@@ -69,6 +70,17 @@ public class DisbursementController {
                 disbursementService.calculateSalary(salaryCalculationRequestDTO);
         DisbursementGetResponseDTO disbursementGetResponseDTO =
                 DisbursementGetResponseDTO.fromEntity(disbursement);
+
+        return ResponseEntity.ok(disbursementGetResponseDTO);
+    }
+
+    @Operation(summary = "본사로 자금 출납")
+    @PostMapping
+    public ResponseEntity<DisbursementGetResponseDTO> disburseToHeadquarter(
+            @RequestBody DisbursementCreateRequestDTO disbursementCreateRequestDTO) {
+        Disbursement disburse = disbursementService.disburse(disbursementCreateRequestDTO);
+        DisbursementGetResponseDTO disbursementGetResponseDTO =
+                DisbursementGetResponseDTO.fromEntity(disburse);
 
         return ResponseEntity.ok(disbursementGetResponseDTO);
     }

@@ -23,4 +23,12 @@ public interface DisbursementRepository extends JpaRepository<Disbursement, Long
             @Param("employeeId") Long employeeId,
             @Param("year") int year,
             @Param("month") int month);
+
+    @Query(
+            "SELECT COUNT(d) > 0 FROM Disbursement d WHERE d.shop.shopId = :shopId AND d.disburseType = :disburseType AND YEAR(d.createdAt) = :year AND MONTH(d.createdAt) = :month")
+    Boolean existsByShopIdAndDisburseTypeAndYearAndMonth(
+            @Param("shopId") Long shopId,
+            @Param("disburseType") String disburseType,
+            @Param("year") int year,
+            @Param("month") int month);
 }
