@@ -36,6 +36,18 @@ public class DisposalController {
     }
 
     @GetMapping("/{shopId}")
+    public ResponseEntity<List<DisposalGetResponseDTO>> getDisposalByShopId(
+            @Parameter(example = "1") @PathVariable Long shopId) {
+        List<Disposal> disposalsWithDate = disposalService.findByShopId(shopId);
+        List<DisposalGetResponseDTO> list =
+                disposalsWithDate.stream()
+                        .map(disposal -> DisposalGetResponseDTO.fromEntity(disposal))
+                        .toList();
+
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/{shopId}/date")
     public ResponseEntity<List<DisposalGetResponseDTO>> getDisposalsBetweenStartAndEnd(
             @Parameter(example = "1") @PathVariable Long shopId,
             @Parameter(example = "2024-06-01T00:00:00")
