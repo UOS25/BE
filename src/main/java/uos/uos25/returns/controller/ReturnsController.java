@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
-import uos.uos25.returns.dto.response.ReturnsCreateResponseDTO;
 import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.service.ReturnsService;
@@ -21,14 +20,13 @@ import uos.uos25.returns.service.ReturnsService;
 public class ReturnsController {
     private final ReturnsService returnsService;
 
-    @PostMapping
-    public ResponseEntity<ReturnsCreateResponseDTO> createReturns(
-            @RequestBody ReturnsCreateRequestDTO returnsCreateRequestDTO) {
-        Returns returns = returnsService.createReturns(returnsCreateRequestDTO);
-        ReturnsCreateResponseDTO returnsCreateResponseDTO =
-                ReturnsCreateResponseDTO.fromEntity(returns);
+    @Operation(summary = "주문 취소")
+    @PostMapping("/{ordersId}/cancel")
+    public ResponseEntity<Void> createReturns(
+            @Parameter(example = "1") @PathVariable Long ordersId) {
+        returnsService.returnOrders(ordersId);
 
-        return ResponseEntity.ok(returnsCreateResponseDTO);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{shopId}")
