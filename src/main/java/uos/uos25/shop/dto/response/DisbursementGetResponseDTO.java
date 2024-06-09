@@ -11,12 +11,15 @@ import uos.uos25.shop.entity.Disbursement;
 public class DisbursementGetResponseDTO {
     private final Long disburseId;
     private final Integer disburseAmount;
+    private String disburseType;
     private final ShopInfo shopInfo;
 
     @Builder
-    public DisbursementGetResponseDTO(Long disburseId, Integer disburseAmount, ShopInfo shopInfo) {
+    public DisbursementGetResponseDTO(
+            Long disburseId, Integer disburseAmount, String disburseType, ShopInfo shopInfo) {
         this.disburseId = disburseId;
         this.disburseAmount = disburseAmount;
+        this.disburseType = disburseType;
         this.shopInfo = shopInfo;
     }
 
@@ -28,6 +31,7 @@ public class DisbursementGetResponseDTO {
         return DisbursementGetResponseDTO.builder()
                 .disburseId(disbursement.getDisburseId())
                 .disburseAmount(disbursement.getDisburseAmount())
+                .disburseType(disbursement.getDisburseType())
                 .shopInfo(shopInfo)
                 .build();
     }

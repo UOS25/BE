@@ -16,15 +16,16 @@ public class Disbursement extends BaseEntity {
     private Long disburseId;
 
     private Integer disburseAmount;
+    private String disburseType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
     @Builder
-    public Disbursement(Long disburseId, Integer disburseAmount, Shop shop) {
-        this.disburseId = disburseId;
+    public Disbursement(Integer disburseAmount, String disburseType, Shop shop) {
         this.disburseAmount = disburseAmount;
+        this.disburseType = disburseType;
         this.shop = shop;
     }
 }

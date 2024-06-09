@@ -36,6 +36,7 @@ import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.entity.ReturnsStatus;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Disbursement;
+import uos.uos25.shop.entity.DisbursementType;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.repository.DisbursementRepository;
 import uos.uos25.shop.repository.ShopRepository;
@@ -77,7 +78,8 @@ public class DataInitializer {
         Receipt receipt = createReceiptDummy(employee, customer);
         ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
         ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
-        Disbursement disbursement = createDisbursementDummy(shop);
+        Disbursement disbursementSalary = createDisbursementSalaryDummy(shop);
+        Disbursement disbursementRoyalty = createDisbursementRoyaltyDummy(shop);
 
         // 생활 서비스 데이터 추가
         createLivingServiceDummy();
@@ -345,9 +347,23 @@ public class DataInitializer {
         return receiptDetailRepository.save(receiptDetail);
     }
 
-    private Disbursement createDisbursementDummy(Shop shop) {
+    private Disbursement createDisbursementSalaryDummy(Shop shop) {
         Disbursement disbursement =
-                Disbursement.builder().disburseId(1L).disburseAmount(10000).shop(shop).build();
+                Disbursement.builder()
+                        .disburseAmount(10000)
+                        .disburseType(DisbursementType.SALARY.getType())
+                        .shop(shop)
+                        .build();
+        return disbursementRepository.save(disbursement);
+    }
+
+    private Disbursement createDisbursementRoyaltyDummy(Shop shop) {
+        Disbursement disbursement =
+                Disbursement.builder()
+                        .disburseAmount(5000000)
+                        .disburseType(DisbursementType.ROYALTY.getType())
+                        .shop(shop)
+                        .build();
         return disbursementRepository.save(disbursement);
     }
 }
