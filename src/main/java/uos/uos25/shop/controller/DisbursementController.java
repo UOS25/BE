@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import uos.uos25.employee.dto.request.SalaryCalculationRequestDTO;
 import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
 import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.service.DisbursementService;
@@ -60,5 +59,17 @@ public class DisbursementController {
                         .toList();
 
         return ResponseEntity.ok(disbursementGetResponseDTOS);
+    }
+
+    @Operation(summary = "직원 급여 정산", description = "급여 정산되지 않은 달만 사용 가능")
+    @PostMapping("/salary-calculation")
+    public ResponseEntity<DisbursementGetResponseDTO> calculateSalary(
+            @RequestBody SalaryCalculationRequestDTO salaryCalculationRequestDTO) {
+        Disbursement disbursement =
+                disbursementService.calculateSalary(salaryCalculationRequestDTO);
+        DisbursementGetResponseDTO disbursementGetResponseDTO =
+                DisbursementGetResponseDTO.fromEntity(disbursement);
+
+        return ResponseEntity.ok(disbursementGetResponseDTO);
     }
 }
