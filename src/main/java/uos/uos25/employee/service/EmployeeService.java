@@ -10,24 +10,18 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
 import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
-import uos.uos25.employee.dto.request.SalaryCalculationRequestDTO;
 import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
 import uos.uos25.employee.entity.PartTime;
 import uos.uos25.employee.exception.EmployeeNotFound;
 import uos.uos25.employee.repository.EmployeeRepository;
-import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.entity.Shop;
-import uos.uos25.shop.service.DisbursementService;
 import uos.uos25.shop.service.ShopService;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final EmployeeWorkingHistoryService employeeWorkingHistoryService;
     private final ShopService shopService;
-    private final DisbursementService disbursementService;
 
     @Transactional
     // 직원 이름, 지점 아이디로 직원 검색
@@ -138,29 +132,5 @@ public class EmployeeService {
                 .employmentDate(LocalDateTime.now())
                 .shop(shop)
                 .build();
-    }
-
-    @Transactional
-    public Disbursement calculateSalary(SalaryCalculationRequestDTO salaryCalculationRequestDTO) {
-        Employee employee =
-                employeeRepository
-                        .findById(salaryCalculationRequestDTO.getEmployeeId())
-                        .orElseThrow(() -> new EmployeeNotFound());
-        List<EmployeeWorkingHistory> employeeWorkingHistories =
-                employeeWorkingHistoryService.findWorkingHistoriesInMonth(
-                        salaryCalculationRequestDTO.getEmployeeId(),
-                        salaryCalculationRequestDTO.getDate());
-
-        Long totalWorkingHour =
-                employeeWorkingHistories.stream()
-                        .mapToLong(
-                                employeeWorkingHistory -> employeeWorkingHistory.getWorkingHour())
-                        .sum();
-        Integer salary = employee.calculateSalary(totalWorkingHour);
-
-        Disbursement disbursement =
-                disbursementService.create(employee, salary, salaryCalculationRequestDTO.getDate());
-
-        return disbursement;
     }
 }
