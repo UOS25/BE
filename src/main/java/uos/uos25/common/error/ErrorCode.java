@@ -31,6 +31,8 @@ public enum ErrorCode {
             HttpStatus.BAD_REQUEST.value(), "Display ea can't be greater than inventory ea."),
     TOO_MANY_PRODUCT_PURCHASE(
             HttpStatus.BAD_REQUEST.value(), "Purchase ea can't be greater than display ea."),
+    INVENTORY_EA_CANNOT_BE_LOWER_THAN_DISPLAY_EA(
+            HttpStatus.BAD_REQUEST.value(), "Inventory ea can't be lower than display ea."),
 
     // Orders
     ORDERS_NOT_FOUND(HttpStatus.NO_CONTENT.value(), "Orders is not found."),
