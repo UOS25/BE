@@ -21,6 +21,7 @@ import uos.uos25.product.service.ProductService;
 public class ProductController {
     private final ProductService productService;
 
+    @Operation(summary = "상품 추가")
     @PostMapping
     public ResponseEntity<ProductCreateResponseDTO> createProduct(
             @RequestBody ProductCreateRequestDTO productCreateRequestDTO) {

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.purchase.dto.ItemInfo;
@@ -19,6 +20,7 @@ import uos.uos25.purchase.sevice.PurchaseService;
 public class PurchaseController {
     private final PurchaseService purchaseService;
 
+    @Operation(summary = "구매")
     @PostMapping
     public ResponseEntity<Void> purchase(
             @RequestBody PurchaseCreateRequestDTO purchaseCreateRequestDTO) {
@@ -34,7 +36,8 @@ public class PurchaseController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @DeleteMapping("/{receiptId}")
+    @Operation(summary = "구매 포기(환불)")
+    @PostMapping("/{receiptId}/cancel")
     public ResponseEntity<Void> cancelPurchase(@PathVariable("receiptId") Long receiptId) {
         purchaseService.cancel(receiptId);
 
