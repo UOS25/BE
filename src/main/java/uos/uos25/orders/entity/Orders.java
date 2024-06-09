@@ -28,9 +28,6 @@ public class Orders extends BaseEntity {
     @Column(nullable = false)
     private Integer ordersEa;
 
-    @Column(nullable = false)
-    private String ordersCheck;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
@@ -41,16 +38,10 @@ public class Orders extends BaseEntity {
 
     @Builder
     public Orders(
-            String ordersStatus,
-            Integer givenEa,
-            Integer ordersEa,
-            String ordersCheck,
-            Shop shop,
-            Product product) {
+            String ordersStatus, Integer givenEa, Integer ordersEa, Shop shop, Product product) {
         this.ordersStatus = ordersStatus;
         this.givenEa = givenEa;
         this.ordersEa = ordersEa;
-        this.ordersCheck = ordersCheck;
         this.shop = shop;
         this.product = product;
     }
@@ -69,5 +60,9 @@ public class Orders extends BaseEntity {
 
     public Integer getPrice() {
         return ordersEa * product.getOrderPrice();
+    }
+
+    public boolean canBeCanceled() {
+        return ordersStatus.equals(OrdersStatus.STORED.getStatus());
     }
 }
