@@ -114,4 +114,17 @@ public class InventoryService {
                                 });
         inventory.addEa(ea);
     }
+
+    @Transactional
+    public void decreaseInventory(Long shopId, String barcode, Integer ea) {
+        Shop shop = shopService.findShopById(shopId);
+        Product product = productService.findById(barcode);
+
+        Inventory inventory =
+                inventoryRepository
+                        .findByShopShopIdAndProductBarcode(shopId, barcode)
+                        .orElseThrow(() -> new InventoryNotFoundException());
+
+        inventory.subtractEa(ea);
+    }
 }
