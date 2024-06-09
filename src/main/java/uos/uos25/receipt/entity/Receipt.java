@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
 import uos.uos25.customer.entity.Customer;
 import uos.uos25.employee.entity.Employee;
+import uos.uos25.receipt.exception.ReceiptCannotBeCanceledException;
 
 @Entity
 @Getter
@@ -60,7 +61,7 @@ public class Receipt extends BaseEntity {
     }
 
     public void cancelReceipt() {
-        this.purchaseStatus = "구매포기";
+        this.purchaseStatus = ReceiptStatus.CANCELED.getStatus();
     }
 
     public Integer getPrice() {
@@ -75,5 +76,10 @@ public class Receipt extends BaseEntity {
 
     public void removeCustomer() {
         this.customer = null;
+    }
+
+    public void validateCanBeCanceled() {
+        if (!purchaseStatus.equals(ReceiptStatus.COMPLETED.getStatus()))
+            throw new ReceiptCannotBeCanceledException();
     }
 }

@@ -47,6 +47,7 @@ public enum ErrorCode {
 
     // Receipt
     RECEIPT_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Receipt is not found."),
+    RECEIPT_CANNOT_BE_CANCELED(HttpStatus.BAD_REQUEST.value(), "Receipt can't be canceled."),
 
     // ReceiptDetails
     RECEIPT_DETAILS_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Receipt Details is not found."),
