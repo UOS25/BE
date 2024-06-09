@@ -51,4 +51,8 @@ public class DisposalService {
 
         return disposalsWithDate;
     }
+
+    public List<Disposal> findByShopId(Long shopId) {
+        return disposalRepository.findAllByShopShopId(shopId);
+    }
 }

@@ -12,4 +12,6 @@ import uos.uos25.disposal.entity.Disposal;
 public interface DisposalRepository extends JpaRepository<Disposal, Long> {
     List<Disposal> findByCreatedAtBetweenAndShopShopId(
             LocalDateTime start, LocalDateTime end, Long shopId);
+
+    List<Disposal> findAllByShopShopId(Long shopId);
 }
