@@ -12,18 +12,15 @@ import uos.uos25.shop.entity.Disbursement;
 @Data
 public class DisbursementGetResponseDTO {
     private final Long disburseId;
-    private final LocalDateTime disburseDate;
     private final Integer disburseAmount;
     private final ShopInfo shopInfo;
 
     @Builder
     public DisbursementGetResponseDTO(
             Long disburseId,
-            LocalDateTime disburseDate,
             Integer disburseAmount,
             ShopInfo shopInfo) {
         this.disburseId = disburseId;
-        this.disburseDate = disburseDate;
         this.disburseAmount = disburseAmount;
         this.shopInfo = shopInfo;
     }
