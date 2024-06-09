@@ -12,11 +12,15 @@ import uos.uos25.disposal.dto.response.DisposalGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
 import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
+import uos.uos25.receipt.entity.GenderType;
+import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
 import uos.uos25.statistics.dto.response.*;
+import uos.uos25.statistics.dto.response.StatisticsAgeGetResponseDTO;
+import uos.uos25.statistics.dto.response.StatisticsGenderGetResponseDTO;
 import uos.uos25.util.DateUtil;
 
 @Service
@@ -25,7 +29,7 @@ public class StatisticsService {
     private final ShopService shopService;
     private final DateUtil dateUtil;
 
-    public StatisticsGetResponseDTO findByShopId(
+    public StatisticsSalesGetResponseDTO findSalesByShopId(
             Long shopId, LocalDateTime startDate, LocalDateTime endDate) {
         Shop shop = shopService.findShopById(shopId);
         AtomicInteger totalPrice = new AtomicInteger();
@@ -97,7 +101,7 @@ public class StatisticsService {
         }
         receipts.stream().forEach(receipt -> totalPrice.addAndGet(receipt.getPrice()));
 
-        return StatisticsGetResponseDTO.builder()
+        return StatisticsSalesGetResponseDTO.builder()
                 .disbursements(disbursements)
                 .returnses(returnses)
                 .orderses(orderses)
@@ -105,5 +109,61 @@ public class StatisticsService {
                 .receipts(receipts)
                 .totalPrice(totalPrice.get())
                 .build();
+    }
+
+    public StatisticsGenderGetResponseDTO findGenderByShopId(
+            Long shopId, LocalDateTime startDate, LocalDateTime endDate) {
+        Shop shop = shopService.findShopById(shopId);
+        AtomicInteger maleTotalPrice = new AtomicInteger();
+        AtomicInteger femaleTotalPrice = new AtomicInteger();
+
+        List<Receipt> receipts = new ArrayList<>();
+        for (Employee employee : shop.getEmployees()) {
+            List<Receipt> newReceipts =
+                    employee.getReceipts().stream()
+                            .filter(
+                                    receipt ->
+                                            dateUtil.filterBetweenDate(receipt, startDate, endDate))
+                            .toList();
+
+            receipts.addAll(newReceipts);
+        }
+        receipts.stream()
+                .forEach(
+                        receipt -> {
+                            if (receipt.getGender().equals(GenderType.MALE.getGender()))
+                                maleTotalPrice.addAndGet(receipt.getPrice());
+                            else femaleTotalPrice.addAndGet(receipt.getPrice());
+                        });
+
+        return StatisticsGenderGetResponseDTO.builder()
+                .maleTotalPrice(maleTotalPrice.get())
+                .femaleTotalPrice(femaleTotalPrice.get())
+                .build();
+    }
+
+    public StatisticsAgeGetResponseDTO findAgeByShopId(
+            Long shopId, LocalDateTime startDate, LocalDateTime endDate) {
+        Shop shop = shopService.findShopById(shopId);
+        AtomicInteger totalPrice = new AtomicInteger();
+
+        List<StatisticsReceiptResponseDTO> receipts = new ArrayList<>();
+        for (Employee employee : shop.getEmployees()) {
+            List<StatisticsReceiptResponseDTO> newReceipts =
+                    employee.getReceipts().stream()
+                            .filter(
+                                    receipt ->
+                                            dateUtil.filterBetweenDate(receipt, startDate, endDate))
+                            .map(
+                                    receipt ->
+                                            new StatisticsReceiptResponseDTO(
+                                                    ReceiptGetResponseDTO.fromEntity(receipt),
+                                                    receipt.getPrice()))
+                            .toList();
+            receipts.addAll(newReceipts);
+        }
+        receipts.stream().forEach(receipt -> totalPrice.addAndGet(receipt.getPrice()));
+
+        return null;
     }
 }

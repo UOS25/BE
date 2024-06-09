@@ -18,7 +18,7 @@ public class PurchaseCreateRequestDTO {
     @Schema(example = "26")
     private Integer age = null;
 
-    @Schema(example = "FEMALE")
+    @Schema(example = "남성")
     private String gender = null;
 
     @Schema(example = "0")

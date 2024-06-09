@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class StatisticsGetResponseDTO {
+public class StatisticsSalesGetResponseDTO {
     private final Integer totalPrice;
     private final List<StatisticsDisbursementResponseDTO> disbursements;
     private final List<StatisticsReturnstResponseDTO> returnses;
@@ -15,7 +15,7 @@ public class StatisticsGetResponseDTO {
     private final List<StatisticsReceiptResponseDTO> receipts;
 
     @Builder
-    public StatisticsGetResponseDTO(
+    public StatisticsSalesGetResponseDTO(
             List<StatisticsDisbursementResponseDTO> disbursements,
             List<StatisticsReturnstResponseDTO> returnses,
             List<StatisticsOrdersResponseDTO> orderses,
