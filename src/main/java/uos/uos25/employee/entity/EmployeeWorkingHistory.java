@@ -5,13 +5,14 @@ import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
 import lombok.*;
+import uos.uos25.common.BaseEntity;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeWorkingHistory {
+public class EmployeeWorkingHistory extends BaseEntity {
 
     @Id
     @GeneratedValue

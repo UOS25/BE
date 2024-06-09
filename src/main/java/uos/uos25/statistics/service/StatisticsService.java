@@ -8,23 +8,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.common.BaseEntity;
 import uos.uos25.disposal.dto.response.DisposalGetResponseDTO;
 import uos.uos25.employee.entity.Employee;
 import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
-import uos.uos25.product.service.ProductService;
 import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
 import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
 import uos.uos25.statistics.dto.response.*;
+import uos.uos25.util.DateUtil;
 
 @Service
 @RequiredArgsConstructor
 public class StatisticsService {
     private final ShopService shopService;
-    private final ProductService productService;
+    private final DateUtil dateUtil;
 
     public StatisticsGetResponseDTO findByShopId(
             Long shopId, LocalDateTime startDate, LocalDateTime endDate) {
@@ -33,7 +32,10 @@ public class StatisticsService {
 
         List<StatisticsDisbursementResponseDTO> disbursements =
                 shop.getDisbursements().stream()
-                        .filter(disbursement -> filterBetweenDate(disbursement, startDate, endDate))
+                        .filter(
+                                disbursement ->
+                                        dateUtil.filterBetweenDate(
+                                                disbursement, startDate, endDate))
                         .map(
                                 disbursement ->
                                         new StatisticsDisbursementResponseDTO(
@@ -45,7 +47,7 @@ public class StatisticsService {
 
         List<StatisticsReturnstResponseDTO> returnses =
                 shop.getReturnses().stream()
-                        .filter(returns -> filterBetweenDate(returns, startDate, endDate))
+                        .filter(returns -> dateUtil.filterBetweenDate(returns, startDate, endDate))
                         .map(
                                 returns ->
                                         new StatisticsReturnstResponseDTO(
@@ -56,7 +58,7 @@ public class StatisticsService {
 
         List<StatisticsOrdersResponseDTO> orderses =
                 shop.getOrders().stream()
-                        .filter(orders -> filterBetweenDate(orders, startDate, endDate))
+                        .filter(orders -> dateUtil.filterBetweenDate(orders, startDate, endDate))
                         .map(
                                 orders ->
                                         new StatisticsOrdersResponseDTO(
@@ -67,7 +69,9 @@ public class StatisticsService {
 
         List<StatisticsDisposalResponseDTO> disposals =
                 shop.getDisposals().stream()
-                        .filter(disposal -> filterBetweenDate(disposal, startDate, endDate))
+                        .filter(
+                                disposal ->
+                                        dateUtil.filterBetweenDate(disposal, startDate, endDate))
                         .map(
                                 disposal ->
                                         new StatisticsDisposalResponseDTO(
@@ -80,7 +84,9 @@ public class StatisticsService {
         for (Employee employee : shop.getEmployees()) {
             List<StatisticsReceiptResponseDTO> newReceipts =
                     employee.getReceipts().stream()
-                            .filter(receipt -> filterBetweenDate(receipt, startDate, endDate))
+                            .filter(
+                                    receipt ->
+                                            dateUtil.filterBetweenDate(receipt, startDate, endDate))
                             .map(
                                     receipt ->
                                             new StatisticsReceiptResponseDTO(
@@ -99,16 +105,5 @@ public class StatisticsService {
                 .receipts(receipts)
                 .totalPrice(totalPrice.get())
                 .build();
-    }
-
-    private <T extends BaseEntity> Boolean filterBetweenDate(
-            T entity, LocalDateTime startDate, LocalDateTime endDate) {
-        LocalDateTime createdAt = entity.getCreatedAt();
-        return isDateTimeBetween(createdAt, startDate, endDate);
-    }
-
-    private Boolean isDateTimeBetween(
-            LocalDateTime target, LocalDateTime start, LocalDateTime end) {
-        return target.isAfter(start) && target.isBefore(end);
     }
 }
