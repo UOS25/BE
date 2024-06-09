@@ -47,15 +47,15 @@ public class PurchaseService {
         TotalPrice totalPrice = new TotalPrice();
         for (ItemInfo itemInfo : itemInfos) {
             Product product = productService.findById(itemInfo.getBarcode());
-            Integer ea = itemInfo.getEa();
 
+            Integer ea = itemInfo.getEa();
             // 재고 수량 차감
             Inventory inventory =
                     inventoryService.findInventoryByShopIdAndBarcode(
                             shop.getShopId(), product.getBarcode());
             inventory.sold(ea);
 
-            totalPrice.plus(product.getCustomerPrice() * ea);
+            totalPrice.plus(product.getPrice() * ea);
 
             receiptDetailService.create(receipt, product.getBarcode(), itemInfo.getEa());
         }
