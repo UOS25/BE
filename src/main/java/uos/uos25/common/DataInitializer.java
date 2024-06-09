@@ -32,6 +32,7 @@ import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.receipt.repository.ReceiptDetailRepository;
 import uos.uos25.receipt.repository.ReceiptRepository;
 import uos.uos25.returns.entity.Returns;
+import uos.uos25.returns.entity.ReturnsStatus;
 import uos.uos25.returns.repository.ReturnsRepository;
 import uos.uos25.shop.entity.Disbursement;
 import uos.uos25.shop.entity.Shop;
@@ -204,7 +205,6 @@ public class DataInitializer {
                         .ordersStatus(OrdersStatus.REQUEST.getStatus())
                         .givenEa(10)
                         .ordersEa(10)
-                        .ordersCheck("검품이전")
                         .shop(shop)
                         .product(product)
                         .build();
@@ -214,7 +214,12 @@ public class DataInitializer {
     private Returns createReturnsDummy(Shop shop, Product product) {
         // Returns dummy
         Returns returns =
-                Returns.builder().ea(10).returnsStatus("반품 시작").shop(shop).product(product).build();
+                Returns.builder()
+                        .ea(10)
+                        .returnsStatus(ReturnsStatus.REFUNDED.getStatus())
+                        .shop(shop)
+                        .product(product)
+                        .build();
         return returnsRepository.save(returns);
     }
 
