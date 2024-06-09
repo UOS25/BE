@@ -19,11 +19,11 @@ public class ReceiptService {
     private final ReceiptRepository receiptRepository;
     private final EmployeeService employeeService;
     private final CustomerService customerService;
-    private final ReceiptDetailService receiptDetailService;
 
     public Receipt create(Long employeeId, String phoneNumber, Integer age, String gender) {
         Employee employee = employeeService.findById(employeeId);
-        Customer customer = customerService.findById(phoneNumber);
+        Customer customer = null;
+        if (phoneNumber != null) customer = customerService.findById(phoneNumber);
 
         Receipt receipt =
                 Receipt.builder()

@@ -35,7 +35,7 @@ public class Receipt extends BaseEntity {
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phoneNumber", nullable = false)
+    @JoinColumn(name = "phoneNumber", nullable = true)
     private Customer customer;
 
     @OneToMany(mappedBy = "receipt", fetch = FetchType.LAZY)
@@ -71,5 +71,9 @@ public class Receipt extends BaseEntity {
                                         * receiptDetail.getProduct().getCustomerPrice())
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    public void removeCustomer() {
+        this.customer = null;
     }
 }

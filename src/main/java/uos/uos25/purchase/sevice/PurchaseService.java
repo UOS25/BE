@@ -41,7 +41,6 @@ public class PurchaseService {
             Integer mileage,
             List<ItemInfo> itemInfos) {
         Receipt receipt = receiptService.create(employeeId, phoneNumber, age, gender);
-        Customer customer = customerService.findById(phoneNumber);
         Employee employee = employeeService.findById(employeeId);
         Shop shop = employee.getShop();
 
@@ -62,7 +61,11 @@ public class PurchaseService {
         }
 
         totalPrice.discountMileage(mileage);
-        customer.earnMileage(totalPrice.get());
+
+        if (phoneNumber != null) {
+            Customer customer = customerService.findById(phoneNumber);
+            customer.earnMileage(totalPrice.get());
+        }
     }
 
     @Transactional

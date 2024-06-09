@@ -13,7 +13,7 @@ public class PurchaseCreateRequestDTO {
     private final Long employeeId;
 
     @Schema(example = "01012341234")
-    private final String phoneNumber;
+    private String phoneNumber = null;
 
     @Schema(example = "26")
     private Integer age = null;
