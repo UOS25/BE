@@ -147,23 +147,16 @@ public class StatisticsService {
         Shop shop = shopService.findShopById(shopId);
         AtomicInteger totalPrice = new AtomicInteger();
 
-        List<StatisticsReceiptResponseDTO> receipts = new ArrayList<>();
+        StatisticsAgeGetResponseDTO statisticsAgeGetResponseDTO = new StatisticsAgeGetResponseDTO();
         for (Employee employee : shop.getEmployees()) {
-            List<StatisticsReceiptResponseDTO> newReceipts =
-                    employee.getReceipts().stream()
-                            .filter(
-                                    receipt ->
-                                            dateUtil.filterBetweenDate(receipt, startDate, endDate))
-                            .map(
-                                    receipt ->
-                                            new StatisticsReceiptResponseDTO(
-                                                    ReceiptGetResponseDTO.fromEntity(receipt),
-                                                    receipt.getPrice()))
-                            .toList();
-            receipts.addAll(newReceipts);
+            employee.getReceipts().stream()
+                    .filter(receipt -> dateUtil.filterBetweenDate(receipt, startDate, endDate))
+                    .forEach(
+                            receipt ->
+                                    statisticsAgeGetResponseDTO.matchAges(
+                                            receipt.getAge(), receipt.getPrice()));
         }
-        receipts.stream().forEach(receipt -> totalPrice.addAndGet(receipt.getPrice()));
 
-        return null;
+        return statisticsAgeGetResponseDTO;
     }
 }

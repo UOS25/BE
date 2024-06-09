@@ -55,6 +55,20 @@ public class StatisticsController {
         return ResponseEntity.ok(statisticsGenderGetResponseDTO);
     }
 
-        return ResponseEntity.ok(statisticsGetResponseDTO);
+    @GetMapping("/{shopId}/age")
+    public ResponseEntity<StatisticsAgeGetResponseDTO> getStatisticsAgeByShop(
+            @Parameter(example = "1") @PathVariable Long shopId,
+            @Parameter(example = "2024-06-01T00:00:00")
+                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                    @RequestParam
+                    LocalDateTime startDate,
+            @Parameter(example = "2024-06-30T23:59:59")
+                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                    @RequestParam
+                    LocalDateTime endDate) {
+        StatisticsAgeGetResponseDTO statisticsAgeGetResponseDTO =
+                statisticsService.findAgeByShopId(shopId, startDate, endDate);
+
+        return ResponseEntity.ok(statisticsAgeGetResponseDTO);
     }
 }
