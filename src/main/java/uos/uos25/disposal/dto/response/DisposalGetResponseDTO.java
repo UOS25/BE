@@ -1,5 +1,7 @@
 package uos.uos25.disposal.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 import lombok.Data;
 import uos.uos25.disposal.entity.Disposal;
@@ -12,14 +14,20 @@ public class DisposalGetResponseDTO {
     private final Integer ea;
     private final ShopInfo shopInfo;
     private final ProductInfo productInfo;
+    private final LocalDateTime createAt;
 
     @Builder
     public DisposalGetResponseDTO(
-            Long disposalId, Integer ea, ShopInfo shopInfo, ProductInfo productInfo) {
+            Long disposalId,
+            Integer ea,
+            ShopInfo shopInfo,
+            ProductInfo productInfo,
+            LocalDateTime createAt) {
         this.disposalId = disposalId;
         this.ea = ea;
         this.shopInfo = shopInfo;
         this.productInfo = productInfo;
+        this.createAt = createAt;
     }
 
     public static DisposalGetResponseDTO fromEntity(Disposal disposal) {
@@ -33,6 +41,7 @@ public class DisposalGetResponseDTO {
                         new ProductInfo(
                                 disposal.getProduct().getBarcode(),
                                 disposal.getProduct().getProductName()))
+                .createAt(disposal.getCreatedAt())
                 .build();
     }
 }
