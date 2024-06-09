@@ -25,10 +25,11 @@ import uos.uos25.orders.service.OrdersService;
 public class OrdersController {
     private final OrdersService ordersService;
 
+    @Operation(summary = "주문")
     @PostMapping
     public ResponseEntity<OrdersCreateResponseDTO> order(
             @RequestBody OrdersCreateRequestDTO ordersCreateRequestDTO) {
-        Orders savedOrders = ordersService.save(ordersCreateRequestDTO);
+        Orders savedOrders = ordersService.order(ordersCreateRequestDTO);
         OrdersCreateResponseDTO ordersCreateResponseDTO =
                 OrdersCreateResponseDTO.fromEntity(savedOrders);
 
@@ -69,12 +70,6 @@ public class OrdersController {
         ordersService.updateOrders(ordersUpdateRequestDTO);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-
-    @DeleteMapping("/{ordersId}")
-    public ResponseEntity<Void> deleteOrders(@PathVariable Long ordersId) {
-        ordersService.deleteOrdersById(ordersId);
-        return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "배송 시작")
