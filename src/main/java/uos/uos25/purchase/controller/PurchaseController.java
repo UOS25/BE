@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.purchase.dto.ItemInfo;
 import uos.uos25.purchase.dto.request.PurchaseCreateRequestDTO;
+import uos.uos25.purchase.dto.response.PurchaseCancelResponseDTO;
 import uos.uos25.purchase.sevice.PurchaseService;
 
 @RestController
@@ -38,9 +39,10 @@ public class PurchaseController {
 
     @Operation(summary = "구매 포기(환불)")
     @PostMapping("/{receiptId}/cancel")
-    public ResponseEntity<Void> cancelPurchase(@PathVariable("receiptId") Long receiptId) {
-        purchaseService.cancel(receiptId);
+    public ResponseEntity<PurchaseCancelResponseDTO> cancelPurchase(
+            @PathVariable("receiptId") Long receiptId) {
+        Integer canceledPrice = purchaseService.cancel(receiptId);
 
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.ok(new PurchaseCancelResponseDTO(canceledPrice));
     }
 }
