@@ -29,6 +29,9 @@ public class Event {
     private String eventName;
 
     @Column(nullable = false)
+    private Integer eventPrice;
+
+    @Column(nullable = false)
     private String eventCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,11 +43,13 @@ public class Event {
             LocalDateTime startDate,
             LocalDateTime endDate,
             String eventName,
+            Integer eventPrice,
             String eventCategory,
             Product product) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.eventName = eventName;
+        this.eventPrice = eventPrice;
         this.eventCategory = eventCategory;
         this.product = product;
     }

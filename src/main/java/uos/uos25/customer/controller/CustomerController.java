@@ -2,7 +2,6 @@ package uos.uos25.customer.controller;
 
 import java.util.List;
 
-import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -10,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
@@ -80,7 +80,8 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{phoneNumber}")
-    public ResponseEntity<Void> deleteCustomer(@Parameter(example = "01012341234") @PathVariable String phoneNumber) {
+    public ResponseEntity<Void> deleteCustomer(
+            @Parameter(example = "01012341234") @PathVariable String phoneNumber) {
         customerService.deleteCustomer(phoneNumber);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

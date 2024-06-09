@@ -22,6 +22,7 @@ public class EventService {
 
     public List<Event> create(EventCreateRequestDTO eventCreateRequestDTO) {
         String eventName = eventCreateRequestDTO.getEventName();
+        Integer eventPrice = eventCreateRequestDTO.getEventPrice();
         String eventCategory = eventCreateRequestDTO.getEventCategory();
         LocalDateTime startDate = eventCreateRequestDTO.getStartDate();
         LocalDateTime endDate = eventCreateRequestDTO.getEndDate();
@@ -36,6 +37,7 @@ public class EventService {
                     Event.builder()
                             .product(product)
                             .eventName(eventName)
+                            .eventPrice(eventPrice)
                             .eventCategory(eventCategory)
                             .startDate(startDate)
                             .endDate(endDate)

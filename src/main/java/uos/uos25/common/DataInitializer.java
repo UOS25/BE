@@ -283,6 +283,7 @@ public class DataInitializer {
                 Event.builder()
                         .product(product)
                         .eventName("이벤트")
+                        .eventPrice(500)
                         .eventCategory("카테고리")
                         .startDate(LocalDateTime.now())
                         .endDate(LocalDateTime.now().plusDays(7L))

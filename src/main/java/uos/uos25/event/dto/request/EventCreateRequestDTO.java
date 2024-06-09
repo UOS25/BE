@@ -11,6 +11,9 @@ public class EventCreateRequestDTO {
     @Schema(example = "newEvent")
     private final String eventName;
 
+    @Schema(example = "500")
+    private final Integer eventPrice;
+
     @Schema(example = "newCategory")
     private final String eventCategory;
 

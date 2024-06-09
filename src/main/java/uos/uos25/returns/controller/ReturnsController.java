@@ -22,7 +22,7 @@ public class ReturnsController {
 
     @Operation(summary = "주문 취소")
     @PostMapping("/{ordersId}/cancel")
-    public ResponseEntity<Void> createReturns(
+    public ResponseEntity<Void> returnOrders(
             @Parameter(example = "1") @PathVariable Long ordersId) {
         returnsService.returnOrders(ordersId);
 
