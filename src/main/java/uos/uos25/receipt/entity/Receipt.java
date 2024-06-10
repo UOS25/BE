@@ -14,6 +14,7 @@ import uos.uos25.employee.entity.Employee;
 import uos.uos25.receipt.exception.ReceiptCannotBeCanceledException;
 
 @Entity
+@Table(indexes = {@Index(name = "I_RECEIPT_01", columnList = "phone_number")})
 @Getter
 @NoArgsConstructor
 public class Receipt extends BaseEntity {
