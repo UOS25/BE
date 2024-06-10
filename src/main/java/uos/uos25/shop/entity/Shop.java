@@ -26,13 +26,13 @@ public class Shop extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String shopName;
 
     @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String relationship;
 
     @ManyToOne(fetch = FetchType.LAZY)
