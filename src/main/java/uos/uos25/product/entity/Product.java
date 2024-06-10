@@ -22,7 +22,7 @@ import uos.uos25.returns.entity.Returns;
 @NoArgsConstructor
 public class Product extends BaseEntity {
     @Id
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String barcode;
 
     @Column(nullable = false)
