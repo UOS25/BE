@@ -27,7 +27,7 @@ public class Customer {
     private LocalDateTime joinDate;
 
     @Column(nullable = false)
-    private Integer mileage;
+    private Integer mileage = 0;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Receipt> receipts = new ArrayList<>();

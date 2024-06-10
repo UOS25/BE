@@ -13,9 +13,13 @@ import uos.uos25.common.BaseEntity;
 public class Disbursement extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long disburseId;
 
+    @Column(nullable = true)
     private Integer disburseAmount;
+
+    @Column(nullable = false)
     private String disburseType;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -15,7 +15,6 @@ import uos.uos25.headQuarter.entity.HeadQuarter;
 import uos.uos25.inventory.entity.Inventory;
 import uos.uos25.orders.entity.Orders;
 import uos.uos25.returns.entity.Returns;
-import uos.uos25.sale.entity.Sales;
 
 @Entity
 @Getter
@@ -38,9 +37,6 @@ public class Shop extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "HQ_Emp_id", nullable = false)
     private HeadQuarter headQuarter;
-
-    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
-    private List<Sales> sales = new ArrayList<>();
 
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();

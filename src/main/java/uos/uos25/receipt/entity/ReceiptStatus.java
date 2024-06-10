@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ReceiptStatus {
-    COMPLETED("구매"),
+    COMPLETED("구매완료"),
     CANCELED("환불");
 
     private String status;
