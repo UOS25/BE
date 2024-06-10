@@ -18,6 +18,7 @@ import uos.uos25.receipt.entity.ReceiptDetail;
 import uos.uos25.returns.entity.Returns;
 
 @Entity
+@Table(indexes = {@Index(name = "I_PRODUCT_01", columnList = "product_name")})
 @Getter
 @NoArgsConstructor
 public class Product extends BaseEntity {
