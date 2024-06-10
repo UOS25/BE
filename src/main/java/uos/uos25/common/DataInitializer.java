@@ -281,7 +281,7 @@ public class DataInitializer {
 
     private Customer createCustomerDummy() {
         // Customer dummy
-        Customer customer = Customer.builder().phoneNumber("01012341234").nickname("김고객").build();
+        Customer customer = Customer.builder().phoneNumber("010-4732-4348").nickname("김고객").build();
         return customerRepository.save(customer);
     }
 

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
 import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
 import uos.uos25.customer.entity.Customer;
+import uos.uos25.customer.exception.CustomerAlreadyExists;
 import uos.uos25.customer.exception.CustomerNotFoundException;
 import uos.uos25.customer.repository.CustomerRepository;
 import uos.uos25.receipt.entity.Receipt;
@@ -21,6 +22,8 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     public Customer createCustomer(CustomerCreateRequestDTO customerCreateRequestDTO) {
+        validateAlreadyExists(customerCreateRequestDTO.getPhoneNumber());
+
         Customer customer =
                 Customer.builder()
                         .phoneNumber(customerCreateRequestDTO.getPhoneNumber())
@@ -28,6 +31,15 @@ public class CustomerService {
                         .build();
 
         return customerRepository.save(customer);
+    }
+
+    private void validateAlreadyExists(String phoneNumber) {
+        customerRepository
+                .findById(phoneNumber)
+                .ifPresent(
+                        customer -> {
+                            throw new CustomerAlreadyExists();
+                        });
     }
 
     public List<Customer> findAllCustomers() {

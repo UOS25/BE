@@ -14,6 +14,7 @@ public enum ErrorCode {
 
     // Customer
     CUSTOMER_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Customer is not found."),
+    CUSTOMER_ALREADY_EXISTS(HttpStatus.BAD_REQUEST.value(), "Customer already exists."),
 
     // Employee
     EMPLOYEE_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Employee is not found."),
