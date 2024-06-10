@@ -21,7 +21,14 @@ public class ReceiptGetResponseDTO {
     private final LocalDateTime purchaseDate;
 
     @Builder
-    public ReceiptGetResponseDTO(Long receiptId, String shopName, String purchaseStatus, List<ItemInfo> itemInfos, EmployeeInfo employeeInfo, ShopInfo shopInfo, LocalDateTime purchaseDate) {
+    public ReceiptGetResponseDTO(
+            Long receiptId,
+            String shopName,
+            String purchaseStatus,
+            List<ItemInfo> itemInfos,
+            EmployeeInfo employeeInfo,
+            ShopInfo shopInfo,
+            LocalDateTime purchaseDate) {
         this.receiptId = receiptId;
         this.shopName = shopName;
         this.purchaseStatus = purchaseStatus;
