@@ -19,10 +19,10 @@ public class HeadQuarter {
     @Column(nullable = false)
     private Long hqEmpId;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String hqEmpName;
 
-    @Column(nullable = false)
+    @Column(length = 13, nullable = false)
     private String hqEmpHp;
 
     @OneToMany(mappedBy = "headQuarter", fetch = FetchType.LAZY)
