@@ -25,10 +25,10 @@ public class Product extends BaseEntity {
     @Column(length = 50, nullable = false)
     private String barcode;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String productName;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String enterprise;
 
     @Column(nullable = false)
@@ -37,7 +37,7 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private Integer orderPrice;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String category;
 
     @Column(nullable = false)
@@ -46,7 +46,7 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private String feature;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime expirationDate;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)

@@ -96,7 +96,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("로또이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product delivery =
                 Product.builder()
@@ -108,7 +108,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("택배 서비스이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product atm =
                 Product.builder()
@@ -120,7 +120,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("ATM 서비스이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product electricityBill =
                 Product.builder()
@@ -132,7 +132,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("전기요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product waterBill =
                 Product.builder()
@@ -144,7 +144,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("수도요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product gasBill =
                 Product.builder()
@@ -156,7 +156,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("가스요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
 
         productRepository.save(lottery);
