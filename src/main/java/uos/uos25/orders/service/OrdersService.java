@@ -107,4 +107,12 @@ public class OrdersService {
     public List<Orders> findAllOrdersByShopId(Long shopId) {
         return ordersRepository.findAllByShopShopId(shopId);
     }
+
+    @Transactional
+    public void returnOrders(Long ordersId) {
+        Orders orders = findOrdersById(ordersId);
+
+        orders.validateCanBeCanceled();
+        orders.setOrdersStatus(OrdersStatus.REFUNDED.getStatus());
+    }
 }

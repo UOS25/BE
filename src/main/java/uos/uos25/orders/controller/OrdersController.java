@@ -89,4 +89,13 @@ public class OrdersController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @Operation(summary = "주문 취소")
+    @PostMapping("/{ordersId}/cancel")
+    public ResponseEntity<Void> returnOrders(
+            @Parameter(example = "1") @PathVariable Long ordersId) {
+        ordersService.returnOrders(ordersId);
+
+        return ResponseEntity.noContent().build();
+    }
 }

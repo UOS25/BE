@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
+import uos.uos25.orders.exception.OrdersCannotBeCanceled;
 import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
@@ -68,7 +69,9 @@ public class Orders extends BaseEntity {
         return ordersEa * product.getOrderPrice();
     }
 
-    public boolean canBeCanceled() {
-        return ordersStatus.equals(OrdersStatus.STORED.getStatus());
+    public void validateCanBeCanceled() {
+        if (ordersStatus.equals(OrdersStatus.REQUEST.getStatus())
+                || ordersStatus.equals(OrdersStatus.DELIVERED.getStatus())) return;
+        throw new OrdersCannotBeCanceled();
     }
 }

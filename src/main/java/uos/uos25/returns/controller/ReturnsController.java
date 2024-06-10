@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +18,6 @@ import uos.uos25.returns.service.ReturnsService;
 @Tag(name = "반품", description = "본사로의")
 public class ReturnsController {
     private final ReturnsService returnsService;
-
-    @Operation(summary = "주문 취소")
-    @PostMapping("/{ordersId}/cancel")
-    public ResponseEntity<Void> returnOrders(
-            @Parameter(example = "1") @PathVariable Long ordersId) {
-        returnsService.returnOrders(ordersId);
-
-        return ResponseEntity.noContent().build();
-    }
 
     @GetMapping("/{shopId}")
     public ResponseEntity<List<ReturnsGetResponseDTO>> getAllReturnsByShopId(
