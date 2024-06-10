@@ -11,6 +11,7 @@ import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
 
 @Entity
+@Table(indexes = {@Index(name = "I_EMPLOYEE_01", columnList = "shop_id")})
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
