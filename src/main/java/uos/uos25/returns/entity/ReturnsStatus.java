@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ReturnsStatus {
-    REFUNDED("반품");
+    REFUNDED("반품요청");
 
     private String status;
 }
