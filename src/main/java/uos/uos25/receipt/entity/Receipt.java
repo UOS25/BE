@@ -22,13 +22,13 @@ public class Receipt extends BaseEntity {
     @Column(nullable = false)
     private Long receiptId;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String purchaseStatus;
 
     @Column(nullable = false)
     private Integer age;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "CHAR(6)", nullable = false)
     private String gender;
 
     @ManyToOne(fetch = FetchType.LAZY)
