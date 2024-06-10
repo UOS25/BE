@@ -22,7 +22,7 @@ public class Returns extends BaseEntity {
     @Column(nullable = false)
     private Integer ea;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String returnsStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
