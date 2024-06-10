@@ -11,7 +11,6 @@ import uos.uos25.product.entity.Product;
 @Getter
 @NoArgsConstructor
 public class ReceiptDetail {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
