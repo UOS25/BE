@@ -23,10 +23,10 @@ public class EmployeeWorkingHistory extends BaseEntity {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime startDateTime;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime endDateTime;
 
     @Column(nullable = false)

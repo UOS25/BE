@@ -96,7 +96,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("로또이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product delivery =
                 Product.builder()
@@ -108,7 +108,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("택배 서비스이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product atm =
                 Product.builder()
@@ -120,7 +120,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("ATM 서비스이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product electricityBill =
                 Product.builder()
@@ -132,7 +132,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("전기요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product waterBill =
                 Product.builder()
@@ -144,7 +144,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("수도요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
         Product gasBill =
                 Product.builder()
@@ -156,7 +156,7 @@ public class DataInitializer {
                         .category("생활서비스")
                         .description("가스요금 수납이다.")
                         .feature("생활서비스")
-                        .expirationDate(LocalDateTime.now().plusYears(100L))
+                        .expirationDate(LocalDateTime.now().plusYears(1L))
                         .build();
 
         productRepository.save(lottery);
@@ -235,7 +235,7 @@ public class DataInitializer {
                         .employeeName("박직원")
                         .employmentDate(LocalDateTime.now().withNano(0))
                         .position(EmployeePosition.EMPLOYEE.getPosition())
-                        .registrationNumber("123123-1231231")
+                        .registrationNumber("9902221056715")
                         .salary(10000)
                         .partTime(PartTime.DAY)
                         .account("1231234123412")
@@ -252,7 +252,7 @@ public class DataInitializer {
                         .employeeName("본사유현승")
                         .employmentDate(LocalDateTime.now().withNano(0))
                         .position(EmployeePosition.HEADQUARTER_STAFF.getPosition())
-                        .registrationNumber("2223123-1231231")
+                        .registrationNumber("9902221056715")
                         .salary(10000)
                         .partTime(PartTime.DAY)
                         .account("1231234123412")
@@ -268,7 +268,7 @@ public class DataInitializer {
                         .employeeName("시립대사장")
                         .employmentDate(LocalDateTime.now().withNano(0))
                         .position(EmployeePosition.BOSS.getPosition())
-                        .registrationNumber("123223-1231231")
+                        .registrationNumber("9902221056715")
                         .salary(10000)
                         .partTime(PartTime.DAY)
                         .account("1231234123412")

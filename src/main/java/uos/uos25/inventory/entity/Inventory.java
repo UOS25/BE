@@ -29,12 +29,12 @@ public class Inventory extends BaseEntity {
     private Integer ea;
 
     @Column(nullable = false)
-    private LocalDateTime warehousingDate;
-
-    @Column(nullable = false)
     private Integer display;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
+    private LocalDateTime warehousingDate;
+
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime expirationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)

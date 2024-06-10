@@ -17,13 +17,13 @@ import uos.uos25.util.MileageUtil;
 @NoArgsConstructor
 public class Customer {
     @Id
-    @Column(nullable = false)
+    @Column(columnDefinition = "CHAR(13)", nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String nickname;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime joinDate;
 
     @Column(nullable = false)

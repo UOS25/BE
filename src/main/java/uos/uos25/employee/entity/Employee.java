@@ -21,32 +21,32 @@ public class Employee {
     @Column(nullable = false)
     private Long employeeId;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String employeeName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime employmentDate;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String position;
 
-    @Column(nullable = false)
+    @Column(length = 13, nullable = false)
     private String registrationNumber;
 
     @Column(nullable = false)
     private Integer salary;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private PartTime partTime;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String account;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String bank;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime firedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)

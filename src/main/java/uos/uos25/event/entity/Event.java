@@ -19,19 +19,19 @@ public class Event {
     @Column(nullable = false)
     private Long eventId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime startDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP(6)")
     private LocalDateTime endDate;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String eventName;
 
     @Column(nullable = false)
     private Integer eventPrice;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String eventCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
