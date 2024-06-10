@@ -68,7 +68,6 @@ public class DataInitializer {
         Orders orders = createOrders(shop, product);
         Returns returns = createReturnsDummy(shop, product);
         Employee employee = createEmployeeDummy(shop);
-        createEmployeeHeadquarterDummy();
         createEmployeeBossDummy(shop);
         EmployeeWorkingHistory employeeWorkingHistory = createEmployeeWorkingHistoryDummy(employee);
         Disposal disposal = createDisposalDummy(shop, product);
@@ -241,22 +240,6 @@ public class DataInitializer {
                         .account("1231234123412")
                         .bank("농협은행")
                         .shop(shop)
-                        .build();
-        return employeeRepository.save(employee);
-    }
-
-    private Employee createEmployeeHeadquarterDummy() {
-        // Employee dummy
-        Employee employee =
-                Employee.builder()
-                        .employeeName("본사유현승")
-                        .employmentDate(LocalDateTime.now().withNano(0))
-                        .position(EmployeePosition.HEADQUARTER_STAFF.getPosition())
-                        .registrationNumber("9902221056715")
-                        .salary(10000)
-                        .partTime(PartTime.DAY)
-                        .account("1231234123412")
-                        .bank("농협은행")
                         .build();
         return employeeRepository.save(employee);
     }
