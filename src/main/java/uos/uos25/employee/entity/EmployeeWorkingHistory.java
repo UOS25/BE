@@ -8,6 +8,7 @@ import lombok.*;
 import uos.uos25.common.BaseEntity;
 
 @Entity
+@Table(indexes = {@Index(name = "I_EMPLOYEE_WORKING_HISTORY_01", columnList = "employee_id")})
 @Getter
 @Setter
 @NoArgsConstructor
