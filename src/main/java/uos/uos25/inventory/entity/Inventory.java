@@ -16,6 +16,7 @@ import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
 @Entity
+@Table(indexes = {@Index(name = "I_INVENTORY_01", columnList = "barcode")})
 @NoArgsConstructor
 @Getter
 public class Inventory extends BaseEntity {
