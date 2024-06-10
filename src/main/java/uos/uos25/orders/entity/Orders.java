@@ -19,7 +19,7 @@ public class Orders extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersId;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String ordersStatus;
 
     @Column(nullable = true)
