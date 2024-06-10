@@ -42,6 +42,9 @@ dependencies {
 
 	// Dotenv
 	implementation("me.paulschwarz:spring-dotenv:4.0.0")
+
+	// Oracle
+	implementation 'com.oracle.database.jdbc:ojdbc8'
 }
 
 tasks.named('test') {

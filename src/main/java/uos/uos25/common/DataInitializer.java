@@ -74,9 +74,9 @@ public class DataInitializer {
         Customer customer = createCustomerDummy();
         Inventory inventory = createInventoryDummy(product, shop);
         Event event = createEvent(product);
-        Receipt receipt = createReceiptDummy(employee, customer);
-        ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
-        ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
+        //        Receipt receipt = createReceiptDummy(employee, customer);
+        //        ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
+        //        ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
         Disbursement disbursementSalary = createDisbursementSalaryDummy(shop);
         Disbursement disbursementRoyalty = createDisbursementRoyaltyDummy(shop);
 
