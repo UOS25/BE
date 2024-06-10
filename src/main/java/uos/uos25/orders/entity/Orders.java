@@ -10,6 +10,12 @@ import uos.uos25.product.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
 @Entity
+@Table(
+        indexes = {
+            @Index(name = "I_ORDERS_01", columnList = "created_at"),
+            @Index(name = "I_ORDERS_02", columnList = "shop_id"),
+            @Index(name = "I_ORDERS_03", columnList = "barcode")
+        })
 @Getter
 @NoArgsConstructor
 public class Orders extends BaseEntity {
