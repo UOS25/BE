@@ -31,7 +31,7 @@ public class Employee {
     @Column(length = 50, nullable = false)
     private String position;
 
-    @Column(length = 13, nullable = false)
+    @Column(length = 14, nullable = false)
     private String registrationNumber;
 
     @Column(nullable = false)
