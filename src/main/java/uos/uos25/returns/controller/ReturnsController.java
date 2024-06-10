@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
 import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.returns.entity.Returns;
 import uos.uos25.returns.service.ReturnsService;
@@ -19,7 +20,7 @@ import uos.uos25.returns.service.ReturnsService;
 public class ReturnsController {
     private final ReturnsService returnsService;
 
-    @GetMapping("/{shopId}")
+    @GetMapping("/shop/{shopId}")
     public ResponseEntity<List<ReturnsGetResponseDTO>> getAllReturnsByShopId(
             @Parameter(example = "1") @PathVariable Long shopId) {
         List<Returns> returnses = returnsService.findAllByShopId(shopId);
@@ -38,5 +39,13 @@ public class ReturnsController {
         ReturnsGetResponseDTO returnsGetResponseDTO = ReturnsGetResponseDTO.fromEntity(returns);
 
         return ResponseEntity.ok(returnsGetResponseDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> returnProduct(
+            @RequestBody ReturnsCreateRequestDTO returnsCreateRequestDTO) {
+        returnsService.returnProduct(returnsCreateRequestDTO);
+
+        return ResponseEntity.noContent().build();
     }
 }

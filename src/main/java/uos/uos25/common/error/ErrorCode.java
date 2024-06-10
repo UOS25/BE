@@ -59,7 +59,7 @@ public enum ErrorCode {
     DISBURSEMENT_ALREADY_EXISTS(HttpStatus.BAD_REQUEST.value(), "Disbursement already exists."),
 
     // Returns
-    RETURNS_NOT_FOUND(HttpStatus.NOT_EXTENDED.value(), "Returns is not found.");
+    RETURNS_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Returns is not found.");
 
     private Integer status;
     private String message;
