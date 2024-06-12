@@ -1,16 +1,16 @@
-package uos.uos25.receipt.service;
+package uos.uos25.user.receipt.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.receipt.entity.ReceiptDetail;
-import uos.uos25.receipt.exception.ReceiptDetailNotFound;
-import uos.uos25.receipt.repository.ReceiptDetailRepository;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
+import uos.uos25.user.receipt.entity.Receipt;
+import uos.uos25.user.receipt.entity.ReceiptDetail;
+import uos.uos25.user.receipt.exception.ReceiptDetailNotFound;
+import uos.uos25.user.receipt.repository.ReceiptDetailRepository;
 
 @Service
 @RequiredArgsConstructor

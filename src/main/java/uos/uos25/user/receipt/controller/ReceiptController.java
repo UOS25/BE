@@ -1,4 +1,4 @@
-package uos.uos25.receipt.controller;
+package uos.uos25.user.receipt.controller;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.receipt.service.ReceiptService;
+import uos.uos25.user.receipt.dto.response.ReceiptGetResponseDTO;
+import uos.uos25.user.receipt.entity.Receipt;
+import uos.uos25.user.receipt.service.ReceiptService;
 
 @RestController
 @RequiredArgsConstructor

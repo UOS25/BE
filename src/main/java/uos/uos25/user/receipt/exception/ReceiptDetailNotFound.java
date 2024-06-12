@@ -1,4 +1,4 @@
-package uos.uos25.receipt.exception;
+package uos.uos25.user.receipt.exception;
 
 import uos.uos25.common.error.BusinessException;
 import uos.uos25.common.error.ErrorCode;

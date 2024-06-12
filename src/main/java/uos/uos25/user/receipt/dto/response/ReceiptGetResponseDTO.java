@@ -1,14 +1,14 @@
-package uos.uos25.receipt.dto.response;
+package uos.uos25.user.receipt.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.employee.dto.EmployeeInfo;
-import uos.uos25.purchase.dto.ItemInfo;
-import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.order.dto.ItemInfo;
 import uos.uos25.shop.dto.ShopInfo;
+import uos.uos25.user.dto.EmployeeInfo;
+import uos.uos25.user.receipt.entity.Receipt;
 
 @Data
 public class ReceiptGetResponseDTO {

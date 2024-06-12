@@ -1,4 +1,4 @@
-package uos.uos25.receipt.entity;
+package uos.uos25.user.receipt.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

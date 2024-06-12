@@ -1,4 +1,4 @@
-package uos.uos25.receipt.controller;
+package uos.uos25.user.receipt.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

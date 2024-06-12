@@ -1,4 +1,4 @@
-package uos.uos25.receipt.entity;
+package uos.uos25.user.receipt.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.customer.entity.Customer;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.receipt.exception.ReceiptCannotBeCanceledException;
+import uos.uos25.user.entity.Customer;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.receipt.exception.ReceiptCannotBeCanceledException;
 
 @Entity
 @Table(indexes = {@Index(name = "I_RECEIPT_01", columnList = "phone_number")})

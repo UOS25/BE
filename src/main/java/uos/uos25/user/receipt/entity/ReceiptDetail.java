@@ -1,11 +1,11 @@
-package uos.uos25.receipt.entity;
+package uos.uos25.user.receipt.entity;
 
 import jakarta.persistence.*;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.product.entity.Product;
+import uos.uos25.headquarter.entity.Product;
 
 @Entity
 @Getter
