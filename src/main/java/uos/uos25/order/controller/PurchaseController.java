@@ -1,4 +1,4 @@
-package uos.uos25.purchase.controller;
+package uos.uos25.order.controller;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.purchase.dto.ItemInfo;
-import uos.uos25.purchase.dto.request.PurchaseCreateRequestDTO;
-import uos.uos25.purchase.dto.response.PurchaseCancelResponseDTO;
-import uos.uos25.purchase.sevice.PurchaseService;
+import uos.uos25.order.dto.ItemInfo;
+import uos.uos25.order.dto.request.PurchaseCreateRequestDTO;
+import uos.uos25.order.dto.response.PurchaseCancelResponseDTO;
+import uos.uos25.order.service.PurchaseService;
 
 @RestController
 @RequiredArgsConstructor

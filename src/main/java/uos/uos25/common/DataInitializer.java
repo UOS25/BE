@@ -7,12 +7,12 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.headQuarter.entity.Event;
-import uos.uos25.headQuarter.entity.HeadQuarter;
-import uos.uos25.headQuarter.entity.Product;
-import uos.uos25.headQuarter.repository.EventRepository;
-import uos.uos25.headQuarter.repository.HeadQuarterRepository;
-import uos.uos25.headQuarter.repository.ProductRepository;
+import uos.uos25.headquarter.entity.Event;
+import uos.uos25.headquarter.entity.HeadQuarter;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.repository.EventRepository;
+import uos.uos25.headquarter.repository.HeadQuarterRepository;
+import uos.uos25.headquarter.repository.ProductRepository;
 import uos.uos25.order.entity.Disposal;
 import uos.uos25.order.entity.Orders;
 import uos.uos25.order.entity.OrdersStatus;

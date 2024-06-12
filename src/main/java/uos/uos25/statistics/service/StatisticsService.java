@@ -8,19 +8,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.disposal.dto.response.DisposalGetResponseDTO;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
-import uos.uos25.receipt.dto.response.ReceiptGetResponseDTO;
-import uos.uos25.receipt.entity.GenderType;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
+import uos.uos25.order.dto.response.DisposalGetResponseDTO;
+import uos.uos25.order.dto.response.OrdersGetResponseDTO;
+import uos.uos25.order.dto.response.ReturnsGetResponseDTO;
 import uos.uos25.shop.dto.response.DisbursementGetResponseDTO;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
 import uos.uos25.statistics.dto.response.*;
 import uos.uos25.statistics.dto.response.StatisticsAgeGetResponseDTO;
 import uos.uos25.statistics.dto.response.StatisticsGenderGetResponseDTO;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.receipt.dto.response.ReceiptGetResponseDTO;
+import uos.uos25.user.receipt.entity.GenderType;
+import uos.uos25.user.receipt.entity.Receipt;
 import uos.uos25.util.DateUtil;
 
 @Service

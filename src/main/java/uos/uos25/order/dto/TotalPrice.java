@@ -1,6 +1,6 @@
-package uos.uos25.purchase.dto;
+package uos.uos25.order.dto;
 
-import uos.uos25.purchase.exception.TooManyMileageException;
+import uos.uos25.order.exception.TooManyMileageException;
 
 public class TotalPrice {
     private Integer totalPrice;

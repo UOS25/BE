@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.headQuarter.entity.Product;
+import uos.uos25.headquarter.entity.Product;
 import uos.uos25.order.exception.OrdersCannotBeCanceled;
 import uos.uos25.shop.entity.Shop;
 

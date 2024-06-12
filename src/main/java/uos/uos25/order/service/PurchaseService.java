@@ -1,4 +1,4 @@
-package uos.uos25.purchase.sevice;
+package uos.uos25.order.service;
 
 import java.util.List;
 
@@ -6,21 +6,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.customer.entity.Customer;
-import uos.uos25.customer.service.CustomerService;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.service.EmployeeService;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.inventory.service.InventoryService;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
-import uos.uos25.purchase.dto.ItemInfo;
-import uos.uos25.purchase.dto.TotalPrice;
-import uos.uos25.receipt.entity.Receipt;
-import uos.uos25.receipt.entity.ReceiptDetail;
-import uos.uos25.receipt.service.ReceiptDetailService;
-import uos.uos25.receipt.service.ReceiptService;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
+import uos.uos25.order.dto.ItemInfo;
+import uos.uos25.order.dto.TotalPrice;
+import uos.uos25.shop.entity.Inventory;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.service.InventoryService;
+import uos.uos25.user.entity.Customer;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.receipt.entity.Receipt;
+import uos.uos25.user.receipt.entity.ReceiptDetail;
+import uos.uos25.user.receipt.service.ReceiptDetailService;
+import uos.uos25.user.receipt.service.ReceiptService;
+import uos.uos25.user.service.CustomerService;
+import uos.uos25.user.service.EmployeeService;
 
 @Service
 @RequiredArgsConstructor

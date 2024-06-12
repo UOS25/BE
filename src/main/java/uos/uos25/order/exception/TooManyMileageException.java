@@ -1,4 +1,4 @@
-package uos.uos25.purchase.exception;
+package uos.uos25.order.exception;
 
 import uos.uos25.common.error.BusinessException;
 import uos.uos25.common.error.ErrorCode;

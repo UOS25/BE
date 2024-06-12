@@ -1,4 +1,4 @@
-package uos.uos25.employee.entity;
+package uos.uos25.user.entity;
 
 public enum PartTime {
     DAY,

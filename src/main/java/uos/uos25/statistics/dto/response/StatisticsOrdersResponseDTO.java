@@ -1,7 +1,7 @@
 package uos.uos25.statistics.dto.response;
 
 import lombok.Data;
-import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
+import uos.uos25.order.dto.response.OrdersGetResponseDTO;
 
 @Data
 public class StatisticsOrdersResponseDTO {

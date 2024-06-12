@@ -1,8 +1,8 @@
-package uos.uos25.headQuarter.dto.response;
+package uos.uos25.headquarter.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.headQuarter.entity.HeadQuarter;
+import uos.uos25.headquarter.entity.HeadQuarter;
 
 @Data
 public class HeadquarterGetResponseDTO {

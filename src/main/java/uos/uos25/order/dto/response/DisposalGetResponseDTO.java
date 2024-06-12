@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.headQuarter.dto.ProductInfo;
+import uos.uos25.headquarter.dto.ProductInfo;
 import uos.uos25.order.entity.Disposal;
 import uos.uos25.shop.dto.ShopInfo;
 

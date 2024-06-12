@@ -1,4 +1,4 @@
-package uos.uos25.purchase.dto.response;
+package uos.uos25.order.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

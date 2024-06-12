@@ -1,11 +1,11 @@
-package uos.uos25.purchase.dto.request;
+package uos.uos25.order.dto.request;
 
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.purchase.dto.ItemInfo;
+import uos.uos25.order.dto.ItemInfo;
 
 @Data
 public class PurchaseCreateRequestDTO {

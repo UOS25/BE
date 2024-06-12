@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.headQuarter.entity.Product;
-import uos.uos25.headQuarter.service.ProductService;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
 import uos.uos25.order.dto.request.DisposalCreateReqeustDTO;
 import uos.uos25.order.entity.Disposal;
 import uos.uos25.order.repository.DisposalRepository;

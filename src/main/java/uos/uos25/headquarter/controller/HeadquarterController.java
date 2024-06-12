@@ -1,4 +1,4 @@
-package uos.uos25.headQuarter.controller;
+package uos.uos25.headquarter.controller;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.headQuarter.dto.response.HeadquarterGetResponseDTO;
-import uos.uos25.headQuarter.entity.HeadQuarter;
-import uos.uos25.headQuarter.service.HeadquarterService;
+import uos.uos25.headquarter.dto.response.HeadquarterGetResponseDTO;
+import uos.uos25.headquarter.entity.HeadQuarter;
+import uos.uos25.headquarter.service.HeadquarterService;
 
 @RestController
 @RequiredArgsConstructor

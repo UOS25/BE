@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.headQuarter.entity.Product;
-import uos.uos25.headQuarter.service.ProductService;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
 import uos.uos25.order.dto.request.ReturnsCreateRequestDTO;
 import uos.uos25.order.dto.request.ReturnsProductRequestDTO;
 import uos.uos25.order.entity.Returns;

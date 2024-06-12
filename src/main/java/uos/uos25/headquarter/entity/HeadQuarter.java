@@ -1,4 +1,4 @@
-package uos.uos25.headQuarter.entity;
+package uos.uos25.headquarter.entity;
 
 import java.util.ArrayList;
 import java.util.List;
