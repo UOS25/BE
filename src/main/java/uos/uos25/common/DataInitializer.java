@@ -186,7 +186,7 @@ public class DataInitializer {
     private HeadQuarter createHeadQuarter() {
         // HQ dummy
         HeadQuarter headQuarter =
-                HeadQuarter.builder().hqEmpName("김본사").hqEmpHp("01012341234").build();
+                HeadQuarter.builder().hqEmpName("김본사").hqEmpHp("010-1234-1234").build();
         return headQuarterRepository.save(headQuarter);
     }
 
