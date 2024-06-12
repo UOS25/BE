@@ -1,10 +1,10 @@
-package uos.uos25.customer.dto.response;
+package uos.uos25.user.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import uos.uos25.customer.entity.Customer;
+import uos.uos25.user.entity.Customer;
 
 @Data
 @AllArgsConstructor

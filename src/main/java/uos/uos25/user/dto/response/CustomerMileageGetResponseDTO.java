@@ -1,7 +1,7 @@
-package uos.uos25.customer.dto.response;
+package uos.uos25.user.dto.response;
 
 import lombok.Data;
-import uos.uos25.customer.entity.Customer;
+import uos.uos25.user.entity.Customer;
 
 @Data
 public class CustomerMileageGetResponseDTO {

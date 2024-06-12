@@ -1,4 +1,4 @@
-package uos.uos25.customer.controller;
+package uos.uos25.user.controller;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
-import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
-import uos.uos25.customer.dto.response.CustomerCreateResponseDTO;
-import uos.uos25.customer.dto.response.CustomerGetResponseDTO;
-import uos.uos25.customer.dto.response.CustomerMileageGetResponseDTO;
-import uos.uos25.customer.dto.response.CustomerUpdateResponseDTO;
-import uos.uos25.customer.entity.Customer;
-import uos.uos25.customer.service.CustomerService;
+import uos.uos25.user.dto.request.CustomerCreateRequestDTO;
+import uos.uos25.user.dto.request.CustomerUpdateRequestDTO;
+import uos.uos25.user.dto.response.CustomerCreateResponseDTO;
+import uos.uos25.user.dto.response.CustomerGetResponseDTO;
+import uos.uos25.user.dto.response.CustomerMileageGetResponseDTO;
+import uos.uos25.user.dto.response.CustomerUpdateResponseDTO;
+import uos.uos25.user.entity.Customer;
+import uos.uos25.user.service.CustomerService;
 
 @RestController
 @RequiredArgsConstructor

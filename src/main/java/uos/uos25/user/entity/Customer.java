@@ -1,4 +1,4 @@
-package uos.uos25.customer.entity;
+package uos.uos25.user.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.user.receipt.entity.Receipt;
 import uos.uos25.util.MileageUtil;
 
 @Entity

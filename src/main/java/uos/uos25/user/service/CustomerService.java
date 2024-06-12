@@ -1,4 +1,4 @@
-package uos.uos25.customer.service;
+package uos.uos25.user.service;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.customer.dto.request.CustomerCreateRequestDTO;
-import uos.uos25.customer.dto.request.CustomerUpdateRequestDTO;
-import uos.uos25.customer.entity.Customer;
-import uos.uos25.customer.exception.CustomerAlreadyExists;
-import uos.uos25.customer.exception.CustomerNotFoundException;
-import uos.uos25.customer.repository.CustomerRepository;
-import uos.uos25.receipt.entity.Receipt;
+import uos.uos25.user.dto.request.CustomerCreateRequestDTO;
+import uos.uos25.user.dto.request.CustomerUpdateRequestDTO;
+import uos.uos25.user.entity.Customer;
+import uos.uos25.user.exception.CustomerAlreadyExists;
+import uos.uos25.user.exception.CustomerNotFoundException;
+import uos.uos25.user.receipt.entity.Receipt;
+import uos.uos25.user.repository.CustomerRepository;
 
 @Service
 @RequiredArgsConstructor

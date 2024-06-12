@@ -1,4 +1,4 @@
-package uos.uos25.customer.exception;
+package uos.uos25.user.exception;
 
 import lombok.Getter;
 import uos.uos25.common.error.BusinessException;
