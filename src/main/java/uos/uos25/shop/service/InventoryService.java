@@ -1,4 +1,4 @@
-package uos.uos25.inventory.service;
+package uos.uos25.shop.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -7,13 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.inventory.exception.InventoryNotFoundException;
-import uos.uos25.inventory.repository.InventoryRepository;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
+import uos.uos25.shop.entity.Inventory;
 import uos.uos25.shop.entity.Shop;
-import uos.uos25.shop.service.ShopService;
+import uos.uos25.shop.exception.InventoryNotFoundException;
+import uos.uos25.shop.repository.InventoryRepository;
 
 @Service
 @RequiredArgsConstructor

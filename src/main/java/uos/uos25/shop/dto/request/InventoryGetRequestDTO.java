@@ -1,4 +1,4 @@
-package uos.uos25.inventory.dto.request;
+package uos.uos25.shop.dto.request;
 
 import lombok.Data;
 

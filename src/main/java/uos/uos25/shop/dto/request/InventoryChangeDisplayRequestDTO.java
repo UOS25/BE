@@ -1,4 +1,4 @@
-package uos.uos25.inventory.dto.request;
+package uos.uos25.shop.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

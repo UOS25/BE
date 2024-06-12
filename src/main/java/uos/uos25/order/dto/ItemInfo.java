@@ -1,8 +1,8 @@
-package uos.uos25.purchase.dto;
+package uos.uos25.order.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.receipt.entity.ReceiptDetail;
+import uos.uos25.user.receipt.entity.ReceiptDetail;
 
 @Data
 public class ItemInfo {

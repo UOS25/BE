@@ -1,4 +1,4 @@
-package uos.uos25.inventory.entity;
+package uos.uos25.shop.entity;
 
 import java.time.LocalDateTime;
 
@@ -8,12 +8,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.inventory.exception.InventoryEaCannotBeLowerThanDisplayEa;
-import uos.uos25.inventory.exception.InventoryEaNotEnoughException;
-import uos.uos25.inventory.exception.InventoryTooManyDisplayException;
-import uos.uos25.inventory.exception.TooManyProductPurchaseException;
-import uos.uos25.product.entity.Product;
-import uos.uos25.shop.entity.Shop;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.shop.exception.InventoryEaCannotBeLowerThanDisplayEa;
+import uos.uos25.shop.exception.InventoryEaNotEnoughException;
+import uos.uos25.shop.exception.InventoryTooManyDisplayException;
+import uos.uos25.shop.exception.TooManyProductPurchaseException;
 
 @Entity
 @Table(indexes = {@Index(name = "I_INVENTORY_01", columnList = "barcode")})

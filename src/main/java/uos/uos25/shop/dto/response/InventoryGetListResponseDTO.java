@@ -1,4 +1,4 @@
-package uos.uos25.inventory.dto.response;
+package uos.uos25.shop.dto.response;
 
 import java.util.List;
 

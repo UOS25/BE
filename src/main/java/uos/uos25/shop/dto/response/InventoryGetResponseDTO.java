@@ -1,11 +1,11 @@
-package uos.uos25.inventory.dto.response;
+package uos.uos25.shop.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uos.uos25.inventory.entity.Inventory;
+import uos.uos25.shop.entity.Inventory;
 
 @Data
 @NoArgsConstructor

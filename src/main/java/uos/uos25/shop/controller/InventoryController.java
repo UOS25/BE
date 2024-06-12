@@ -1,4 +1,4 @@
-package uos.uos25.inventory.controller;
+package uos.uos25.shop.controller;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.inventory.dto.request.InventoryChangeDisplayRequestDTO;
-import uos.uos25.inventory.dto.response.InventoryGetResponseDTO;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.inventory.service.InventoryService;
+import uos.uos25.shop.dto.request.InventoryChangeDisplayRequestDTO;
+import uos.uos25.shop.dto.response.InventoryGetResponseDTO;
+import uos.uos25.shop.entity.Inventory;
+import uos.uos25.shop.service.InventoryService;
 
 @RestController
 @RequiredArgsConstructor
