@@ -1,4 +1,4 @@
-package uos.uos25.product.controller;
+package uos.uos25.headquarter.controller;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.product.dto.request.ProductCreateRequestDTO;
-import uos.uos25.product.dto.response.ProductCreateResponseDTO;
-import uos.uos25.product.dto.response.ProductGetResponseDTO;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
+import uos.uos25.headquarter.dto.request.ProductCreateRequestDTO;
+import uos.uos25.headquarter.dto.response.ProductCreateResponseDTO;
+import uos.uos25.headquarter.dto.response.ProductGetResponseDTO;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.service.ProductService;
 
 @RestController
 @RequiredArgsConstructor

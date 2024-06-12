@@ -1,12 +1,12 @@
-package uos.uos25.product.dto.response;
+package uos.uos25.headquarter.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.event.entity.Event;
-import uos.uos25.product.entity.Product;
+import uos.uos25.headquarter.entity.Event;
+import uos.uos25.headquarter.entity.Product;
 
 @Data
 public class ProductGetResponseDTO {

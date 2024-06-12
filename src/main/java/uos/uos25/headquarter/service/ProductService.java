@@ -1,4 +1,4 @@
-package uos.uos25.product.service;
+package uos.uos25.headquarter.service;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.product.dto.request.ProductCreateRequestDTO;
-import uos.uos25.product.dto.response.ProductGetResponseDTO;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.exception.ProductNotFoundException;
-import uos.uos25.product.repository.ProductRepository;
+import uos.uos25.headquarter.dto.request.ProductCreateRequestDTO;
+import uos.uos25.headquarter.dto.response.ProductGetResponseDTO;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.exception.ProductNotFoundException;
+import uos.uos25.headquarter.repository.ProductRepository;
 
 @Service
 @RequiredArgsConstructor

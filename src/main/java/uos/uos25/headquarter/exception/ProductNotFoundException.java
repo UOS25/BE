@@ -1,4 +1,4 @@
-package uos.uos25.product.exception;
+package uos.uos25.headquarter.exception;
 
 import uos.uos25.common.error.BusinessException;
 import uos.uos25.common.error.ErrorCode;

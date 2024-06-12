@@ -1,4 +1,4 @@
-package uos.uos25.product.dto;
+package uos.uos25.headquarter.dto;
 
 import lombok.Data;
 

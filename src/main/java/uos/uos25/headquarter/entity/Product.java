@@ -1,4 +1,4 @@
-package uos.uos25.product.entity;
+package uos.uos25.headquarter.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,12 +10,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.disposal.entity.Disposal;
-import uos.uos25.event.entity.Event;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.orders.entity.Orders;
-import uos.uos25.receipt.entity.ReceiptDetail;
-import uos.uos25.returns.entity.Returns;
+import uos.uos25.order.entity.Disposal;
+import uos.uos25.order.entity.Orders;
+import uos.uos25.order.entity.Returns;
+import uos.uos25.shop.entity.Inventory;
+import uos.uos25.user.receipt.entity.ReceiptDetail;
 
 @Entity
 @Table(indexes = {@Index(name = "I_PRODUCT_01", columnList = "product_name")})

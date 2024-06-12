@@ -1,4 +1,4 @@
-package uos.uos25.product.dto.request;
+package uos.uos25.headquarter.dto.request;
 
 import java.time.LocalDateTime;
 
