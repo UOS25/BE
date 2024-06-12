@@ -1,4 +1,4 @@
-package uos.uos25.disposal.service;
+package uos.uos25.order.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.disposal.dto.request.DisposalCreateReqeustDTO;
-import uos.uos25.disposal.entity.Disposal;
-import uos.uos25.disposal.repository.DisposalRepository;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.inventory.service.InventoryService;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
+import uos.uos25.headQuarter.entity.Product;
+import uos.uos25.headQuarter.service.ProductService;
+import uos.uos25.order.dto.request.DisposalCreateReqeustDTO;
+import uos.uos25.order.entity.Disposal;
+import uos.uos25.order.repository.DisposalRepository;
+import uos.uos25.shop.entity.Inventory;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.service.InventoryService;
 import uos.uos25.shop.service.ShopService;
 
 @Service

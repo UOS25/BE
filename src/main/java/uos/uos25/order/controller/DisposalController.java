@@ -1,4 +1,4 @@
-package uos.uos25.disposal.controller;
+package uos.uos25.order.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,11 +11,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.disposal.dto.request.DisposalCreateReqeustDTO;
-import uos.uos25.disposal.dto.response.DisposalCreateResponseDTO;
-import uos.uos25.disposal.dto.response.DisposalGetResponseDTO;
-import uos.uos25.disposal.entity.Disposal;
-import uos.uos25.disposal.service.DisposalService;
+import uos.uos25.order.dto.request.DisposalCreateReqeustDTO;
+import uos.uos25.order.dto.response.DisposalCreateResponseDTO;
+import uos.uos25.order.dto.response.DisposalGetResponseDTO;
+import uos.uos25.order.entity.Disposal;
+import uos.uos25.order.service.DisposalService;
 
 @RestController
 @RequestMapping("/disposal")

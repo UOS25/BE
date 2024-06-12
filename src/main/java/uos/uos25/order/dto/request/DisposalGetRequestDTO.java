@@ -1,4 +1,4 @@
-package uos.uos25.disposal.dto.request;
+package uos.uos25.order.dto.request;
 
 import java.time.LocalDateTime;
 

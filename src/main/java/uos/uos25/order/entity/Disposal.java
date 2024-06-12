@@ -1,4 +1,4 @@
-package uos.uos25.disposal.entity;
+package uos.uos25.order.entity;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.product.entity.Product;
+import uos.uos25.headQuarter.entity.Product;
 import uos.uos25.shop.entity.Shop;
 
 @Entity
