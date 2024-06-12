@@ -1,18 +1,17 @@
 # UOS25 Back-End
 UOS25 서울시립대학교 데이터베이스설계 수업 프로젝트로 편의점 시스템을 구현하는 프로젝트입니다.
-![Screenshot 2024-06-12 at 6.29.13 PM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fd1%2Fyp8by2h15bq9mk302ns6c9l40000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_X2quOC%2FScreenshot%202024-06-12%20at%206.29.13%20PM.png)
+![OverView](./document/image/Screenshot 2024-06-12 at 6.45.58 PM.png)
 ---
 ## 개발 환경
 ![Java](https://img.shields.io/badge/java-17-red)
 ![Oracle](https://img.shields.io/badge/oracle-18c-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-green)
-![Screenshot 2024-06-12 at 6.22.31 PM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fd1%2Fyp8by2h15bq9mk302ns6c9l40000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_WYSGZZ%2FScreenshot%202024-06-12%20at%206.22.31%20PM.png)
+![Environment](./document/image/Screenshot 2024-06-12 at 6.46.17 PM.png)
 ---
 ## ERD
-![img.png](img.png)
+![ERD](./document/image/ERD.png)
 ---
-## 문서
-[이동]()
+[문서 URL](./document/UOS25.pdf)
 ---
 ## 역할
 | 이름                                   | 역할    |
