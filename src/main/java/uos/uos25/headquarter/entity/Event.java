@@ -1,4 +1,4 @@
-package uos.uos25.event.entity;
+package uos.uos25.headquarter.entity;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import uos.uos25.product.entity.Product;
 
 @Entity
 @NoArgsConstructor

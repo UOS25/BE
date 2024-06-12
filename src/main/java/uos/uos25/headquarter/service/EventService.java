@@ -1,4 +1,4 @@
-package uos.uos25.event.service;
+package uos.uos25.headquarter.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -7,12 +7,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.event.dto.request.EventCreateRequestDTO;
-import uos.uos25.event.entity.Event;
-import uos.uos25.event.exception.EventNotFound;
-import uos.uos25.event.repository.EventRepository;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
+import uos.uos25.headquarter.dto.request.EventCreateRequestDTO;
+import uos.uos25.headquarter.entity.Event;
+import uos.uos25.headquarter.entity.Product;
+import uos.uos25.headquarter.exception.EventNotFound;
+import uos.uos25.headquarter.repository.EventRepository;
 
 @Service
 @RequiredArgsConstructor

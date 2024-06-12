@@ -1,4 +1,4 @@
-package uos.uos25.event.dto.request;
+package uos.uos25.headquarter.dto.request;
 
 import java.time.LocalDateTime;
 import java.util.List;

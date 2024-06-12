@@ -1,10 +1,10 @@
-package uos.uos25.event.dto.response;
+package uos.uos25.headquarter.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.event.entity.Event;
+import uos.uos25.headquarter.entity.Event;
 
 @Data
 public class EventGetResponseDTO {

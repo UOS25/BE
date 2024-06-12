@@ -1,4 +1,4 @@
-package uos.uos25.event.controller;
+package uos.uos25.headquarter.controller;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.event.dto.request.EventCreateRequestDTO;
-import uos.uos25.event.dto.response.EventCreateResponseDTO;
-import uos.uos25.event.dto.response.EventGetResponseDTO;
-import uos.uos25.event.entity.Event;
-import uos.uos25.event.service.EventService;
+import uos.uos25.headquarter.dto.request.EventCreateRequestDTO;
+import uos.uos25.headquarter.dto.response.EventCreateResponseDTO;
+import uos.uos25.headquarter.dto.response.EventGetResponseDTO;
+import uos.uos25.headquarter.entity.Event;
+import uos.uos25.headquarter.service.EventService;
 
 @RestController
 @RequiredArgsConstructor
