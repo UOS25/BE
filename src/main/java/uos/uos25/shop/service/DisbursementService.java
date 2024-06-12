@@ -8,9 +8,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
-import uos.uos25.employee.service.EmployeeService;
 import uos.uos25.shop.dto.request.DisbursementCreateRequestDTO;
 import uos.uos25.shop.dto.request.SalaryCalculationRequestDTO;
 import uos.uos25.shop.entity.Disbursement;
@@ -18,6 +15,9 @@ import uos.uos25.shop.entity.DisbursementType;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.exception.DisbursementAlreadyExistsException;
 import uos.uos25.shop.repository.DisbursementRepository;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.entity.EmployeeWorkingHistory;
+import uos.uos25.user.service.EmployeeService;
 import uos.uos25.util.DateUtil;
 
 @Service

@@ -9,12 +9,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uos.uos25.common.BaseEntity;
-import uos.uos25.disposal.entity.Disposal;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.headQuarter.entity.HeadQuarter;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.orders.entity.Orders;
-import uos.uos25.returns.entity.Returns;
+import uos.uos25.headquarter.entity.HeadQuarter;
+import uos.uos25.order.entity.Disposal;
+import uos.uos25.order.entity.Orders;
+import uos.uos25.order.entity.Returns;
+import uos.uos25.user.entity.Employee;
 
 @Entity
 @Getter
