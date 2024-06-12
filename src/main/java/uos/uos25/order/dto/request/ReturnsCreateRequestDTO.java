@@ -1,4 +1,4 @@
-package uos.uos25.returns.dto.request;
+package uos.uos25.order.dto.request;
 
 import java.util.List;
 

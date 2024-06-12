@@ -1,4 +1,4 @@
-package uos.uos25.returns.service;
+package uos.uos25.order.service;
 
 import java.util.List;
 
@@ -6,17 +6,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.inventory.entity.Inventory;
-import uos.uos25.inventory.service.InventoryService;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
-import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
-import uos.uos25.returns.dto.request.ReturnsProductRequestDTO;
-import uos.uos25.returns.entity.Returns;
-import uos.uos25.returns.entity.ReturnsStatus;
-import uos.uos25.returns.exception.ReturnsNotFoundException;
-import uos.uos25.returns.repository.ReturnsRepository;
+import uos.uos25.headQuarter.entity.Product;
+import uos.uos25.headQuarter.service.ProductService;
+import uos.uos25.order.dto.request.ReturnsCreateRequestDTO;
+import uos.uos25.order.dto.request.ReturnsProductRequestDTO;
+import uos.uos25.order.entity.Returns;
+import uos.uos25.order.entity.ReturnsStatus;
+import uos.uos25.order.exception.ReturnsNotFoundException;
+import uos.uos25.order.repository.ReturnsRepository;
+import uos.uos25.shop.entity.Inventory;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.service.InventoryService;
 import uos.uos25.shop.service.ShopService;
 
 @Service

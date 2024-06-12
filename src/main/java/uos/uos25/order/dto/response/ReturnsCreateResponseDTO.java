@@ -1,9 +1,9 @@
-package uos.uos25.returns.dto.response;
+package uos.uos25.order.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.product.dto.ProductInfo;
-import uos.uos25.returns.entity.Returns;
+import uos.uos25.headQuarter.dto.ProductInfo;
+import uos.uos25.order.entity.Returns;
 import uos.uos25.shop.dto.ShopInfo;
 
 @Data

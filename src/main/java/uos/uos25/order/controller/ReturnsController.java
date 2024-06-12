@@ -1,4 +1,4 @@
-package uos.uos25.returns.controller;
+package uos.uos25.order.controller;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.returns.dto.request.ReturnsCreateRequestDTO;
-import uos.uos25.returns.dto.response.ReturnsGetResponseDTO;
-import uos.uos25.returns.entity.Returns;
-import uos.uos25.returns.service.ReturnsService;
+import uos.uos25.order.dto.request.ReturnsCreateRequestDTO;
+import uos.uos25.order.dto.response.ReturnsGetResponseDTO;
+import uos.uos25.order.entity.Returns;
+import uos.uos25.order.service.ReturnsService;
 
 @RestController
 @RequiredArgsConstructor
