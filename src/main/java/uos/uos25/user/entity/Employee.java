@@ -1,4 +1,4 @@
-package uos.uos25.employee.entity;
+package uos.uos25.user.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import java.util.List;
 import jakarta.persistence.*;
 
 import lombok.*;
-import uos.uos25.receipt.entity.Receipt;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.user.receipt.entity.Receipt;
 
 @Entity
 @Table(indexes = {@Index(name = "I_EMPLOYEE_01", columnList = "shop_id")})

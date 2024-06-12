@@ -1,4 +1,4 @@
-package uos.uos25.employee.dto;
+package uos.uos25.user.dto;
 
 import java.time.LocalDateTime;
 

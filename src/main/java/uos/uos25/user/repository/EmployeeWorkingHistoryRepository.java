@@ -1,4 +1,4 @@
-package uos.uos25.employee.repository;
+package uos.uos25.user.repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
+import uos.uos25.user.entity.EmployeeWorkingHistory;
 
 public interface EmployeeWorkingHistoryRepository
         extends JpaRepository<EmployeeWorkingHistory, Long> {

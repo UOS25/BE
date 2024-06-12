@@ -1,4 +1,4 @@
-package uos.uos25.employee.dto.request;
+package uos.uos25.user.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

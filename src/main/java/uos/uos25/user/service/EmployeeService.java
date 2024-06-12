@@ -1,4 +1,4 @@
-package uos.uos25.employee.service;
+package uos.uos25.user.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,15 +8,15 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.dto.request.EmployeeCreateReqeustDTO;
-import uos.uos25.employee.dto.request.EmployeeUpdateReqeustDTO;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.EmployeePosition;
-import uos.uos25.employee.entity.PartTime;
-import uos.uos25.employee.exception.EmployeeNotFound;
-import uos.uos25.employee.repository.EmployeeRepository;
 import uos.uos25.shop.entity.Shop;
 import uos.uos25.shop.service.ShopService;
+import uos.uos25.user.dto.request.EmployeeCreateReqeustDTO;
+import uos.uos25.user.dto.request.EmployeeUpdateReqeustDTO;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.entity.EmployeePosition;
+import uos.uos25.user.entity.PartTime;
+import uos.uos25.user.exception.EmployeeNotFound;
+import uos.uos25.user.repository.EmployeeRepository;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package uos.uos25.employee.service;
+package uos.uos25.user.service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -11,12 +11,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
-import uos.uos25.employee.entity.Employee;
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
-import uos.uos25.employee.exception.DuplicatedHistoryException;
-import uos.uos25.employee.repository.EmployeeRepository;
-import uos.uos25.employee.repository.EmployeeWorkingHistoryRepository;
+import uos.uos25.user.dto.EmployeeWorkingHistoryDTO;
+import uos.uos25.user.entity.Employee;
+import uos.uos25.user.entity.EmployeeWorkingHistory;
+import uos.uos25.user.exception.DuplicatedHistoryException;
+import uos.uos25.user.repository.EmployeeRepository;
+import uos.uos25.user.repository.EmployeeWorkingHistoryRepository;
 
 @Service
 @RequiredArgsConstructor

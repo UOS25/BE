@@ -1,8 +1,8 @@
-package uos.uos25.employee.dto.response;
+package uos.uos25.user.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.employee.entity.Employee;
+import uos.uos25.user.entity.Employee;
 
 @Data
 public class EmployeeCreateResponseDTO {

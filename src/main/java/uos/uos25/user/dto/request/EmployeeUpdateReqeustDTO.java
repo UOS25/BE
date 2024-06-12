@@ -1,4 +1,4 @@
-package uos.uos25.employee.dto.request;
+package uos.uos25.user.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

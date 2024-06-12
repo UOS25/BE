@@ -1,11 +1,11 @@
-package uos.uos25.employee.dto.response;
+package uos.uos25.user.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.employee.entity.Employee;
+import uos.uos25.user.entity.Employee;
 
 @Data
-public class EmployeeHeadquarterGetResponseDTO {
+public class EmployeeGetResponseDTO {
     private Long employeeId;
     private String employeeName;
     private String position;
@@ -14,9 +14,10 @@ public class EmployeeHeadquarterGetResponseDTO {
     private String partTime;
     private String account;
     private String bank;
+    private Long shopId;
 
     @Builder
-    public EmployeeHeadquarterGetResponseDTO(
+    public EmployeeGetResponseDTO(
             Long employeeId,
             String employeeName,
             String position,
@@ -24,7 +25,8 @@ public class EmployeeHeadquarterGetResponseDTO {
             Integer salary,
             String partTime,
             String account,
-            String bank) {
+            String bank,
+            Long shopId) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.position = position;
@@ -33,10 +35,11 @@ public class EmployeeHeadquarterGetResponseDTO {
         this.partTime = partTime;
         this.account = account;
         this.bank = bank;
+        this.shopId = shopId;
     }
 
-    public static EmployeeHeadquarterGetResponseDTO fromEntity(Employee employee) {
-        return EmployeeHeadquarterGetResponseDTO.builder()
+    public static EmployeeGetResponseDTO fromEntity(Employee employee) {
+        return EmployeeGetResponseDTO.builder()
                 .employeeId(employee.getEmployeeId())
                 .employeeName(employee.getEmployeeName())
                 .position(employee.getPosition())
@@ -45,6 +48,7 @@ public class EmployeeHeadquarterGetResponseDTO {
                 .partTime(employee.getPartTime().name())
                 .account(employee.getAccount())
                 .bank(employee.getBank())
+                .shopId(employee.getShop().getShopId())
                 .build();
     }
 }

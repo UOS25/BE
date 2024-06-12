@@ -1,4 +1,4 @@
-package uos.uos25.employee.controller;
+package uos.uos25.user.controller;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.employee.dto.EmployeeWorkingHistoryDTO;
-import uos.uos25.employee.dto.response.EmployeeWorkingHistoryGetResponseDTO;
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
-import uos.uos25.employee.repository.EmployeeRepository;
-import uos.uos25.employee.service.EmployeeWorkingHistoryService;
+import uos.uos25.user.dto.EmployeeWorkingHistoryDTO;
+import uos.uos25.user.dto.response.EmployeeWorkingHistoryGetResponseDTO;
+import uos.uos25.user.entity.EmployeeWorkingHistory;
+import uos.uos25.user.repository.EmployeeRepository;
+import uos.uos25.user.service.EmployeeWorkingHistoryService;
 
 @RestController
 @RequestMapping("/employee/work")

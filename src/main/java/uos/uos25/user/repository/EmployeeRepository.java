@@ -1,11 +1,11 @@
-package uos.uos25.employee.repository;
+package uos.uos25.user.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import uos.uos25.employee.entity.Employee;
+import uos.uos25.user.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 

@@ -1,10 +1,10 @@
-package uos.uos25.employee.dto.response;
+package uos.uos25.user.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.employee.entity.EmployeeWorkingHistory;
+import uos.uos25.user.entity.EmployeeWorkingHistory;
 
 @Data
 public class EmployeeWorkingHistoryGetResponseDTO {
