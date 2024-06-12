@@ -1,4 +1,4 @@
-package uos.uos25.orders.service;
+package uos.uos25.order.service;
 
 import java.util.List;
 
@@ -6,18 +6,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import uos.uos25.inventory.service.InventoryService;
-import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
-import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
-import uos.uos25.orders.entity.Orders;
-import uos.uos25.orders.entity.OrdersStatus;
-import uos.uos25.orders.exception.OrdersNotDelivering;
-import uos.uos25.orders.exception.OrdersNotFoundException;
-import uos.uos25.orders.exception.OrdersNotRequested;
-import uos.uos25.orders.repository.OrdersRepository;
-import uos.uos25.product.entity.Product;
-import uos.uos25.product.service.ProductService;
+import uos.uos25.headQuarter.entity.Product;
+import uos.uos25.headQuarter.service.ProductService;
+import uos.uos25.order.dto.request.OrdersCreateRequestDTO;
+import uos.uos25.order.dto.request.OrdersUpdateRequestDTO;
+import uos.uos25.order.entity.Orders;
+import uos.uos25.order.entity.OrdersStatus;
+import uos.uos25.order.exception.OrdersNotDelivering;
+import uos.uos25.order.exception.OrdersNotFoundException;
+import uos.uos25.order.exception.OrdersNotRequested;
+import uos.uos25.order.repository.OrdersRepository;
 import uos.uos25.shop.entity.Shop;
+import uos.uos25.shop.service.InventoryService;
 import uos.uos25.shop.service.ShopService;
 
 @Service

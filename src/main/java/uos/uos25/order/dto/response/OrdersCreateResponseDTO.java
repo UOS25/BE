@@ -1,11 +1,11 @@
-package uos.uos25.orders.dto.response;
+package uos.uos25.order.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
-import uos.uos25.orders.entity.Orders;
-import uos.uos25.product.dto.ProductInfo;
+import uos.uos25.headQuarter.dto.ProductInfo;
+import uos.uos25.order.entity.Orders;
 import uos.uos25.shop.dto.ShopInfo;
 
 @Data

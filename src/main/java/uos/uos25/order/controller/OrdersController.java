@@ -1,4 +1,4 @@
-package uos.uos25.orders.controller;
+package uos.uos25.order.controller;
 
 import java.util.List;
 
@@ -10,13 +10,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import uos.uos25.orders.dto.request.OrdersCreateRequestDTO;
-import uos.uos25.orders.dto.request.OrdersStatusRequestDTO;
-import uos.uos25.orders.dto.request.OrdersUpdateRequestDTO;
-import uos.uos25.orders.dto.response.OrdersCreateResponseDTO;
-import uos.uos25.orders.dto.response.OrdersGetResponseDTO;
-import uos.uos25.orders.entity.Orders;
-import uos.uos25.orders.service.OrdersService;
+import uos.uos25.order.dto.request.OrdersCreateRequestDTO;
+import uos.uos25.order.dto.request.OrdersStatusRequestDTO;
+import uos.uos25.order.dto.request.OrdersUpdateRequestDTO;
+import uos.uos25.order.dto.response.OrdersCreateResponseDTO;
+import uos.uos25.order.dto.response.OrdersGetResponseDTO;
+import uos.uos25.order.entity.Orders;
+import uos.uos25.order.service.OrdersService;
 
 @RestController
 @RequestMapping("/orders")

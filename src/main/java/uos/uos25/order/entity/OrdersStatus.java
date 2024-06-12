@@ -1,4 +1,4 @@
-package uos.uos25.orders.entity;
+package uos.uos25.order.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
