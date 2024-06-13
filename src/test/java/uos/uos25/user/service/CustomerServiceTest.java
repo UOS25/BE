@@ -73,4 +73,17 @@ class CustomerServiceTest {
         // then
         assertThat(customers.size()).isEqualTo(3);
     }
+
+    @Test
+    void 유저_삭제() {
+        // given
+        String phoneNumber = "010-4732-4348";
+
+        // when
+        customerService.deleteCustomer(phoneNumber);
+        List<Customer> customers = customerRepository.findAll();
+
+        // then
+        assertThat(customers.size()).isEqualTo(2);
+    }
 }
