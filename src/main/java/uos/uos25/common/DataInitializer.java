@@ -62,23 +62,24 @@ public class DataInitializer {
 
     @PostConstruct
     public void init() {
-        Product product = createProductDummy();
+        //        Product product = createProductDummy();
         HeadQuarter headQuarter = createHeadQuarter();
         Shop shop = createShop(headQuarter);
-        Orders orders = createOrders(shop, product);
-        Returns returns = createReturnsDummy(shop, product);
-        Employee employee = createEmployeeDummy(shop);
-        createEmployeeBossDummy(shop);
-        EmployeeWorkingHistory employeeWorkingHistory = createEmployeeWorkingHistoryDummy(employee);
-        Disposal disposal = createDisposalDummy(shop, product);
-        Customer customer = createCustomerDummy();
-        Inventory inventory = createInventoryDummy(product, shop);
-        Event event = createEvent(product);
+        //        Orders orders = createOrders(shop, product);
+        //        Returns returns = createReturnsDummy(shop, product);
+        //        Employee employee = createEmployeeDummy(shop);
+        //        createEmployeeBossDummy(shop);
+        //        EmployeeWorkingHistory employeeWorkingHistory =
+        // createEmployeeWorkingHistoryDummy(employee);
+        //        Disposal disposal = createDisposalDummy(shop, product);
+        //        Customer customer = createCustomerDummy();
+        //        Inventory inventory = createInventoryDummy(product, shop);
+        //        Event event = createEvent(product);
         //        Receipt receipt = createReceiptDummy(employee, customer);
         //        ReceiptDetail receiptDetail = createReceiptDetailDummy(receipt, product);
         //        ReceiptDetail receiptDetail2 = createReceiptDetailDummy(receipt, product);
         //        Disbursement disbursementSalary = createDisbursementSalaryDummy(shop);
-        Disbursement disbursementRoyalty = createDisbursementRoyaltyDummy(shop);
+        //        Disbursement disbursementRoyalty = createDisbursementRoyaltyDummy(shop);
 
         // 생활 서비스 데이터 추가
         createLivingServiceDummy();

@@ -6,6 +6,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import uos.uos25.util.MileageUtil;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
     @Id
     @Column(columnDefinition = "CHAR(13)", nullable = false)
