@@ -1,6 +1,7 @@
 package uos.uos25.user.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 
@@ -81,5 +82,20 @@ class EmployeeServiceTest {
 
         // then
         assertThat(updatedEmployee.getEmployeeName()).isEqualTo("수정된이름");
+    }
+
+    @Test
+    void 직원_수정_Id_없을_시_예외() {
+        // given
+        EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO =
+                EmployeeUpdateReqeustDTO.builder()
+                        .employeeId(3L)
+                        .employeeName("수정된이름")
+                        .shopId(1L)
+                        .build();
+
+        // when, then
+        assertThatThrownBy(() -> employeeService.updateEmployee(employeeUpdateReqeustDTO))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
