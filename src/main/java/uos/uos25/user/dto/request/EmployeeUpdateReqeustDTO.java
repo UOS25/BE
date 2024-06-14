@@ -1,6 +1,7 @@
 package uos.uos25.user.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -31,4 +32,26 @@ public class EmployeeUpdateReqeustDTO {
 
     @Schema(example = "1")
     private Long shopId = null;
+
+    @Builder
+    public EmployeeUpdateReqeustDTO(
+            Long employeeId,
+            String employeeName,
+            String position,
+            String registrationNumber,
+            Integer salary,
+            String partTime,
+            String account,
+            String bank,
+            Long shopId) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.position = position;
+        this.registrationNumber = registrationNumber;
+        this.salary = salary;
+        this.partTime = partTime;
+        this.account = account;
+        this.bank = bank;
+        this.shopId = shopId;
+    }
 }

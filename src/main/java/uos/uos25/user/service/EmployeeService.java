@@ -64,7 +64,7 @@ public class EmployeeService {
 
     @Transactional
     // 직원 수정
-    public void updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
+    public Employee updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
         Shop shop = shopService.findShopById(employeeUpdateReqeustDTO.getShopId());
         Employee findEmployee =
                 employeeRepository
@@ -85,6 +85,8 @@ public class EmployeeService {
                 employeeUpdateReqeustDTO.getAccount(),
                 employeeUpdateReqeustDTO.getBank(),
                 shop);
+
+        return findEmployee;
     }
 
     @Transactional
