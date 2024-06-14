@@ -2,6 +2,8 @@ package uos.uos25.user.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,13 @@ class EmployeeServiceTest {
         Employee employee = employeeService.findById(1L);
 
         assertThat(employee.getEmployeeName()).isEqualTo("박직원");
+    }
+
+    @Test
+    void 직원_지점_아이디로_조회() {
+        List<Employee> employees = employeeService.findEmployeeByShopId(1L);
+
+        assertThat(employees.size()).isEqualTo(2);
     }
 
     @Test
