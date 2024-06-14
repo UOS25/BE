@@ -46,7 +46,7 @@ public class EmployeeWorkingHistoryService {
     // create
     // 직원의 출근 처리를 완료합니다. 퇴근 시간 디폴트값은 출근 시간 + 8시간입니다.
     @Transactional
-    public void startWorking(Long employeeId) {
+    public EmployeeWorkingHistory startWorking(Long employeeId) {
         // 오늘의 날짜를 불러옵니다.
         LocalDateTime startOfDay = LocalDateTime.now().with(LocalTime.MIN);
         LocalDateTime endOfDay = LocalDateTime.now().with(LocalTime.MAX);
@@ -74,7 +74,7 @@ public class EmployeeWorkingHistoryService {
         // 일한 시간에 디폴트값인 8시간을 세팅합니다.
         employeeWorkingHistory.setWorkingHour(8L);
         // DB에 employeeWork를 저장합니다.
-        employeeWorkingHistoryRepository.save(employeeWorkingHistory);
+        return employeeWorkingHistoryRepository.save(employeeWorkingHistory);
     }
 
     // update
