@@ -98,4 +98,16 @@ class EmployeeServiceTest {
         assertThatThrownBy(() -> employeeService.updateEmployee(employeeUpdateReqeustDTO))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 직원_퇴사() {
+        // given
+        Long employeeId = 1L;
+
+        // when
+        Employee retiredEmployee = employeeService.retirementEmployee(employeeId);
+
+        // then
+        assertThat(retiredEmployee.getFiredDate()).isNotNull();
+    }
 }
