@@ -64,7 +64,7 @@ public class EmployeeService {
 
     @Transactional
     // 직원 수정
-    public void updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
+    public Employee updateEmployee(EmployeeUpdateReqeustDTO employeeUpdateReqeustDTO) {
         Shop shop = shopService.findShopById(employeeUpdateReqeustDTO.getShopId());
         Employee findEmployee =
                 employeeRepository
@@ -85,11 +85,13 @@ public class EmployeeService {
                 employeeUpdateReqeustDTO.getAccount(),
                 employeeUpdateReqeustDTO.getBank(),
                 shop);
+
+        return findEmployee;
     }
 
     @Transactional
     // 직원 퇴사
-    public void retirementEmployee(Long employeeId) {
+    public Employee retirementEmployee(Long employeeId) {
         Employee findEmployee =
                 employeeRepository
                         .findById(employeeId)
@@ -104,6 +106,8 @@ public class EmployeeService {
         LocalDateTime now = LocalDateTime.now().withNano(0);
         findEmployee.setFiredDate(now);
         // 매월 1일을 기준으로 지금까지 일했던 날짜와 시간을 계산합니다.
+
+        return findEmployee;
     }
 
     @Transactional
