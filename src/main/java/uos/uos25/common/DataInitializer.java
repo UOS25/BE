@@ -69,7 +69,8 @@ public class DataInitializer {
         Returns returns = createReturnsDummy(shop, product);
         Employee employee = createEmployeeDummy(shop);
         createEmployeeBossDummy(shop);
-        EmployeeWorkingHistory employeeWorkingHistory = createEmployeeWorkingHistoryDummy(employee);
+        //        EmployeeWorkingHistory employeeWorkingHistory =
+        // createEmployeeWorkingHistoryDummy(employee);
         Disposal disposal = createDisposalDummy(shop, product);
         Customer customer = createCustomerDummy();
         Inventory inventory = createInventoryDummy(product, shop);
