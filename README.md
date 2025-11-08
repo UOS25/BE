@@ -18,4 +18,4 @@ UOS25 서울시립대학교 데이터베이스설계 수업 프로젝트로 편�
 |--------------------------------------|-------|
 | [유현승](https://www.github.com/UDADDY) | 백엔드   |
 | [김민서](https://github.com/ms9648)     | 프론트엔드 |
-| [김성령](https://github.com/ms9648)     | 백엔드   |
+| [김성령](https://github.com/MTsauRus)     | 백엔드   |
